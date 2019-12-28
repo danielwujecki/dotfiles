@@ -9,3 +9,4 @@
 .gitconfig
 *.jpg
 *.png
+!screenshot.jpg
