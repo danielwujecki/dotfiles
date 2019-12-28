@@ -1,0 +1,11 @@
+.Xauthority
+.cache/
+.local/
+.python_history
+.ssh/
+.viminfo
+.wget-hsts
+.zsh_history
+.gitconfig
+*.jpg
+*.png

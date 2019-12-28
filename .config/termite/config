@@ -1,0 +1,69 @@
+#  _____                   _ _ 
+# |_   _|__ _ __ _ __ ___ (_) |_ ___ 
+#   | |/ _ \ '__| '_ ` _ \| | __/ _ \
+#   | |  __/ |  | | | | | | | ||  __/
+#   |_|\___|_|  |_| |_| |_|_|\__\___|
+#
+########################################
+
+[options]
+audible_bell = false
+clickable_url = true
+font = DejaVu Sans Mono 11
+icon_name = terminal
+mouse_autohide = true
+scrollback_lines = 10000
+
+# $BROWSER is used by default if set, with xdg-open as a fallback
+browser = google-chrome-stable
+
+cursor_blink = on
+cursor_shape = underline
+
+# "off", "left" or "right"
+scrollbar = off
+
+[colors]
+
+# 10% background transparency (requires a compositor)
+background = #1f2430
+
+# special
+foreground      = #cbccc6
+foreground_bold = #cecfc9
+cursor          = #cbccc6
+
+# black
+color0  = #002b36
+color8  = #657b83
+
+# red
+color1  = #dc322f
+color9  = #dc322f
+
+# green
+color2  = #86b300
+color10 = #86b300
+
+# yellow
+color3  = #b58900
+color11 = #b58900
+
+# blue
+color4  = #399ee6
+color12 = #399ee6
+
+# magenta
+color5  = #a37acc
+color13 = #a37acc
+
+# cyan
+color6  = #4cbf99
+color14 = #4cbf99
+
+# white
+color7  = #cbccc6
+color15 = #cbccc6
+
+[options]
+font = DejaVuSansMono Nerd Font Mono 11

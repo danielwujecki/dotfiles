@@ -1,0 +1,46 @@
+configuration {
+	modi: "drun,window,run";
+	show-icons: true;
+	terminal: "termite";
+    display-drun: "Apps:";
+    display-window: "Running:";
+    display-run: "run:";
+}
+
+* {
+    lines: 15;
+    columns: 1;
+    width: 1000;
+    background-color: #1f2430;
+    border-color: #282f3e;
+    text-color: #F5F5F5;
+    font: "DejaVu Sans Mono 11";
+    scrollbar: false;
+}
+
+#mainbox {
+    spacing: 20px;
+    padding: 10px;
+    border: 2px;
+    border-color: @base0D;
+}
+
+#listview {
+    spacing: 5px;
+}
+
+#element {
+    border: 0;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+#element selected {
+    background-color: #00a0e6;
+    text-color: #EFEFEF;
+}
+
+#inputbar {
+    spacing:    10px;
+    padding:    1px ;
+}

@@ -1,0 +1,22 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"A File Icon",
+		"Anaconda",
+		"ayu",
+		"BracketHighlighter",
+		"C Improved",
+		"Dockerfile Syntax Highlighting",
+		"Emmet",
+		"GitGutter",
+		"INI",
+		"LaTeXTools",
+		"Package Control",
+		"SideBarEnhancements",
+		"Terminal"
+	]
+}

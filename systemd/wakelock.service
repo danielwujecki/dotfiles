@@ -1,0 +1,12 @@
+[Unit]
+Description=Lock screen before suspend
+Before=suspend.target
+
+[Service]
+User=daniel
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/home/daniel/.config/i3/screenlock.sh
+
+[Install]
+WantedBy=suspend.target
