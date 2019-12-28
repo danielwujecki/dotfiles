@@ -9,3 +9,5 @@ It's better to go through every single file... check the i3 files, then the poly
 If you have any questions or missing something, feel free to send me an email or open an issue.
 
 ![Screenshot](https://raw.githubusercontent.com/danielgolf/dotfiles-linux/master/misc/screenshot.jpg)
+
+The wallpaper can be found on [reddit](https://www.reddit.com/r/wallpaper/comments/eehiyr/new_york_city_3840_x_2160/).
