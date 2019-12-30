@@ -87,8 +87,8 @@ bindsym $mod+a focus parent
 bindsym $mod+o exec $HOME/.config/i3/screenlock.sh
 bindsym $mod+Shift+o exec systemctl suspend
 # screenshot
-bindsym Print exec scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/'
-bindsym $mod+Print exec scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/'
+bindsym Print exec scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/screenshots/'
+bindsym $mod+Print exec scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/screenshots/'
 
 # toggle gaps
 bindsym $mod+G gaps inner all set 10
