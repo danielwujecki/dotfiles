@@ -37,10 +37,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show drun
 
 # change focus
-# bindsym $mod+j focus left
-# bindsym $mod+k focus down
-# bindsym $mod+l focus up
-# bindsym $mod+odiaeresis focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -49,10 +49,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-# bindsym $mod+Shift+j move left
-# bindsym $mod+Shift+k move down
-# bindsym $mod+Shift+l move up
-# bindsym $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -60,11 +60,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
+# toggle split orientation
+bindsym $mod+v split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -87,8 +84,8 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # lock screen
-bindsym $mod+l exec $HOME/.config/i3/screenlock.sh
-bindsym $mod+Shift+l exec systemctl suspend
+bindsym $mod+o exec $HOME/.config/i3/screenlock.sh
+bindsym $mod+Shift+o exec systemctl suspend
 # screenshot
 bindsym Print exec scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/'
 bindsym $mod+Print exec scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/'
@@ -237,8 +234,8 @@ gaps outer 0
 
 exec_always --no-startup-id $HOME/.config/polybar/startup.sh
 exec --no-startup-id compton -b
-exec --no-startup-id xautolock -detectsleep -time 10 -locker "systemctl suspend"
-# exec --no-startup-id i3-msg 'workspace 1; exec google-chrome-stable'
+exec --no-startup-id xautolock -detectsleep -time 20 -locker "systemctl suspend"
+exec --no-startup-id i3-msg 'workspace 1; exec google-chrome-stable'
 # exec --no-startup-id i3-msg 'workspace 1; exec vivaldi-stable'
 # exec --no-startup-id i3-msg 'workspace 2; exec $HOME/.config/i3/rangerterminal.sh'
-exec --no-startup-id i3-msg 'workspace 2; exec $HOME/.config/i3/weatherterminal.sh'
+# exec --no-startup-id i3-msg 'workspace 2; exec $HOME/.config/i3/weatherterminal.sh'

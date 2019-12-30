@@ -18,6 +18,7 @@ set encoding=UTF-8                  " use UTF-8
 set backspace=indent,eol,start      " allow backspacing over everything in insert mode
 set number relativenumber           " Zeilen relativ nummerieren
 
+set splitright                      " always split on the right site
 set history=100		                " keep 50 lines of command line history
 set ruler		                    " show the cursor position all the time
 set showcmd		                    " display incomplete commands

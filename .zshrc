@@ -80,10 +80,10 @@ HIST_STAMPS="dd.mm.yyyy"
 plugins=(
     colored-man-pages
     virtualenv
-    docker
-    pip
     history
     # vi-mode
+    # docker
+    # pip
     # last-working-dir
 )
 
