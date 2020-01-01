@@ -7,6 +7,4 @@
 .wget-hsts
 .zsh_history
 .gitconfig
-*.jpg
-*.png
 !screenshot.jpg
