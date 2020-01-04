@@ -17,11 +17,11 @@ alias ...='cd ../../'
 
 # programme
 alias top='htop'
+alias emacs='emacsclient -nc'
 alias diff='colordiff'
 alias xclip='xclip -sel c'
 alias pacman='sudo pacman'
 alias chrome='google-chrome-stable'
-alias ssh='TERM=xterm-256color ssh'
 
 # usb
 alias mount='udisksctl mount -b'
@@ -29,6 +29,7 @@ alias unmount='udisksctl unmount -b'
 alias usboff='udisksctl power-off -b'
 
 # ssh
+alias ssh='TERM=xterm-256color ssh'
 alias sraspi='ssh pi@192.168.178.38'
 alias sraspif='nautilus sftp://pi@raspberryserver &> /dev/null &'
 

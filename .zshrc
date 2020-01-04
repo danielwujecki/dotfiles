@@ -5,6 +5,10 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+if [ -d "$HOME/.doom.d" ] ; then
+    PATH="$HOME/.emacs.d/bin:$PATH"
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/daniel/.oh-my-zsh"
 
