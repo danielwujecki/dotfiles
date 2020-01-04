@@ -9,7 +9,8 @@
 [options]
 audible_bell = false
 clickable_url = true
-font = DejaVu Sans Mono 11
+# font = DejaVu Sans Mono 11
+font = DejaVuSansMono Nerd Font Mono 11
 icon_name = terminal
 mouse_autohide = true
 scrollback_lines = 10000
@@ -25,7 +26,6 @@ scrollbar = off
 
 [colors]
 
-# 10% background transparency (requires a compositor)
 background = #1f2430
 
 # special
@@ -64,6 +64,3 @@ color14 = #4cbf99
 # white
 color7  = #cbccc6
 color15 = #cbccc6
-
-[options]
-font = DejaVuSansMono Nerd Font Mono 11

@@ -7,4 +7,5 @@
 .wget-hsts
 .zsh_history
 .gitconfig
+*.tar.gz
 !screenshot.jpg
