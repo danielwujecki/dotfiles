@@ -1,7 +1,7 @@
 {
     "telemetry.enableTelemetry": false,
     "editor.minimap.enabled": false,
-    "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.view.pdf.viewer": "tab",
     "workbench.colorTheme": "Ayu Mirage Bordered",
     "editor.tabSize": 4,
     "files.trimTrailingWhitespace": true,
@@ -54,5 +54,6 @@
         "yml"
     ],
     "editor.wordWrap": "on",
-    "editor.fontSize": 15
+    "editor.fontSize": 15,
+    "editor.lineNumbers": "relative"
 }

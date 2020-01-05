@@ -5,22 +5,23 @@ fi
 
 # damit jeder alias auch als root funktioniert
 alias sudo='sudo '
-alias rm='rm -I'
 
 # orte
-alias des='cd ~/Schreibtisch'
-alias box='cd ~/Dropbox'
-alias sem='cd ~/Dropbox/wise1920'
-alias repos='cd ~/Repositories'
 alias ..='cd ../'
 alias ...='cd ../../'
+alias box='cd ~/Dropbox'
+alias des='cd ~/Schreibtisch'
+alias sem='cd ~/Dropbox/wise1920'
+alias repos='cd ~/Repositories'
 
 # programme
+alias l='ls'
+alias rm='rm -I'
 alias top='htop'
-alias emacs='emacsclient -nc'
 alias diff='colordiff'
 alias xclip='xclip -sel c'
 alias pacman='sudo pacman'
+# alias emacs='emacsclient -nc'
 alias chrome='google-chrome-stable'
 
 # usb
