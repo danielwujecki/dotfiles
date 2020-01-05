@@ -55,6 +55,8 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
+inoremap jj <ESC>
+
 " #############################
 " ######  Special Stuff  ######
 " #############################

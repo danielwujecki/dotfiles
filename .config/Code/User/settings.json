@@ -55,5 +55,11 @@
     ],
     "editor.wordWrap": "on",
     "editor.fontSize": 15,
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [ "j", "j" ],
+            "after": [ "<Esc>" ]
+        }
+    ]
 }

@@ -85,7 +85,7 @@ plugins=(
     colored-man-pages
     virtualenv
     history
-    # vi-mode
+    vi-mode
     # docker
     # pip
     # last-working-dir
@@ -121,10 +121,6 @@ export EDITOR='vim'
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
-# enable vim modes
-# bindkey -v
-# export KEYTIMEOUT=1
 
 # nice system info
 pfetch
