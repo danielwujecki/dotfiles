@@ -20,6 +20,7 @@ zle -N zle-keymap-select
 function vi-accept-line() {
   VI_KEYMAP=main
   zle accept-line
+  echo -ne "\e[3 q"
 }
 
 zle -N vi-accept-line
