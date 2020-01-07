@@ -15,10 +15,8 @@
         "--extension-pkg-whitelist=cv2",
         "--disable=C0111,C0301,C0103"
     ],
-    "python.jediPath": "/home/daniel/.virtualenvs/mypython/lib/python3.8/site-packages/",
-    "python.linting.pylintPath": "/home/daniel/.virtualenvs/mypython/lib/python3.8/site-packages/",
     "[python]": {},
-    "cSpell.language": "de, en",
+    "cSpell.language": "de,en,de-DE",
     "latex-workshop.view.pdf.external.viewer.command": "xreader",
     "cSpell.enabledLanguageIds": [
         "asciidoc",
@@ -61,5 +59,7 @@
             "before": [ "j", "j" ],
             "after": [ "<Esc>" ]
         }
-    ]
+    ],
+    "editor.renderFinalNewline": false,
+    "python.terminal.executeInFileDir": true
 }
