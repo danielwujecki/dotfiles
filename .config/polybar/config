@@ -41,7 +41,7 @@ override-redirect = false
 bottom = true
 fixed-center = true
 width = 100%
-height = 40
+height = 34
 offset-x = 0
 offset-y = 0
 
@@ -60,10 +60,10 @@ padding-right = 0
 module-margin = 0
 
 ; TODO: remove unused fonts
-font-0 = Inconsolata:style=Bold:size=11;2
-font-1 = Font Awesome 5 Brands:syle=Regular:size=10;2
-font-2 = Font Awesome 5 Free Regular:syle=Regular:size=10;2
-font-3 = Font Awesome 5 Free Solid:syle=Solid:size=10;2
+font-0 = Inconsolata:style=Bold:size=10;2
+font-1 = Font Awesome 5 Brands:syle=Regular:size=9;2
+font-2 = Font Awesome 5 Free Regular:syle=Regular:size=9;2
+font-3 = Font Awesome 5 Free Solid:syle=Solid:size=9;2
 font-4 = PowerlineSymbols:syle=Italic:size=21;8
 
 modules-left = i3 xwindow
