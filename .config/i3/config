@@ -217,7 +217,7 @@ gaps outer 0
 #        status_command i3status
 # }
 
-exec_always --no-startup-id $HOME/.config/polybar/startup.sh
+exec_always --no-startup-id $HOME/.config/polybar/start_polybar_normal.sh
 exec --no-startup-id compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
