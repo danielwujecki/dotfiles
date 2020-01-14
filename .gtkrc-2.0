@@ -2,7 +2,7 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/daniel/.gtkrc-2.0.mine"
-gtk-theme-name="Arc-Dark"
+gtk-theme-name="Qogir-dark"
 gtk-icon-theme-name="Qogir"
 gtk-font-name="DejaVu Sans 11"
 gtk-cursor-theme-name="Adwaita"
@@ -16,3 +16,4 @@ gtk-enable-input-feedback-sounds=1
 gtk-xft-antialias=1
 gtk-xft-hinting=1
 gtk-xft-hintstyle="hintfull"
+gtk-xft-rgba="rgb"

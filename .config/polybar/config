@@ -31,7 +31,7 @@ pow9 = #05335e
 
 [bar/mybar]
 monitor = eDP1
-; monitor-fallback =
+; monitor-fallback = eDP1
 monitor-strict = false
 monitor-exact = true
 
@@ -47,7 +47,6 @@ offset-y = 0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
-; background-0 =
 
 line-size = 3
 line-color = #f00
@@ -68,14 +67,9 @@ font-4 = PowerlineSymbols:syle=Italic:size=21;8
 
 modules-left = i3 xwindow
 ; modules-center =
-modules-right = arrow8 cpu arrow7 temp arrow6 memory arrow5 filesystem arrow4 battery arrow3 backlight arrow2 date arrow1
-; xkeyboard eth
+modules-right = arrow8 cpu arrow7 temp arrow6 memory arrow5 audio arrow4 backlight arrow3 battery arrow2 date arrow1
+; eth filesystem
 
-; separator =
-; spacing = 0
-; dim-value = 1.0
-
-; wm-name =
 locale = de_DE.UTF-8
 
 tray-position = right
@@ -146,16 +140,16 @@ label-urgent-padding = 2
 ; label-separator-padding = 2
 ; label-separator-foreground = #ffb52a
 
-[module/date]
-type = internal/date
-interval = 1
+[module/xwindow]
+type = internal/xwindow
 
-date = %a, %d. %b
-time = %H:%M
+label = %title%
+label-padding-left = 2
+label-maxlen = 60
 
-; format-underline = #537093
-label = %date% %time%
-label-background = ${colors.pow2}
+; format-prefix = "  "
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
 
 [module/cpu]
 type = internal/cpu
@@ -183,6 +177,66 @@ interval = 2
 label = : %percentage_used%%
 label-background = ${colors.pow6}
 
+[module/audio]
+type = internal/pulseaudio
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+use-ui-max = false
+; Interval for volume increase/decrease (in percent points)
+interval = 5
+
+format-volume = <label-volume>
+format-muted = <label-muted>
+label-volume =  %percentage%%
+label-muted =  %percentage%%
+
+label-volume-background = ${colors.pow5}
+label-muted-background = ${colors.pow5}
+
+[module/backlight]
+type = internal/xbacklight
+enable-scroll = false
+format = <label>
+label =  %percentage%%
+label-background = ${colors.pow4}
+
+[module/battery]
+type = internal/battery
+
+battery = BAT0
+adapter = AC
+; full-at = 99
+poll-interval = 3
+
+format-charging = <label-charging>
+format-charging-background = ${colors.pow3}
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-background = ${colors.pow3}
+
+label-charging =  %percentage%%
+label-discharging = %percentage%%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = %a, %d. %b
+time = %H:%M
+
+; format-underline = #537093
+label = %date% %time%
+label-background = ${colors.pow2}
+
+###############################################################################
+############                     UNUSED MODULES                    ############
+###############################################################################
+
 [module/filesystem]
 type = internal/fs
 interval = 15
@@ -193,16 +247,6 @@ mount-0 = /home
 
 label-mounted = : %used%
 label-mounted-background = ${colors.pow5}
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-label-layout = : %layout%
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
 
 [module/eth]
 type = internal/network
@@ -217,49 +261,9 @@ label-disconnected-background = ${colors.pow3}
 ; label-connected = : %upspeed%  : %downspeed%
 ; label-disconnected = : %ifname% disconnected
 
-[module/xwindow]
-type = internal/xwindow
-
-label = %title%
-label-padding-left = 2
-label-maxlen = 60
-
-; format-prefix = "  "
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-
-[module/battery]
-type = internal/battery
-
-battery = BAT0
-adapter = AC
-; full-at = 99
-poll-interval = 3
-
-format-charging = <label-charging>
-format-charging-background = ${colors.pow4}
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-background = ${colors.pow4}
-
-label-charging =  %percentage%%
-label-discharging = %percentage%%
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-[module/backlight]
-type = internal/xbacklight
-enable-scroll = false
-format = <label>
-label =  %percentage%%
-label-background = ${colors.pow3}
-
 ###############################################################################
 ############                     MODULES ARROWS                    ############
-################################################################################
+###############################################################################
 
 [module/arrow1]
 type = custom/text

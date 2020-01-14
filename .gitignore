@@ -1,6 +1,5 @@
 .Xauthority
 .cache/
-.local/
 .python_history
 .ssh/
 .viminfo

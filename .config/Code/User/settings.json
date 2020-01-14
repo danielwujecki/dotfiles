@@ -61,5 +61,8 @@
         }
     ],
     "editor.renderFinalNewline": false,
-    "python.terminal.executeInFileDir": true
+    "python.terminal.executeInFileDir": true,
+    "cSpell.userWords": [
+        "PYTHONPATH"
+    ]
 }

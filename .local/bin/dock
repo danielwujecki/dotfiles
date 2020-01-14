@@ -1,0 +1,4 @@
+#!/bin/sh
+# XRANDR
+$HOME/.fehbg
+$HOME/.config/polybar/startup.sh
