@@ -127,6 +127,18 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
+# use workspaces on different monitors
+workspace $ws1 output eDP1 DP2-2
+workspace $ws2 output primary DP2-3 eDP1
+workspace $ws3 output primary DP2-3 eDP1
+workspace $ws4 output primary DP2-3 eDP1
+workspace $ws5 output primary DP2-3 eDP1
+workspace $ws6 output primary DP2-3 eDP1
+workspace $ws7 output primary DP2-3 eDP1
+workspace $ws8 output primary DP2-3 eDP1
+workspace $ws9 output primary DP2-3 eDP1
+workspace $ws10 output primary DP2-3 eDP1
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
