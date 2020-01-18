@@ -18,8 +18,8 @@ Xcursor.size: 30
 !
 ! ###############################
 
-urxvt.font: xft:DejaVuSansMono Nerd Font Mono:style=Book:size=11
-urxvt.boldFont: xft:DejaVu Sans Mono:style=Bold:size=11
+urxvt.font: xft:JetBrainsMono Nerd Font:style=Regular:size=11
+urxvt.boldFont: xft:JetBrains Mono:style=Bold:size=11
 urxvt.letterSpace: -1.2
 
 urxvt.cursorBlink: true

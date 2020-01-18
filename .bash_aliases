@@ -1,6 +1,6 @@
 if [ -x /usr/bin/dircolors ]; then
     # zeige durch ls immer alle Dateien als Liste an
-    alias ls='ls -lhA --color=auto --group-directories-first'
+    alias ls='ls -lhvA --color=auto --group-directories-first'
 fi
 
 # damit jeder alias auch als root funktioniert
