@@ -1,5 +1,6 @@
 {
 	"color_scheme": "Packages/ayu/ayu-mirage.sublime-color-scheme",
+	"font_face": "JetBrains Mono",
 	"font_options":
 	[
 		"subpixel_antialias",
@@ -9,6 +10,7 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
+		"Dockerfile Syntax Highlighting",
 		"Vintage"
 	],
 	"line_padding_bottom": 2,

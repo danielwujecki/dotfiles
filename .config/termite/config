@@ -10,7 +10,8 @@
 audible_bell = false
 clickable_url = true
 # font = DejaVu Sans Mono 11
-font = DejaVuSansMono Nerd Font Mono 11
+# font = DejaVuSansMono Nerd Font Mono 11
+font = JetBrainsMono Nerd Font 11
 icon_name = terminal
 mouse_autohide = true
 scrollback_lines = 10000

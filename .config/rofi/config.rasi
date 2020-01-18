@@ -14,7 +14,8 @@ configuration {
     background-color: #1f2430;
     border-color: #282f3e;
     text-color: #F5F5F5;
-    font: "DejaVu Sans Mono 11";
+    // font: "DejaVu Sans Mono 11";
+    font: "JetBrains Mono 11";
     scrollbar: false;
 }
 

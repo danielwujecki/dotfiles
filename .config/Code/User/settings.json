@@ -64,5 +64,6 @@
     "python.terminal.executeInFileDir": true,
     "cSpell.userWords": [
         "PYTHONPATH"
-    ]
+    ],
+    "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'"
 }

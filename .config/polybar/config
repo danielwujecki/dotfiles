@@ -58,12 +58,11 @@ padding-left = 0
 padding-right = 0
 module-margin = 0
 
-; TODO: remove unused fonts
-font-0 = Inconsolata:style=Bold:size=10;2
-font-1 = Font Awesome 5 Brands:syle=Regular:size=9;2
-font-2 = Font Awesome 5 Free Regular:syle=Regular:size=9;2
-font-3 = Font Awesome 5 Free Solid:syle=Solid:size=9;2
-font-4 = PowerlineSymbols:syle=Italic:size=21;8
+font-0 = "JetBrains Mono:style=Regular:size=9;2"
+font-1 = "PowerlineSymbols:syle=Italic:size=21;8"
+font-2 = "Font Awesome 5 Brands:syle=Regular:size=9;2"
+font-3 = "Font Awesome 5 Free Solid:syle=Solid:size=9;2"
+font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
 
 modules-left = i3 xwindow
 ; modules-center =
@@ -126,12 +125,11 @@ padding-left = 0
 padding-right = 0
 module-margin = 0
 
-; TODO: remove unused fonts
-font-0 = Inconsolata:style=Bold:size=10;2
-font-1 = Font Awesome 5 Brands:syle=Regular:size=9;2
-font-2 = Font Awesome 5 Free Regular:syle=Regular:size=9;2
-font-3 = Font Awesome 5 Free Solid:syle=Solid:size=9;2
-font-4 = PowerlineSymbols:syle=Italic:size=21;8
+font-0 = "JetBrains Mono:style=Medium:size=9;2"
+font-1 = "PowerlineSymbols:syle=Italic:size=21;8"
+font-2 = "Font Awesome 5 Brands:syle=Regular:size=9;2"
+font-3 = "Font Awesome 5 Free Solid:syle=Solid:size=9;2"
+font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
 
 modules-left = i3 xwindow
 ; modules-center =
