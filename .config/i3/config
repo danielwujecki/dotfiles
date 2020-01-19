@@ -22,8 +22,8 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango:monospace 10
-# font pango:SFNS Display 10
 font pango:DejaVu Sans Book 9
+# font pango:JetBrains Mono Regular 9
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -128,16 +128,16 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
 # use workspaces on different monitors
-workspace $ws1 output eDP1 DP2-2
-workspace $ws2 output primary DP2-3 eDP1
-workspace $ws3 output primary DP2-3 eDP1
-workspace $ws4 output primary DP2-3 eDP1
-workspace $ws5 output primary DP2-3 eDP1
-workspace $ws6 output primary DP2-3 eDP1
-workspace $ws7 output primary DP2-3 eDP1
-workspace $ws8 output primary DP2-3 eDP1
-workspace $ws9 output primary DP2-3 eDP1
-workspace $ws10 output primary DP2-3 eDP1
+workspace $ws1 output primary
+workspace $ws2 output DP2-3 primary
+workspace $ws3 output DP2-3 primary
+workspace $ws4 output DP2-3 primary
+workspace $ws5 output DP2-3 primary
+workspace $ws6 output DP2-3 primary
+workspace $ws7 output DP2-3 primary
+workspace $ws8 output DP2-3 primary
+workspace $ws9 output DP2-3 primary
+workspace $ws10 output DP2-3 primary
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -156,9 +156,8 @@ bindsym $mod+Ctrl+Right move workspace to output right
 
 assign [class="Vivaldi-stable"] $ws1
 # assign [class="Google-chrome"] $ws1
-# assign [class="Thunar"] $ws2
-# assign [class="Code"] $ws4
 # assign [class="Sublime_text"] $ws4
+assign [class="Code"] $ws4
 assign [class="Thunderbird"] $ws9
 assign [class="TelegramDesktop"] $ws9
 assign [class="Spotify"] $ws10
@@ -169,7 +168,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'i3wm und X-Server beenden?' -B 'Jep! Gute Nacht!' 'i3-msg exit'"
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
