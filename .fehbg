@@ -1,2 +1,4 @@
-#!/bin/sh
-feh --no-fehbg --bg-fill '/home/daniel/.config/i3/wallpaper.jpg' 
+#!/bin/bash
+wp_path="$HOME/Bilder/wallpapers/selected"
+sel_wp=$(ls "$wp_path" | shuf -n 1)
+feh --no-fehbg --bg-fill "$wp_path/$sel_wp"

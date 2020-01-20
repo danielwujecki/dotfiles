@@ -1,27 +1,17 @@
 #!/usr/bin/bash
 
-# set working directory
-cd /tmp
+wp_path="$HOME/Bilder/wallpapers/selected"
+sel_wp=$(ls "$wp_path" | shuf -n 1)
 
-# set the icon and a temporary location for the screenshot to be stored
 icon="$HOME/.config/i3/circlelock.png"
-tmpimg='screen_locked.png'
-# wallpaper="$HOME/.config/i3/lockscreen.jpg"
+tmpimg='/tmp/screen_locked.png'
 
-# Take a screenshot
-scrot $tmpimg 
-# take wallpaper
-# cp $wallpaper $tmpimg
-
-# Pixellate it 10x
-mogrify -scale 10% -scale 1000% "$tmpimg"
-
-# add the icon
-convert "$tmpimg" "$icon" -gravity center -composite "$tmpimg"
+# add the lock
+convert "$wp_path/$sel_wp" "$icon" -gravity center -composite -scale 2560x1440 "$tmpimg" 
 
 # Lock screen displaying this image.
-i3lock -n -t -i "$tmpimg" &
+i3lock -n -t -i "$tmpimg"
 
 # wait and clean up
 sleep 1
-rm $tmpimg
+# rm $tmpimg
