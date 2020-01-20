@@ -84,11 +84,10 @@ HIST_STAMPS="dd.mm.yyyy"
 plugins=(
     colored-man-pages
     virtualenv
+    pyenv
     history
     vi-mode
-    # docker
     # pip
-    # last-working-dir
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -123,4 +122,4 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # nice system info
-pfetch
+# pfetch
