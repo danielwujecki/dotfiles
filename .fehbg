@@ -1,4 +1,9 @@
 #!/bin/bash
-wp_path="$HOME/Bilder/wallpapers/selected"
-sel_wp=$(ls "$wp_path" | shuf -n 1)
+wp_path="$HOME/Bilder/wallpaper/selected"
+if [ ! -d $wp_path ] ; then exit ; fi
+
+until [ -f "$wp_path/$sel_wp" ] ; do
+    sel_wp=$(ls "$wp_path" | shuf -n 1)
+done
+
 feh --no-fehbg --bg-fill "$wp_path/$sel_wp"

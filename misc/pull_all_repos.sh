@@ -1,13 +1,11 @@
 #!/bin/bash
 
-DIR="$(command ls -d */)"
+directories="$(ls -d */)"
 
-for d in $DIR
-do
+for d in $directories ; do
     cd $d
     if [ -d .git ]; then
         git pull
-        git push
     fi
     cd ../
 done

@@ -156,8 +156,8 @@ bindsym $mod+Ctrl+Right move workspace to output right
 
 assign [class="Vivaldi-stable"] $ws1
 # assign [class="Google-chrome"] $ws1
-# assign [class="Sublime_text"] $ws4
-assign [class="Code"] $ws4
+# assign [class="Sublime_text"] $ws8
+assign [class="Code"] $ws8
 assign [class="Thunderbird"] $ws9
 assign [class="TelegramDesktop"] $ws9
 assign [class="Spotify"] $ws10
