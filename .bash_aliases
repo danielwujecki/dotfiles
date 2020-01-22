@@ -16,12 +16,12 @@ alias repos='cd ~/Repositories'
 
 # programme
 alias l='ls'
+alias r='ranger'
 alias rm='rm -I'
 alias top='htop'
 alias diff='colordiff'
 alias xclip='xclip -sel c'
 alias pacman='sudo pacman'
-# alias emacs='emacsclient -nc'
 alias chrome='google-chrome-stable'
 
 # usb
