@@ -128,7 +128,7 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
 # use workspaces on different monitors
-workspace $ws1 output primary
+workspace $ws1 output DP2-2 primary
 workspace $ws2 output DP2-3 primary
 workspace $ws3 output DP2-3 primary
 workspace $ws4 output DP2-3 primary

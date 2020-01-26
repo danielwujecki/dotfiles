@@ -1,0 +1,10 @@
+#!/bin/bash
+delcand=$(find ./ -regex '.*/\(__pycache__\|\.ipynb_checkpoints\)')
+if [ -z "$delcand" ] ; then
+    echo "Nothing to clean up."
+    exit 0
+fi
+for dir in $delcand ; do
+    echo "Wan't to remove" "$dir"
+    rm -rI "$dir"
+done
