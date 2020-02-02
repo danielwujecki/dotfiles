@@ -1,4 +1,11 @@
 [
     { "keys": ["ctrl+7"], "command": "toggle_comment", "args": { "block": false } },
     { "keys": ["ctrl+shift+7"], "command": "toggle_comment", "args": { "block": true } },
+    { "keys": ["j", "j"], "command": "exit_insert_mode",
+        "context":
+        [
+            { "key": "setting.command_mode", "operand": false },
+            { "key": "setting.is_widget", "operand": false }
+        ]
+    }
 ]

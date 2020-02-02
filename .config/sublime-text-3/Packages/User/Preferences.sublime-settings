@@ -10,8 +10,8 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"Dockerfile Syntax Highlighting",
-		"Vintage"
+		"Dockerfile Syntax Highlighting"
+		// "Vintage"
 	],
 	"line_padding_bottom": 2,
 	"line_padding_top": 2,
