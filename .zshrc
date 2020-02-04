@@ -87,7 +87,7 @@ plugins=(
     history
     vi-mode
     docker
-    # pyenv
+    pyenv
     # pip
 )
 
