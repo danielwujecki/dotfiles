@@ -1,6 +1,7 @@
 if [ -x /usr/bin/dircolors ]; then
-    # zeige durch ls immer alle Dateien als Liste an
-    alias ls='ls -lhvA --color=auto --group-directories-first'
+    alias exa='exa -lat changed --git --color=auto --group-directories-first'
+    alias ls='exa'
+    alias l='exa'
 fi
 
 # damit jeder alias auch als root funktioniert
@@ -14,11 +15,17 @@ alias des='cd ~/Schreibtisch'
 alias sem='cd ~/Dropbox/wise1920'
 alias repos='cd ~/Repositories'
 
-# programme
-alias l='ls'
+# shortcuts
+alias f='fzf'
+alias g='git'
+alias v='vim'
 alias r='ranger'
+alias vf='vim $(fzf)'
+
+#programme
 alias rm='rm -I'
 alias top='htop'
+alias tree='exa -T'
 alias diff='colordiff'
 alias xclip='xclip -sel c'
 alias pacman='sudo pacman'
