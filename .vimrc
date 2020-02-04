@@ -40,8 +40,9 @@ set lbr                             " Linebreak on 500 characters
 set tw=200
 
 " metadateien in speichern
-set backupdir^=$HOME/.vim/backup/
+set undofile                        " Maintain undo history between sessions
 set undodir^=$HOME/.vim/backup/
+set backupdir^=$HOME/.vim/backup/
 set directory^=$HOME/.vim/backup/
 
 " tabs mit 4 Leerzeichen
