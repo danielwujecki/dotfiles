@@ -229,7 +229,7 @@ gaps outer 0
 # }
 
 exec_always --no-startup-id $HOME/.config/polybar/start_polybar_normal.sh
-exec --no-startup-id compton -b
+exec --no-startup-id picom -b
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id xautolock -detectsleep -time 10 -locker "systemctl suspend"

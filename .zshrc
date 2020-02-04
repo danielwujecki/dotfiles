@@ -84,9 +84,10 @@ HIST_STAMPS="dd.mm.yyyy"
 plugins=(
     colored-man-pages
     virtualenv
-    pyenv
     history
     vi-mode
+    docker
+    # pyenv
     # pip
 )
 
