@@ -65,7 +65,7 @@ font-3 = "Font Awesome 5 Free Solid:syle=Solid:size=9;2"
 font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
 
 modules-left = i3 xwindow
-; modules-center =
+modules-center = spotify
 modules-right = arrow8 cpu arrow7 temp arrow6 memory arrow5 audio arrow4 backlight arrow3 battery arrow2 date arrow1
 ; eth filesystem
 
@@ -132,7 +132,7 @@ font-3 = "Font Awesome 5 Free Solid:syle=Solid:size=9;2"
 font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
 
 modules-left = i3 xwindow
-; modules-center =
+modules-center = spotify
 modules-right = arrow8 cpu arrow7 temp arrow6 memory arrow5 audio arrow34 battery arrow2 date arrow1
 ; eth filesystem backlight
 
@@ -207,6 +207,13 @@ label-maxlen = 60
 ; format-prefix = "  "
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
+
+[module/spotify]
+type = custom/script
+interval = 2
+format-prefix = " "
+format = <label>
+exec = /usr/bin/python3 $HOME/.config/polybar/spotify_status.py -t 32 -f '{artist}: {song}'
 
 [module/cpu]
 type = internal/cpu

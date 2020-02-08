@@ -54,7 +54,7 @@ alias commit='git commit -m'
 alias log='git log'
 alias status='git status'
 alias checkout='git checkout'
-alias branch='git branch -v'
+alias branch='git branch -av'
 
 # misc
 alias wetter='curl "wttr.in/Berlin?lang=de"'

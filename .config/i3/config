@@ -99,8 +99,8 @@ bindsym Print exec scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/screens
 bindsym $mod+Print exec scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/screenshots/'
 
 # toggle gaps
-bindsym $mod+G gaps inner all set 10
-bindsym $mod+Shift+G gaps inner all set 0
+bindsym $mod+G gaps inner current plus 10
+bindsym $mod+Shift+G gaps inner current minus 10
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -228,8 +228,16 @@ gaps outer 0
 #        status_command i3status
 # }
 
+# start services and applets
 exec_always --no-startup-id $HOME/.config/polybar/start_polybar_normal.sh
 exec --no-startup-id picom -b
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id xautolock -detectsleep -time 10 -locker "systemctl suspend"
+
+# start daily used programms
+exec --no-startup-id i3-msg 'workspace $ws9; exec telegram-desktop'
+exec --no-startup-id i3-msg 'workspace $ws9; exec thunderbird'
+exec --no-startup-id i3-msg 'workspace $ws1; exec vivaldi-stable'
+exec --no-startup-id i3-msg 'workspace $ws2; gaps inner current set 20; exec termite'
+exec --no-startup-id i3-msg 'workspace $ws2; exec termite'
