@@ -5,10 +5,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# if [ -d "$HOME/.doom.d" ] ; then
-#     PATH="$HOME/.emacs.d/bin:$PATH"
-# fi
-
 # Path to your oh-my-zsh installation.
 export ZSH="/home/daniel/.oh-my-zsh"
 
@@ -120,6 +116,11 @@ export EDITOR='vim'
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+
+# crazy massages when typing wrong comments
+if [ -f /etc/bash.command-not-found ]; then
+    . /etc/bash.command-not-found
 fi
 
 # nice system info
