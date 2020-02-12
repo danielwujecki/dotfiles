@@ -123,9 +123,12 @@ endif
 " ######     Plugins     ######
 " #############################
 
-" powerline aktivieren
-set rtp+=/usr/lib/python3.8/site-packages/powerline/bindings/vim/
-set laststatus=2
+packadd indentLine
+packadd nerdtree
+packadd vim-airline
+packadd vim-devicons
+packadd vim-gitgutter
+packadd vim-polyglot
 
 " NERDtree
 map <C-n> :NERDTreeToggle<CR>
@@ -134,6 +137,7 @@ map ; :FZF
 
 " ayu theme
 if has("termguicolors")
+  packadd ayu-vim
   set termguicolors
   let ayucolor="mirage"
   colorscheme ayu
