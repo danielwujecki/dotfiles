@@ -28,7 +28,8 @@ alias top='htop'
 alias tree='exa -T'
 alias diff='colordiff'
 alias xclip='xclip -sel c'
-alias pacman='sudo pacman'
+alias pac='pacman'
+alias spac='sudo pacman'
 alias chrome='google-chrome-stable'
 
 # usb
