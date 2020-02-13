@@ -6,6 +6,7 @@ print_message () {
     local message
 
     messages=(
+        "Razupaltuff!"
         "Boooo!"
         "Don't you know anything?"
         "RTFM!"

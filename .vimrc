@@ -128,7 +128,7 @@ packadd nerdtree
 packadd vim-airline
 packadd vim-devicons
 packadd vim-gitgutter
-packadd vim-polyglot
+" packadd vim-polyglot
 
 " NERDtree
 map <C-n> :NERDTreeToggle<CR>
