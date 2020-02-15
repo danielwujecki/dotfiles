@@ -236,8 +236,8 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id xautolock -detectsleep -time 10 -locker "systemctl suspend"
 
 # start daily used programms
-exec --no-startup-id i3-msg 'workspace $ws9; exec telegram-desktop'
-exec --no-startup-id i3-msg 'workspace $ws9; exec thunderbird'
-exec --no-startup-id i3-msg 'workspace $ws1; exec vivaldi-stable'
-exec --no-startup-id i3-msg 'workspace $ws2; gaps inner current set 20; exec termite'
-exec --no-startup-id i3-msg 'workspace $ws2; exec termite'
+# exec --no-startup-id i3-msg 'workspace $ws9; exec telegram-desktop'
+# exec --no-startup-id i3-msg 'workspace $ws9; exec thunderbird'
+# exec --no-startup-id i3-msg 'workspace $ws1; exec vivaldi-stable'
+# exec --no-startup-id i3-msg 'workspace $ws2; gaps inner current set 20; exec termite'
+# exec --no-startup-id i3-msg 'workspace $ws2; exec termite'
