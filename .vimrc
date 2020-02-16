@@ -23,7 +23,7 @@ set history=100		                " keep 50 lines of command line history
 set ruler		                    " show the cursor position all the time
 set showcmd		                    " display incomplete commands
 set incsearch		                " do incremental searching
-set smartcase                       " ignore case when searching
+set ignorecase                      " ignore case when searching
 set so=5                            " try to keep lines before and after the cursor
 set noerrorbells                    " no annoying sounds on errors
 set ffs=unix,dos,mac                " use unix as the standard file type
