@@ -12,7 +12,7 @@ sxhkd &
 picom -b &
 nm-applet &
 blueman-applet &
-xautolock -detectsleep -time 10 -locker "systemctl suspend"
+xautolock -detectsleep -time 10 -locker "systemctl suspend" &
 $HOME/.config/polybar/start_polybar_normal.sh > /dev/null 2>&1 &
 
 # TODO: multimonitor support
