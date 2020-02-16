@@ -64,7 +64,7 @@ font-2 = "Font Awesome 5 Brands:syle=Regular:size=9;2"
 font-3 = "Font Awesome 5 Free Solid:syle=Solid:size=9;2"
 font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
 
-modules-left = i3 xwindow
+modules-left = bspwm i3 xwindow
 modules-center = spotify
 modules-right = arrow8 cpu arrow7 temp arrow6 memory arrow5 audio arrow4 backlight arrow3 battery arrow2 date arrow1
 ; eth filesystem
@@ -131,7 +131,7 @@ font-2 = "Font Awesome 5 Brands:syle=Regular:size=9;2"
 font-3 = "Font Awesome 5 Free Solid:syle=Solid:size=9;2"
 font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
 
-modules-left = i3 xwindow
+modules-left = bspwm i3 xwindow
 modules-center = spotify
 modules-right = arrow8 cpu arrow7 temp arrow6 memory arrow5 audio arrow34 battery arrow2 date arrow1
 ; eth filesystem backlight

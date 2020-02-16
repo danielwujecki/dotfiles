@@ -1,3 +1,15 @@
+#           _     _       _
+#  _____  _| |__ | | ____| |
+# / __\ \/ / '_ \| |/ / _` |
+# \__ \>  <| | | |   < (_| |
+# |___/_/\_\_| |_|_|\_\__,_|
+#
+#############################
+
+#
+# wm independent hotkeys
+#
+
 # terminal emulator
 super + Return
 	termite
@@ -6,25 +18,54 @@ super + Return
 super + d
 	rofi -show drun
 
-# sxhkd reload
+# make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
-# quit bspwm
-super + shift + e
+# lock screen
+super + o
+    $HOME/.config/i3/screenlock.sh
+super + shift + o
+    systemctl suspend
+
+# screenshots
+Print
+    scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/screenshots/'
+super + Print
+    scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/screenshots/'
+
+# Pulse Audio controls
+XF86AudioRaiseVolume
+    --no-startup-id pulsemixer --change-volume +5
+XF86AudioLowerVolume
+    --no-startup-id pulsemixer --change-volume -5
+XF86AudioMute
+    --no-startup-id pulsemixer --toggle-mute
+
+# Sreen brightness controls
+XF86MonBrightnessUp
+    xbacklight -inc 5
+XF86MonBrightnessDown
+    xbacklight -dec 5
+
+# Touchpad controls
+XF86TouchpadToggle
+    $HOME/.config/i3/toggletouchpad.sh
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + shift + r
+	bspc wm -r
+
+super + alt + e
 	bspc quit
 
-# restart bspwm
-super + shift + r
-    bspc wm -r
-
-# close window
-super + shift q
-	bspc node -c
-
-# kill window
-super + shift k
-	bspc node -k
+# close and kill
+super + shift + {q,k}
+	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
 super + m
@@ -42,9 +83,14 @@ super + m
 # state/flags
 #
 
+# TODO: change gaps
+
 # set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + {t,shift + t,s}
+	bspc node -t {tiled,pseudo_tiled,floating}
+
+# super + {t,shift + t,s,f}
+# 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
 super + ctrl + {m,x,y,z}
@@ -54,17 +100,17 @@ super + ctrl + {m,x,y,z}
 # focus/swap
 #
 
-# focus the node in the given direction
+# focus/switch the node in the given direction
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+# super + {p,b,comma,period}
+	# bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
-super + {_,shift + }c
-	bspc node -f {next,prev}.local
+# super + {_,shift + }c
+# 	bspc node -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -93,20 +139,22 @@ super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 
 # preselect the ratio
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
+# super + ctrl + {1-9}
+# 	bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
 super + ctrl + space
 	bspc node -p cancel
 
 # cancel the preselection for the focused desktop
-super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+# super + ctrl + shift + space
+#	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #
 # move/resize
 #
+
+# TODO: multimonitor support
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
