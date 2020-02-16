@@ -171,12 +171,7 @@ ws-icon-7 = 8;
 ws-icon-8 = 9;
 ws-icon-9 = 10;
 
-format = <label-state> <label-mode>
-
-; Was kann das?
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+format = <label-state>
 
 label-focused = %icon%
 label-focused-background = ${colors.background-alt}
@@ -192,10 +187,6 @@ label-visible-padding = 2
 label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
-
-; label-separator = |
-; label-separator-padding = 2
-; label-separator-foreground = #ffb52a
 
 [module/xwindow]
 type = internal/xwindow
