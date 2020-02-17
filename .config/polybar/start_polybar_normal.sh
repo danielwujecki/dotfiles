@@ -1,6 +1,8 @@
 #!/usr/bin/bash
 
-killall -q polybar
-while pgrep -u $UID -x polybar > /dev/null; do sleep 1; done
+while pgrep -u $UID -x polybar > /dev/null; do
+    killall -q polybar
+    sleep 1
+done
 polybar mybar &
 echo "Bars launched..."

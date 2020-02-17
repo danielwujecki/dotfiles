@@ -64,7 +64,7 @@ font-2 = "Font Awesome 5 Brands:syle=Regular:size=9;2"
 font-3 = "Font Awesome 5 Free Solid:syle=Solid:size=9;2"
 font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
 
-modules-left = i3 xwindow
+modules-left = bspwm i3 xwindow
 modules-center = spotify
 modules-right = arrow8 cpu arrow7 temp arrow6 memory arrow5 audio arrow4 backlight arrow3 battery arrow2 date arrow1
 ; eth filesystem
@@ -131,7 +131,7 @@ font-2 = "Font Awesome 5 Brands:syle=Regular:size=9;2"
 font-3 = "Font Awesome 5 Free Solid:syle=Solid:size=9;2"
 font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
 
-modules-left = i3 xwindow
+modules-left = bspwm i3 xwindow
 modules-center = spotify
 modules-right = arrow8 cpu arrow7 temp arrow6 memory arrow5 audio arrow34 battery arrow2 date arrow1
 ; eth filesystem backlight
@@ -183,6 +183,39 @@ label-unfocused-padding = 2
 label-visible = %icon%
 label-visible-background = ${colors.background-alt2}
 label-visible-padding = 2
+
+label-urgent = %icon%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+[module/bspwm]
+type = internal/bspwm
+
+pin-workspaces = false
+enable-scroll = false
+reverse-scroll = false
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;3
+ws-icon-3 = 4;4
+ws-icon-4 = 5;5
+ws-icon-5 = 6;6
+ws-icon-6 = 7;7
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+
+format = <label-state>
+
+label-focused = %icon%
+label-focused-background = ${colors.background-alt}
+label-focused-padding = 2
+
+label-occupied = %icon%
+label-occupied-padding = 2
+
+label-empty =
 
 label-urgent = %icon%
 label-urgent-background = ${colors.alert}
