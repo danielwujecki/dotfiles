@@ -23,6 +23,7 @@ alias r='ranger'
 alias vf='vim $(fzf)'
 
 #programme
+alias vi='vim'
 alias rm='rm -I'
 alias top='htop'
 alias tree='exa -T'

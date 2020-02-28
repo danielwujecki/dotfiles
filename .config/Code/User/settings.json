@@ -54,16 +54,11 @@
     "editor.wordWrap": "on",
     "editor.fontSize": 15,
     "editor.lineNumbers": "relative",
-    "vim.insertModeKeyBindings": [
-        {
-            "before": [ "j", "j" ],
-            "after": [ "<Esc>" ]
-        }
-    ],
     "editor.renderFinalNewline": false,
     "python.terminal.executeInFileDir": true,
     "cSpell.userWords": [
         "PYTHONPATH"
     ],
-    "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'"
+    "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
+    "keyboard.dispatch": "keyCode"
 }
