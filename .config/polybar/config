@@ -31,7 +31,7 @@ pow9 = #05335e
 
 [bar/mybar]
 monitor = eDP1
-monitor-fallback = DP2-3
+monitor-fallback = DP2-2
 monitor-strict = false
 monitor-exact = true
 

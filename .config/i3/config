@@ -94,7 +94,6 @@ bindsym $mod+a focus parent
 # lock screen
 bindsym $mod+o exec $HOME/.config/i3/screenlock.sh
 bindsym $mod+Shift+o exec systemctl suspend
-
 # screenshot
 bindsym Print exec scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/screenshots/'
 bindsym $mod+Print exec scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/screenshots/'
@@ -184,10 +183,10 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 bindsym XF86TouchpadToggle exec $HOME/.config/i3/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
-# bindsym XF86AudioPlay exec playerctl play
-# bindsym XF86AudioPause exec playerctl pause
-# bindsym XF86AudioNext exec playerctl next
-# bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
