@@ -59,10 +59,11 @@ padding-right = 0
 module-margin = 0
 
 font-0 = "JetBrains Mono:style=Medium:size=9;2"
-font-1 = "PowerlineSymbols:syle=Italic:size=21;8"
+# font-1 = "PowerlineSymbols:syle=Medium:size=21;8"
+font-1 = "Powerline Extra Symbols:syle=Regular:size=36;2"
 font-2 = "Font Awesome 5 Brands:syle=Regular:size=9;2"
 font-3 = "Font Awesome 5 Free Solid:syle=Solid:size=9;2"
-font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
+# font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
 
 modules-left = bspwm i3 xwindow
 modules-center = spotify
@@ -126,10 +127,11 @@ padding-right = 0
 module-margin = 0
 
 font-0 = "JetBrains Mono:style=Medium:size=9;2"
-font-1 = "PowerlineSymbols:syle=Italic:size=21;8"
+# font-1 = "PowerlineSymbols:syle=Medium:size=21;8"
+font-1 = "Powerline Extra Symbols:syle=Regular:size=36;2"
 font-2 = "Font Awesome 5 Brands:syle=Regular:size=9;2"
 font-3 = "Font Awesome 5 Free Solid:syle=Solid:size=9;2"
-font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
+# font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
 
 modules-left = bspwm i3 xwindow
 modules-center = spotify
@@ -355,55 +357,64 @@ label-disconnected-background = ${colors.pow3}
 
 [module/arrow1]
 type = custom/text
-content = " "
+; content = " "
+content = ""
 content-foreground = ${colors.pow1}
 content-background = ${colors.pow2}
 
 [module/arrow2]
 type = custom/text
-content = " "
+; content = " "
+content = ""
 content-foreground = ${colors.pow2}
 content-background = ${colors.pow3}
 
 [module/arrow3]
 type = custom/text
-content = " "
+; content = " "
+content = ""
 content-foreground = ${colors.pow3}
 content-background = ${colors.pow4}
 
 [module/arrow34]
 type = custom/text
-content = " "
+; content = " "
+content = ""
 content-foreground = ${colors.pow3}
 content-background = ${colors.pow5}
 
 [module/arrow4]
 type = custom/text
-content = " "
+; content = " "
+content = ""
 content-foreground = ${colors.pow4}
 content-background = ${colors.pow5}
 
 [module/arrow5]
 type = custom/text
-content = " "
+; content = " "
+content = ""
 content-foreground = ${colors.pow5}
 content-background = ${colors.pow6}
 
 [module/arrow6]
 type = custom/text
-content = " "
+; content = " "
+content = ""
 content-foreground = ${colors.pow6}
 content-background = ${colors.pow7}
 
 [module/arrow7]
 type = custom/text
-content = " "
+; content = " "
+content = ""
 content-foreground = ${colors.pow7}
 content-background = ${colors.pow8}
 
 [module/arrow8]
 type = custom/text
-content = " "
+; content = " "
+content = ""
 content-foreground = ${colors.pow8}
 content-background = ${colors.background}
 
