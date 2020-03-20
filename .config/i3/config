@@ -92,7 +92,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # lock screen
-bindsym $mod+o exec $HOME/.config/i3/screenlock.sh
+bindsym $mod+o exec $HOME/.local/bin/screenlock
 bindsym $mod+Shift+o exec systemctl suspend
 # screenshot
 bindsym Print exec scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/screenshots/'
@@ -180,7 +180,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # Touchpad controls
-bindsym XF86TouchpadToggle exec $HOME/.config/i3/toggletouchpad.sh # toggle touchpad
+bindsym XF86TouchpadToggle exec $HOME/.local/bin/toggletouchpad # toggle touchpad
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -229,7 +229,7 @@ gaps inner 0
 # }
 
 # start services and applets
-exec_always --no-startup-id $HOME/.config/polybar/start_polybar_normal.sh
+exec_always --no-startup-id $HOME/.local/bin/polybar_normal
 exec --no-startup-id picom -b
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet

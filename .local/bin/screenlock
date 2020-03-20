@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+img="$HOME/.config/i3/lockscreen.jpg"
+
+# Lock screen displaying this image.
+i3lock -n -t -i "$img"
