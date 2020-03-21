@@ -6,7 +6,7 @@ Before=suspend.target
 User=daniel
 Type=forking
 Environment=DISPLAY=:0
-ExecStart=/home/daniel/.config/i3/screenlock.sh
+ExecStart=/home/daniel/.local/bin/screenlock
 
 [Install]
 WantedBy=suspend.target
