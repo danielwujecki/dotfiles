@@ -229,8 +229,11 @@ gaps inner 0
 # }
 
 # start services and applets
+exec --no-startup-id $HOME/.fehbg
 exec_always --no-startup-id $HOME/.local/bin/polybar_normal
 exec --no-startup-id picom -b
+exec --no-startup-id dropbox
+exec --no-startup-id lxsession
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id xautolock -detectsleep -time 10 -locker "systemctl suspend"

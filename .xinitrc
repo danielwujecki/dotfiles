@@ -33,7 +33,5 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 xrandr --output eDP1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 --output DP1 --off --output DP2 --off --output HDMI1 --off --output VIRTUAL1 --off
-$HOME/.fehbg &
-dropbox &
 exec i3 > $HOME/.i3.log 2>&1
 # exec bspwm > $HOME/.bspwm.log 2>&1
