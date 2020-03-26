@@ -9,7 +9,6 @@
 " #############################
 " ######  General Stuff  ######
 " #############################
-
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -27,10 +26,10 @@ set ignorecase                      " ignore case when searching
 set so=5                            " try to keep lines before and after the cursor
 set noerrorbells                    " no annoying sounds on errors
 set ffs=unix,dos,mac                " use unix as the standard file type
+set splitbelow splitright           " splits at the bottom and right
 set updatetime=100                  " gitgutter
-set timeoutlen=1000
-set ttimeoutlen=5
-set cul
+set clipboard=unnamedplus           " use system clipboard instead of primary
+" set cul                           " highlight line number
 
 set showmatch                       " show matching brackets when cursor is over them
 set mat=2
@@ -103,11 +102,9 @@ if has("autocmd")
     \ endif
 
   augroup END
-
 else
   set autoindent		" always set autoindenting on
 endif " has("autocmd")
-
 
 if has('langmap') && exists('+langnoremap')
   " Prevent that the langmap option applies to characters that result from a
@@ -116,27 +113,47 @@ if has('langmap') && exists('+langnoremap')
   set langnoremap
 endif
 
+" ########################################
+" ######     Plugins and Themes     ######
+" ########################################
 
-" #############################
-" ######     Plugins     ######
-" #############################
-
-" packadd indentLine
-packadd nerdtree
-packadd vim-airline
-packadd vim-devicons
-packadd vim-gitgutter
-packadd vim-polyglot
+call plug#begin('~/.vim/plugged')
+" Themes
+" Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
+" Plug 'hzchirs/vim-material'
+" Plugins
+Plug 'sheerun/vim-polyglot'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' }
+call plug#end()
 
 " NERDtree
-map <C-n> :NERDTreeToggle<CR>
-" fzf keybind
-map ; :FZF
+map <C-n> :NERDTreeToggle<Return>
 
-" ayu theme
+" fzf keybind
+map ; :FZF 
+
+" airline settings
+" let g:airline_theme='material'
+let g:airline_symbols_ascii=1
+" let g:airline#extensions#tabline#enabled=1
+
+" gruvbox theme
+" colorscheme gruvbox
+" set background=dark
+
 if has("termguicolors")
-  packadd ayu-vim
-  set termguicolors
-  let ayucolor="mirage"
-  colorscheme ayu
+    set termguicolors
+    " ayu theme
+    let ayucolor="mirage"
+    colorscheme ayu
+
+    " material theme
+    " set background=dark
+    " let g:material_style='oceanic'
+    " colorscheme vim-material
 endif
