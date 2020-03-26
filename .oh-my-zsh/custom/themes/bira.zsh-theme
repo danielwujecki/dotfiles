@@ -9,7 +9,7 @@ else
 fi
 
 local git_branch='$(git_prompt_info)'
-local vi_status='$(vi_mode_prompt_info)'
+local vi_status='' # '$(vi_mode_prompt_info)'
 local venv_prompt='$(virtualenv_prompt_info)'
 local current_dir='%{$terminfo[bold]$fg[blue]%}%c%{$reset_color%}'
 local time_count='%{$fg[blue]%}(%D{%H:%M} #$cmdcount)%{$reset_color%}'

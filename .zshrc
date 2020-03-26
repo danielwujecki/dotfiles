@@ -81,9 +81,9 @@ plugins=(
     colored-man-pages
     virtualenv
     history
-    vi-mode
     docker
     pyenv
+    # vi-mode
     # pip
 )
 
