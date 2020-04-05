@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/ayu/ayu-mirage.sublime-color-scheme",
+	"color_scheme": "Packages/gruvbox/gruvbox (Dark) (Medium).sublime-color-scheme",
 	"font_face": "JetBrains Mono",
 	"font_options":
 	[
@@ -17,7 +17,7 @@
 	"line_padding_top": 2,
 	"show_encoding": true,
 	"tab_size": 4,
-	"theme": "ayu-mirage.sublime-theme",
+	"theme": "Default.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"word_wrap": true,

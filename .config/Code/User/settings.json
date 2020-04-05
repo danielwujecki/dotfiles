@@ -2,7 +2,6 @@
     "telemetry.enableTelemetry": false,
     "editor.minimap.enabled": false,
     "latex-workshop.view.pdf.viewer": "tab",
-    "workbench.colorTheme": "Ayu Mirage Bordered",
     "editor.tabSize": 4,
     "files.trimTrailingWhitespace": true,
     "editor.formatOnPaste": true,
@@ -60,5 +59,6 @@
         "PYTHONPATH"
     ],
     "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
-    "keyboard.dispatch": "keyCode"
+    "keyboard.dispatch": "keyCode",
+    "workbench.colorTheme": "Gruvbox Dark Medium"
 }

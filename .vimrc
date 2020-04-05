@@ -121,11 +121,7 @@ endif
 " ########################################
 
 call plug#begin('~/.vim/plugged')
-" Themes
 Plug 'morhetz/gruvbox'
-" Plug 'ayu-theme/ayu-vim'
-" Plug 'hzchirs/vim-material'
-" Plugins
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
@@ -148,15 +144,3 @@ let g:airline_symbols_ascii=1
 " gruvbox theme
 colorscheme gruvbox
 set background=dark
-
-" if has("termguicolors")
-    " set termguicolors
-    " ayu theme
-    " let ayucolor="mirage"
-    " colorscheme ayu
-
-    " material theme
-    " set background=dark
-    " let g:material_style='oceanic'
-    " colorscheme vim-material
-" endif
