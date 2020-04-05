@@ -12,7 +12,7 @@ alias ..='cd ../'
 alias ...='cd ../../'
 alias box='cd ~/Dropbox'
 alias des='cd ~/Schreibtisch'
-alias sem='cd ~/Dropbox/wise1920'
+alias sem='cd ~/Dropbox/sose20'
 alias repos='cd ~/Repositories'
 
 # shortcuts
