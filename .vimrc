@@ -125,7 +125,7 @@ Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' }
 call plug#end()
@@ -137,9 +137,9 @@ map <C-n> :NERDTreeToggle<Return>
 map ; :FZF 
 
 " airline settings
-" let g:airline_theme='material'
+let g:airline_theme='gruvbox'
 let g:airline_symbols_ascii=1
-" let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#enabled=1
 
 " gruvbox theme
 colorscheme gruvbox
