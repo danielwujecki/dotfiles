@@ -232,7 +232,8 @@ gaps inner 0
 exec --no-startup-id $HOME/.fehbg
 exec_always --no-startup-id $HOME/.local/bin/polybar_normal
 exec --no-startup-id picom -b
-exec --no-startup-id dropbox
+# exec --no-startup-id dropbox              # use systemd --user instead
+# exec --no-startup-id redshift-gtk         # use systemd --user instead
 exec --no-startup-id lxsession
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet

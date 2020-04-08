@@ -9,7 +9,8 @@
 
 # start programs
 sxhkd &
-# dropbox &
+# dropbox &                     # use systemd --user instead
+# redshift-gtk &                # use systemd --user instead
 picom -b &
 # lxsession &
 nm-applet &
