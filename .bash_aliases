@@ -26,6 +26,7 @@ alias vf='vim $(fzf)'
 alias vi='vim'
 alias df="df -Th"
 alias rm='rm -I'
+alias mv='mv -i'
 alias top='htop'
 alias tree='exa -T'
 alias diff='colordiff'
