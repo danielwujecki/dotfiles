@@ -17,7 +17,7 @@ mouse_autohide = true
 scrollback_lines = 10000
 
 # $BROWSER is used by default if set, with xdg-open as a fallback
-browser = vivaldi-stable
+browser = firefox-developer-edition
 
 cursor_blink = on
 cursor_shape = underline

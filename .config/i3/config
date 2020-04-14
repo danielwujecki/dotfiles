@@ -154,9 +154,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Ctrl+Left move workspace to output left
 bindsym $mod+Ctrl+Right move workspace to output right
 
-assign [class="Vivaldi-stable"] $ws1
-# assign [class="Google-chrome"] $ws1
-# assign [class="Sublime_text"] $ws8
+assign [class="firefoxdeveloperedition"] $ws1
 assign [class="Code"] $ws8
 assign [class="Thunderbird"] $ws9
 assign [class="TelegramDesktop"] $ws9
@@ -229,19 +227,12 @@ gaps inner 0
 # }
 
 # start services and applets
-exec --no-startup-id $HOME/.fehbg
-exec_always --no-startup-id $HOME/.local/bin/polybar_normal
 exec --no-startup-id picom -b
 exec --no-startup-id dropbox
 exec --no-startup-id lxsession
 exec --no-startup-id nm-applet
+exec --no-startup-id $HOME/.fehbg
 exec --no-startup-id redshift-gtk
 exec --no-startup-id blueman-applet
+exec_always --no-startup-id $HOME/.local/bin/polybar_normal
 exec --no-startup-id xautolock -detectsleep -time 10 -locker "systemctl suspend"
-
-# start daily used programms
-# exec --no-startup-id i3-msg 'workspace $ws9; exec telegram-desktop'
-# exec --no-startup-id i3-msg 'workspace $ws9; exec thunderbird'
-# exec --no-startup-id i3-msg 'workspace $ws1; exec vivaldi-stable'
-# exec --no-startup-id i3-msg 'workspace $ws2; gaps inner current set 20; exec termite'
-# exec --no-startup-id i3-msg 'workspace $ws2; exec termite'
