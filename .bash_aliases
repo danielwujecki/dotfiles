@@ -19,8 +19,10 @@ alias repos='cd ~/Repositories'
 alias f='fzf'
 alias g='git'
 alias v='vim'
+alias d='docker'
 alias r='ranger'
 alias vf='vim $(fzf)'
+alias compose='docker-compose'
 
 #programme
 alias vi='vim'

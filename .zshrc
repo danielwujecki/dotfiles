@@ -82,6 +82,7 @@ plugins=(
     virtualenv
     history
     docker
+    docker-compose
     pyenv
     # vi-mode
     # pip
