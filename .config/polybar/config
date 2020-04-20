@@ -248,8 +248,8 @@ label-background = ${colors.pow8}
 [module/temp]
 type = internal/temperature
 interval = 2
-thermal-zone = 6
-; hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
+; thermal-zone = 6
+hwmon-path = /sys/class/hwmon/hwmon7/temp1_input
 warn-temperature = 90
 
 label = %temperature-c%
