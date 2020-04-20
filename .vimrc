@@ -122,6 +122,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
+Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
