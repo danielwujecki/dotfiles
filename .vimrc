@@ -65,6 +65,9 @@ map Q gq
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
+" open a terminal in vertical split window
+map <C-t> :vert term<Return>
+
 " #################################
 " ######  Conditional Stuff  ######
 " #################################
