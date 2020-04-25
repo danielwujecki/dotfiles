@@ -27,6 +27,7 @@ alias compose='docker-compose'
 #programme
 alias vi='vim'
 alias df="df -Th"
+alias du="du -sh"
 alias rm='rm -I'
 alias mv='mv -i'
 alias top='htop'
@@ -38,8 +39,8 @@ alias spac='sudo pacman'
 alias chrome='google-chrome-stable'
 
 # usb
-alias mount='udisksctl mount -b'
-alias unmount='udisksctl unmount -b'
+alias usbmount='udisksctl mount -b'
+alias usbunmount='udisksctl unmount -b'
 alias usboff='udisksctl power-off -b'
 
 # ssh
