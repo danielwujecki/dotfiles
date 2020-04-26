@@ -53,12 +53,15 @@
     "editor.wordWrap": "on",
     "editor.fontSize": 15,
     "editor.lineNumbers": "relative",
-    "editor.renderFinalNewline": false,
     "python.terminal.executeInFileDir": true,
     "cSpell.userWords": [
-        "PYTHONPATH"
+        "PYTHONPATH",
+        "imshow"
     ],
     "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
     "keyboard.dispatch": "keyCode",
-    "workbench.colorTheme": "Gruvbox Dark Medium"
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
+    "explorer.confirmDragAndDrop": false
 }
