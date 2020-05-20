@@ -1,0 +1,99 @@
+\documentclass[
+    a4paper,
+    10pt,
+    aspectratio=169,
+    %fleqn,
+]{beamer}
+\usepackage[english, ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage[font=footnotesize]{caption}
+
+\usetheme[
+    progressbar=frametitle,
+    numbering=fraction
+]{metropolis}
+
+% BibLateX
+%\usepackage[backend=biber, url=false, bibencoding=inputenc]{biblatex}
+%\usepackage{csquotes}
+%\addbibresource{quellen.bib}
+
+%\usepackage{tabularx}
+%\usepackage{booktabs}
+%\usepackage{diagbox}
+
+%\usepackage{tikz}
+%\usepackage{subfig}
+%\usepackage{graphicx}
+%\usepackage[section]{placeins}
+
+%\usepackage{xcolor}
+%\usepackage{listings}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+
+%\graphicspath{{imgs/}}
+\numberwithin{equation}{section}                    % Formeln mit Überschrift nummerieren
+\newcommand{\emptyline}{\vspace{.5\baselineskip}}     % erzeugt leerzeile
+
+%\newcommand{\N}{\mathbb{N}}
+%\newcommand{\Z}{\mathbb{Z}}
+%\newcommand{\R}{\mathbb{R}}
+%\newcommand{\C}{\mathbb{C}}
+%\newcommand{\Pf}{\mathbb{P}}
+%\newcommand{\bw}{\mathbf{w}}
+\DeclareMathOperator{\var}{var}
+%\DeclareMathOperator*{\argmin}{argmin}
+
+\title{Hausaufgabe}
+\subtitle{Modul}
+\author{Daniel W.}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Inhaltsverzeichnis}
+    \tableofcontents
+\end{frame}
+
+\section{Algorithm}
+
+\begin{frame}
+    \frametitle{Algorithm}
+    \begin{algorithm}[H]
+        \caption{Variance of the OLS Estimator}
+        %\DontPrintSemicolon
+        \KwIn{$n$ (number of data points); $\sigma^2_\epsilon$ (noise variance);
+            $\sigma^2_x$ (data variance); $w$ (true slope)}
+        \KwOut{variance of $\hat{w}$}
+        \emptyline
+
+        Generate $n$ gaussian data points $X = [x_1, \ldots , x_n]$, $x_i \sim \mathcal{N}(0, 1)$ \\
+        \For{$r=1,\dots,10^5$}{
+            generate $n$ gaussian noise terms $E = [\epsilon_1, \ldots, \epsilon_N]$,
+                $\epsilon_i \sim \mathcal{N}(0, \sigma_\epsilon^2)$ \\
+            compute $y=w\cdot X + E$ \\
+            compute OLS estimate $\hat{w}[r] = (X X^\top)^{-1} X y^\top$
+        }
+        \Return{$\var(\hat{w})$}
+    \end{algorithm}
+\end{frame}
+
+\begin{frame}
+    top
+\end{frame}
+
+\begin{frame}[t]
+    top
+\end{frame}
+
+%\newpage
+%\printbibliography
+
+\end{document}

@@ -1,41 +1,55 @@
-%           - Header-           %
 \documentclass[
     a4paper,
-    11pt,
+    10pt,
+    %fleqn,
     notitlepage,
     parskip=half,
     egregdoesnotlikesansseriftitles
 ]{scrartcl}
-\usepackage[english, ngerman]{babel}                % Sprache: Deutsch
-\usepackage[utf8]{inputenc}                         % Dateiformat
-\usepackage[T1]{fontenc}                            % Schriftsatz
+\usepackage[english, ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage[margin=20mm]{geometry}
 
-%       - wichtige Pakete -     %
-\usepackage{kpfonts}                                % Schrift
-\usepackage{geometry}                               % Struktur
-\usepackage{hyperref}                               % klickbare links
-\usepackage{amsmath, amssymb, mathtools}            % mathematische Formeln
-\usepackage[headsepline]{scrlayer-scrpage}          % Kopf- und Fußzeilen konfigurieren
+\usepackage{kpfonts}
+%\usepackage[modulo]{lineno}
+%\def\linenumberfont{\normalfont\tiny}
+%\usepackage{multicol}
+%\setlength{\columnsep}{12mm}
 
-%       - nuetzliche Pakete -   %
-%\usepackage{tabularx}                              % schöne tabellen
-%\usepackage{booktabs}                              % Trennlinien in Tabellen
-%\setlength{\columnsep}{0.7cm}                      % Spaltenabstand
-%\usepackage{multicol}                              % mehrspaltiger Text
-%\usepackage{graphicx}                              % Grafiken
-%\usepackage[section]{placeins}                     % figure innerhalb von section platzieren
-%\usepackage{tikz}                                  % Grafiken und Graphen
-%\usepackage{diagbox}                               % Tabellen unterteilen
-%\usepackage{bussproofs}                            % Logik und Kalkuele
-%\usepackage{nicefrac}                              % schraege Brüche
-%\usepackage{listings}                              % Listings für Code
+%\usepackage[headsepline]{scrlayer-scrpage}
+%\ohead{left}
+%\chead{mid}
+%\ihead{right}
 
 % BibLateX
 %\usepackage[backend=biber, url=false, bibencoding=inputenc]{biblatex}
 %\usepackage{csquotes}
-%\addbibresource{quellen.bib}                       % Quellen
+%\addbibresource{quellen.bib}
 
-%       - Eigene Befehle -      %
+%\usepackage{tabularx}
+%\usepackage{booktabs}
+%\usepackage{diagbox}
+
+%\usepackage{tikz}
+%\usepackage{subfig}
+%\usepackage{graphicx}
+%\usepackage[section]{placeins}
+
+%\usepackage{xcolor}
+%\usepackage{listings}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+
+%\usepackage{ifthen}
+%\newboolean{loesung}                                % Deklaration
+%\setboolean{loesung}{false}                         % Zuweisung
+
+%\graphicspath{{imgs/}}
+\setcounter{secnumdepth}{0}                         % keine Nummerierung von Überschriften
+\numberwithin{equation}{section}                    % Formeln mit Überschrift nummerieren
 \newcommand{\emptyline}{\vspace{\baselineskip}}     % erzeugt leerzeile
 
 %\newcommand{\N}{\mathbb{N}}
@@ -43,48 +57,21 @@
 %\newcommand{\R}{\mathbb{R}}
 %\newcommand{\C}{\mathbb{C}}
 %\newcommand{\Pf}{\mathbb{P}}
+%\newcommand{\bw}{\mathbf{w}}
+\DeclareMathOperator{\var}{var}
+%\DeclareMathOperator*{\argmin}{argmin}
 
-\newcommand{\aufgabe}{Hausaufgabe 06}
-\newcommand{\modul}{Information Governance}
-\newcommand{\sem}{Sommersemester 2020}
-\newcommand{\name}{Daniel}
-\newcommand{\matrk}{}
-\newcommand{\uni}{}
-\newcommand{\datum}{\today}
-
-%       - Einstellungen -       %
-\title{\aufgabe}
-\subtitle{\modul}
-\author{\name}
-\date{\datum}
-
-% \setitemize{itemsep=-2pt}                                % abstand listenpunkte
-\setcounter{secnumdepth}{0}                                % keine Nummerierung von Überschriften
-\geometry{margin=30mm}                                     % bestimmte Seitenraender
-
-\pagestyle{scrheadings}
-\ohead{\aufgabe \quad - \quad \modul}
-\chead{}
-\ihead{\name \quad - \quad \matrk}
+\title{Hausaufgabe}
+\subtitle{Modul}
+\author{Daniel W.}
+\date{\today}
 
 \begin{document}
 
-%         - Ttielseite -        %
-% \maketitle
-\thispagestyle{scrplain}
-
-% alternative titelseite
-\Large\textbf{\aufgabe} \hfill \textbf{\modul} \\
-\normalsize
-\datum \hfill \uni \\
-\name \space - \space \matrk \hfill \sem \\
-\rule{\textwidth}{0.1mm}
-
-%     - Inhaltsverzeichnis -    %
-%\tableofcontents
+\maketitle
 %\newpage
-
-%            - Text -           %
+%\tableofcontents
+%\linenumbers
 
 \section{Hausaufgabe 1}
 
@@ -96,13 +83,26 @@ Formel: $ a_1 + a_2 = a_3 $
 
 Blabllbalbasfasf Hallo
 
-\newpage
+%\ifthenelse{\boolean{loesung}}{true}{false}
 
-\section{Hausaufgabe 3}
+\begin{algorithm}
+    \caption{Variance of the OLS Estimator}
+    %\DontPrintSemicolon
+    \KwIn{$n$ (number of data points); $\sigma^2_\epsilon$ (noise variance);
+        $\sigma^2_x$ (data variance); $w$ (true slope)}
+    \KwOut{variance of $\hat{w}$}
+    \emptyline
 
-Todo: Seitenzahlen; Kopfzeile
+    Generate $n$ gaussian data points $X = [x_1, \ldots , x_n]$, $x_i \sim \mathcal{N}(0, 1)$ \\
+    \For{$r=1,\dots,10^5$}{
+        generate $n$ gaussian noise terms $E = [\epsilon_1, \ldots, \epsilon_N]$,
+            $\epsilon_i \sim \mathcal{N}(0, \sigma_\epsilon^2)$ \\
+        compute $y=w\cdot X + E$ \\
+        compute OLS estimate $\hat{w}[r] = (X X^\top)^{-1} X y^\top$
+    }
+    \Return{$\var(\hat{w})$}
+\end{algorithm}
 
-%     - Quellenverzeichnis -    %
 %\newpage
 %\printbibliography
 
