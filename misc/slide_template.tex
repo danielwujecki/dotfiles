@@ -1,5 +1,5 @@
 \documentclass[
-    10pt,
+    11pt,
     aspectratio=169,
     %fleqn,
 ]{beamer}
@@ -20,6 +20,7 @@
 %\usepackage[backend=biber, url=false, bibencoding=inputenc]{biblatex}
 %\usepackage{csquotes}
 %\addbibresource{quellen.bib}
+%\setbeamertemplate{bibliography item}{\insertbiblabel}
 
 %\usepackage{tabularx}
 %\usepackage{booktabs}
@@ -27,6 +28,7 @@
 
 %\usepackage{tikz}
 %\usepackage{subfig}
+%\usepackage{caption}
 %\usepackage{graphicx}
 %\usepackage[section]{placeins}
 
@@ -92,7 +94,10 @@
     top
 \end{frame}
 
-%\newpage
-%\printbibliography
+%\begin{frame}
+%    \frametitle{\hphantom{1em}}
+%    \frametitle{}
+%    \printbibliography
+%\end{frame}
 
 \end{document}
