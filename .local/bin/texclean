@@ -1,0 +1,18 @@
+#!/bin/bash
+rm -rf *.aux \
+       *.fdb_latexmk  \
+       *.fls \
+       *.log \
+       *.out \
+       *.lof \
+       *.bbl \
+       *.bcf \
+       *.blg \
+       *.run.xml \
+       *.toc \
+       *.synctex.gz \
+       *.bib.sav \
+       *.bib.bak \
+       *.lot \
+       *.nav \
+       *.snm

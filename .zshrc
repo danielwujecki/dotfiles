@@ -91,7 +91,7 @@ plugins=(
     pyenv
     #pip
   # misc
-    golang
+    #golang
 )
 
 source $ZSH/oh-my-zsh.sh
