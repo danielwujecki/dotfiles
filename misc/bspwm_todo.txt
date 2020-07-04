@@ -1,5 +1,0 @@
-* multi monitor support
-* assign programs to workspaces/desktops
-* keybindings to control gaps
-* clean configs
-* mv scripts from .config/i3

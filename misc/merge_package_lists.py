@@ -1,12 +1,6 @@
-PATH = [
-    'tower_pkg.txt',
-    'acer_pkg.txt'
-]
-
-EXCLUDE = [
-    'tower_aur.txt',
-    'acer_aur.txt',
-    'think_pkg.txt'
+FILES = [
+    'pkg-expl-inst.txt',
+    'pkg-not-dep.txt',
 ]
 
 
@@ -27,18 +21,12 @@ def write_file(path: str, pkg_list: list):
 
 def merge(out_path: str):
     pkgs = []
-    for liste in PATH:
-        read_file(liste, pkgs)
-    excl = []
-    for liste in EXCLUDE:
-        read_file(liste, excl)
-    out = []
-    for pkg in pkgs:
-        if pkg not in excl:
-            out.append(pkg)
-    write_file(out_path, out)
-    return
+
+    for liste in FILES:
+        pkgs = pkgs + read_file(liste, pkgs)
+
+    write_file(out_path, pkgs)
 
 
 if __name__ == "__main__":
-    merge("pkg_list.txt")
+    merge("pkg-merged.txt")
