@@ -119,6 +119,8 @@ endif
 " ######     Plugins and Themes     ######
 " ########################################
 
+if !exists('g:vscode')
+
 call plug#begin('~/.vim/plugged')
 "Plug 'morhetz/gruvbox'
 Plug 'kristijanhusak/vim-hybrid-material'
@@ -152,3 +154,5 @@ if (has("nvim"))
     set background=dark
     colorscheme hybrid_material
 endif
+
+endif " !exists('g:vscode')
