@@ -1,9 +1,9 @@
-" __     _____ __  __ 
-" \ \   / /_ _|  \/  |
-"  \ \ / / | || |\/| |
-"   \ V /  | || |  | |
-"    \_/  |___|_|  |_|
-"
+"                        _           
+"  _ __   ___  _____   _(_)_ __ ___  
+" | '_ \ / _ \/ _ \ \ / / | '_ ` _ \ 
+" | | | |  __/ (_) \ V /| | | | | | |
+" |_| |_|\___|\___/ \_/ |_|_| |_| |_|
+"                                  
 " @author danielgolf
 "==========================
 
@@ -20,22 +20,22 @@ set backspace=indent,eol,start      " allow backspacing over everything in inser
 set number relativenumber           " relativ line numbers
 set splitbelow splitright           " splits at the bottom and right
 
-set cul                             " highlight line number
+"set cul                             " highlight line number
 set lbr                             " break lines that are longer than...
 set tw=200                          " ...200 characters
 set so=2                            " try to keep lines before and after the cursor
-set mat=2                           " how many tenths of a second to blink
 set ruler		                    " show the cursor position all the time
-set showcmd		                    " display incomplete commands
+"set showcmd		                    " display incomplete commands
 set showmatch                       " show matching brackets when cursor is over them
 set incsearch		                " do incremental searching
 set ignorecase                      " ignore case when searching
 set matchpairs+=<:>                 " add a pair of brackets to jump with '%'
-
 set history=100		                " keep 50 lines of command line history
+
+set mat=2                           " how many tenths of a second to blink
 set noerrorbells                    " no annoying sounds on errors
 set updatetime=100                  " needed for gitgutter
-set clipboard=unnamedplus           " use system clipboard instead of primary
+set clipboard+=unnamedplus          " use system clipboard instead of primary
 
 " tab settings
 set tabstop=4
@@ -89,9 +89,6 @@ if has("autocmd")
   augroup vimrcEx
   au!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
   " (happens when dropping a file on gvim).
@@ -99,7 +96,6 @@ if has("autocmd")
     \ if line("'\"") >= 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
-
   augroup END
 else
   set autoindent		" always set autoindenting on
@@ -124,9 +120,10 @@ endif
 " ########################################
 
 call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
+Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'jiangmiao/auto-pairs'
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -141,10 +138,17 @@ map <C-n> :NERDTreeToggle<Return>
 map ; :FZF 
 
 " airline settings
-let g:airline_theme='gruvbox'
+let g:airline_theme='hybrid'
 let g:airline_symbols_ascii=1
 let g:airline#extensions#tabline#enabled=1
 
 " gruvbox theme
-colorscheme gruvbox
-set background=dark
+"colorscheme gruvbox
+"set background=dark
+
+" material-hybrid theme
+if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    set background=dark
+    colorscheme hybrid_material
+endif

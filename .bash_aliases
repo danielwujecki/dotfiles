@@ -18,14 +18,15 @@ alias repos='cd ~/Repositories'
 # shortcuts
 alias f='fzf'
 alias g='git'
-alias v='vim'
+alias v='nvim'
 alias d='docker'
 alias r='ranger'
-alias vf='vim $(fzf)'
+alias vf='nvim $(fzf)'
 alias compose='docker-compose'
 
 #programme
-alias vi='vim'
+alias vi='nvim'
+alias vim='nvim'
 alias df="df -Th"
 alias du="du -sh"
 alias rm='rm -I'
