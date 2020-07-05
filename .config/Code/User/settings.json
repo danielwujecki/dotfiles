@@ -7,7 +7,7 @@
     "editor.formatOnPaste": true,
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.snippetSuggestions": "top",
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "extensions.ignoreRecommendations": true,
     "python.jediEnabled": true,
     "python.linting.pylintArgs": [
@@ -60,8 +60,15 @@
     ],
     "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
     "keyboard.dispatch": "keyCode",
-    "workbench.colorTheme": "Gruvbox Dark Medium",
     "go.formatTool": "goimports",
     "go.useLanguageServer": true,
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "arduino.defaultBaudRate": 9600,
+    "arduino.path": "/usr/bin",
+    "rust-client.disableRustup": true,
+    "cmake.configureOnOpen": true,
+    "workbench.iconTheme": "eq-material-theme-icons",
+    "workbench.colorTheme": "Material Theme High Contrast",
+    "vscode-neovim.neovimPath": "/usr/bin/nvim",
+    "vscode-neovim.neovimInitPath": "/home/daniel/.config/nvim/init.vim"
 }

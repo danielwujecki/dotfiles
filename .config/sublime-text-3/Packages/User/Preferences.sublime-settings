@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/gruvbox/gruvbox (Dark) (Medium).sublime-color-scheme",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 	"font_face": "JetBrains Mono",
 	"font_options":
 	[
@@ -17,7 +17,7 @@
 	"line_padding_top": 2,
 	"show_encoding": true,
 	"tab_size": 4,
-	"theme": "Default.sublime-theme",
+	"theme": "Material-Theme.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"word_wrap": true,
