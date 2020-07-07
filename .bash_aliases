@@ -1,8 +1,7 @@
-if [ -x /usr/bin/dircolors ]; then
-    alias exa='exa -lat changed --git --color=auto --group-directories-first'
-    alias ls='exa'
-    alias l='exa'
-fi
+# wichtigstes kommmando auf dem terminal - ls
+alias exa='exa -lat changed --git --color=auto --group-directories-first'
+alias ls='exa'
+alias l='exa'
 
 # damit jeder alias auch als root funktioniert
 alias sudo='sudo '
@@ -16,10 +15,10 @@ alias sem='cd ~/Dropbox/sose20'
 alias repos='cd ~/Repositories'
 
 # shortcuts
-alias f='fzf'
-alias g='git'
-alias v='nvim'
-alias d='docker'
+#alias f='fzf'
+#lias g='git'
+#lias v='nvim'
+#lias d='docker'
 alias r='ranger'
 alias vf='nvim $(fzf)'
 alias compose='docker-compose'
@@ -37,7 +36,6 @@ alias diff='colordiff'
 alias xclip='xclip -sel c'
 alias pac='pacman'
 alias spac='sudo pacman'
-alias chrome='google-chrome-stable'
 
 # usb
 alias usbmount='udisksctl mount -b'
@@ -45,9 +43,9 @@ alias usbunmount='udisksctl unmount -b'
 alias usboff='udisksctl power-off -b'
 
 # ssh
-alias ssh='TERM=xterm-256color ssh'
+#alias ssh='TERM=xterm-256color ssh'
 alias sraspi='ssh pi@192.168.178.38'
-alias sraspif='nautilus sftp://pi@raspberryserver &> /dev/null &'
+#alias sraspif='nautilus sftp://pi@raspberryserver &> /dev/null &'
 
 # python
 alias pyc='ipython'
@@ -55,14 +53,14 @@ alias mypy='source ~/.virtualenvs/mypython/bin/activate'
 alias mypye='deactivate'
 
 # git
-alias push='git push'
-alias pull='git pull'
-alias add='git add'
-alias commit='git commit -m'
-alias log='git log'
-alias status='git status'
-alias checkout='git checkout'
-alias branch='git branch -av'
+#alias push='git push'
+#lias pull='git pull'
+#lias add='git add'
+#lias commit='git commit -m'
+#lias log='git log'
+#lias status='git status'
+#lias checkout='git checkout'
+#lias branch='git branch -av'
 
 # misc
 alias wetter='curl "wttr.in/Berlin?lang=de"'
