@@ -126,9 +126,9 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # crazy massages when typing wrong comments
-if [ -f /etc/bash.command-not-found ]; then
-    . /etc/bash.command-not-found
-fi
+#if [ -f /etc/bash.command-not-found ]; then
+#    . /etc/bash.command-not-found
+#fi
 
 # nice system info
 # pfetch
