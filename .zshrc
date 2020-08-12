@@ -5,6 +5,10 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+if [ -d "$HOME/.emacs.d/bin" ] ; then
+    PATH="$HOME/.emacs.d/bin:$PATH"
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/daniel/.oh-my-zsh"
 
@@ -121,7 +125,7 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-if [ -f ~/.bash_aliases ]; then
+if [ -f ~/.bash_aliases ] ; then
     . ~/.bash_aliases
 fi
 

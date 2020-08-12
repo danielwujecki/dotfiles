@@ -16,3 +16,4 @@ xarchiver
 rofi
 termite
 feh
+xreader
