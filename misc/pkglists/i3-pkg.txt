@@ -17,3 +17,4 @@ rofi
 termite
 feh
 xreader
+picom
