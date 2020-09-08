@@ -4,7 +4,7 @@ alias ls='exa'
 alias l='exa'
 
 # damit jeder alias auch als root funktioniert
-alias sudo='sudo '
+alias doas='doas '
 
 # orte
 alias ..='cd ../'
@@ -23,7 +23,7 @@ alias r='ranger'
 alias vf='nvim $(fzf)'
 alias compose='docker-compose'
 
-#programme
+# programme
 alias vi='nvim'
 alias vim='nvim'
 alias df="df -Th"
@@ -33,9 +33,8 @@ alias mv='mv -i'
 alias top='htop'
 alias tree='exa -T'
 alias diff='colordiff'
-alias xclip='xclip -sel c'
-alias pac='pacman'
-alias spac='sudo pacman'
+#alias xclip='xclip -sel c'
+alias pac='pikaur'
 
 # usb
 alias usbmount='udisksctl mount -b'
