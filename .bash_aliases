@@ -1,45 +1,52 @@
 # wichtigstes kommmando auf dem terminal - ls
-alias exa='exa -lat changed --git --color=auto --group-directories-first'
-alias ls='exa'
-alias l='exa'
+if [[ -x /usr/bin/exa ]] ; then
+    alias exa='exa -lat changed --git --color=auto --group-directories-first'
+    alias ls='exa'
+    alias l='exa'
+    alias tree='exa -T'
+else
+    alias ls='ls -lAh --color=auto --group-directories-first'
+    alias l='ls'
+fi
 
-# damit jeder alias auch als root funktioniert
-alias doas='doas '
+if [[ -x /usr/bin/doas ]] ; then
+    # damit jeder alias auch als root funktioniert
+    alias doas='doas '
+fi
 
 # orte
 alias ..='cd ../'
 alias ...='cd ../../'
-alias box='cd ~/Dropbox'
-alias des='cd ~/Schreibtisch'
-alias sem='cd ~/Dropbox/sose20'
-alias repos='cd ~/Repositories'
+if [[ -d ~/Dropbox ]] ; then alias box='cd ~/Dropbox' fi
+if [[ -d ~/Schreibtisch ]] ; then alias alias des='cd ~/Schreibtisch' fi
+if [[ -d ~/Dropbox/sose20 ]] ; then alias alias sem='cd ~/Dropbox/sose20' fi
+if [[ -d ~/Repositories ]] ; then alias alias repos='cd ~/Repositories' fi
 
 # shortcuts
-#alias f='fzf'
-#lias g='git'
-#lias v='nvim'
-#lias d='docker'
-alias r='ranger'
-alias vf='nvim $(fzf)'
-alias compose='docker-compose'
+if [[ -x /usr/bin/ranger ]] ; then alias r='ranger' fi
+if [[ -x /usr/bin/ranger ]] ; then alias vf='nvim $(fzf)' fi
+if [[ -x /usr/bin/ranger ]] ; then alias compose='docker-compose' fi
 
 # programme
-alias vi='nvim'
-alias vim='nvim'
+if [[ -x /usr/bin/nvim ]] ; then 
+    alias vi='nvim'
+    alias vim='nvim'
+fi
 alias df="df -Th"
 alias du="du -sh"
 alias rm='rm -I'
 alias mv='mv -i'
-alias top='htop'
-alias tree='exa -T'
-alias diff='colordiff'
-#alias xclip='xclip -sel c'
-alias pac='pikaur'
+if [[ -x /usr/bin/nvim ]] ; then alias top='htop' fi
+if [[ -x /usr/bin/colordiff ]] ; then alias diff='colordiff' fi
+if [[ -x /usr/bin/xclip ]] ; alias xclip='xclip -sel c' fi
+if [[ -x /usr/bin/pikaur ]] ; alias alias pac='pikaur' fi
 
 # usb
-alias usbmount='udisksctl mount -b'
-alias usbunmount='udisksctl unmount -b'
-alias usboff='udisksctl power-off -b'
+if [[ -x /usr/bin/udisksctl ]] ; then
+    alias usbmount='udisksctl mount -b'
+    alias usbunmount='udisksctl unmount -b'
+    alias usboff='udisksctl power-off -b'
+fi
 
 # ssh
 #alias ssh='TERM=xterm-256color ssh'
@@ -48,18 +55,10 @@ alias sraspi='ssh pi@192.168.178.38'
 
 # python
 alias pyc='ipython'
-alias mypy='source ~/.virtualenvs/mypython/bin/activate'
+if [[ -f ~/.virtualenvs/mypython/bin/activate ]] ; then
+    alias mypy='source ~/.virtualenvs/mypython/bin/activate'
+fi
 alias mypye='deactivate'
 
-# git
-#alias push='git push'
-#lias pull='git pull'
-#lias add='git add'
-#lias commit='git commit -m'
-#lias log='git log'
-#lias status='git status'
-#lias checkout='git checkout'
-#lias branch='git branch -av'
-
 # misc
-alias wetter='curl "wttr.in/Berlin?lang=de"'
+if [[ -x /usr/bin/curl ]] ; then alias wetter='curl "wttr.in/Berlin?lang=de"' fi

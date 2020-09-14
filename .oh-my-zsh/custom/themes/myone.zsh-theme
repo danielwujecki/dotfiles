@@ -6,12 +6,18 @@ else
     local user_symbol="%(?..%{$fg[red]%}%? %{$reset_color%})-> "
 fi
 
+if [[ -n $SSH_CONNECTION ]] ; then
+    local ssh_prefix='(%m) '
+else
+    local ssh_prefix=''
+fi
+
 local git_branch='$(git_prompt_info)'
 local venv_prompt='$(virtualenv_prompt_info)'
 local current_dir='%{$terminfo[bold]$fg[blue]%}%c%{$reset_color%}'
 local time_count='%{$fg[blue]%}#$cmdcount %D{%H:%M}%{$reset_color%}'
 
-PROMPT="${time_count} [${user_host}@${current_dir}] %B${user_symbol}%b"
+PROMPT="${ssh_prefix}${time_count} [${user_host}@${current_dir}] %B${user_symbol}%b"
 RPS1="${git_branch}${venv_prompt}"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}‹"

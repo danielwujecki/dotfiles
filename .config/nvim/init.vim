@@ -7,6 +7,8 @@
 " @author danielgolf
 "==========================
 
+if !exists('g:vscode')
+
 " #############################
 " ######  General Stuff  ######
 " #############################
@@ -119,8 +121,6 @@ endif
 " ######     Plugins and Themes     ######
 " ########################################
 
-if !exists('g:vscode')
-
 call plug#begin('~/.vim/plugged')
 "Plug 'morhetz/gruvbox'
 Plug 'kristijanhusak/vim-hybrid-material'
@@ -137,7 +137,7 @@ call plug#end()
 map <C-n> :NERDTreeToggle<Return>
 
 " fzf keybind
-map ; :FZF 
+map ; :FZF<Return>
 
 " airline settings
 let g:airline_theme='hybrid'
