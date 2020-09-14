@@ -17,15 +17,15 @@ fi
 # orte
 alias ..='cd ../'
 alias ...='cd ../../'
-if [[ -d ~/Dropbox ]] ; then alias box='cd ~/Dropbox' fi
-if [[ -d ~/Schreibtisch ]] ; then alias alias des='cd ~/Schreibtisch' fi
-if [[ -d ~/Dropbox/sose20 ]] ; then alias alias sem='cd ~/Dropbox/sose20' fi
-if [[ -d ~/Repositories ]] ; then alias alias repos='cd ~/Repositories' fi
+if [[ -d ~/Dropbox ]] ; then alias box='cd ~/Dropbox' ; fi
+if [[ -d ~/Schreibtisch ]] ; then alias alias des='cd ~/Schreibtisch' ; fi
+if [[ -d ~/Dropbox/sose20 ]] ; then alias alias sem='cd ~/Dropbox/sose20' ; fi
+if [[ -d ~/Repositories ]] ; then alias alias repos='cd ~/Repositories' ; fi
 
 # shortcuts
-if [[ -x /usr/bin/ranger ]] ; then alias r='ranger' fi
-if [[ -x /usr/bin/ranger ]] ; then alias vf='nvim $(fzf)' fi
-if [[ -x /usr/bin/ranger ]] ; then alias compose='docker-compose' fi
+if [[ -x /usr/bin/ranger ]] ; then alias r='ranger' ; fi
+if [[ -x /usr/bin/nvim && -x /usr/bin/fzf ]] ; then alias vf='nvim $(fzf)' ; fi
+if [[ -x /usr/bin/docker-compose ]] ; then alias compose='docker-compose' ; fi
 
 # programme
 if [[ -x /usr/bin/nvim ]] ; then 
@@ -36,10 +36,10 @@ alias df="df -Th"
 alias du="du -sh"
 alias rm='rm -I'
 alias mv='mv -i'
-if [[ -x /usr/bin/nvim ]] ; then alias top='htop' fi
-if [[ -x /usr/bin/colordiff ]] ; then alias diff='colordiff' fi
-if [[ -x /usr/bin/xclip ]] ; alias xclip='xclip -sel c' fi
-if [[ -x /usr/bin/pikaur ]] ; alias alias pac='pikaur' fi
+if [[ -x /usr/bin/nvim ]] ; then alias top='htop' ; fi
+if [[ -x /usr/bin/colordiff ]] ; then alias diff='colordiff' ; fi
+if [[ -x /usr/bin/xclip ]] ; then alias xclip='xclip -sel c' ; fi
+if [[ -x /usr/bin/pikaur ]] ; then alias alias pac='pikaur' ; fi
 
 # usb
 if [[ -x /usr/bin/udisksctl ]] ; then
@@ -61,4 +61,4 @@ fi
 alias mypye='deactivate'
 
 # misc
-if [[ -x /usr/bin/curl ]] ; then alias wetter='curl "wttr.in/Berlin?lang=de"' fi
+if [[ -x /usr/bin/curl ]] ; then alias wetter='curl "wttr.in/Berlin?lang=de"' ; fi
