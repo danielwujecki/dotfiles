@@ -1,20 +1,20 @@
 configuration {
 	modi: "drun,window,run";
 	show-icons: true;
-	terminal: "termite";
+	terminal: "kitty";
     display-drun: "Apps:";
     display-window: "Running:";
     display-run: "run:";
 }
 
 * {
-    lines: 15;
+    lines: 10;
     columns: 1;
-    width: 1000;
-    background-color: #282828;
+    width: 800;
+    background-color: #0a0e14;
     border-color: #1f2430;
-    text-color: #ebdbb2;
-    font: "JetBrains Mono 11";
+    text-color: #fbfbfb;
+    font: "JetBrains Mono 12";
     scrollbar: false;
 }
 
@@ -36,7 +36,7 @@ configuration {
 }
 
 #element selected {
-    background-color: #665c54;
+    background-color: #2a2e34;
     text-color: #fbf1c7;
 }
 
