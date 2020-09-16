@@ -1,0 +1,79 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+SCRIPT_DIR=/home/daniel/.config/i3blocks
+command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
+separator_block_width=25
+
+[iface]
+#command=$SCRIPT_DIR/iface
+label=  
+#LABEL=wlan0:
+#IFACE=wlan0
+#ADDRESS_FAMILY=inet6?
+#color=#00FF00
+interval=30
+
+[cpu_usage2]
+#command=$SCRIPT_DIR/cpu_usage2
+markup=pango
+interval=persist
+min_width=100%
+REFRESH_TIME=2
+LABEL=
+#WARN_PERCENT=50
+#CRIT_PERCENT=80
+DECIMALS=0
+#separator=false
+
+[temperature]
+#command=$SCRIPT_DIR/temperature
+label= 
+interval=10
+#T_WARN=70
+#T_CRIT=90
+#SENSOR_CHIP=""
+
+[memory]
+#command=$SCRIPT_DIR/memory
+label= 
+interval=10
+
+[battery-poly]
+command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME 1.0 .0%
+#label=BAT
+label=⚡ 
+interval=20
+
+[wetter]
+command=curl -s 'https://wttr.in/Brieselang?format=3' | cut -f"2" -d":" | sed "s/^ //g"
+interval=300
+
+[time]
+command=date '+%H:%M'
+interval=5
+
+[date]
+command=date '+%a, %d. %b'
+interval=120
