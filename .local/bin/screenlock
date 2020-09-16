@@ -1,6 +1,3 @@
-#!/usr/bin/bash
-
-img="$HOME/.config/i3/lockscreen.jpg"
-
-# Lock screen displaying this image.
+#!/bin/bash
+img="$HOME/Bilder/wallpapers/thinkpad.png"
 i3lock -n -t -i "$img"
