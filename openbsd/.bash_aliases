@@ -1,5 +1,5 @@
 # wichtigstes kommmando auf dem terminal - ls
-if [[ -x /usr/bin/exa ]] ; then
+if [[ -x /usr/local/bin/exa ]] ; then
     alias exa='exa -lat changed --git --color=auto --group-directories-first'
     alias ls='exa'
     alias l='exa'
@@ -9,10 +9,8 @@ else
     alias l='ls'
 fi
 
-if [[ -x /usr/bin/doas ]] ; then
-    # damit jeder alias auch als root funktioniert
-    alias doas='doas '
-fi
+# damit jeder alias auch als root funktioniert
+alias doas='doas '
 
 # orte
 alias ..='cd ../'
@@ -23,12 +21,12 @@ if [[ -d ~/Dropbox/sose20 ]] ; then alias alias sem='cd ~/Dropbox/sose20' ; fi
 if [[ -d ~/Repositories ]] ; then alias alias repos='cd ~/Repositories' ; fi
 
 # shortcuts
-if [[ -x /usr/bin/ranger ]] ; then alias r='ranger' ; fi
-if [[ -x /usr/bin/nvim && -x /usr/bin/fzf ]] ; then alias vf='nvim $(fzf)' ; fi
-if [[ -x /usr/bin/docker-compose ]] ; then alias compose='docker-compose' ; fi
+if [[ -x /usr/local/bin/ranger ]] ; then alias r='ranger' ; fi
+if [[ -x /usr/local/bin/nvim && -x /usr/local/bin/fzf ]] ; then alias vf='nvim $(fzf)' ; fi
+if [[ -x /usr/local/bin/docker-compose ]] ; then alias compose='docker-compose' ; fi
 
 # programme
-if [[ -x /usr/bin/nvim ]] ; then 
+if [[ -x /usr/local/bin/nvim ]] ; then 
     alias vi='nvim'
     alias vim='nvim'
 fi
@@ -36,17 +34,9 @@ alias df="df -Th"
 alias du="du -sh"
 #alias rm='rm -I'
 alias mv='mv -i'
-if [[ -x /usr/bin/nvim ]] ; then alias top='htop' ; fi
-if [[ -x /usr/bin/colordiff ]] ; then alias diff='colordiff' ; fi
-if [[ -x /usr/bin/xclip ]] ; then alias xclip='xclip -sel c' ; fi
-if [[ -x /usr/bin/pikaur ]] ; then alias alias pac='pikaur' ; fi
-
-# usb
-if [[ -x /usr/bin/udisksctl ]] ; then
-    alias usbmount='udisksctl mount -b'
-    alias usbunmount='udisksctl unmount -b'
-    alias usboff='udisksctl power-off -b'
-fi
+if [[ -x /usr/local/bin/nvim ]] ; then alias top='htop' ; fi
+if [[ -x /usr/local/bin/colordiff ]] ; then alias diff='colordiff' ; fi
+if [[ -x /usr/local/bin/xclip ]] ; then alias xclip='xclip -sel c' ; fi
 
 # ssh
 #alias ssh='TERM=xterm-256color ssh'
@@ -61,4 +51,4 @@ fi
 alias mypye='deactivate'
 
 # misc
-if [[ -x /usr/bin/curl ]] ; then alias wetter='curl "wttr.in/Berlin?lang=de"' ; fi
+if [[ -x /usr/local/bin/curl ]] ; then alias wetter='curl "wttr.in/Berlin?lang=de"' ; fi
