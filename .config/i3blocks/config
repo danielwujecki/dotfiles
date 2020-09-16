@@ -67,7 +67,7 @@ label=⚡
 interval=20
 
 [wetter]
-command=curl -s 'https://wttr.in/Brieselang?format=3' | cut -f"2" -d":" | sed "s/^ //g"
+command=curl -s 'https://wttr.in/Brieselang?format=1'
 interval=300
 
 [time]
