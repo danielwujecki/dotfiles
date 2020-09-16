@@ -1,0 +1,2 @@
+#!/usr/local/bin/bash
+feh --no-fehbg --bg-fill "$HOME/Bilder/wallpapers/openbsd.jpg"
