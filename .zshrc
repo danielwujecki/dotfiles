@@ -37,6 +37,7 @@ plugins=(
 
 # misc
     #golang
+    #fzf
 )
 
 source $ZSH/oh-my-zsh.sh
