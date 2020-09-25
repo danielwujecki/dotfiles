@@ -75,7 +75,7 @@ nmap <Tab> :bn<Return>
 " ########################################
 " ######     Plugins and Themes     ######
 " ########################################
-"
+
 if !exists('g:vscode')
 
 call plug#begin('~/.vim/plugged')
@@ -83,22 +83,23 @@ Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'frazrepo/vim-rainbow'
-Plug 'jiangmiao/auto-pairs'
-Plug 'skammer/vim-css-color'
-Plug 'airblade/vim-gitgutter'
-Plug 'vim-python/python-syntax'
-"Plug 'jreybert/vimagit'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
+
+Plug 'jiangmiao/auto-pairs'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-python/python-syntax'
+
+"Plug 'jreybert/vimagit'
+"Plug 'sheerun/vim-polyglot'
+"Plug 'frazrepo/vim-rainbow'    " currently breaks syntax highlighting
+"Plug 'skammer/vim-css-color'   " makes startup with html files slow
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 map <C-n> :NERDTreeToggle<Return>
-map ; :FZF<Return> 
-let g:rainbow_active=1
+map ; :FZF<Return>
 let g:python_highlight_all=1
 
 " airline settings
