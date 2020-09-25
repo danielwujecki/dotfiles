@@ -1,5 +1,7 @@
 #!/bin/bash
+
 wp_path="$HOME/Bilder/wallpaper/selected"
+
 if [ ! -d $wp_path ] ; then exit 1 ; fi
 
 until [ -f "$wp_path/$sel_wp" ] ; do
