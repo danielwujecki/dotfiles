@@ -168,8 +168,10 @@ bar {
     binding_mode_indicator yes
 
     colors {
-        background          #0a0e14
-        statusline          #fbfbfb
+        #background          #0a0e14
+        #statusline          #fbfbfb
+        background          #1c1c1c
+        statusline          #eaeaea
         separator           #aaaaaa
         focused_workspace   #3c3836 #b6b6b6 #0a0e14
         active_workspace    #3c3836 #b6b6b6 #0a0e14
