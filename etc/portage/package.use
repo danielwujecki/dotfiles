@@ -1,0 +1,18 @@
+app-admin/doas timestamp
+app-text/texlive-core xetex
+app-portage/layman sync-plugin-portage git
+net-misc/networkmanager dhclient
+net-wireless/blueman network
+net-libs/nodejs npm
+x11-base/xorg-server xorg
+x11-misc/redshift geoclue
+x11-misc/picom opengl
+media-sound/pulseaudio alsa-plugin equalizer
+sys-apps/smartmontools daemon update_drivedb
+sys-firmware/intel-microcode hostonly
+www-client/w3m imlib
+gnome-extra/nm-applet dhcpcd wifi
+app-crypt/pinentry gnome-keyring
+dev-libs/libgpg-error static-libs
+dev-libs/libgcrypt static-libs
+dev-libs/lzo static-libs
