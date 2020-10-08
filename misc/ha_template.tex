@@ -38,10 +38,13 @@
 %\usepackage{subfig}
 %\usepackage{caption}
 %\usepackage{graphicx}
+%\usepackage[draft=false]{graphicx}
 %\usepackage[section]{placeins}
 
 %\usepackage{xcolor}
 %\usepackage{listings}
+\usepackage[colorinlistoftodos]{todonotes} % see http://tug.ctan.org/macros/latex/contrib/todonotes/todonotes.pdf
+%\usepackage[obeyDraft, colorinlistoftodos]{todonotes}
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 
 %\usepackage{ifthen}
@@ -52,6 +55,12 @@
 \setcounter{secnumdepth}{0}                         % keine Nummerierung von Überschriften
 \numberwithin{equation}{section}                    % Formeln mit Überschrift nummerieren
 \newcommand{\emptyline}{\vspace{\baselineskip}}     % erzeugt leerzeile
+
+% todonotes
+\newcommand{\missing}[1]{\todo[inline]{#1}}
+\newcommand{\rtodo}[1]{\todo[backgroundcolor=red]{#1}}
+\newcommand{\ytodo}[1]{\todo[backgroundcolor=yellow]{#1}}
+\newcommand{\gtodo}[1]{\todo[backgroundcolor=green]{#1}}
 
 %\newcommand{\N}{\mathbb{N}}
 %\newcommand{\Z}{\mathbb{Z}}
@@ -73,6 +82,7 @@
 %\newpage
 %\tableofcontents
 %\linenumbers
+\listoftodos
 
 \section{Hausaufgabe 1}
 
@@ -103,6 +113,11 @@ Blabllbalbasfasf Hallo
     }
     \Return{$\var(\hat{w})$}
 \end{algorithm}
+
+\missing{Test}
+\gtodo{Test}
+\ytodo{Test}
+\rtodo{Test}
 
 %\newpage
 %\printbibliography
