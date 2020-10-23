@@ -90,12 +90,10 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-python/python-syntax'
+Plug 'neovim/nvim-lspconfig'
 
 "Plug 'jreybert/vimagit'
 "Plug 'sheerun/vim-polyglot'
-"Plug 'frazrepo/vim-rainbow'    " currently breaks syntax highlighting
-"Plug 'skammer/vim-css-color'   " makes startup with html files slow
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 map <C-n> :NERDTreeToggle<Return>

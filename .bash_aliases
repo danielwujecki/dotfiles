@@ -19,7 +19,7 @@ alias ..='cd ../'
 alias ...='cd ../../'
 if [[ -d ~/Dropbox ]] ; then alias box='cd ~/Dropbox' ; fi
 if [[ -d ~/Schreibtisch ]] ; then alias alias des='cd ~/Schreibtisch' ; fi
-if [[ -d ~/Dropbox/sose20 ]] ; then alias alias sem='cd ~/Dropbox/sose20' ; fi
+if [[ -d ~/Dropbox/wise2021 ]] ; then alias alias sem='cd ~/Dropbox/wise2021' ; fi
 if [[ -d ~/Repositories ]] ; then alias alias repos='cd ~/Repositories' ; fi
 
 # shortcuts
@@ -39,7 +39,10 @@ alias mv='mv -i'
 if [[ -x /usr/bin/nvim ]] ; then alias top='htop' ; fi
 if [[ -x /usr/bin/colordiff ]] ; then alias diff='colordiff' ; fi
 if [[ -x /usr/bin/xclip ]] ; then alias xclip='xclip -sel c' ; fi
-if [[ -x /usr/bin/pikaur ]] ; then alias alias pac='pikaur' ; fi
+if [[ -x /usr/bin/pikaur ]] ; then
+    alias pac='pikaur'
+    alias yay='pikaur -Syu'
+fi
 
 # usb
 if [[ -x /usr/bin/udisksctl ]] ; then
