@@ -32,8 +32,8 @@ if [[ -x /usr/bin/nvim ]] ; then
     alias vi='nvim'
     alias vim='nvim'
 fi
-alias df="df -Th"
-alias du="du -sh"
+alias df='df -Th'
+alias du='du -sh'
 alias rm='rm -I'
 alias mv='mv -i'
 if [[ -x /usr/bin/htop ]] ; then alias top='htop' ; fi
