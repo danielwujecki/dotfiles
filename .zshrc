@@ -1,19 +1,26 @@
+# If you come from bash you might have to change your $PATH.
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "$HOME/.emacs.d/bin" ] ; then
+    PATH="$HOME/.emacs.d/bin:$PATH"
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/daniel/.oh-my-zsh"
 
-# set default user - important for ZSH_THEME
-export DEFAULT_USER="daniel"
+#ZSH_THEME="bira"
+ZSH_THEME="myone"
+
+# Uncomment the following line to automatically update without prompting.
+DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
 
 # user zsh prompt for virtualenv
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-# command counter
-#setopt PROMPT_SUBST
-#[[ $cmdcount -ge 1 ]] || cmdcount=1
-#preexec() { ((cmdcount++)) }
-
-#ZSH_THEME="bira"
-ZSH_THEME="myone"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -24,31 +31,20 @@ plugins=(
 # general
     colored-man-pages
     history
-    #vi-mode
-
-# tools
-    docker
-    #docker-compose
 
 # python
     virtualenv
     pyenv
-    #pip
+    pip
 
 # misc
+    docker
+    #docker-compose
     #golang
     #fzf
 )
 
 source $ZSH/oh-my-zsh.sh
-
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-if [ -d "$HOME/.emacs.d/bin" ] ; then
-    PATH="$HOME/.emacs.d/bin:$PATH"
-fi
 
 # Preferred editor
 if [[ -x /usr/bin/nvim ]] ; then
@@ -61,11 +57,10 @@ if [ -f ~/.bash_aliases ] ; then
     . ~/.bash_aliases
 fi
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+# command counter
+#setopt PROMPT_SUBST
+#[[ $cmdcount -ge 1 ]] || cmdcount=1
+#preexec() { ((cmdcount++)) }
 
 # nice system info
 if [[ -x /usr/bin/pfetch || -x $HOME/.local/bin/pfetch ]] ; then
@@ -74,3 +69,17 @@ fi
 #if [[ -x $HOME/.local/bin/ufetch ]] ; then
 #    ufetch
 #fi
+
+init_conda () {
+    __conda_setup="$('/home/daniel/miniconda3/bin/conda' 'shell.zsh' 'hook')"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/home/daniel/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/daniel/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/daniel/miniconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+}
