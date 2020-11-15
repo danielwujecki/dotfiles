@@ -72,6 +72,9 @@ map <C-t> :vert term<Return>
 " use tab for next buffer
 nmap <Tab> :bn<Return>
 
+" Compile current file with pdflatex
+nmap <C-l> :!pdflatex %<Return>
+
 " ########################################
 " ######     Plugins and Themes     ######
 " ########################################
@@ -90,7 +93,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-python/python-syntax'
-Plug 'neovim/nvim-lspconfig'
+"Plug 'neovim/nvim-lspconfig'
 
 "Plug 'jreybert/vimagit'
 "Plug 'sheerun/vim-polyglot'

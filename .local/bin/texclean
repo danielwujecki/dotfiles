@@ -15,4 +15,5 @@ rm -rf *.aux \
        *.bib.bak \
        *.lot \
        *.nav \
-       *.snm
+       *.snm \
+       *.tdo
