@@ -1,14 +1,14 @@
 set guioptions "sv"
 set font "JetBrains Mono 10"
-set selection-clipboard clipboard
-set window-height 1384
-set window-width 1280
+# set selection-clipboard clipboard
+# set window-height 1384
+# set window-width 1280
 set page-padding 20
 
 set recolor
 set recolor-keephue
-set recolor-lightcolor "#eeeebb"
-set recolor-darkcolor "#000000"
+set recolor-lightcolor "#2C2C2C"
+set recolor-darkcolor "#fbfbfb"
 set default-bg "#1C1C1C"
 set inputbar-bg "#1C1C1C"
 set statusbar-bg "#1C1C1C"

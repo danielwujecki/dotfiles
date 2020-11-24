@@ -1,0 +1,280 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;==========================================================
+
+[colors]
+background = #1c1c1c
+background-alt = #3c3c3c
+
+foreground = #eaeaea
+foreground-alt = #fa2222
+
+alert = #bd2c40
+
+primary = #ffb52a
+
+[bar/mybar]
+monitor = eDP1
+monitor-fallback = DP2-2
+monitor-strict = false
+monitor-exact = true
+
+override-redirect = false
+;wm-restack = bspwm
+
+bottom = false
+fixed-center = true
+width = 100%
+height = 30
+offset-x = 0
+offset-y = 0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+border-size = 0
+border-color = #00000000
+
+radius = 0.0
+padding-left = 1
+padding-right = 1
+module-margin = 0
+module-margin-left = 0
+module-margin-right = 1
+
+; standard
+font-0 = "JetBrains Mono:size=11;3"
+; Arch Logo launcher
+font-1 = "JetBrainsMono Nerd Font:size=16;3"
+; icons
+font-2 = "JetBrainsMono Nerd Font:size=14;3"
+
+locale = de_DE.UTF-8
+
+modules-left = launcher readupdates sep bspwm xwindow
+modules-right = cpu memory sep audio backlight battery date sep
+; modules-center = spotify
+
+tray-position = right
+tray-detached = false
+tray-maxsize = 26
+tray-padding = 1
+tray-scale = 1.0
+
+dpi-x = 96
+dpi-y = 96
+enable-ipc = false
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+###############################################################################
+############                       MODULES LEFT                    ############
+###############################################################################
+
+[module/launcher]
+type=custom/text
+content = 
+content-font = 2
+content-margin = 1
+content-foreground = #1793d1
+click-left = "bash -c 'rofi -show drun'"
+
+[module/readupdates]
+type=custom/script
+
+exec = cat $HOME/.config/polybar/current_updates.txt
+tail = false
+interval = 30
+format = <label>
+label = %output%
+
+[module/sep]
+type = custom/text
+content = |
+
+[module/bspwm]
+type = internal/bspwm
+
+enable-click = false
+enable-scroll = false
+
+; label-focused = %icon%
+label-focused = %index%
+label-focused-foreground = ${colors.foreground-alt}
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 1
+
+; label-occupied = %icon%
+label-occupied = %index%
+label-occupied-padding = 1
+
+; label-urgent = %icon%!
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty =
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 1
+
+ws-icon-0 = 1;%{T3} %{T-}
+ws-icon-1 = 2;%{T3} %{T-}
+ws-icon-2 = 3;%{T3} %{T-}
+ws-icon-3 = 4;%{T3} %{T-}
+ws-icon-4 = 5;%{T1}5%{T-}
+ws-icon-5 = 6;%{T1}6%{T-}
+ws-icon-6 = 7;%{T1}7%{T-}
+ws-icon-7 = 8;%{T1}8%{T-}
+ws-icon-8 = 9;%{T3} %{T-}
+ws-icon-9 = 10;%{T3} %{T-}
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:70:...%
+
+###############################################################################
+############                       MODULES RIGHT                   ############
+###############################################################################
+
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+
+label = %{T3}﬙ %{T-}%percentage:2%%
+label-padding-right = 1
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = %{T3} %{T-}%percentage_used%%
+
+[module/audio]
+type = internal/pulseaudio
+
+use-ui-max = false
+; Interval for volume increase/decrease
+interval = 5
+
+format-volume = <ramp-volume><label-volume>
+
+label-volume = %percentage%%
+label-volume-padding-right = 1
+label-volume-foreground = ${colors.foreground}
+
+label-muted = %{T3} %{T-}
+label-muted-padding-right = 1
+; label-muted-foreground = #666
+
+ramp-volume-0 = %{T3} %{T-}
+ramp-volume-1 = %{T3} %{T-}
+ramp-volume-2 = %{T3} %{T-}
+
+[module/backlight]
+type = internal/xbacklight
+enable-scroll = false
+
+format = <ramp><label>
+;format-underline = #537093
+
+label = %percentage%%
+label-padding-right = 1
+ramp-0 = %{T3} %{T-}
+ramp-1 = %{T3} %{T-}
+ramp-2 = %{T3} %{T-}
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging><label-charging>
+label-charging = %percentage%%
+label-charging-padding-right = 1
+;format-charging-underline = #ffb52a
+
+format-discharging = <ramp-capacity><label-discharging>
+label-discharging = %percentage%%
+label-discharging-padding-right = 1
+;format-discharging-underline = ${self.format-charging-underline}
+
+format-full = <label-full>
+label-full = %{T3}%{F#A3BE8C} %{F-}%{T-}%percentage%%
+label-full-padding-right = 1
+;format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = %{T3}%{F#BF616A} %{F-}%{T-}
+ramp-capacity-1 = %{T3}%{F#BF616A} %{F-}%{T-}
+ramp-capacity-2 = %{T3}%{F#BF616A} %{F-}%{T-}
+ramp-capacity-3 = %{T3} %{T-}
+ramp-capacity-4 = %{T3} %{T-}
+ramp-capacity-5 = %{T3} %{T-}
+ramp-capacity-6 = %{T3} %{T-}
+ramp-capacity-7 = %{T3}%{F#A3BE8C} %{F-}%{T-}
+ramp-capacity-8 = %{T3}%{F#A3BE8C} %{F-}%{T-}
+ramp-capacity-9 = %{T3}%{F#A3BE8C} %{F-}%{T-}
+
+animation-charging-0 = %{T3} %{T-}
+animation-charging-1 = %{T3} %{T-}
+animation-charging-2 = %{T3} %{T-}
+animation-charging-3 = %{T3} %{T-}
+animation-charging-4 = %{T3} %{T-}
+animation-charging-5 = %{T3} %{T-}
+animation-charging-6 = %{T3} %{T-}
+animation-charging-framerate = 750
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = %{T3} %{T-}%a, %d. %b
+time = %{T3} %{T-}%H:%M
+
+;format-underline = #1c2c8c
+label = %time%  %date%
+
+###############################################################################
+############                     MODULES UNUSED                    ############
+###############################################################################
+
+[module/spotify]
+type = custom/script
+interval = 2
+format-prefix = " "
+format = <label>
+exec = /usr/bin/python3 $HOME/.config/polybar/spotify_status.py -t 32 -f '{artist}: {song}'
+
+[module/checkupdates]
+; better run as crontab
+type=custom/script
+
+exec = $HOME/.config/polybar/check_updates.sh
+tail = true
+format = <label>
+label = 
+
+###############################################################################
+############                     Global Settings                   ############
+###############################################################################
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+; margin-top = 5
+; margin-bottom = 5
+
+; vim:ft=dosini

@@ -93,7 +93,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-python/python-syntax'
-"Plug 'neovim/nvim-lspconfig'
 
 "Plug 'jreybert/vimagit'
 "Plug 'sheerun/vim-polyglot'

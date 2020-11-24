@@ -1,46 +1,12 @@
 configuration {
+    theme: "mytheme";
 	modi: "drun,window,run";
-	show-icons: true;
-	terminal: "kitty";
     display-drun: "Apps:";
     display-window: "Running:";
     display-run: "run:";
+	show-icons: true;
+    icon-theme: "Papirus-Dark";
+	terminal: "kitty";
 }
 
-* {
-    lines: 10;
-    columns: 1;
-    width: 800;
-    background-color: #0a0e14;
-    border-color: #1f2430;
-    text-color: #fbfbfb;
-    font: "JetBrains Mono 12";
-    scrollbar: false;
-}
-
-#mainbox {
-    spacing: 20px;
-    padding: 10px;
-    border: 2px;
-    border-color: @base0D;
-}
-
-#listview {
-    spacing: 5px;
-}
-
-#element {
-    border: 0;
-    padding: 4px;
-    border-radius: 4px;
-}
-
-#element selected {
-    background-color: #2a2e34;
-    text-color: #fbf1c7;
-}
-
-#inputbar {
-    spacing:    10px;
-    padding:    1px ;
-}
+// vim:ft=css

@@ -1,0 +1,115 @@
+\documentclass[
+    a4paper,
+    10pt,
+    notitlepage,
+    %parskip=half,
+    egregdoesnotlikesansseriftitles
+]{scrartcl}
+\usepackage[english, ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage[left=20mm,right=20mm,top=20mm,bottom=30mm]{geometry}
+\usepackage{palatino}
+
+%\usepackage{tabularx}
+%\usepackage{tikz}
+\usepackage{graphicx}
+
+%\usepackage{xcolor}
+%\usepackage{listings}
+
+\setkomafont{section}{\large}
+
+\setcounter{secnumdepth}{0}                         % keine Nummerierung von Überschriften
+\newcommand{\emptyline}{\vspace{\baselineskip}}     % erzeugt leerzeile
+
+\title{bspwm keymap}
+\author{Daniel W.}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+%\newpage
+
+\section{Launch and Quit Programs}
+\begin{tabular}{p{4cm}l}
+    mod + return        & open terminal                         \\
+    mod + d             & program launcher                      \\
+    mod + q             & terminate program                     \\
+    mod + k             & kill program
+\end{tabular}
+
+\section{Restart and Quit bspwm}
+\begin{tabular}{p{4cm}l}
+    mod + r             & restart sxhkd                         \\
+    mod + shift + r     & restart bspwm                         \\
+    mod + alt + e       & exit bspwm
+\end{tabular}
+
+\section{Lock and Suspend}
+\begin{tabular}{p{4cm}l}
+    mod + o             & lock screen                           \\
+    mod + shift + o     & suspend + lock screen
+\end{tabular}
+
+\section{Screenshots}
+\begin{tabular}{p{4cm}l}
+    print               & take screenshot                       \\
+    mod + print         & take screenshot of current window
+\end{tabular}
+
+\section{Toggle Gaps}
+\begin{tabular}{p{4cm}l}
+    mod + g             & set gaps                              \\
+    mod + shift + g     & remove gaps
+\end{tabular}
+
+\section{Window Layout}
+\begin{tabular}{p{4cm}l}
+    mod + m             & switch to monocle layout              \\
+    mod + t             & switch to tiled layout                \\
+    mod + shift + t     & switch to pseudo tiled layout         \\
+    mod + s             & switch to floating layout             \\
+    mod + f             & switch to fullscreen layout
+\end{tabular}
+
+\section{Focus Windows}
+\begin{tabular}{p{4cm}l}
+    mod + h,j,k,l         & move focus into direction        \\
+    mod + 1-9,0           & move focus to workspace          \\
+    mod + tab             & switch to last workspace
+\end{tabular}
+
+\section{Move Windows}
+\begin{tabular}{p{4cm}l}
+    mod + m               & swap current node with biggest node on workspace \\
+    mod + shift + h,j,k,l & move window into direction        \\
+    mod + shift + 1-9,0   & move window to workspace          \\
+    mod + alt + 1-9,0     & move window to workspace and stay focused        \\
+    mod + arrow keys      & move floating window              \\
+    mod + mouse1          & move in arbitrary direction
+\end{tabular}
+
+\section{Resize Windows}
+\begin{tabular}{p{4cm}l}
+    mod + alt + h,j,k,l   & expand a window by moving one of its side outward \\
+    mod + alt + shift + h,j,k,l & contract a window by moving one of its side inward \\
+    mod + mouse2,mouse3   & resize in arbitrary direction
+\end{tabular}
+
+\section{Mark Areas}
+\begin{tabular}{p{4cm}l}
+    mod + ctrl + h,j,k,l  & preselect area                    \\
+    mod + ctrl + 1-9      & preselect split ratio             \\
+    mod + ctrl + space    & cancel preselection
+\end{tabular}
+
+%\section{}
+%\begin{tabular}{p{3cm}l}
+%    print               & bla                                   \\
+%\end{tabular}
+
+\end{document}

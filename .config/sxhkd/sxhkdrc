@@ -6,41 +6,70 @@
 #
 #############################
 
-#
-# wm independent hotkeys
-#
+# TODO: multimonitor support
+
+#############################
+#  launch + quit programms  #
+#############################
 
 # terminal emulator
 super + Return
-	termite
+	kitty
 
 # program launcher
 super + d
-	rofi -show drun
+    rofi -show drun
+
+# close and kill
+super + shift + {q,k}
+	bspc node -{c,k}
+
+#############################
+#   restart + quit bspwm    #
+#############################
 
 # make sxhkd reload its configuration files:
-super + Escape
+super + r
 	pkill -USR1 -x sxhkd
+
+super + shift + r
+	bspc wm -r
+
+super + alt + e
+	bspc quit
+
+#############################
+#      Lock and Suspend     #
+#############################
 
 # lock screen
 super + o
-    $HOME/.config/i3/screenlock.sh
+    betterlockscreen -l dim
+
 super + shift + o
-    systemctl suspend
+    systemctl suspend && betterlockscreen -l dim
+
+#############################
+#        Screenshots        #
+#############################
 
 # screenshots
 Print
-    scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/screenshots/'
+    scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'
 super + Print
-    scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/screenshots/'
+    scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'
+
+#############################
+#       Special Keys        #
+#############################
 
 # Pulse Audio controls
 XF86AudioRaiseVolume
-    --no-startup-id pulsemixer --change-volume +5
+    pulsemixer --change-volume +5
 XF86AudioLowerVolume
-    --no-startup-id pulsemixer --change-volume -5
+    pulsemixer --change-volume -5
 XF86AudioMute
-    --no-startup-id pulsemixer --toggle-mute
+    pulsemixer --toggle-mute
 
 # Sreen brightness controls
 XF86MonBrightnessUp
@@ -52,109 +81,69 @@ XF86MonBrightnessDown
 XF86TouchpadToggle
     $HOME/.config/i3/toggletouchpad.sh
 
-#
-# bspwm hotkeys
-#
 
-# quit/restart bspwm
-super + shift + r
-	bspc wm -r
+#############################
+#        Toggle Gaps        #
+#############################
 
-super + alt + e
-	bspc quit
+super + {_,shift} + g
+    bspc config window_gap {12,0}
 
-# close and kill
-super + shift + {q,k}
-	bspc node -{c,k}
+#############################
+#       Window Layout       #
+#############################
 
 # alternate between the tiled and monocle layout
 super + m
 	bspc desktop -l next
 
-# send the newest marked node to the newest preselected node
-# super + y
-# 	bspc node newest.marked.local -n newest.!automatic.local
+# set the window state
+super + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+#############################
+#           Focus           #
+#############################
+
+# focus the last desktop
+super + Tab
+	bspc desktop -f last
+
+# focus the node in the given direction
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+
+# send to the given desktop
+super + {1-9,0}
+	bspc desktop -f '^{1-9,10}'
+
+#############################
+#        Move Windows       #
+#############################
 
 # swap the current node and the biggest node
-# super + g
-# 	bspc node -s biggest
+super + b
+    bspc node -s biggest.local
 
-#
-# state/flags
-#
+# switch the node in the given direction
+super + shift + {h,j,k,l}
+	bspc node -s {west,south,north,east}
 
-# TODO: change gaps
+# send to the given desktop
+super + shift + {1-9,0}
+	bspc node -d '^{1-9,10}'
 
-# set the window state
-super + {t,shift + t,s}
-	bspc node -t {tiled,pseudo_tiled,floating}
+# send to the given desktop
+super + alt + {1-9,0}
+	bspc node -d '^{1-9,10}' --follow
 
-# super + {t,shift + t,s,f}
-# 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# set the node flags
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
-
-#
-# focus/swap
-#
-
-# focus/switch the node in the given direction
-super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
-
-# focus the node for the given path jump
-# super + {p,b,comma,period}
-	# bspc node -f @{parent,brother,first,second}
-
-# focus the next/previous node in the current desktop
-# super + {_,shift + }c
-# 	bspc node -f {next,prev}.local
-
-# focus the next/previous desktop in the current monitor
-super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
-
-# focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
-
-# focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
-
-# focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
-
-#
-# preselect
-#
-
-# preselect the direction
-super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
-
-# preselect the ratio
-# super + ctrl + {1-9}
-# 	bspc node -o 0.{1-9}
-
-# cancel the preselection for the focused node
-super + ctrl + space
-	bspc node -p cancel
-
-# cancel the preselection for the focused desktop
-# super + ctrl + shift + space
-#	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
-#
-# move/resize
-#
-
-# TODO: multimonitor support
+#############################
+#       Resize Windows      #
+#############################
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
@@ -164,6 +153,23 @@ super + alt + {h,j,k,l}
 super + alt + shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-# move a floating window
-super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+#############################
+#        Mark Areas         #
+#############################
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+##################################
+#             Testing            #
+# not yet included in keymap.pdf #
+##################################

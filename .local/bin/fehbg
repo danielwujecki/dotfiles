@@ -1,0 +1,2 @@
+#!/bin/bash
+feh --no-fehbg --bg-fill "/home/daniel/Bilder/Wallpaper/rick-morty-min.jpg"

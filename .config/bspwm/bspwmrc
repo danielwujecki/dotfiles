@@ -7,34 +7,53 @@
 #           |_|
 ######################################
 
-# start programs
-sxhkd &
-# dropbox &                     # use systemd --user instead
-# redshift-gtk &                # use systemd --user instead
-picom -b &
-# lxsession &
-nm-applet &
-$HOME/.fehbg &
-blueman-applet &
-$HOME/.local/bin/polybar_normal > /dev/null 2>&1 &
-xautolock -detectsleep -time 10 -locker "systemctl suspend" &
-
 # TODO: multimonitor support
+
+# start programs
+pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x picom > /dev/null || picom &
+pgrep -x lxpolkit > /dev/null || lxpolkit &
+pgrep -x nm-applet > /dev/null || nm-applet &
+pgrep -x emacs > /dev/null || emacs --daemon &
+pgrep -u daniel -x dunst > /dev/null || dunst &
+pgrep -x redshift-gtk > /dev/null || redshift-gtk &
+pgrep -x blueman-applet > /dev/null || blueman-applet &
+pgrep -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dim" &
+$HOME/.local/bin/fehbg &
+$HOME/.local/bin/polybar_normal > /dev/null &
+
+# general xorg settings
+xsetroot -cursor_name left_ptr
+xset dpms 300 300 300
+
+# bspwm specific settings
 bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 
-bspc config border_width         1
-bspc config window_gap           10
+bspc config normal_border_color       "#2c2c2c"
+bspc config active_border_color       "#3c3c3c"
+bspc config focused_border_color      "#4c4c4c"
+bspc config presel_feedback_color     "#5c5c5c"
 
-bspc config normal_border_color "#1f2430"
-bspc config active_border_color "#1f2430"
-bspc config focused_border_color "#5a698c"
+#bspc config automatic_scheme          spiral
+bspc config automatic_scheme          longest_side
 
-bspc config split_ratio          0.5
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
-bspc config automatic_scheme     spiral
+bspc config border_width              2
+bspc config window_gap                12
+bspc config split_ratio               0.5
 
-# TODO: window rules
+bspc config borderless_monocle        false
+bspc config gapless_monocle           true
+bspc config single_monocle            true
+bspc config pointer_follows_monitor   true
+bspc config remove_disabled_monitors  true
+bspc config remove_unplugged_monitors true
+
+bspc config pointer_modifier          "mod4"
+
+# bspwm rules
+bspc rule -a Emacs state=tiled
+
+#### example rules ####
 # bspc rule -a Gimp desktop='^8' state=floating follow=on
 # bspc rule -a Chromium desktop='^2'
 # bspc rule -a mplayer2 state=floating

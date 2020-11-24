@@ -26,6 +26,9 @@ if [[ -d ~/Repositories ]] ; then alias alias repos='cd ~/Repositories' ; fi
 if [[ -x /usr/bin/ranger ]] ; then alias r='ranger' ; fi
 if [[ -x /usr/bin/nvim && -x /usr/bin/fzf ]] ; then alias vf='nvim $(fzf)' ; fi
 if [[ -x /usr/bin/docker-compose ]] ; then alias compose='docker-compose' ; fi
+if [[ -f ~/.ssh/ssh_rsa_wujecki ]] ; then
+    alias kssh='ssh-add ~/.ssh/ssh_rsa_wujecki'
+fi
 
 # programme
 if [[ -x /usr/bin/nvim ]] ; then 
@@ -41,7 +44,12 @@ if [[ -x /usr/bin/colordiff ]] ; then alias diff='colordiff' ; fi
 if [[ -x /usr/bin/xclip ]] ; then alias xclip='xclip -sel c' ; fi
 if [[ -x /usr/bin/pikaur ]] ; then
     alias pac='pikaur'
-    alias yay='pikaur -Syu'
+    alias yay='echo "" > $HOME/.config/polybar/current_updates.txt && pikaur -Syu'
+fi
+
+# git bare repos
+if [[ -d ~/dotfiles-bare ]] ; then
+    alias config='/usr/bin/git --git-dir=$HOME/dotfiles-bare/ --work-tree=$HOME'
 fi
 
 # usb
