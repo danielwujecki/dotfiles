@@ -1,13 +1,14 @@
-Xft.dpi: 128
-Xft.autohint: 0
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintfull
-Xft.hinting: 1
-Xft.antialias: 1
-Xft.rgba: rgb
+! High DPI Xorg Settings
+!Xft.dpi: 128
+!Xft.autohint: 0
+!Xft.lcdfilter: lcddefault
+!Xft.hintstyle: hintfull
+!Xft.hinting: 1
+!Xft.antialias: 1
+!Xft.rgba: rgb
+!Xcursor.size: 30
 
-rofi.dpi: 128
-Xcursor.size: 30
+!rofi.dpi: 128
 
 ! ###############################
 !  _   _ ____               _   
