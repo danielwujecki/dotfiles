@@ -17,7 +17,7 @@ cp -r $HOME/Repositories/dotfiles/.config/dunst $HOME/.config/
 cp -r $HOME/Repositories/dotfiles/.config/gtk-3.0 $HOME/.config/
 cp -r $HOME/Repositories/dotfiles/.config/kitty $HOME/.config/
 cp -r $HOME/Repositories/dotfiles/.config/nvim $HOME/.config/
-cp -r $HOME/Repositories/dotfiles/.config/pacman $HOME/.config/
+#cp -r $HOME/Repositories/dotfiles/.config/pacman $HOME/.config/
 cp -r $HOME/Repositories/dotfiles/.config/picom $HOME/.config/
 cp -r $HOME/Repositories/dotfiles/.config/polybar $HOME/.config/
 cp -r $HOME/Repositories/dotfiles/.config/ranger $HOME/.config/
