@@ -101,6 +101,7 @@ libvirt
 qemu-headless
 dnsmasq
 ebtables
+chromium
 
 # AUR
 betterlockscreen

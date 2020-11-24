@@ -1,8 +1,5 @@
 # Daniel's dotfiles
 
-You should be careful not to copy everything into your home directory.
-There are many dependencies that need to be installed.
-
 If you have any questions or missing something, feel free to send me an email or open an issue.
 
 ## Arch Linux
