@@ -18,9 +18,9 @@ fi
 alias ..='cd ../'
 alias ...='cd ../../'
 if [[ -d ~/Dropbox ]] ; then alias box='cd ~/Dropbox' ; fi
-if [[ -d ~/Schreibtisch ]] ; then alias alias des='cd ~/Schreibtisch' ; fi
-if [[ -d ~/Dropbox/wise2021 ]] ; then alias alias sem='cd ~/Dropbox/wise2021' ; fi
-if [[ -d ~/Repositories ]] ; then alias alias repos='cd ~/Repositories' ; fi
+if [[ -d ~/Schreibtisch ]] ; then alias des='cd ~/Schreibtisch' ; fi
+if [[ -d ~/Dropbox/wise2021 ]] ; then alias sem='cd ~/Dropbox/wise2021' ; fi
+if [[ -d ~/Repositories ]] ; then alias repos='cd ~/Repositories' ; fi
 
 # shortcuts
 if [[ -x /usr/bin/ranger ]] ; then alias r='ranger' ; fi
