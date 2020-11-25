@@ -10,6 +10,7 @@
 
 #window {
     border: 3px;
+    border-radius: 0px;
     padding: 6px;
 }
 
@@ -19,19 +20,24 @@
 }
 
 #inputbar {
-    spacing:    6px;
-    padding:    0px 0px 6px;
+    spacing: 6px;
+    padding: 0px 0px 6px;
+}
+
+prompt {
+    padding: 3px 0px 0px 0px;
 }
 
 entry {
     background-color: #1c1c1c;
     padding: 4px 4px 4px 6px;
     border-radius: 4px;
+    vertical-align: 0.5;
 }
 
 #listview {
     columns: 2;
-    lines: 15;
+    lines: 9;
 
     scrollbar: true;
 
@@ -42,20 +48,29 @@ entry {
 
 #element {
     border: 0px;
+    padding: 6px;
     border-radius: 0px;
     background-color: #1c1c1c;
-    padding: 4px;
+}
+
+#element-icon {
+    size: 40;
+    margin: 0px 6px 0px 0px;
+}
+
+#element-text {
+    vertical-align: 0.5;
 }
 
 #element alternate {
     border: 0px;
-    border-radius: 4px;
+    border-radius: 0px;
     background-color: #2c2c2c;
 }
 
 #element selected {
-    background-color: #1793d1;
     border-radius: 6px;
+    background-color: #1793d1;
 }
 
 #scrollbar {

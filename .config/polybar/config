@@ -15,11 +15,14 @@ background = #1c1c1c
 background-alt = #3c3c3c
 
 foreground = #eaeaea
-foreground-alt = #fa2222
+foreground-alt = #ed404c
 
-alert = #bd2c40
-
-primary = #ffb52a
+alert = ${self.foreground-alt}
+arch = #1793d1
+yellow = #e5c246
+blue = #65a2d9
+purple = #d07ef2
+green = #93de6c
 
 [bar/mybar]
 monitor = eDP1
@@ -28,7 +31,7 @@ monitor-strict = false
 monitor-exact = true
 
 override-redirect = false
-;wm-restack = bspwm
+wm-restack = bspwm
 
 bottom = false
 fixed-center = true
@@ -57,7 +60,7 @@ font-0 = "JetBrains Mono:size=11;3"
 ; Arch Logo launcher
 font-1 = "JetBrainsMono Nerd Font:size=16;3"
 ; icons
-font-2 = "JetBrainsMono Nerd Font:size=14;3"
+font-2 = "JetBrainsMono Nerd Font:size=14;4"
 
 locale = de_DE.UTF-8
 
@@ -87,7 +90,7 @@ type=custom/text
 content = 
 content-font = 2
 content-margin = 1
-content-foreground = #1793d1
+content-foreground = ${colors.arch}
 click-left = "bash -c 'rofi -show drun'"
 
 [module/readupdates]
@@ -113,7 +116,7 @@ enable-scroll = false
 label-focused = %index%
 label-focused-foreground = ${colors.foreground-alt}
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-underline= ${colors.yellow}
 label-focused-padding = 1
 
 ; label-occupied = %icon%
@@ -155,11 +158,13 @@ interval = 1
 
 label = %{T3}﬙ %{T-}%percentage:2%%
 label-padding-right = 1
+label-foreground = ${colors.blue}
 
 [module/memory]
 type = internal/memory
 interval = 2
 label = %{T3} %{T-}%percentage_used%%
+label-foreground = ${colors.purple}
 
 [module/audio]
 type = internal/pulseaudio
@@ -172,28 +177,30 @@ format-volume = <ramp-volume><label-volume>
 
 label-volume = %percentage%%
 label-volume-padding-right = 1
-label-volume-foreground = ${colors.foreground}
+label-volume-foreground = ${colors.yellow}
 
 label-muted = %{T3} %{T-}
-label-muted-padding-right = 1
-; label-muted-foreground = #666
+label-muted-padding-right = 0
+label-muted-foreground = ${colors.alert}
 
 ramp-volume-0 = %{T3} %{T-}
 ramp-volume-1 = %{T3} %{T-}
 ramp-volume-2 = %{T3} %{T-}
+ramp-volume-foreground = ${colors.yellow}
 
 [module/backlight]
 type = internal/xbacklight
 enable-scroll = false
 
 format = <ramp><label>
-;format-underline = #537093
 
 label = %percentage%%
+label-foreground = ${colors.blue}
 label-padding-right = 1
 ramp-0 = %{T3} %{T-}
 ramp-1 = %{T3} %{T-}
 ramp-2 = %{T3} %{T-}
+ramp-foreground = ${colors.blue}
 
 [module/battery]
 type = internal/battery
@@ -203,29 +210,28 @@ full-at = 98
 
 format-charging = <animation-charging><label-charging>
 label-charging = %percentage%%
+label-charging-foreground = ${colors.green}
 label-charging-padding-right = 1
-;format-charging-underline = #ffb52a
 
 format-discharging = <ramp-capacity><label-discharging>
 label-discharging = %percentage%%
 label-discharging-padding-right = 1
-;format-discharging-underline = ${self.format-charging-underline}
 
 format-full = <label-full>
-label-full = %{T3}%{F#A3BE8C} %{F-}%{T-}%percentage%%
+label-full = %{T3} %{T-}%percentage%%
+label-full-foreground = ${colors.green}
 label-full-padding-right = 1
-;format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = %{T3}%{F#BF616A} %{F-}%{T-}
-ramp-capacity-1 = %{T3}%{F#BF616A} %{F-}%{T-}
-ramp-capacity-2 = %{T3}%{F#BF616A} %{F-}%{T-}
+ramp-capacity-0 = %{T3}%{F#ED404C} %{F-}%{T-}
+ramp-capacity-1 = %{T3}%{F#ED404C} %{F-}%{T-}
+ramp-capacity-2 = %{T3}%{F#ED404C} %{F-}%{T-}
 ramp-capacity-3 = %{T3} %{T-}
 ramp-capacity-4 = %{T3} %{T-}
 ramp-capacity-5 = %{T3} %{T-}
 ramp-capacity-6 = %{T3} %{T-}
-ramp-capacity-7 = %{T3}%{F#A3BE8C} %{F-}%{T-}
-ramp-capacity-8 = %{T3}%{F#A3BE8C} %{F-}%{T-}
-ramp-capacity-9 = %{T3}%{F#A3BE8C} %{F-}%{T-}
+ramp-capacity-7 = %{T3}%{F#93DE6C} %{F-}%{T-}
+ramp-capacity-8 = %{T3}%{F#93DE6C} %{F-}%{T-}
+ramp-capacity-9 = %{T3}%{F#93DE6C} %{F-}%{T-}
 
 animation-charging-0 = %{T3} %{T-}
 animation-charging-1 = %{T3} %{T-}
@@ -235,15 +241,15 @@ animation-charging-4 = %{T3} %{T-}
 animation-charging-5 = %{T3} %{T-}
 animation-charging-6 = %{T3} %{T-}
 animation-charging-framerate = 750
+animation-charging-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
 interval = 1
 
-date = %{T3} %{T-}%a, %d. %b
-time = %{T3} %{T-}%H:%M
+time = %{F#d07ef2}%{T3} %{T-}%H:%M%{F-}
+date = %{F#65a2d9}%{T3} %{T-}%a, %d. %b%{F-}
 
-;format-underline = #1c2c8c
 label = %time%  %date%
 
 ###############################################################################
