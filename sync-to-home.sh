@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/bash -e
 
 # dotfiles in ~/
 cp $HOME/Repositories/dotfiles/.bash_aliases $HOME/
