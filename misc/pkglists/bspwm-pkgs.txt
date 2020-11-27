@@ -102,6 +102,11 @@ qemu-headless
 dnsmasq
 ebtables
 chromium
+w3m
+highlight
+atool
+gimp
+rsync
 
 # AUR
 betterlockscreen
