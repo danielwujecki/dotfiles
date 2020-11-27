@@ -26,7 +26,7 @@ green = #93de6c
 
 [bar/mybar]
 monitor = eDP1
-monitor-fallback = DP2-2
+monitor-fallback = DP2-3
 monitor-strict = false
 monitor-exact = true
 
@@ -36,7 +36,7 @@ wm-restack = bspwm
 bottom = false
 fixed-center = true
 width = 100%
-height = 30
+height = 34
 offset-x = 0
 offset-y = 0
 
@@ -111,37 +111,26 @@ type = internal/bspwm
 
 enable-click = false
 enable-scroll = false
+pin-workspaces = false
 
-; label-focused = %icon%
-label-focused = %index%
+format = <label-state>
+
+label-focused = %name%
 label-focused-foreground = ${colors.foreground-alt}
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.yellow}
 label-focused-padding = 1
+label-dimmed-focused-underline = ${colors.background-alt}
 
-; label-occupied = %icon%
-label-occupied = %index%
+label-occupied = %name%
 label-occupied-padding = 1
 
-; label-urgent = %icon%!
-label-urgent = %index%
+label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
 label-empty =
-label-empty-foreground = ${colors.foreground}
 label-empty-padding = 1
-
-ws-icon-0 = 1;%{T3} %{T-}
-ws-icon-1 = 2;%{T3} %{T-}
-ws-icon-2 = 3;%{T3} %{T-}
-ws-icon-3 = 4;%{T3} %{T-}
-ws-icon-4 = 5;%{T1}5%{T-}
-ws-icon-5 = 6;%{T1}6%{T-}
-ws-icon-6 = 7;%{T1}7%{T-}
-ws-icon-7 = 8;%{T1}8%{T-}
-ws-icon-8 = 9;%{T3} %{T-}
-ws-icon-9 = 10;%{T3} %{T-}
 
 [module/xwindow]
 type = internal/xwindow
@@ -204,9 +193,9 @@ ramp-foreground = ${colors.blue}
 
 [module/battery]
 type = internal/battery
-battery = BAT1
+battery = BAT0
 adapter = AC
-full-at = 98
+full-at = 99
 
 format-charging = <animation-charging><label-charging>
 label-charging = %percentage%%

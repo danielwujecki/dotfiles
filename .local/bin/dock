@@ -1,14 +1,16 @@
-#!/bin/zsh
-dp22="$(xrandr | grep -- 'DP2-2 connected')"
-dp23="$(xrandr | grep -- 'DP2-3 connected')"
-if [ ! -n "$dp22" -o ! -n "$dp23" ] ; then
+#!/usr/bin/bash
+
+xran="$(xrandr -q)"
+dp22="$(echo "$xran" | grep -- 'DP2-2 connected')"
+dp23="$(echo "$xran" | grep -- 'DP2-3 connected')"
+if [[ -z $dp22 || -z $dp23 ]] ; then
     echo "Kann die Bildschirme nicht einschalten..."
     echo "Das Dock scheint nicht korrekt verbunden zu sein!"
     exit 1
 fi
+
 xrandr --output eDP1 --off --output DP1 --off --output DP2 --off --output DP2-1 --off --output DP2-2 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 --output DP2-3 --off --output HDMI1 --off --output VIRTUAL1 --off
+
 xrandr --output eDP1 --off --output DP1 --off --output DP2 --off --output DP2-1 --off --output DP2-2 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 --output DP2-3 --primary --mode 2560x1440 --pos 2560x0 --rotate normal --dpi 128 --output HDMI1 --off --output VIRTUAL1 --off
-# $HOME/.fehbg
-$HOME/.local/bin/polybar_dock
-killall -q xautolock
-xset dpms 0 420 600
+
+bspc wm -r

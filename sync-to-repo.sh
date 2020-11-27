@@ -47,7 +47,7 @@ cp $HOME/.config/redshift.conf $HOME/Repositories/dotfiles/.config/
 #cp $HOME/.config/user-dirs.locale $HOME/Repositories/dotfiles/.config/
 
 # ~/.local/bin
-#cp -r $HOME/.local/bin/dock $HOME/Repositories/dotfiles/.local/bin/
+cp -r $HOME/.local/bin/dock $HOME/Repositories/dotfiles/.local/bin/
 cp -r $HOME/.local/bin/fehbg $HOME/Repositories/dotfiles/.local/bin/
 #cp -r $HOME/.local/bin/polybar_dock $HOME/Repositories/dotfiles/.local/bin/
 cp -r $HOME/.local/bin/polybar_normal $HOME/Repositories/dotfiles/.local/bin/
@@ -55,7 +55,7 @@ cp -r $HOME/.local/bin/pycl $HOME/Repositories/dotfiles/.local/bin/
 #cp -r $HOME/.local/bin/screenlock $HOME/Repositories/dotfiles/.local/bin/
 cp -r $HOME/.local/bin/texclean $HOME/Repositories/dotfiles/.local/bin/
 cp -r $HOME/.local/bin/toggletouchpad $HOME/Repositories/dotfiles/.local/bin/
-#cp -r $HOME/.local/bin/undock $HOME/Repositories/dotfiles/.local/bin/
+cp -r $HOME/.local/bin/undock $HOME/Repositories/dotfiles/.local/bin/
 
 # misc folders in ~/
 cp $HOME/.oh-my-zsh/custom/themes/myone.zsh-theme \

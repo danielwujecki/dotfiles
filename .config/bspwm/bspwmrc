@@ -7,28 +7,21 @@
 #           |_|
 ######################################
 
-# TODO: multimonitor support
-
-# start programs
-pgrep -x sxhkd > /dev/null || sxhkd &
-pgrep -x picom > /dev/null || picom &
-pgrep -x lxpolkit > /dev/null || lxpolkit &
-pgrep -x nm-applet > /dev/null || nm-applet &
-pgrep -x emacs > /dev/null || emacs --daemon &
-pgrep -u daniel -x dunst > /dev/null || dunst &
-pgrep -x redshift-gtk > /dev/null || redshift-gtk &
-pgrep -x blueman-applet > /dev/null || blueman-applet &
-pgrep -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dim" &
-$HOME/.local/bin/fehbg &
-$HOME/.local/bin/polybar_normal > /dev/null &
-
 # general xorg settings
 xsetroot -cursor_name left_ptr
 xset dpms 300 300 300
 
-# bspwm specific settings
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+xran="$(xrandr -q)"
+dp22="$(echo "$xran" | grep -- 'DP2-2 connected')"
+dp23="$(echo "$xran" | grep -- 'DP2-3 connected primary')"
+if [[ -n $dp22 && -n $dp23 ]] ; then
+    bspc monitor "DP2-2" -d 1
+    bspc monitor "DP2-3" -d 2 3 4 5 6 7 8 9 10
+else
+    bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+fi
 
+# bspwm specific settings
 bspc config normal_border_color       "#2c2c2c"
 bspc config active_border_color       "#3c3c3c"
 bspc config focused_border_color      "#4c4c4c"
@@ -37,7 +30,7 @@ bspc config presel_feedback_color     "#5c5c5c"
 #bspc config automatic_scheme          spiral
 bspc config automatic_scheme          longest_side
 
-bspc config border_width              2
+bspc config border_width              3
 bspc config window_gap                12
 bspc config split_ratio               0.5
 
@@ -59,3 +52,16 @@ bspc rule -a Emacs state=tiled
 # bspc rule -a mplayer2 state=floating
 # bspc rule -a Kupfer.py focus=on
 # bspc rule -a Screenkey manage=off
+
+# start programs
+pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x picom > /dev/null || picom &
+pgrep -x lxpolkit > /dev/null || lxpolkit &
+pgrep -x nm-applet > /dev/null || nm-applet &
+pgrep -x emacs > /dev/null || emacs --daemon &
+pgrep -u daniel -x dunst > /dev/null || dunst &
+pgrep -x redshift-gtk > /dev/null || redshift-gtk &
+pgrep -x blueman-applet > /dev/null || blueman-applet &
+pgrep -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
+$HOME/.local/bin/fehbg &
+$HOME/.local/bin/polybar_normal > /dev/null &

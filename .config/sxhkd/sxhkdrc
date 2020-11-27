@@ -6,8 +6,6 @@
 #
 #############################
 
-# TODO: multimonitor support
-
 #############################
 #  launch + quit programms  #
 #############################
@@ -44,10 +42,10 @@ super + alt + e
 
 # lock screen
 super + o
-    betterlockscreen -l dim
+    betterlockscreen -l dimblur
 
 super + shift + o
-    systemctl suspend && betterlockscreen -l dim
+    systemctl suspend && betterlockscreen -l dimblur
 
 #############################
 #        Screenshots        #
@@ -115,7 +113,7 @@ super + {h,j,k,l}
 
 # send to the given desktop
 super + {1-9,0}
-	bspc desktop -f '^{1-9,10}'
+	bspc desktop -f '{1-9,10}'
 
 #############################
 #        Move Windows       #
@@ -131,15 +129,26 @@ super + shift + {h,j,k,l}
 
 # send to the given desktop
 super + shift + {1-9,0}
-	bspc node -d '^{1-9,10}'
+	bspc node -d '{1-9,10}'
 
-# send to the given desktop
+# send to the given desktop and stay focused
 super + alt + {1-9,0}
-	bspc node -d '^{1-9,10}' --follow
+	bspc node -d '{1-9,10}' --follow
 
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#############################
+#       Move Desktops       #
+#############################
+
+# select unfocused monitor
+super + shift + Tab
+    bspc desktop -m next --follow && \
+    bspc query -M | while read -r monitor; do \
+	    bspc query -D -m "$monitor" --names | sort -g | xargs -rd'\n' bspc monitor "$monitor" -o; \
+	done
 
 #############################
 #       Resize Windows      #
