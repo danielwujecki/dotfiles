@@ -1,10 +1,11 @@
-.Xauthority
 .cache/
-.python_history
 .ssh/
+misc/pkgs/
 .viminfo
-.wget-hsts
-.zsh_history
-.gitconfig
 *.tar.gz
+.wget-hsts
+.gitconfig
+.Xauthority
+.zsh_history
+.python_history
 !screenshot.jpg

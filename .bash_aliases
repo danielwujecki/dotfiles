@@ -17,7 +17,7 @@ fi
 # orte
 alias ..='cd ../'
 alias ...='cd ../../'
-if [[ -d ~/Dropbox ]] ; then alias box='cd ~/Dropbox' ; fi
+if [[ -d ~/Dropbox ]] ; then alias dbox='cd ~/Dropbox' ; fi
 if [[ -d ~/Schreibtisch ]] ; then alias des='cd ~/Schreibtisch' ; fi
 if [[ -d ~/Dropbox/wise2021 ]] ; then alias sem='cd ~/Dropbox/wise2021' ; fi
 if [[ -d ~/Repositories ]] ; then alias repos='cd ~/Repositories' ; fi
@@ -28,6 +28,10 @@ if [[ -x /usr/bin/nvim && -x /usr/bin/fzf ]] ; then alias vf='nvim $(fzf)' ; fi
 if [[ -x /usr/bin/docker-compose ]] ; then alias compose='docker-compose' ; fi
 if [[ -f ~/.ssh/ssh_rsa_wujecki ]] ; then
     alias kssh='ssh-add ~/.ssh/ssh_rsa_wujecki'
+fi
+if [[ -x /usr/bin/rclone && -d ~/Dropbox ]] ; then
+    alias dboxup='rclone sync -i ~/Dropbox Dropbox:/'
+    alias dboxdown='rclone sync -i Dropbox:/ ~/Dropbox'
 fi
 
 # programme
