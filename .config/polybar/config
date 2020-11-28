@@ -109,7 +109,7 @@ content = |
 [module/bspwm]
 type = internal/bspwm
 
-enable-click = false
+enable-click = true
 enable-scroll = false
 pin-workspaces = false
 
