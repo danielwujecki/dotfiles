@@ -77,7 +77,7 @@ entry {
     border: 0px;
     border-radius: 4px;
     margin: 0px 0px 0px 6;
-    handle-color: #ffb52a;
+    handle-color: #1793d1;
     handle-width: 6px;
     background-color: #262626;
 }
