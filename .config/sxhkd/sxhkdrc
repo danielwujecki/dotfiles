@@ -38,7 +38,7 @@ super + shift + r
 	bspc wm -r
 
 super + alt + e
-	bspc quit
+    pkill ssh-agent ; bspc quit
 
 #############################
 #      Lock and Suspend     #

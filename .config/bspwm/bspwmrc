@@ -47,21 +47,22 @@ bspc config pointer_modifier          "mod4"
 bspc rule -a Emacs state=tiled
 
 #### example rules ####
-# bspc rule -a Gimp desktop='^8' state=floating follow=on
-# bspc rule -a Chromium desktop='^2'
-# bspc rule -a mplayer2 state=floating
-# bspc rule -a Kupfer.py focus=on
-# bspc rule -a Screenkey manage=off
+#bspc rule -a Gimp desktop='^8' state=floating follow=on
+#bspc rule -a Chromium desktop='^2'
+#bspc rule -a mplayer2 state=floating
+#bspc rule -a Kupfer.py focus=on
+#bspc rule -a Screenkey manage=off
 
 # start programs
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom &
 pgrep -x lxpolkit > /dev/null || lxpolkit &
 pgrep -x nm-applet > /dev/null || nm-applet &
-pgrep -x emacs > /dev/null || emacs --daemon &
+#pgrep -x emacs > /dev/null || emacs --daemon &
 pgrep -u daniel -x dunst > /dev/null || dunst &
 pgrep -x redshift-gtk > /dev/null || redshift-gtk &
 pgrep -x blueman-applet > /dev/null || blueman-applet &
 pgrep -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
-$HOME/.local/bin/fehbg &
-$HOME/.local/bin/polybar_normal > /dev/null &
+"$HOME"/.local/bin/fehbg &
+"$HOME"/.local/bin/polybar_normal > /dev/null &
+"$HOME"/.config/polybar/check_updates.sh > /dev/null &

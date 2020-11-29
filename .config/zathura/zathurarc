@@ -12,3 +12,5 @@ set recolor-darkcolor "#fbfbfb"
 set default-bg "#1C1C1C"
 set inputbar-bg "#1C1C1C"
 set statusbar-bg "#1C1C1C"
+
+map <A-n> set recolor

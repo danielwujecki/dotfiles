@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 # wichtigstes kommmando auf dem terminal - ls
 if [[ -x /usr/bin/exa ]] ; then
     alias exa='exa -lat changed --git --color=auto --group-directories-first'
