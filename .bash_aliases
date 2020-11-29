@@ -39,6 +39,9 @@ if [[ -x /usr/bin/nvim ]] ; then
     alias vi='nvim'
     alias vim='nvim'
 fi
+if [[ -x /usr/bin/emacs && -x /usr/bin/emacsclient ]] ; then
+    alias emasc="emacsclient -c -a ''"
+fi
 alias df='df -Th'
 alias du='du -sh'
 alias rm='rm -I'
@@ -64,7 +67,7 @@ if [[ -x /usr/bin/udisksctl ]] ; then
 fi
 
 # ssh
-#alias ssh='TERM=xterm-256color ssh'
+alias ssh='TERM=xterm-256color ssh'
 alias sraspi='ssh pi@192.168.178.38'
 #alias sraspif='nautilus sftp://pi@raspberryserver &> /dev/null &'
 

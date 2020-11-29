@@ -53,3 +53,11 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(setq-default tab-width 4
+              indent-tabs-mode nil
+              delete-by-moving-to-trash t
+              window-combination-resize t
+              x-stretch-cursor t)
+
+(setq +latex-viewers '(zathura))

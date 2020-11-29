@@ -14,6 +14,10 @@
 super + Return
 	kitty
 
+# launch emacs
+super + shift + Return
+	emacsclient -c -a ''
+
 # program launcher
 super + d
     rofi -show drun

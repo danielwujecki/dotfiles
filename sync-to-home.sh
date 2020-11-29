@@ -37,7 +37,7 @@ cp "$HOME"/Repositories/dotfiles/.config/redshift.conf "$HOME"/.config/
 #cp "$HOME"/Repositories/dotfiles/.config/user-dirs.dirs "$HOME"/.config/
 #cp "$HOME"/Repositories/dotfiles/.config/user-dirs.locale "$HOME"/.config/
 
-# ~/.local/bin
+# ~/.local/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/dock "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/fehbg "$HOME"/.local/bin/
 #cp -r "$HOME"/Repositories/dotfiles/.local/bin/polybar_dock "$HOME"/.local/bin/
@@ -47,6 +47,8 @@ cp -r "$HOME"/Repositories/dotfiles/.local/bin/pycl "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/texclean "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/toggletouchpad "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/undock "$HOME"/.local/bin/
+cp -r "$HOME"/Repositories/dotfiles/.local/share/applications/emacs.desktop \
+    "$HOME"/.local/share/applications/
 
 # misc folders in ~/
 cp -r "$HOME"/Repositories/dotfiles/.oh-my-zsh "$HOME"/
