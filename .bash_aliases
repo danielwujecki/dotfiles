@@ -51,6 +51,7 @@ alias mv='mv -i'
 if [[ -x /usr/bin/htop ]] ; then alias top='htop' ; fi
 if [[ -x /usr/bin/colordiff ]] ; then alias diff='colordiff' ; fi
 if [[ -x /usr/bin/xclip ]] ; then alias xclip='xclip -sel c' ; fi
+if [[ -x /usr/bin/fd ]] ; then alias fd='fd -H' ; fi
 if [[ -x /usr/bin/pikaur ]] ; then
     alias pac='pikaur'
     alias yay='echo "" > $HOME/.config/polybar/current_updates.txt && pikaur -Syu'
@@ -74,11 +75,11 @@ alias sraspi='ssh pi@192.168.178.38'
 #alias sraspif='nautilus sftp://pi@raspberryserver &> /dev/null &'
 
 # python
-alias pyc='ipython'
-if [[ -f ~/.virtualenvs/mypython/bin/activate ]] ; then
-    alias mypy='source ~/.virtualenvs/mypython/bin/activate'
+if [[ -f /home/daniel/.pyenv/versions/mypython/bin/activate ]] ; then
+    alias mypy='pyenv activate mypython'
 fi
-alias mypye='deactivate'
+alias deactivate='pyenv deactivate'
+alias pyc='ipython'
 
 # misc
 if [[ -x /usr/bin/curl ]] ; then alias wetter='curl "wttr.in/Berlin?lang=de"' ; fi

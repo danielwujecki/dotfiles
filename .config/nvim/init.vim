@@ -43,7 +43,7 @@ set directory^=$HOME/.vim/backup/
 
 " python setup
 let g:loaded_python_provider=0
-let g:python3_host_prog='/home/daniel/.virtualenvs/nvim-venv/bin/python3'
+let g:python3_host_prog='/home/daniel/.pyenv/versions/mypython/bin/python3'
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
