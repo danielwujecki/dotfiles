@@ -1,6 +1,5 @@
 ;==========================================================
 ;
-;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
 ;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
 ;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
@@ -33,12 +32,15 @@ monitor-exact = true
 override-redirect = false
 wm-restack = bspwm
 
-bottom = false
 fixed-center = true
+bottom = false
 width = 100%
 height = 34
 offset-x = 0
 offset-y = 0
+
+dpi-x = 96
+dpi-y = 96
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -49,11 +51,8 @@ border-size = 0
 border-color = #00000000
 
 radius = 0.0
-padding-left = 1
+padding-left = 2
 padding-right = 1
-module-margin = 0
-module-margin-left = 0
-module-margin-right = 1
 
 ; standard
 font-0 = "JetBrains Mono:size=11;3"
@@ -68,18 +67,19 @@ modules-left = launcher readupdates sep bspwm xwindow
 modules-right = cpu memory sep audio backlight battery date sep
 ; modules-center = spotify
 
+module-margin = 0
+module-margin-left = 0
+module-margin-right = 2
+
 tray-position = right
 tray-detached = false
-tray-maxsize = 26
+tray-maxsize = 20
 tray-padding = 1
 tray-scale = 1.0
 
-dpi-x = 96
-dpi-y = 96
 enable-ipc = false
-
-cursor-click = pointer
-cursor-scroll = ns-resize
+cursor-click = default
+cursor-scroll = default
 
 ###############################################################################
 ############                       MODULES LEFT                    ############
@@ -140,13 +140,11 @@ label = %title:0:70:...%
 ############                       MODULES RIGHT                   ############
 ###############################################################################
 
-
 [module/cpu]
 type = internal/cpu
 interval = 1
 
 label = %{T3}﬙ %{T-}%percentage:2%%
-label-padding-right = 1
 label-foreground = ${colors.blue}
 
 [module/memory]
@@ -165,11 +163,9 @@ interval = 5
 format-volume = <ramp-volume><label-volume>
 
 label-volume = %percentage%%
-label-volume-padding-right = 1
 label-volume-foreground = ${colors.yellow}
 
 label-muted = %{T3} %{T-}
-label-muted-padding-right = 0
 label-muted-foreground = ${colors.alert}
 
 ramp-volume-0 = %{T3} %{T-}
@@ -185,7 +181,6 @@ format = <ramp><label>
 
 label = %percentage%%
 label-foreground = ${colors.blue}
-label-padding-right = 1
 ramp-0 = %{T3} %{T-}
 ramp-1 = %{T3} %{T-}
 ramp-2 = %{T3} %{T-}
@@ -200,16 +195,13 @@ full-at = 99
 format-charging = <animation-charging><label-charging>
 label-charging = %percentage%%
 label-charging-foreground = ${colors.green}
-label-charging-padding-right = 1
 
 format-discharging = <ramp-capacity><label-discharging>
 label-discharging = %percentage%%
-label-discharging-padding-right = 1
 
 format-full = <label-full>
 label-full = %{T3} %{T-}%percentage%%
 label-full-foreground = ${colors.green}
-label-full-padding-right = 1
 
 ramp-capacity-0 = %{T3}%{F#ED404C} %{F-}%{T-}
 ramp-capacity-1 = %{T3}%{F#ED404C} %{F-}%{T-}
@@ -248,18 +240,9 @@ label = %time%  %date%
 [module/spotify]
 type = custom/script
 interval = 2
-format-prefix = " "
+format-prefix = Spotify
 format = <label>
 exec = /usr/bin/python3 $HOME/.config/polybar/spotify_status.py -t 32 -f '{artist}: {song}'
-
-[module/checkupdates]
-; better run as crontab
-type=custom/script
-
-exec = $HOME/.config/polybar/check_updates.sh
-tail = true
-format = <label>
-label = 
 
 ###############################################################################
 ############                     Global Settings                   ############

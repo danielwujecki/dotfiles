@@ -42,7 +42,7 @@ if [[ -x /usr/bin/nvim ]] ; then
     alias vim='nvim'
 fi
 if [[ -x /usr/bin/emacs && -x /usr/bin/emacsclient ]] ; then
-    alias emasc="emacsclient -c -a ''"
+    alias emasc='emacsclient -c -a ""'
 fi
 alias df='df -Th'
 alias du='du -sh'
