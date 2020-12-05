@@ -81,7 +81,7 @@ map <C-t> :vert term<Return>
 nmap <Tab> :bn<Return>
 
 " Compile current file with pdflatex
-nmap <C-l> :!pdflatex %<Return>
+nmap <C-l> :!latexmk -xelatex %<Return>
 
 " ########################################
 " ######     Plugins and Themes     ######

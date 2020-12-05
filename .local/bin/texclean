@@ -17,4 +17,7 @@ rm -rf ./*.aux \
        ./*.lot \
        ./*.nav \
        ./*.snm \
-       ./*.tdo
+       ./*.tdo \
+       ./*.dvi \
+       ./*.out.ps \
+       ./*.xdv

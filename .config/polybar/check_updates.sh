@@ -9,7 +9,7 @@ if [[ $? -ne 0 ]] ; then
     exit 2
 fi
 
-filepath="$HOME/.config/polybar/current_updates.txt"
+filepath="$HOME/.cache/current_updates.txt"
 
 upac=$(checkupdates | wc -l)
 uaur=$(pikaur -Qua 2> /dev/null | wc -l)
@@ -25,7 +25,11 @@ else
 fi
 
 if [[ $uaur -gt 0 ]] ; then
-    uaur="; $uaur aur"
+    if [[ $upac -gt 0 ]] ; then
+        uaur="; $uaur aur"
+    else
+        uaur="$uaur aur"
+    fi
 else
     uaur=""
 fi

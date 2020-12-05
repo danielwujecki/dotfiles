@@ -37,13 +37,6 @@ if [[ -x /usr/bin/rclone && -d ~/Dropbox ]] ; then
 fi
 
 # programme
-if [[ -x /usr/bin/nvim ]] ; then 
-    alias vi='nvim'
-    alias vim='nvim'
-fi
-if [[ -x /usr/bin/emacs && -x /usr/bin/emacsclient ]] ; then
-    alias emasc='emacsclient -c -a ""'
-fi
 alias df='df -Th'
 alias du='du -sh'
 alias rm='rm -I'
@@ -52,9 +45,21 @@ if [[ -x /usr/bin/htop ]] ; then alias top='htop' ; fi
 if [[ -x /usr/bin/colordiff ]] ; then alias diff='colordiff' ; fi
 if [[ -x /usr/bin/xclip ]] ; then alias xclip='xclip -sel c' ; fi
 if [[ -x /usr/bin/fd ]] ; then alias fd='fd -H' ; fi
+if [[ -x /usr/bin/nvim ]] ; then
+    alias vi='nvim'
+    alias vim='nvim'
+fi
+if [[ -x /usr/bin/emacs && -x /usr/bin/emacsclient ]] ; then
+    alias emasc='emacsclient -c -a ""'
+fi
+if [[ -x /usr/bin/latexmk ]] ; then
+    alias latexmk='latexmk -xelatex'
+    alias pdflatex='latexmk'
+    alias latex='latexmk'
+fi
 if [[ -x /usr/bin/pikaur ]] ; then
     alias pac='pikaur'
-    alias yay='echo "" > $HOME/.config/polybar/current_updates.txt && pikaur -Syu'
+    alias yay='echo "" > $HOME/.cache/current_updates.txt && pikaur -Syu'
 fi
 
 # git bare repos

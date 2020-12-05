@@ -63,9 +63,9 @@ fi
 #preexec() { ((cmdcount++)) }
 
 # nice system info
-if [[ -x /usr/bin/pfetch || -x $HOME/.local/bin/pfetch ]] ; then
-    pfetch
-fi
+#if [[ -x /usr/bin/pfetch || -x $HOME/.local/bin/pfetch ]] ; then
+#    pfetch
+#fi
 #if [[ -x $HOME/.local/bin/ufetch ]] ; then
 #    ufetch
 #fi

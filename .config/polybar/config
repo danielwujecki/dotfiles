@@ -96,7 +96,7 @@ click-left = "bash -c 'rofi -show drun'"
 [module/readupdates]
 type=custom/script
 
-exec = cat $HOME/.config/polybar/current_updates.txt
+exec = cat $HOME/.cache/current_updates.txt
 tail = false
 interval = 30
 format = <label>
