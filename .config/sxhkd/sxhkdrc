@@ -12,11 +12,11 @@
 
 # terminal emulator
 super + Return
-	kitty
+    kitty
 
 # launch emacs
 super + shift + Return
-	emacsclient -c -a ''
+    emacsclient -c -a ''
 
 # program launcher
 super + d
@@ -24,7 +24,7 @@ super + d
 
 # close and kill
 super + shift + {q,k}
-	bspc node -{c,k}
+    bspc node -{c,k}
 
 #############################
 #   restart + quit bspwm    #
@@ -32,10 +32,10 @@ super + shift + {q,k}
 
 # make sxhkd reload its configuration files:
 super + r
-	pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd
 
 super + shift + r
-	bspc wm -r
+    bspc wm -r
 
 super + alt + e
     pkill ssh-agent ; bspc quit
@@ -56,9 +56,9 @@ super + shift + o
 #############################
 
 # screenshots
-Print
-    scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'
 super + Print
+    scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'
+super + shift + Print
     scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'
 
 #############################
@@ -97,7 +97,7 @@ super + {_,shift} + g
 
 # alternate between the tiled and monocle layout
 super + m
-	bspc desktop -l next
+    bspc desktop -l next
 
 # set the window state
 super + {t,shift + t,s,f}
@@ -109,15 +109,15 @@ super + {t,shift + t,s,f}
 
 # focus the last desktop
 super + Tab
-	bspc desktop -f last
+    bspc desktop -f last
 
 # focus the node in the given direction
 super + {h,j,k,l}
-	bspc node -f {west,south,north,east}
+    bspc node -f {west,south,north,east}
 
 # send to the given desktop
 super + {1-9,0}
-	bspc desktop -f '{1-9,10}'
+    bspc desktop -f '{1-9,10}'
 
 #############################
 #        Move Windows       #
@@ -129,19 +129,19 @@ super + b
 
 # switch the node in the given direction
 super + shift + {h,j,k,l}
-	bspc node -s {west,south,north,east}
+    bspc node -s {west,south,north,east}
 
 # send to the given desktop
 super + shift + {1-9,0}
-	bspc node -d '{1-9,10}'
+    bspc node -d '{1-9,10}'
 
 # send to the given desktop and stay focused
 super + alt + {1-9,0}
-	bspc node -d '{1-9,10}' --follow
+    bspc node -d '{1-9,10}' --follow
 
 # move a floating window
 super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
 
 #############################
 #       Move Desktops       #
@@ -151,8 +151,8 @@ super + {Left,Down,Up,Right}
 super + shift + Tab
     bspc desktop -m next --follow && \
     bspc query -M | while read -r monitor; do \
-	    bspc query -D -m "$monitor" --names | sort -g | xargs -rd'\n' bspc monitor "$monitor" -o; \
-	done
+        bspc query -D -m "$monitor" --names | sort -g | xargs -rd'\n' bspc monitor "$monitor" -o; \
+    done
 
 #############################
 #       Resize Windows      #
@@ -160,11 +160,11 @@ super + shift + Tab
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 #############################
 #        Mark Areas         #
@@ -172,15 +172,15 @@ super + alt + shift + {h,j,k,l}
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+    bspc node -p {west,south,north,east}
 
 # preselect the ratio
 super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
+    bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
 super + ctrl + space
-	bspc node -p cancel
+    bspc node -p cancel
 
 ##################################
 #             Testing            #

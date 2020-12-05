@@ -1,0 +1,79 @@
+%!TEX root=./template.tex
+\section{Hausaufgabe 1}
+
+Formel: $ a_1 + a_2 = a_3 $
+
+Eine Matrix
+\begin{equation}
+  A = \begin{pmatrix}
+    a_{11}  & a_{12} & \ldots & a_{1n} \\
+    a_{21}  & a_{22} & \ldots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & \ldots & a_{mn}
+  \end{pmatrix}
+\end{equation}
+
+\subsection{Code Listings}
+
+Das ist ein \verb+\LaTeX+ Befehl: \LaTeX
+
+\begin{lstlisting}[caption={Useless Code},language=Python]
+def function():
+    # important stuff todo
+    string = "bla bl a"
+    return "bla"
+\end{lstlisting}
+
+\begin{verbatim}
+Ein anderes Code Beispiel \drölf
+\end{verbatim}
+
+\section{Hausaufgabe 2}
+
+Blabllbalbasfasf Hallo
+
+%\ifthenelse{\boolean{loesung}}{true}{false}
+
+\begin{algorithm}
+    \caption{Variance of the OLS Estimator}
+    %\DontPrintSemicolon
+    \KwIn{$n$ (number of data points); $\sigma^2_\epsilon$ (noise variance);
+        $\sigma^2_x$ (data variance); $w$ (true slope)}
+    \KwOut{variance of $\hat{w}$}
+    \emptyline
+
+    Generate $n$ gaussian data points $X = [x_1, \ldots , x_n]$, $x_i \sim \mathcal{N}(0, 1)$ \\
+    \For{$r=1,\dots,10^5$}{
+        generate $n$ gaussian noise terms $E = [\epsilon_1, \ldots, \epsilon_N]$,
+            $\epsilon_i \sim \mathcal{N}(0, \sigma_\epsilon^2)$ \\
+        compute $y=w\cdot X + E$ \\
+        compute OLS estimate $\hat{w}[r] = (X X^\top)^{-1} X y^\top$
+    }
+    \Return{$\var(\hat{w})$}
+\end{algorithm}
+
+\missing{Test}
+\gtodo{Test}
+\ytodo{Test}
+\rtodo{Test}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+\subsection{Beweise}
+
+\begin{satz}[Satz des Pythagoras]
+  Für rechtwinklige Dreiecke gilt für die Seitenlängen $a, b, c\in\R$, wobei $c$ der Länge der
+  Hypothenuse entspricht, dass
+  \begin{equation*}
+    a^{2} + b^{2} = c^{2}.
+  \end{equation*}
+\end{satz}
+\begin{kons}
+  Es gibt kein rechtwinkliges Dreieck, mit den Seitenlängen $a=3\,cm, b=4\,cm, c=6\,cm$.
+\end{kons}
+\begin{proof}
+  Es gilt
+  \begin{equation*}
+    3^{2} + 4^{2} = 9 + 16 = 25 \neq 36 = 6^{2}.
+  \end{equation*}
+\end{proof}

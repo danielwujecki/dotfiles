@@ -1,28 +1,44 @@
+% %!TEX root=./ha_template.tex
 \documentclass[
+    a4paper,
     11pt,
-    aspectratio=169,
-    xcolor={table,dvipsnames}
-]{beamer}
+    %twoside,
+    onecolumn,
+    %openright,
+    abstracton,
+    notitlepage,
+    parskip=half,
+    %chapterprefix,
+    egregdoesnotlikesansseriftitles
+]{scrartcl} % {scrreprt}
 \usepackage[english, ngerman]{babel}
 %\usepackage[utf8]{inputenc} % not needed for XeLaTeX
 \usepackage[T1]{fontenc}
 \usepackage{microtype}
-
-\usetheme[
-    progressbar=frametitle,
-    numbering=fraction
-]{metropolis}
+\usepackage[all,defaultlines=2]{nowidow}
 
 %\usepackage{hyphenat}
 %\hyphenation{Mathe-matik wieder-gewinnen}
 
+\usepackage[left=20mm,right=20mm,top=20mm,bottom=30mm]{geometry}
 \usepackage{amsmath, amssymb, amsthm, mathtools}
 \usepackage{hyperref}
 
-%\usepackage{palatino}
+\usepackage{palatino}
 \usepackage{fontspec}
 %\setmainfont{Calibri}
 \setmonofont{JetBrains Mono}
+
+\usepackage[modulo]{lineno}
+\def\linenumberfont{\normalfont\tiny}
+\usepackage{multicol}
+\setlength{\columnsep}{12mm}
+%\usepackage[onehalfspacing]{setspace}
+
+\usepackage[headsepline]{scrlayer-scrpage}
+\ohead{left}
+\chead{mid}
+\ihead{right}
 
 % BibLateX
 \usepackage{csquotes}
@@ -41,6 +57,7 @@
 \usepackage{booktabs}
 \usepackage{diagbox}
 
+\usepackage[table,dvipsnames]{xcolor}
 \usepackage{listings}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codeback}{rgb}{0.93,0.93,0.90}
@@ -62,7 +79,7 @@
 
 \usepackage{tikz}
 \usepackage{subfig}
-\usepackage[font=footnotesize]{caption}
+\usepackage{caption}
 \usepackage{overpic}
 \usepackage{graphicx}
 \usepackage[section]{placeins}
@@ -79,7 +96,8 @@
 
 \graphicspath{{imgs/}}
 \setcounter{tocdepth}{2}                            % inhaltsverzeichnis bis subsection
-%\setcounter{secnumdepth}{0}                         % überschriften nicht nummerieren
+\setcounter{topnumber}{1}                           % max ein bild oben
+\setcounter{secnumdepth}{0}                         % überschriften nicht nummerieren
 \numberwithin{equation}{section}                    % Formeln mit Überschrift nummerieren
 \newcommand{\emptyline}{\vspace{\baselineskip}}     % erzeugt leerzeile
 
@@ -120,48 +138,21 @@
 
 \begin{document}
 
-\frame{\titlepage}
+\maketitle
 
-\begin{frame}
-    \frametitle{Inhaltsverzeichnis}
-    \tableofcontents
-\end{frame}
+\begin{abstract}
+  Eine coole Zusammenfassung dieses Dokuments!
+\end{abstract}
 
-\section{Algorithm}
+%\newpage
+\tableofcontents
+%\linenumbers
+\listoftodos
 
-\begin{frame}
-    \frametitle{Algorithm}
-    \begin{algorithm}[H]
-        \caption{Variance of the OLS Estimator}
-        %\DontPrintSemicolon
-        \KwIn{$n$ (number of data points); $\sigma^2_\epsilon$ (noise variance);
-            $\sigma^2_x$ (data variance); $w$ (true slope)}
-        \KwOut{variance of $\hat{w}$}
-        \emptyline
+\input{example}
+%\include{example} % content on new page
 
-        Generate $n$ gaussian data points $X = [x_1, \ldots , x_n]$, $x_i \sim \mathcal{N}(0, 1)$ \\
-        \For{$r=1,\dots,10^5$}{
-            generate $n$ gaussian noise terms $E = [\epsilon_1, \ldots, \epsilon_N]$,
-                $\epsilon_i \sim \mathcal{N}(0, \sigma_\epsilon^2)$ \\
-            compute $y=w\cdot X + E$ \\
-            compute OLS estimate $\hat{w}[r] = (X X^\top)^{-1} X y^\top$
-        }
-        \Return{$\var(\hat{w})$}
-    \end{algorithm}
-\end{frame}
-
-\begin{frame}
-    top
-\end{frame}
-
-\begin{frame}[t]
-    top
-\end{frame}
-
-%\begin{frame}
-%    \frametitle{\hphantom{1em}}
-%    \frametitle{}
-%    \printbibliography
-%\end{frame}
+%\newpage
+%\printbibliography[title={Literaturverzeichnis}]
 
 \end{document}
