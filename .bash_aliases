@@ -53,7 +53,6 @@ if [[ -x /usr/bin/emacs && -x /usr/bin/emacsclient ]] ; then
     alias emasc='emacsclient -c -a ""'
 fi
 if [[ -x /usr/bin/latexmk ]] ; then
-    alias latexmk='latexmk -xelatex'
     alias pdflatex='latexmk'
     alias latex='latexmk'
 fi

@@ -5,6 +5,7 @@ cp "$HOME"/Repositories/dotfiles/.bash_aliases "$HOME"/
 #cp "$HOME"/Repositories/dotfiles/.bashrc "$HOME"/
 #cp "$HOME"/Repositories/dotfiles/.gitconfig "$HOME"/
 #cp "$HOME"/Repositories/dotfiles/.gtkrc-2.0 "$HOME"/
+cp "$HOME"/Repositories/dotfiles/.latexmkrc "$HOME"/
 cp "$HOME"/Repositories/dotfiles/.tmux.conf "$HOME"/
 cp "$HOME"/Repositories/dotfiles/.xinitrc "$HOME"/
 #cp "$HOME"/Repositories/dotfiles/.Xresources "$HOME"/
