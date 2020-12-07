@@ -5,7 +5,7 @@ set font "JetBrains Mono 10"
 # set window-width 1280
 set page-padding 20
 
-set recolor
+#set recolor
 set recolor-keephue
 set recolor-lightcolor "#2C2C2C"
 set recolor-darkcolor "#fbfbfb"

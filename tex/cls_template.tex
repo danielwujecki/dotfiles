@@ -2,9 +2,9 @@
     %10pt,
     %draft,
     %english,
-    %calibri,
     palatino,
     %mathpazo,
+    allroman,
     %headsepline,
     nosectionnums,
     %onehalfspacing,
@@ -19,10 +19,10 @@
 %\addbibresource{quellen.bib}
 %\setcounter{tocdepth}{2} % inhaltsverzeichnis bis subsection
 
-\newcommand{\mytitle}{Hausaufgabe}
-\newcommand{\mysubtitle}{Modul}
-\newcommand{\myname}{Daniel W.}
-\newcommand{\mydate}{\today}
+\renewcommand{\mytitle}{Hausaufgabe}
+\renewcommand{\mysubtitle}{Modul}
+\renewcommand{\myname}{Daniel W.}
+\renewcommand{\mydate}{\today}
 
 \hypersetup{
   pdftitle={\mytitle{}},
@@ -46,8 +46,18 @@
 
 \begin{document}
 
-\maketitle
+\ifdraft\else
+    \maketitle
+    %\newpage
+\fi
 
+\selectlanguage{english}
+\begin{abstract}
+  A nice abstract of this document!
+\end{abstract}
+
+%\newpage
+\selectlanguage{ngerman}
 \begin{abstract}
   Eine coole Zusammenfassung dieses Dokuments!
 \end{abstract}
@@ -59,6 +69,8 @@
 \input{example}
 %\include{example} % content on new page
 
+\appendix
+\section{Glossar} Bla
 %\newpage
 %\printbibliography[title={Literaturverzeichnis}]
 \todototoc

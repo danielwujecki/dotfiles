@@ -44,7 +44,7 @@ alias mv='mv -i'
 if [[ -x /usr/bin/htop ]] ; then alias top='htop' ; fi
 if [[ -x /usr/bin/colordiff ]] ; then alias diff='colordiff' ; fi
 if [[ -x /usr/bin/xclip ]] ; then alias xclip='xclip -sel c' ; fi
-if [[ -x /usr/bin/fd ]] ; then alias fd='fd -H' ; fi
+if [[ -x /usr/bin/fd ]] ; then alias fd='fd -iH' ; fi
 if [[ -x /usr/bin/nvim ]] ; then
     alias vi='nvim'
     alias vim='nvim'
@@ -53,12 +53,11 @@ if [[ -x /usr/bin/emacs && -x /usr/bin/emacsclient ]] ; then
     alias emacs='emacsclient -t -a ""'
 fi
 if [[ -x /usr/bin/latexmk ]] ; then
-    alias pdflatex='latexmk'
     alias latex='latexmk'
 fi
 if [[ -x /usr/bin/pikaur ]] ; then
     alias pac='pikaur'
-    alias yay='echo "" > $HOME/.cache/current_updates.txt && pikaur -Syu'
+    alias yay='pikaur -Syu && echo "" > $HOME/.cache/current_updates.txt'
 fi
 
 # git bare repos

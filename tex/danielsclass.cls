@@ -7,7 +7,6 @@
 \newif\ifdraft\draftfalse
 \newif\ifthesis\thesisfalse
 \newif\ifheadsep\headsepfalse
-\newif\ifcalibri\calibrifalse
 \newif\ifnosecnum\nosecnumfalse
 \newif\ifpalatino\palatinofalse
 \newif\ifmathpazo\mathpazofalse
@@ -17,7 +16,6 @@
 \DeclareOption{english}{\engltrue}
 \DeclareOption{thesis}{\thesistrue}
 \DeclareOption{englisch}{\engltrue}
-\DeclareOption{calibri}{\calibritrue}
 \DeclareOption{palatino}{\palatinotrue}
 \DeclareOption{mathpazo}{\mathpazotrue}
 \DeclareOption{headsepline}{\headseptrue}
@@ -25,19 +23,31 @@
 \DeclareOption{onehalfspacing}{\halfspacetrue}
 
 % Options to pass to koma script
-\DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{scrartcl}}
-\DeclareOption{11pt}{\PassOptionsToClass{\CurrentOption}{scrartcl}}
-\DeclareOption{12pt}{\PassOptionsToClass{\CurrentOption}{scrartcl}}
-
-\DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{scrreprt}}
-\DeclareOption{11pt}{\PassOptionsToClass{\CurrentOption}{scrreprt}}
-\DeclareOption{12pt}{\PassOptionsToClass{\CurrentOption}{scrreprt}}
+\DeclareOption{10pt}{
+    \PassOptionsToClass{\CurrentOption}{scrartcl}
+    \PassOptionsToClass{\CurrentOption}{scrreprt}
+}
+\DeclareOption{11pt}{
+    \PassOptionsToClass{\CurrentOption}{scrartcl}
+    \PassOptionsToClass{\CurrentOption}{scrreprt}
+}
+\DeclareOption{12pt}{
+    \PassOptionsToClass{\CurrentOption}{scrartcl}
+    \PassOptionsToClass{\CurrentOption}{scrreprt}
+}
 \DeclareOption{openright}{\PassOptionsToClass{\CurrentOption}{scrreprt}}
 \DeclareOption{chapterprefix}{\PassOptionsToClass{\CurrentOption}{scrreprt}}
-\DeclareOption{bibliography=totocnumbered}{\PassOptionsToClass{\CurrentOption}{scrreprt}}
+\DeclareOption{allroman}{
+    \PassOptionsToClass{egregdoesnotlikesansseriftitles}{scrartcl}
+    \PassOptionsToClass{egregdoesnotlikesansseriftitles}{scrreprt}
+}
+\DeclareOption{bibliography=totocnumbered}{
+    \PassOptionsToClass{\CurrentOption}{scrartcl}
+    \PassOptionsToClass{\CurrentOption}{scrreprt}
+}
 
 \DeclareOption*{ % Fallback for unknown options
-  \ClassWarning{danielsclass}{Unknown option '\CurrentOption'}
+    \ClassWarning{danielsclass}{Unknown option '\CurrentOption'}
 }
 \ProcessOptions\relax % execute options
 
@@ -50,7 +60,6 @@
         parskip=half,
         abstract=true,
         twoside,
-        egregdoesnotlikesansseriftitles
     ]{scrreprt}
 \else
     \LoadClass[
@@ -59,7 +68,6 @@
         notitlepage,
         parskip=half,
         abstract=true,
-        egregdoesnotlikesansseriftitles
     ]{scrartcl}
 \fi
 
@@ -87,10 +95,6 @@
     \defaultfontfeatures{Scale=MatchLowercase}
     \defaultfontfeatures[\rmfamily]{Scale=1}
 
-    \ifcalibri
-        \setmonofont{JetBrains Mono}
-        \setmainfont{Calibri}
-    \fi
     \ifpalatino
         \setmonofont{JetBrains Mono}
         \setmainfont{Palatino Linotype}
@@ -121,6 +125,8 @@
     \ohead{\pagemark}
     \ofoot[\pagemark]{}
 \fi
+\addtokomafont{pagehead}{\small}
+\addtokomafont{pagefoot}{\small}
 
 % BibLateX
 \RequirePackage{csquotes}
@@ -209,6 +215,11 @@
 \theoremstyle{remark}
 \newtheorem*{hinweis}{Hinweis}
 \newtheorem*{remark}{Remark}
+
+\newcommand{\mytitle}{?}
+\newcommand{\mysubtitle}{?}
+\newcommand{\myname}{?}
+\newcommand{\mydate}{?}
 
 \ifdraft
 \RequirePackage{scrtime}

@@ -1,11 +1,44 @@
+# directories
 .cache/
 .ssh/
 misc/pkgs/
+.auctex-auto/
+
+# private dotfiles
 .viminfo
-*.tar.gz
 .wget-hsts
 .gitconfig
 .Xauthority
 .zsh_history
 .python_history
+
+# latex
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.lof
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.toc
+*.synctex.gz
+*.bib.sav
+*.bib.bak
+*.lot
+*.nav
+*.snm
+*.tdo
+*.dvi
+*.out.ps
+*.xdv
+tex/*.pdf
+tex/*.org
+
+# files to include
 !screenshot.jpg
+
+# misc files
+*.tar.gz
