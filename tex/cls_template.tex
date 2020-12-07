@@ -1,0 +1,67 @@
+\documentclass[
+    %10pt,
+    %draft,
+    %english,
+    %calibri,
+    palatino,
+    %mathpazo,
+    %headsepline,
+    nosectionnums,
+    %onehalfspacing,
+    %thesis,
+    %openright,
+    %chapterprefix,
+    %bibliography=totocnumbered,
+]{danielsclass}
+
+%\hyphenation{Mathe-matik wieder-gewinnen}
+%\newgeometry{margin=50mm}
+%\addbibresource{quellen.bib}
+%\setcounter{tocdepth}{2} % inhaltsverzeichnis bis subsection
+
+\newcommand{\mytitle}{Hausaufgabe}
+\newcommand{\mysubtitle}{Modul}
+\newcommand{\myname}{Daniel W.}
+\newcommand{\mydate}{\today}
+
+\hypersetup{
+  pdftitle={\mytitle{}},
+  pdfsubject={\mysubtitle{}},
+  pdfauthor={\myname{}},
+  pdfproducer={\myname{}},
+  pdfcreator={Accomplished with: XeLaTeX, biber, and hyperref-package.},
+  %pdfkeywords={}
+}
+
+\title{\mytitle{}}
+\subtitle{\mysubtitle{}}
+\author{\myname{}}
+\date{\mydate{}}
+
+\ihead{left}
+\chead{mid}
+\ohead{right}
+
+% =====================================================================================================
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  Eine coole Zusammenfassung dieses Dokuments!
+\end{abstract}
+
+%\newpage
+\tableofcontents
+%\linenumbers
+
+\input{example}
+%\include{example} % content on new page
+
+%\newpage
+%\printbibliography[title={Literaturverzeichnis}]
+\todototoc
+\listoftodos
+
+\end{document}

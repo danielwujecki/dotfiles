@@ -2,10 +2,11 @@
 \documentclass[
     a4paper,
     11pt,
+    %draft,
     %twoside,
     onecolumn,
     %openright,
-    abstracton,
+    abstract=true,
     notitlepage,
     parskip=half,
     %chapterprefix,
@@ -13,7 +14,7 @@
 ]{scrartcl} % {scrreprt}
 \usepackage[english, ngerman]{babel}
 %\usepackage[utf8]{inputenc} % not needed for XeLaTeX
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 \usepackage{microtype}
 \usepackage[all,defaultlines=2]{nowidow}
 
@@ -24,10 +25,13 @@
 \usepackage{amsmath, amssymb, amsthm, mathtools}
 \usepackage{hyperref}
 
-\usepackage{palatino}
+%\usepackage[sc,osf]{mathpazo}
 \usepackage{fontspec}
-%\setmainfont{Calibri}
+\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures[\rmfamily]{Scale=1}
 \setmonofont{JetBrains Mono}
+\setmainfont{Palatino Linotype}
+%\setmainfont{Calibri}
 
 \usepackage[modulo]{lineno}
 \def\linenumberfont{\normalfont\tiny}
@@ -35,10 +39,10 @@
 \setlength{\columnsep}{12mm}
 %\usepackage[onehalfspacing]{setspace}
 
-\usepackage[headsepline]{scrlayer-scrpage}
-\ohead{left}
+\usepackage[draft=false,headsepline]{scrlayer-scrpage}
+\ihead{left}
 \chead{mid}
-\ihead{right}
+\ohead{right}
 
 % BibLateX
 \usepackage{csquotes}
@@ -84,15 +88,11 @@
 \usepackage{graphicx}
 \usepackage[section]{placeins}
 
-\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[obeyDraft,colorinlistoftodos]{todonotes}
 \newcommand{\missing}[1]{\todo[inline]{#1}}
 \newcommand{\rtodo}[1]{\todo[backgroundcolor=red]{#1}}
 \newcommand{\ytodo}[1]{\todo[backgroundcolor=yellow]{#1}}
 \newcommand{\gtodo}[1]{\todo[backgroundcolor=green]{#1}}
-
-%\usepackage{ifthen}
-%\newboolean{loesung}                                % Deklaration
-%\setboolean{loesung}{false}                         % Zuweisung
 
 \graphicspath{{imgs/}}
 \setcounter{tocdepth}{2}                            % inhaltsverzeichnis bis subsection
@@ -120,19 +120,24 @@
 \newtheorem*{hinweis}{Hinweis}
 \newtheorem*{remark}{Remark}
 
+\newcommand{\mytitle}{Hausaufgabe}
+\newcommand{\mysubtitle}{Modul}
+\newcommand{\myname}{Daniel W.}
+\newcommand{\mydate}{\today}
+
 \hypersetup{
-  %pdftitle={},
-  %pdfsubject={},
-  pdfauthor={Daniel Wujecki},
-  pdfproducer={Daniel Wujecki},
+  pdftitle={\mytitle{}},
+  pdfsubject={\mysubtitle{}},
+  pdfauthor={\myname{}},
+  pdfproducer={\myname{}},
   pdfcreator={Accomplished with: XeLaTeX, biber, and hyperref-package.},
   %pdfkeywords={}
 }
 
-\title{Hausaufgabe}
-\subtitle{Modul}
-\author{Daniel W.}
-\date{\today}
+\title{\mytitle{}}
+\subtitle{\mysubtitle{}}
+\author{\myname{}}
+\date{\mydate{}}
 
 % =====================================================================================================
 
@@ -147,12 +152,13 @@
 %\newpage
 \tableofcontents
 %\linenumbers
-\listoftodos
 
 \input{example}
 %\include{example} % content on new page
 
 %\newpage
 %\printbibliography[title={Literaturverzeichnis}]
+\todototoc
+\listoftodos
 
 \end{document}

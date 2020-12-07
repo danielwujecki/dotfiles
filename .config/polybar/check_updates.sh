@@ -25,7 +25,7 @@ else
 fi
 
 if [[ $uaur -gt 0 ]] ; then
-    if [[ $upac -gt 0 ]] ; then
+    if [[ -n $upac ]] ; then
         uaur="; $uaur aur"
     else
         uaur="$uaur aur"
@@ -35,7 +35,7 @@ else
 fi
 
 if [[ -n $upac || -n $uaur ]] ; then
-    echo "($upac$uaur)" > $filepath
+    echo "($upac$uaur)" > "$filepath"
 else
-    echo "" > $filepath
+    echo "" > "$filepath"
 fi
