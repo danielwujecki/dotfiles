@@ -1,148 +1,80 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{danielsclass}[2020/12/06 My own class]
+\ProvidesClass{danielsclass}[2020/12/08 My own class]
 
-%%% OPTIONS %%%
-
-\newif\ifengl\englfalse
 \newif\ifdraft\draftfalse
-\newif\ifthesis\thesisfalse
-\newif\ifheadsep\headsepfalse
-\newif\ifnosecnum\nosecnumfalse
-\newif\ifpalatino\palatinofalse
-\newif\ifmathpazo\mathpazofalse
-\newif\ifhalfspace\halfspacefalse
-
 \DeclareOption{draft}{\drafttrue}
-\DeclareOption{english}{\engltrue}
-\DeclareOption{thesis}{\thesistrue}
-\DeclareOption{englisch}{\engltrue}
-\DeclareOption{palatino}{\palatinotrue}
-\DeclareOption{mathpazo}{\mathpazotrue}
-\DeclareOption{headsepline}{\headseptrue}
-\DeclareOption{nosectionnums}{\nosecnumtrue}
-\DeclareOption{onehalfspacing}{\halfspacetrue}
-
-% Options to pass to koma script
-\DeclareOption{10pt}{
-    \PassOptionsToClass{\CurrentOption}{scrartcl}
-    \PassOptionsToClass{\CurrentOption}{scrreprt}
-}
-\DeclareOption{11pt}{
-    \PassOptionsToClass{\CurrentOption}{scrartcl}
-    \PassOptionsToClass{\CurrentOption}{scrreprt}
-}
-\DeclareOption{12pt}{
-    \PassOptionsToClass{\CurrentOption}{scrartcl}
-    \PassOptionsToClass{\CurrentOption}{scrreprt}
-}
-\DeclareOption{openright}{\PassOptionsToClass{\CurrentOption}{scrreprt}}
-\DeclareOption{chapterprefix}{\PassOptionsToClass{\CurrentOption}{scrreprt}}
-\DeclareOption{allroman}{
-    \PassOptionsToClass{egregdoesnotlikesansseriftitles}{scrartcl}
-    \PassOptionsToClass{egregdoesnotlikesansseriftitles}{scrreprt}
-}
-\DeclareOption{bibliography=totocnumbered}{
-    \PassOptionsToClass{\CurrentOption}{scrartcl}
-    \PassOptionsToClass{\CurrentOption}{scrreprt}
-}
 
 \DeclareOption*{ % Fallback for unknown options
     \ClassWarning{danielsclass}{Unknown option '\CurrentOption'}
 }
 \ProcessOptions\relax % execute options
 
-%%% BASE CLASS %%%
-
-\ifthesis
-    \LoadClass[
-        a4paper,
-        onecolumn,
-        parskip=half,
-        abstract=true,
-        twoside,
-    ]{scrreprt}
-\else
-    \LoadClass[
-        a4paper,
-        onecolumn,
-        notitlepage,
-        parskip=half,
-        abstract=true,
-    ]{scrartcl}
-\fi
+\LoadClass[a4paper,onecolumn]{scrartcl}
+%\LoadClass[a4paper,onecolumn]{scrreprt}
+\KOMAoptions{fontsize=10pt}
+%\KOMAoptions{twoside}
+%\KOMAoptions{DIV=15}
+%\KOMAoptions{BCOR=2mm}
+\KOMAoptions{parskip=half}
+\KOMAoptions{abstract=true}
+%\KOMAoptions{openright}
+%\KOMAoptions{chapterprefix}
+\ifdraft\KOMAoptions{draft}\fi
+\KOMAoptions{bibliography=totocnumbered}
+%\KOMAoptions{egregdoesnotlikesansseriftitles}
 
 %%% PACKAGES %%%
 
-\ifengl
-    \RequirePackage[ngerman, main=english]{babel}
-\else
-    \RequirePackage[english, main=ngerman]{babel}
-\fi
+\RequirePackage[left=20mm,right=20mm,top=20mm,bottom=30mm]{geometry}
+%\RequirePackage[ngerman, main=english]{babel}
+\RequirePackage[english, main=ngerman]{babel}
 
-\RequirePackage{microtype}
 \RequirePackage[all,defaultlines=2]{nowidow}
+%\RequirePackage[onehalfspacing]{setspace}
+\RequirePackage{microtype}
 \RequirePackage{hyphenat}
-\RequirePackage{amsmath, amssymb, amsthm, mathtools}
 \RequirePackage{hyperref}
 
-\ifmathpazo
-    %\usepackage[utf8]{inputenc} % not needed for XeLaTeX
-    \usepackage[T1]{fontenc}
-    \usepackage[sc,osf]{mathpazo}
-\else
-    \RequirePackage{fontspec}
+\RequirePackage{fontspec}
+\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures[\rmfamily]{Scale=1}
+\setmonofont{JetBrains Mono}
+%\setmainfont{Palatino Linotype}
+%\setmainfont{Calibri}
 
-    \defaultfontfeatures{Scale=MatchLowercase}
-    \defaultfontfeatures[\rmfamily]{Scale=1}
+%\RequirePackage[utf8]{inputenc} % not needed for XeLaTeX
+%\RequirePackage[T1]{fontenc}
+%\RequirePackage[sc,osf]{mathpazo}
 
-    \ifpalatino
-        \setmonofont{JetBrains Mono}
-        \setmainfont{Palatino Linotype}
-    \fi
-\fi
+%\RequirePackage[modulo]{lineno}
+%\def\linenumberfont{\normalfont\tiny}
+%\RequirePackage{multicol}
+%\setlength{\columnsep}{12mm}
 
-\ifthesis\else
-    \RequirePackage[left=20mm,right=20mm,top=20mm,bottom=30mm]{geometry}
-\fi
-
-\RequirePackage[modulo]{lineno}
-\def\linenumberfont{\normalfont\tiny}
-\RequirePackage{multicol}
-\setlength{\columnsep}{12mm}
-
-\ifhalfspace
-    \RequirePackage[onehalfspacing]{setspace}
-\fi
-
-\ifheadsep
-    \RequirePackage[draft=false,headsepline]{scrlayer-scrpage}
-\else
-    \RequirePackage[draft=false]{scrlayer-scrpage}
-\fi
-\ifthesis
-    \automark[section]{chapter}
-    \ihead{\headmark}
-    \ohead{\pagemark}
-    \ofoot[\pagemark]{}
-\fi
+%\RequirePackage[draft=false,headsepline]{scrlayer-scrpage}
+\RequirePackage[draft=false]{scrlayer-scrpage}
 \addtokomafont{pagehead}{\small}
 \addtokomafont{pagefoot}{\small}
+\ihead{left}
+\chead{mid}
+\ohead{right}
+%\automark[section]{chapter}
+%\ihead{\headmark}
+%\ohead{\pagemark}
+%\ofoot[\pagemark]{}
 
 % BibLateX
-\RequirePackage{csquotes}
-\RequirePackage[
-    backend=biber,
-    style=ieee,
-    url=false,
-    eprint=false,
-    isbn=false,
-    hyperref=true,
-    bibencoding=inputenc
-]{biblatex}
-
-\RequirePackage{tabularx}
-\RequirePackage{booktabs}
-\RequirePackage{diagbox}
+%\RequirePackage{csquotes}
+%\RequirePackage[
+%    backend=biber,
+%    style=ieee,
+%    url=false,
+%    eprint=false,
+%    isbn=false,
+%    hyperref=true,
+%    bibencoding=inputenc
+%]{biblatex}
+%\addbibresource{quellen.bib}
 
 \RequirePackage[table,dvipsnames]{xcolor}
 \RequirePackage{listings}
@@ -165,47 +97,34 @@
 \RequirePackage[linesnumbered,ruled,vlined]{algorithm2e}
 
 \RequirePackage{tikz}
-\RequirePackage{subfig}
-\RequirePackage{caption}
-\RequirePackage{overpic}
+%\RequirePackage{subfig}
+%\RequirePackage{caption}
+%\RequirePackage{overpic}
 \RequirePackage{graphicx}
 \RequirePackage[section]{placeins}
 
+%\RequirePackage{tabularx}
+%\RequirePackage{booktabs}
+%\RequirePackage{diagbox}
+
+\RequirePackage{amsmath,amssymb,amsthm,mathtools}
 \RequirePackage[obeyDraft,colorinlistoftodos]{todonotes}
+
+%%% COMMANDS %%%
 \newcommand{\missing}[1]{\todo[inline]{#1}}
 \newcommand{\rtodo}[1]{\todo[backgroundcolor=red]{#1}}
 \newcommand{\ytodo}[1]{\todo[backgroundcolor=yellow]{#1}}
 \newcommand{\gtodo}[1]{\todo[backgroundcolor=green]{#1}}
-
-%%% SETTINGS %%%
-
-\graphicspath{{imgs/}}
-\setcounter{topnumber}{1}
-\numberwithin{equation}{section}
-\setcounter{tocdepth}{2}
-\ifnosecnum
-    \setcounter{secnumdepth}{0}
-\fi
-
-%%% COMMANDS %%%
-
-% dots for a signatue in a formular
-\newcommand{\signaturespace}[1]{%
-  \begin{tikzpicture}
-    \draw[dotted] (0,0)--(5,0) (2,0) node[below]{#1};
-  \end{tikzpicture}
-}
-\newcommand{\emptyline}{\vspace{\baselineskip}}
 
 \newcommand{\Nn}{\mathbb{N}}
 \newcommand{\Zn}{\mathbb{Z}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Cn}{\mathbb{C}}
 \newcommand{\bw}{\mathbf{w}}
-\DeclareMathOperator{\var}{var}
-\DeclareMathOperator*{\argmin}{argmin}
 \newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
 \newcommand{\Set}[2]{\left\lbrace#1\mid#2\right\rbrace}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator*{\argmin}{argmin}
 
 % See https://www.overleaf.com/learn/latex/theorems_and_proofs
 \theoremstyle{plain} % definition
@@ -221,6 +140,22 @@
 \newcommand{\myname}{?}
 \newcommand{\mydate}{?}
 
+% dots for a signatue in a formular
+\newcommand{\signaturespace}[1]{%
+  \begin{tikzpicture}
+    \draw[dotted] (0,0)--(5,0) (2,0) node[below]{#1};
+  \end{tikzpicture}
+}
+\newcommand{\emptyline}{\vspace{\baselineskip}}
+
+%%% SETTINGS %%%
+
+\graphicspath{{imgs/}}
+\setcounter{topnumber}{1}
+\setcounter{tocdepth}{2}
+\numberwithin{equation}{section}
+\setcounter{secnumdepth}{0}
+
 \ifdraft
 \RequirePackage{scrtime}
 \RequirePackage{eso-pic}
@@ -228,5 +163,7 @@
 	\put(20,50){\textcolor[gray]{0.5}{DRAFT: \mytitle{} - \myname{} (Compile date: \today/\thistime)}}
 }
 \fi
+
+%\hyphenation{Mathe-matik wieder-gewinnen}
 
 \endinput
