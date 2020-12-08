@@ -1,24 +1,17 @@
 \documentclass[
-    a4paper,
     10pt,
+    a4paper,
     notitlepage,
     %parskip=half,
     egregdoesnotlikesansseriftitles
 ]{scrartcl}
 \usepackage[english, ngerman]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
 \usepackage{microtype}
 \usepackage{hyperref}
-\usepackage[left=20mm,right=20mm,top=20mm,bottom=30mm]{geometry}
-\usepackage{palatino}
-
-%\usepackage{tabularx}
-%\usepackage{tikz}
-\usepackage{graphicx}
-
-%\usepackage{xcolor}
-%\usepackage{listings}
+\usepackage{fontspec}
+\usepackage[left=20mm,right=20mm,top=20mm,bottom=40mm]{geometry}
 
 \setkomafont{section}{\large}
 
@@ -39,8 +32,8 @@
     mod + return            & open terminal                         \\
     mod + shift + return    & open emacs                            \\
     mod + d                 & program launcher                      \\
-    mod + q                 & terminate program                     \\
-    mod + k                 & kill program
+    mod + shift + q         & terminate program                     \\
+    mod + shift + d         & kill program
 \end{tabular}
 
 \section{Restart and Quit bspwm}
@@ -58,8 +51,8 @@
 
 \section{Screenshots}
 \begin{tabular}{p{4cm}l}
-    print               & take screenshot                       \\
-    mod + print         & take screenshot of current window
+    mod + print         & take screenshot                       \\
+    mod + shift + print & take screenshot of current window
 \end{tabular}
 
 \section{Toggle Gaps}
@@ -80,7 +73,7 @@
 \section{Focus Windows}
 \begin{tabular}{p{4cm}l}
     mod + h,j,k,l         & move focus into direction        \\
-    mod + 1--9,0           & move focus to workspace         \\
+    mod + 1--9,0          & move focus to workspace         \\
     mod + tab             & switch to last workspace
 \end{tabular}
 
@@ -109,7 +102,7 @@
 \section{Mark Areas}
 \begin{tabular}{p{4cm}l}
     mod + ctrl + h,j,k,l  & preselect area                    \\
-    mod + ctrl + 1--9      & preselect split ratio            \\
+    mod + ctrl + 1--9     & preselect split ratio            \\
     mod + ctrl + space    & cancel preselection
 \end{tabular}
 

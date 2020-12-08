@@ -23,7 +23,7 @@ super + d
     rofi -show drun
 
 # close and kill
-super + shift + {q,k}
+super + shift + {q,d}
     bspc node -{c,k}
 
 #############################
