@@ -47,12 +47,12 @@ let g:python3_host_prog='/home/daniel/.pyenv/versions/mypython/bin/python3'
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-  filetype plugin indent on
-  set mouse=nv
+  set mouse=nv      " mouse in normal and visual mode
 endif
 
-" Vim jumps to the last position when reopening a file
 if has("autocmd")
+  filetype plugin indent on     " indentation based on file tpye
+  " Vim jumps to the last position when reopening a file
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
@@ -90,7 +90,8 @@ nmap <C-l> :!latexmk %<Return>
 if !exists('g:vscode')
 
 call plug#begin('~/.vim/plugged')
-Plug 'kristijanhusak/vim-hybrid-material'
+"Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'aonemd/kuroi.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -103,7 +104,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-python/python-syntax'
 
 "Plug 'jreybert/vimagit'
-"Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 map <C-n> :NERDTreeToggle<Return>
@@ -115,11 +116,16 @@ let g:airline_theme='hybrid'
 let g:airline_symbols_ascii=1
 let g:airline#extensions#tabline#enabled=1
 
-" material-hybrid theme
 if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    " material-hybrid theme
+"    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"    set background=dark
+"    colorscheme hybrid_material
+
+    set termguicolors
     set background=dark
-    colorscheme hybrid_material
+    colorscheme kuroi
 endif
+"colorscheme peachpuff
 
 endif " !exists('g:vscode')

@@ -20,14 +20,14 @@
 %\KOMAoptions{openright}
 %\KOMAoptions{chapterprefix}
 \ifdraft\KOMAoptions{draft}\fi
-\KOMAoptions{bibliography=totocnumbered}
-%\KOMAoptions{egregdoesnotlikesansseriftitles}
+%\KOMAoptions{bibliography=totocnumbered}
+\KOMAoptions{egregdoesnotlikesansseriftitles}
 
 %%% PACKAGES %%%
 
-\RequirePackage[left=20mm,right=20mm,top=20mm,bottom=30mm]{geometry}
-%\RequirePackage[ngerman, main=english]{babel}
-\RequirePackage[english, main=ngerman]{babel}
+\RequirePackage[left=20mm,right=20mm,top=20mm,bottom=40mm]{geometry}
+%\RequirePackage[ngerman,main=english]{babel}
+\RequirePackage[english,main=ngerman]{babel}
 
 \RequirePackage[all,defaultlines=2]{nowidow}
 %\RequirePackage[onehalfspacing]{setspace}
@@ -116,8 +116,9 @@
 \newcommand{\ytodo}[1]{\todo[backgroundcolor=yellow]{#1}}
 \newcommand{\gtodo}[1]{\todo[backgroundcolor=green]{#1}}
 
-\newcommand{\Nn}{\mathbb{N}}
-\newcommand{\Zn}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{R}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Cn}{\mathbb{C}}
 \newcommand{\bw}{\mathbf{w}}

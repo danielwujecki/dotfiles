@@ -1,8 +1,8 @@
 * {
     width: 1000;
 
-    border-color: #4c4c4c;
-    background-color: #3c3c3c;
+    border-color: #4b4948;
+    background-color: #3b3938;
 
     text-color: #eaeaea;
     font: "JetBrains Mono 13";
@@ -29,7 +29,7 @@ prompt {
 }
 
 entry {
-    background-color: #1c1c1c;
+    background-color: #1b1918;
     padding: 4px 4px 4px 6px;
     border-radius: 4px;
     vertical-align: 0.5;
@@ -50,7 +50,7 @@ entry {
     border: 0px;
     padding: 6px;
     border-radius: 0px;
-    background-color: #1c1c1c;
+    background-color: #1b1918;
 }
 
 #element-icon {
@@ -65,7 +65,7 @@ entry {
 #element alternate {
     border: 0px;
     border-radius: 0px;
-    background-color: #2c2c2c;
+    background-color: #2b2928;
 }
 
 #element selected {
