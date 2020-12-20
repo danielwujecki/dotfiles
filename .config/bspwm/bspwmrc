@@ -9,7 +9,7 @@
 
 # general xorg settings
 xsetroot -cursor_name left_ptr
-xset dpms 300 300 300
+xset dpms 600 600 600
 
 xran="$(xrandr -q)"
 dp22="$(echo "$xran" | grep -- 'DP2-2 connected')"

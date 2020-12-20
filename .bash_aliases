@@ -23,6 +23,7 @@ if [[ -d ~/Dropbox ]] ; then alias dbox='cd ~/Dropbox' ; fi
 if [[ -d ~/Schreibtisch ]] ; then alias des='cd ~/Schreibtisch' ; fi
 if [[ -d ~/Dropbox/wise2021 ]] ; then alias sem='cd ~/Dropbox/wise2021' ; fi
 if [[ -d ~/Repositories ]] ; then alias repos='cd ~/Repositories' ; fi
+if [[ -d ~/Repositories/dotfiles ]] ; then alias dotf='cd ~/Repositories/dotfiles' ; fi
 
 # shortcuts
 if [[ -x /usr/bin/ranger ]] ; then alias r='ranger' ; fi

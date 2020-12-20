@@ -10,5 +10,3 @@ git branch -a                           remote und lokale branches anzeigen
 git prune <remote>                      entfernt alte branches
 
 git remote -v                           remotes anzeigen
-
-git push <remote_name> --delete <branch_name>

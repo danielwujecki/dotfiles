@@ -124,6 +124,7 @@
 \newcommand{\bw}{\mathbf{w}}
 \newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
 \newcommand{\Set}[2]{\left\lbrace#1\mid#2\right\rbrace}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \DeclareMathOperator{\var}{var}
 \DeclareMathOperator*{\argmin}{argmin}
 
@@ -161,7 +162,7 @@
 \RequirePackage{scrtime}
 \RequirePackage{eso-pic}
 \AddToShipoutPicture{
-	\put(20,50){\textcolor[gray]{0.5}{DRAFT: \mytitle{} - \myname{} (Compile date: \today/\thistime)}}
+	\put(20,50){\textcolor[gray]{0.5}{DRAFT: \mytitle{} -- \myname{} (Compile date: \today/\thistime)}}
 }
 \fi
 
