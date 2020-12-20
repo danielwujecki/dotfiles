@@ -8,9 +8,4 @@ if [[ -z $dp22 || -z $dp23 ]] ; then
     echo "Das Dock scheint nicht korrekt verbunden zu sein!"
     exit 1
 fi
-
-xrandr --output eDP1 --off --output DP1 --off --output DP2 --off --output DP2-1 --off --output DP2-2 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 --output DP2-3 --off --output HDMI1 --off --output VIRTUAL1 --off
-
-xrandr --output eDP1 --off --output DP1 --off --output DP2 --off --output DP2-1 --off --output DP2-2 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 --output DP2-3 --primary --mode 2560x1440 --pos 2560x0 --rotate normal --dpi 128 --output HDMI1 --off --output VIRTUAL1 --off
-
 bspc wm -r

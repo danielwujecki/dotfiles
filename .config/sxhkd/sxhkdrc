@@ -115,9 +115,9 @@ super + Tab
 super + {h,j,k,l}
     bspc node -f {west,south,north,east}
 
-# send to the given desktop
+# focus desktop
 super + {1-9,0}
-    bspc desktop -f '{1-9,10}'
+    bspc desktop -f '{1-9,0}'
 
 #############################
 #        Move Windows       #
@@ -133,11 +133,11 @@ super + shift + {h,j,k,l}
 
 # send to the given desktop
 super + shift + {1-9,0}
-    bspc node -d '{1-9,10}'
+    bspc node -d '{1-9,0}'
 
 # send to the given desktop and stay focused
 super + alt + {1-9,0}
-    bspc node -d '{1-9,10}' --follow
+    bspc node -d '{1-9,0}' --follow
 
 # move a floating window
 super + {Left,Down,Up,Right}

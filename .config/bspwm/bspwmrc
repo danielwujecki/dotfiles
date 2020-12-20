@@ -13,12 +13,27 @@ xset dpms 600 600 600
 
 xran="$(xrandr -q)"
 dp22="$(echo "$xran" | grep -- 'DP2-2 connected')"
-dp23="$(echo "$xran" | grep -- 'DP2-3 connected primary')"
+dp23="$(echo "$xran" | grep -- 'DP2-3 connected')"
 if [[ -n $dp22 && -n $dp23 ]] ; then
-    bspc monitor "DP2-2" -d 1
-    bspc monitor "DP2-3" -d 2 3 4 5 6 7 8 9 10
+    xrandr --output eDP1 --off --output DP1 --off --output DP2 --off \
+        --output DP2-1 --off --output DP2-2 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
+        --output DP2-3 --off --output HDMI1 --off --output VIRTUAL1 --off
+    xrandr --output eDP1 --off --output DP1 --off --output DP2 --off \
+        --output DP2-1 --off --output DP2-2 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
+        --output DP2-3 --primary --mode 2560x1440 --pos 2560x0 --rotate normal --dpi 128 \
+        --output HDMI1 --off --output VIRTUAL1 --off
+    bspc monitor "DP2-2" -d 0 1
+    bspc monitor "DP2-3" -d 2 3 4 5 6 7 8 9
+    bspc desktop -f 1
+    bspc desktop -f 2
 else
-    bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+    xrandr --output eDP1 --primary --mode 2560x1440 --pos 0x0 --rotate normal \
+        --output DP1 --off --output DP2 --off \
+        --output DP2-1 --off --output DP2-2 --off \
+        --output DP2-3 --off --output HDMI1 --off \
+        --output VIRTUAL1 --off
+    bspc monitor -d 0 1 2 3 4 5 6 7 8 9
+    bspc desktop -f 1
 fi
 
 # bspwm specific settings
