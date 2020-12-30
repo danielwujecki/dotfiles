@@ -107,9 +107,12 @@ Plug 'vim-python/python-syntax'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
-map <C-n> :NERDTreeToggle<Return>
 map ; :FZF<Return>
 let g:python_highlight_all=1
+
+map <C-n> :NERDTreeToggle<Return>
+let NERDTreeShowLineNumbers=1
+let NERDTreeShowHidden=1
 
 " airline settings
 let g:airline_theme='hybrid'

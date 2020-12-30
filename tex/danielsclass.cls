@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{danielsclass}[2020/12/08 My own class]
+\ProvidesClass{danielsclass}[2020/12/27 My own class]
 
 \newif\ifdraft\draftfalse
 \DeclareOption{draft}{\drafttrue}
@@ -116,12 +116,11 @@
 \newcommand{\ytodo}[1]{\todo[backgroundcolor=yellow]{#1}}
 \newcommand{\gtodo}[1]{\todo[backgroundcolor=green]{#1}}
 
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{R}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Cn}{\mathbb{C}}
-\newcommand{\bw}{\mathbf{w}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{R}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
 \newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
 \newcommand{\Set}[2]{\left\lbrace#1\mid#2\right\rbrace}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
@@ -130,12 +129,11 @@
 
 % See https://www.overleaf.com/learn/latex/theorems_and_proofs
 \theoremstyle{plain} % definition
-\newtheorem{defn}{Definition}[section]
-\newtheorem{satz}{Satz}[section]
-\newtheorem{kons}{Konsequenz}[satz]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Satz}[section]
+\newtheorem{corollary}{Korollar}[theorem]
 \theoremstyle{remark}
-\newtheorem*{hinweis}{Hinweis}
-\newtheorem*{remark}{Remark}
+\newtheorem*{remark}{Hinweis}
 
 \newcommand{\mytitle}{?}
 \newcommand{\mysubtitle}{?}
