@@ -1,6 +1,6 @@
 set guioptions "sv"
 set font "JetBrains Mono 10"
-# set selection-clipboard clipboard
+set selection-clipboard clipboard
 # set window-height 1384
 # set window-width 1280
 set page-padding 20
