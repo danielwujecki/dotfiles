@@ -3,26 +3,16 @@
     aspectratio=169,
     xcolor={table,dvipsnames}
 ]{beamer}
-\usepackage[english, ngerman]{babel}
-%\usepackage[utf8]{inputenc} % not needed for XeLaTeX
-\usepackage[T1]{fontenc}
-\usepackage{microtype}
 
 \usetheme[
     progressbar=frametitle,
     numbering=fraction
 ]{metropolis}
 
-%\usepackage{hyphenat}
-%\hyphenation{Mathe-matik wieder-gewinnen}
-
-\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage[english, main=ngerman]{babel}
+\usepackage{microtype}
+\usepackage{hyphenat}
 \usepackage{hyperref}
-
-%\usepackage{palatino}
-\usepackage{fontspec}
-%\setmainfont{Calibri}
-\setmonofont{JetBrains Mono}
 
 % BibLateX
 \usepackage{csquotes}
@@ -37,84 +27,87 @@
 ]{biblatex}
 %\addbibresource{quellen.bib}
 
-\usepackage{tabularx}
-\usepackage{booktabs}
-\usepackage{diagbox}
-
-\usepackage{listings}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codeback}{rgb}{0.93,0.93,0.90}
-\lstset{
-  basicstyle=\footnotesize\ttfamily,
-  breaklines=true,
-  keepspaces=true,
-  numbers=left,
-  numbersep=8pt,
-  tabsize=4,
-  frame=single,
-  numberstyle=\scriptsize\color{gray},
-  backgroundcolor=\color{codeback},
-  stringstyle=\color{Purple},
-  commentstyle=\color{ForestGreen},
-  keywordstyle=\color{BrickRed},
-}
-\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
-
-\usepackage{tikz}
-\usepackage{subfig}
-\usepackage[font=footnotesize]{caption}
-\usepackage{overpic}
+%\usepackage{listings}
+%%\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+%%\definecolor{codeback}{rgb}{0.93,0.93,0.90}
+%%\lstset{
+%%  basicstyle=\footnotesize\ttfamily,
+%%  breaklines=true,
+%%  keepspaces=true,
+%%  numbers=left,
+%%  numbersep=8pt,
+%%  tabsize=4,
+%%  frame=single,
+%%  numberstyle=\scriptsize\color{gray},
+%%  backgroundcolor=\color{codeback},
+%%  stringstyle=\color{Purple},
+%%  commentstyle=\color{ForestGreen},
+%%  keywordstyle=\color{BrickRed},
+%%}
+%%\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+%
+%\usepackage{tikz}
+%\usepackage{subfig}
+%\usepackage[font=footnotesize]{caption}
+%\usepackage{overpic}
 \usepackage{graphicx}
-\usepackage[section]{placeins}
+%\usepackage[section]{placeins}
 
-\usepackage[colorinlistoftodos]{todonotes}
-\newcommand{\missing}[1]{\todo[inline]{#1}}
-\newcommand{\rtodo}[1]{\todo[backgroundcolor=red]{#1}}
-\newcommand{\ytodo}[1]{\todo[backgroundcolor=yellow]{#1}}
-\newcommand{\gtodo}[1]{\todo[backgroundcolor=green]{#1}}
+%\usepackage{tabularx}
+%\usepackage{booktabs}
+%\usepackage{diagbox}
 
-%\usepackage{ifthen}
-%\newboolean{loesung}                                % Deklaration
-%\setboolean{loesung}{false}                         % Zuweisung
+\RequirePackage{amsmath,amssymb,amsthm,mathtools}
+%\RequirePackage[obeyDraft,colorinlistoftodos]{todonotes}
 
-\graphicspath{{imgs/}}
-\setcounter{tocdepth}{2}                            % inhaltsverzeichnis bis subsection
-%\setcounter{secnumdepth}{0}                         % überschriften nicht nummerieren
-\numberwithin{equation}{section}                    % Formeln mit Überschrift nummerieren
-\newcommand{\emptyline}{\vspace{\baselineskip}}     % erzeugt leerzeile
+%%% COMMANDS %%%
+%\newcommand{\missing}[1]{\todo[inline]{#1}}
+%\newcommand{\rtodo}[1]{\todo[backgroundcolor=red]{#1}}
+%\newcommand{\ytodo}[1]{\todo[backgroundcolor=yellow]{#1}}
+%\newcommand{\gtodo}[1]{\todo[backgroundcolor=green]{#1}}
 
-\newcommand{\Nn}{\mathbb{N}}
-\newcommand{\Zn}{\mathbb{Z}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Cn}{\mathbb{C}}
-\newcommand{\bw}{\mathbf{w}}
-\DeclareMathOperator{\var}{var}
-\DeclareMathOperator*{\argmin}{argmin}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{R}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\renewcommand{\d}[1][x]{\,\mathrm{d}#1}
 \newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
 \newcommand{\Set}[2]{\left\lbrace#1\mid#2\right\rbrace}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator*{\argmin}{argmin}
 
-% See https://www.overleaf.com/learn/latex/theorems_and_proofs
-\theoremstyle{plain} % definition
-\newtheorem{defn}{Definition}[section]
-\newtheorem{satz}{Satz}[section]
-\newtheorem{kons}{Konsequenz}[satz]
-\theoremstyle{remark}
-\newtheorem*{hinweis}{Hinweis}
-\newtheorem*{remark}{Remark}
+\newcommand{\emptyline}{\vspace{\baselineskip}}
+
+\graphicspath{{imgs/}}
+\setcounter{tocdepth}{2}
+\numberwithin{equation}{section}
+%\setcounter{secnumdepth}{0}
+
+\newcommand{\mytitle}{Hausaufgabe}
+\newcommand{\mysubtitle}{Modul}
+\newcommand{\myname}{Daniel W.}
+\newcommand{\mydate}{\today}
 
 \hypersetup{
-  %pdftitle={},
-  %pdfsubject={},
-  pdfauthor={Daniel Wujecki},
-  pdfproducer={Daniel Wujecki},
+  pdftitle={\mytitle{}},
+  pdfsubject={\mysubtitle{}},
+  pdfauthor={\myname{}},
+  pdfproducer={\myname{}},
   pdfcreator={Accomplished with: XeLaTeX, biber, and hyperref-package.},
-  %pdfkeywords={}
+  colorlinks=true,
+  urlcolor=blue!40!black,
+  linkcolor=red!40!black,
+  citecolor=green!40!black,
 }
 
-\title{Hausaufgabe}
-\subtitle{Modul}
-\author{Daniel W.}
-\date{\today}
+\title{\mytitle{}}
+\subtitle{\mysubtitle{}}
+\author{\myname{}}
+\date{\mydate{}}
+
+%\hyphenation{Mathe-matik wieder-gewinnen}
 
 % =====================================================================================================
 
@@ -131,23 +124,7 @@
 
 \begin{frame}
     \frametitle{Algorithm}
-    \begin{algorithm}[H]
-        \caption{Variance of the OLS Estimator}
-        %\DontPrintSemicolon
-        \KwIn{$n$ (number of data points); $\sigma^2_\epsilon$ (noise variance);
-            $\sigma^2_x$ (data variance); $w$ (true slope)}
-        \KwOut{variance of $\hat{w}$}
-        \emptyline
-
-        Generate $n$ gaussian data points $X = [x_1, \ldots , x_n]$, $x_i \sim \mathcal{N}(0, 1)$ \\
-        \For{$r=1,\dots,10^5$}{
-            generate $n$ gaussian noise terms $E = [\epsilon_1, \ldots, \epsilon_N]$,
-                $\epsilon_i \sim \mathcal{N}(0, \sigma_\epsilon^2)$ \\
-            compute $y=w\cdot X + E$ \\
-            compute OLS estimate $\hat{w}[r] = (X X^\top)^{-1} X y^\top$
-        }
-        \Return{$\var(\hat{w})$}
-    \end{algorithm}
+    bla
 \end{frame}
 
 \begin{frame}

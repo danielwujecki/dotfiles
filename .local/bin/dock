@@ -1,10 +1,9 @@
 #!/usr/bin/bash
-
 xran="$(xrandr -q)"
 dp22="$(echo "$xran" | grep -- 'DP2-2 connected')"
 dp23="$(echo "$xran" | grep -- 'DP2-3 connected')"
 if [[ -z $dp22 || -z $dp23 ]] ; then
-    echo "Kann die Bildschirme nicht einschalten..."
+    echo "Kann die Bildschirme nicht finden..."
     echo "Das Dock scheint nicht korrekt verbunden zu sein!"
     exit 1
 fi

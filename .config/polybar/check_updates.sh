@@ -3,7 +3,7 @@
 # run this as crontab, rather than a polybar module
 
 # check for network
-ping -c1 "archlinux.org"
+ping -c1 "google.com"
 if [[ $? -ne 0 ]] ; then
     echo "No network connection!" > /dev/stderr
     exit 2
