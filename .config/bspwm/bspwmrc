@@ -33,6 +33,7 @@ else
     bspc monitor -d 0 1 2 3 4 5 6 7 8 9
 fi
 bspc desktop -f 1
+bspc desktop -f 2
 
 # bspwm specific settings
 bspc config normal_border_color       "#2b2928"
@@ -71,7 +72,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom &
 pgrep -x lxpolkit > /dev/null || lxpolkit &
 pgrep -x nm-applet > /dev/null || nm-applet &
-pgrep -x emacs > /dev/null || emacs --daemon &
+#pgrep -x emacs > /dev/null || emacs --daemon &
 pgrep -u daniel -x dunst > /dev/null || dunst &
 pgrep -x redshift-gtk > /dev/null || redshift-gtk &
 pgrep -x blueman-applet > /dev/null || blueman-applet &
