@@ -101,10 +101,12 @@ tail = false
 interval = 30
 format = <label>
 label = %output%
+label-font = 1
 
 [module/sep]
 type = custom/text
 content = |
+content-font = 1
 
 [module/bspwm]
 type = internal/bspwm
@@ -116,6 +118,7 @@ pin-workspaces = false
 format = <label-state>
 
 label-focused = %name%
+label-focused-font = 1
 label-focused-foreground = ${colors.foreground-alt}
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.yellow}
@@ -123,18 +126,22 @@ label-focused-padding = 1
 label-dimmed-focused-underline = ${colors.background-alt}
 
 label-occupied = %name%
+label-occupied-font = 1
 label-occupied-padding = 1
 
 label-urgent = %name%
+label-urgent-font = 1
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
 label-empty =
+label-empty-font = 1
 label-empty-padding = 1
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:70:...%
+label-font = 1
 
 ###############################################################################
 ############                       MODULES RIGHT                   ############
@@ -145,12 +152,14 @@ type = internal/cpu
 interval = 1
 
 label = %{T3}﬙ %{T-}%percentage:2%%
+label-font = 1
 label-foreground = ${colors.blue}
 
 [module/memory]
 type = internal/memory
 interval = 2
 label = %{T3} %{T-}%percentage_used%%
+label-font = 1
 label-foreground = ${colors.purple}
 
 [module/audio]
@@ -163,9 +172,11 @@ interval = 5
 format-volume = <ramp-volume><label-volume>
 
 label-volume = %percentage%%
+label-volume-font = 1
 label-volume-foreground = ${colors.yellow}
 
 label-muted = %{T3} %{T-}
+label-muted-font = 1
 label-muted-foreground = ${colors.alert}
 
 ramp-volume-0 = %{T3} %{T-}
@@ -180,6 +191,7 @@ enable-scroll = false
 format = <ramp><label>
 
 label = %percentage%%
+label-font = 1
 label-foreground = ${colors.blue}
 ramp-0 = %{T3} %{T-}
 ramp-1 = %{T3} %{T-}
@@ -194,13 +206,16 @@ full-at = 99
 
 format-charging = <animation-charging><label-charging>
 label-charging = %percentage%%
+label-charging-font = 1
 label-charging-foreground = ${colors.green}
 
 format-discharging = <ramp-capacity><label-discharging>
+label-discharging-font = 1
 label-discharging = %percentage%%
 
 format-full = <label-full>
 label-full = %{T3} %{T-}%percentage%%
+label-full-font = 1
 label-full-foreground = ${colors.green}
 
 ramp-capacity-0 = %{T3}%{F#ED404C} %{F-}%{T-}
@@ -232,6 +247,7 @@ time = %{F#d07ef2}%{T3} %{T-}%H:%M%{F-}
 date = %{F#65a2d9}%{T3} %{T-}%a, %d. %b%{F-}
 
 label = %time%  %date%
+label-font = 1
 
 ###############################################################################
 ############                     MODULES UNUSED                    ############
@@ -243,6 +259,7 @@ interval = 2
 format-prefix = Spotify
 format = <label>
 exec = /usr/bin/python3 $HOME/.config/polybar/spotify_status.py -t 32 -f '{artist}: {song}'
+label-font = 1
 
 ###############################################################################
 ############                     Global Settings                   ############

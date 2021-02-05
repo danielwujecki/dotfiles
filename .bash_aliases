@@ -2,10 +2,10 @@
 
 # wichtigstes kommmando auf dem terminal - ls
 if [[ -x /usr/bin/exa ]] ; then
-    alias exa='exa -lat changed --git --color=auto --group-directories-first'
+    alias exa='exa -Hglam --git --color=auto --group-directories-first'
     alias ls='exa'
     alias l='exa'
-    alias tree='exa -T'
+    alias tree='command exa -T'
 else
     alias ls='ls -lAh --color=auto --group-directories-first'
     alias l='ls'
