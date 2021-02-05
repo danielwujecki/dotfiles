@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# "-n": dry-run, simmuliere was passieren würde
+# "-u": überspringe Dateien, die im Ziel neuer sind
+# "-a": archive mode
+# "-h": human readable
+# "-b": sicherung von gelöschten / veränderten daten in backup dir
+# "-H": hardlinks werden berücksichtigt
+# "-E": ausführbarkeit beibehalten
+# "-P": --partial --progress (einfach weiter machen)
+# "--delete": dateien, die im quellverzeichnis gelöscht wurden, werden
+#             auch im zielverzeichnis gelöscht
+# "--backup-dir": Ort and dem gelöschte / veränderte Daten gesichert werden
+# "-e ssh": verwende ssh zur Übertragung
+# "--bwlimit=5m": Beschränke Traffic auf 5MiB
+# "--stats": zeigt einen ausführlicheren Bericht am Ende einer Übertragung an
+
+hostname_dest="Abacus"
+rsync_flags="-uahbHEP --delete --backup-dir=/home/daniel/rsync_backup -e ssh --bwlimit=5m"
+
+rsync $rsync_flags "$hostname_dest":/home/daniel/Arduino      /home/daniel/
+rsync $rsync_flags "$hostname_dest":/home/daniel/Bilder       /home/daniel/
+rsync $rsync_flags "$hostname_dest":/home/daniel/Dokumente    /home/daniel/
+rsync $rsync_flags "$hostname_dest":/home/daniel/Downloads    /home/daniel/
+rsync $rsync_flags "$hostname_dest":/home/daniel/Dropbox      /home/daniel/
+rsync $rsync_flags "$hostname_dest":/home/daniel/Musik        /home/daniel/
+rsync $rsync_flags "$hostname_dest":/home/daniel/Repositories /home/daniel/
+rsync $rsync_flags "$hostname_dest":/home/daniel/Schreibtisch /home/daniel/
+rsync $rsync_flags "$hostname_dest":/home/daniel/Studium      /home/daniel/
+rsync $rsync_flags "$hostname_dest":/home/daniel/Videos       /home/daniel/

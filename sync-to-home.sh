@@ -41,6 +41,8 @@ cp "$HOME"/Repositories/dotfiles/.config/redshift.conf "$HOME"/.config/
 # ~/.local/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/dock "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/fehbg "$HOME"/.local/bin/
+cp -r "$HOME"/Repositories/dotfiles/.local/bin/homesyncup "$HOME"/.local/bin/
+cp -r "$HOME"/Repositories/dotfiles/.local/bin/homesyncdown "$HOME"/.local/bin/
 #cp -r "$HOME"/Repositories/dotfiles/.local/bin/polybar_dock "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/polybar_normal "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/pycl "$HOME"/.local/bin/
