@@ -1,4 +1,4 @@
-#!/usr/bin/bash -e
+#!/usr/bin/bash
 
 # dotfiles in ~/
 cp "$HOME"/Repositories/dotfiles/.bash_aliases "$HOME"/
@@ -64,3 +64,5 @@ cp -r "$HOME"/Repositories/dotfiles/.doom.d "$HOME"/
 #doas cp "$HOME"/Repositories/dotfiles/etc/doas.conf /etc/
 #doas cp "$HOME"/Repositories/dotfiles/etc/pacman.conf /etc/
 #doas cp "$HOME"/Repositories/dotfiles/etc/thinkfan.conf /etc/
+
+echo "Done with sync to home!"
