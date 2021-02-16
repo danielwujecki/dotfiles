@@ -186,3 +186,7 @@ super + ctrl + space
 #             Testing            #
 # not yet included in keymap.pdf #
 ##################################
+
+# shuffle wallpaper
+super + w
+    "$HOME/.local/bin/fehbg"

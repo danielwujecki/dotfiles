@@ -1,2 +1,12 @@
 #!/bin/bash
-feh --no-fehbg --bg-fill "/home/daniel/Bilder/Wallpaper/selected/catalina-wallpaper.png"
+
+wp_path="$HOME/Bilder/Wallpaper/selected"
+
+if [[ ! -d $wp_path ]] ; then exit 1 ; fi
+
+until [ -f "$wp_path/$sel_wp" ] ; do
+    sel_wp=$(ls "$wp_path" | shuf -n 1)
+done
+
+feh --no-fehbg --bg-fill "$wp_path/$sel_wp"
+betterlockscreen -u "$wp_path/$sel_wp" -r "2560x1440"
