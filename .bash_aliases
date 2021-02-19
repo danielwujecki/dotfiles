@@ -14,6 +14,7 @@ fi
 if [[ -x /usr/bin/doas ]] ; then
     # damit jeder alias auch als root funktioniert
     alias doas='doas '
+    alias sudo='doas '
 fi
 
 # orte
@@ -75,7 +76,7 @@ fi
 
 # ssh
 alias ssh='TERM=xterm-256color ssh'
-alias sraspi='ssh pi@192.168.178.38'
+alias sraspi='ssh pi@10.0.0.27'
 #alias sraspif='nautilus sftp://pi@raspberryserver &> /dev/null &'
 
 # python
