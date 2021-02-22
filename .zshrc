@@ -29,7 +29,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # Which plugins would you like to load?
 plugins=(
 # general
-    colored-man-pages
+    #colored-man-pages # see 'set man viewer' below
     history
 
 # python
@@ -56,6 +56,10 @@ fi
 if [ -f ~/.bash_aliases ] ; then
     . ~/.bash_aliases
 fi
+
+# set man viewer
+#export MANPAGER="nvim -c 'set ft=man' -"
+export MANPAGER="sh -c 'col -bx | bat -l man -n'"
 
 # command counter
 #setopt PROMPT_SUBST

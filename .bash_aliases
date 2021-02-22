@@ -43,6 +43,7 @@ alias df='df -Th'
 alias du='du -sh'
 alias rm='rm -I'
 alias mv='mv -i'
+if [[ -x /usr/bin/bat ]] ; then alias cat='bat' ; fi
 if [[ -x /usr/bin/htop ]] ; then alias top='htop' ; fi
 if [[ -x /usr/bin/colordiff ]] ; then alias diff='colordiff' ; fi
 if [[ -x /usr/bin/xclip ]] ; then alias xclip='xclip -sel c' ; fi
