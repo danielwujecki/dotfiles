@@ -74,7 +74,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -n'"
 #    ufetch
 #fi
 
-init_conda () {
+conda_init () {
     __conda_setup="$('/home/daniel/.miniconda3/bin/conda' 'shell.zsh' 'hook')"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
