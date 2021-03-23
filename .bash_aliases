@@ -83,8 +83,8 @@ alias sraspi='ssh pi@10.0.0.27'
 # python
 if [[ -f /home/daniel/.pyenv/versions/mypython/bin/activate ]] ; then
     alias mypy='pyenv activate mypython'
+    alias mypye='pyenv deactivate'
 fi
-alias deactivate='pyenv deactivate'
 alias pyc='ipython'
 
 # misc
