@@ -54,6 +54,7 @@ cp -r "$HOME"/Repositories/dotfiles/.local/share/applications/emacs.desktop \
     "$HOME"/.local/share/applications/
 
 # misc folders in ~/
+cp -r "$HOME"/Repositories/dotfiles/.ssh "$HOME"/
 cp -r "$HOME"/Repositories/dotfiles/.oh-my-zsh "$HOME"/
 cp -r "$HOME"/Repositories/dotfiles/.jupyter "$HOME"/
 cp -r "$HOME"/Repositories/dotfiles/.local/share/nvim/site/autoload \

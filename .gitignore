@@ -1,6 +1,5 @@
 # directories
 .cache/
-.ssh/
 misc/pkgs/
 .auctex-auto/
 

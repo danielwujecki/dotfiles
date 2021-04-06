@@ -58,8 +58,12 @@ if [ -f ~/.bash_aliases ] ; then
 fi
 
 # set man viewer
-#export MANPAGER="nvim -c 'set ft=man' -"
-export MANPAGER="sh -c 'col -bx | bat -l man -n'"
+#if [[ -x /usr/bin/nvim ]] ; then
+#    export MANPAGER="nvim -c 'set ft=man' -"
+#fi
+if [[ -x /usr/bin/bat ]] ; then
+    export MANPAGER="sh -c 'col -bx | bat -l man -n'"
+fi
 
 # command counter
 #setopt PROMPT_SUBST

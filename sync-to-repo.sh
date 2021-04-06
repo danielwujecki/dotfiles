@@ -63,6 +63,7 @@ cp -r "$HOME"/.local/share/applications/emacs.desktop \
     "$HOME"/Repositories/dotfiles/.local/share/applications
 
 # misc folders in ~/
+cp "$HOME"/.ssh/config "$HOME"/Repositories/dotfiles/.ssh/
 cp "$HOME"/.oh-my-zsh/custom/themes/myone.zsh-theme \
     "$HOME"/Repositories/dotfiles/.oh-my-zsh/custom/themes/
 cp "$HOME"/.oh-my-zsh/custom/themes/myone-old.zsh-theme \
