@@ -100,7 +100,7 @@ Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
 
 Plug 'jiangmiao/auto-pairs'
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 Plug 'vim-python/python-syntax'
 
 "Plug 'jreybert/vimagit'
