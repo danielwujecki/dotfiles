@@ -65,6 +65,9 @@ if [[ -x /usr/bin/bat ]] ; then
     export MANPAGER="sh -c 'col -bx | bat -l man -n'"
 fi
 
+# make virsh compatible with virt-manager
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
 # command counter
 #setopt PROMPT_SUBST
 #[[ $cmdcount -ge 1 ]] || cmdcount=1
