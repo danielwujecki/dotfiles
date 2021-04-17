@@ -6,7 +6,6 @@ misc/pkgs/
 # private dotfiles
 .viminfo
 .wget-hsts
-.gitconfig
 .Xauthority
 .zsh_history
 .python_history
