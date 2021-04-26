@@ -1,7 +1,7 @@
 #!/bin/bash
 
 for f in *.jpg *.jpeg *.png ; do
-    if [ ! -f $f ] ; then 
+    if [[ ! -f $f ]] ; then
         continue
     fi
 
@@ -11,9 +11,9 @@ for f in *.jpg *.jpeg *.png ; do
     res=${res:1}
     echo "$res"
 
-    if [ ! -d $res ] ; then
-        mkdir $res
+    if [[ ! -d $res ]] ; then
+        mkdir "$res"
     fi
 
-    mv $f $res
+    mv "$f" "$res"
 done
