@@ -84,5 +84,5 @@ pgrep -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "bette
 # start desktop programs
 sleep 1
 pgrep -x firefox > /dev/null || (bspc desktop -f 1 && firefox &)
-sleep 1
-pgrep -x thunderbird > /dev/null || (bspc desktop -f 9 && thunderbird &)
+#sleep 1
+#pgrep -x thunderbird > /dev/null || (bspc desktop -f 9 && thunderbird &)
