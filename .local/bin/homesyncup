@@ -16,7 +16,7 @@
 # "--stats": zeigt einen ausführlicheren Bericht am Ende einer Übertragung an
 
 hostname_dest="Abacus"
-rsync_flags="-uahbHEP --delete --backup-dir=/home/daniel/rsync_backup -e ssh --bwlimit=5m"
+rsync_flags="-uahbHEP --delete --backup-dir=/home/daniel/rsync_backup -e ssh"
 
 rsync $rsync_flags /home/daniel/Arduino      "$hostname_dest":/home/daniel/
 rsync $rsync_flags /home/daniel/Bilder       "$hostname_dest":/home/daniel/

@@ -40,3 +40,4 @@ tex/*.org
 
 # misc files
 *.tar.gz
+plug.vim.old
