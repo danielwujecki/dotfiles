@@ -98,3 +98,61 @@ conda_init () {
     fi
     unset __conda_setup
 }
+
+yay () {
+    RED='\033[0;31m'
+    WHITE='\033[0m'
+
+    if [[ -x /usr/bin/pikaur ]] ; then
+        pikaur -Syu
+        echo "" > $HOME/.cache/current_updates.txt
+    else
+        echo -e "\n${RED}Pikaur not installed.${WHITE}\n"
+        return 1
+    fi
+
+    if [[ -x $HOME/.emacs.d/bin/doom ]] ; then
+        doom -y upgrade
+    else
+        echo -e "\n${RED}Doom emacs not installed.${WHITE}\n"
+        return 1
+    fi
+
+    if [[ -x /usr/bin/nvim ]] ; then
+        nvim -c "PlugUpgrade" -c "PlugUpdate" -c "quit" -c "quit"
+    else
+        echo -e "\n${RED}neovim not installed.${WHITE}\n"
+        return 1
+    fi
+
+    if [[ -d $HOME/.oh-my-zsh ]] ; then
+        omz update
+    else
+        echo -e "\n${RED}Oh-my-zsh not installed.${WHITE}\n"
+        return 1
+    fi
+
+    if [[ -d $HOME/.miniconda3 ]] ; then
+        zsh -c "source $HOME/.zshrc; conda_init; conda update -y --all"
+    else
+        echo -e "\n${RED}Dotfiles repository not found.${WHITE}\n"
+        return 1
+    fi
+
+    if [[ -d $HOME/Repositories/dotfiles ]] ; then
+        cd "$HOME"/Repositories/dotfiles
+        #KEYPRESENT=$(ssh-add -l | grep 'SHA256:2AGARMHs/fxSTBa/40qGs8PDJNJuuOrr9MpmncwnjTY')
+        #if [[ -z $KEYPRESENT ]] ; then
+        #    if [[ -f $HOME/.ssh/ssh_rsa_privat ]] ; then
+        #        ssh-add ~/.ssh/ssh_rsa_privat
+        #    else
+        #        echo -e "\n${RED}SSH-Key not found.${WHITE}\n"
+        #        return 1
+        #    fi
+        #fi
+        #git pull
+    else
+        echo -e "\n${RED}Dotfiles repository not found.${WHITE}\n"
+        return 1
+    fi
+}

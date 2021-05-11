@@ -56,7 +56,6 @@ if [[ -x /usr/bin/latexmk ]] ; then
 fi
 if [[ -x /usr/bin/pikaur ]] ; then
     alias pac='pikaur'
-    alias yay='pikaur -Syu && echo "" > $HOME/.cache/current_updates.txt'
 fi
 
 # usb
