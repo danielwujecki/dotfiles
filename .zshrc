@@ -14,8 +14,9 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="/home/daniel/.oh-my-zsh"
 
-#ZSH_THEME="bira"
 ZSH_THEME="myone"
+#ZSH_THEME="lukerandall"
+# "bira" "gallifrey" "gentoo" "kafeitu" "wuffers"
 
 # Uncomment the following line to automatically update without prompting.
 DISABLE_UPDATE_PROMPT="true"
