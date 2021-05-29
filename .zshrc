@@ -11,6 +11,14 @@ if [ -d "$HOME/.cargo/bin" ] ; then
     PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+if [ -d "$HOME/.pyenv/bin" ] ; then
+    PATH="$HOME/.pyenv/bin:$PATH"
+fi
+
+if [ -d "$HOME/.pyenv/shims" ] ; then
+    PATH="$HOME/.pyenv/shims:$PATH"
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/daniel/.oh-my-zsh"
 
@@ -135,23 +143,6 @@ yay () {
 
     if [[ -d $HOME/.miniconda3 ]] ; then
         zsh -c "source $HOME/.zshrc; conda_init; conda update -y --all"
-    else
-        echo -e "\n${RED}Dotfiles repository not found.${WHITE}\n"
-        return 1
-    fi
-
-    if [[ -d $HOME/Repositories/dotfiles ]] ; then
-        cd "$HOME"/Repositories/dotfiles
-        #KEYPRESENT=$(ssh-add -l | grep 'SHA256:2AGARMHs/fxSTBa/40qGs8PDJNJuuOrr9MpmncwnjTY')
-        #if [[ -z $KEYPRESENT ]] ; then
-        #    if [[ -f $HOME/.ssh/ssh_rsa_privat ]] ; then
-        #        ssh-add ~/.ssh/ssh_rsa_privat
-        #    else
-        #        echo -e "\n${RED}SSH-Key not found.${WHITE}\n"
-        #        return 1
-        #    fi
-        #fi
-        #git pull
     else
         echo -e "\n${RED}Dotfiles repository not found.${WHITE}\n"
         return 1
