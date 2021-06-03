@@ -91,9 +91,9 @@ if !exists('g:vscode')
 
 call plug#begin('~/.vim/plugged')
 "Plug 'kristijanhusak/vim-hybrid-material'
-"Plug 'aonemd/kuroi.vim'
+Plug 'aonemd/kuroi.vim'
 Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' }
@@ -115,20 +115,20 @@ let NERDTreeShowLineNumbers=1
 let NERDTreeShowHidden=1
 
 " airline settings
-"let g:airline_theme='hybrid'
+let g:airline_theme='hybrid'
 let g:airline_symbols_ascii=1
 let g:airline#extensions#tabline#enabled=1
 
-"if (has("nvim"))
-"    " material-hybrid theme
-"    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"    set background=dark
-"    colorscheme hybrid_material
-"
-"    set termguicolors
-"    set background=dark
-"    colorscheme kuroi
-"endif
-colorscheme peachpuff
+if (has("nvim"))
+    " material-hybrid theme
+    "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    "set background=dark
+    "colorscheme hybrid_material
+
+    set termguicolors
+    set background=dark
+    colorscheme kuroi
+endif
+"colorscheme peachpuff
 
 endif " !exists('g:vscode')
