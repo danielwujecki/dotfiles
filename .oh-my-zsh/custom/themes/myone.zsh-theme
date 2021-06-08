@@ -21,5 +21,6 @@ local venv_prompt='$(virtualenv_prompt_info)'
 ZSH_THEME_VIRTUALENV_PREFIX="%{$fg[cyan]%}["
 ZSH_THEME_VIRTUALENV_SUFFIX="]%{$reset_color%}"
 
-PROMPT="${time} ${brl}${user}${at}${host}: ${current_dir}${brr} ${user_symbol}"
+#PROMPT="${time} ${brl}${user}${at}${host}: ${current_dir}${brr} ${user_symbol}"
+PROMPT="${brl}${user}${at}${host}: ${current_dir}${brr} ${user_symbol}"
 RPS1="${return_code}${git_branch}${venv_prompt}"
