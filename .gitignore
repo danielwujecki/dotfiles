@@ -1,6 +1,5 @@
 # directories
 .cache/
-misc/pkgs/
 .auctex-auto/
 
 # private dotfiles
@@ -9,6 +8,7 @@ misc/pkgs/
 .Xauthority
 .zsh_history
 .python_history
+*history*
 
 # latex
 *.aux
@@ -33,11 +33,8 @@ misc/pkgs/
 *.out.ps
 *.xdv
 tex/*.pdf
-tex/*.org
-
-# files to include
-!screenshot.jpg
 
 # misc files
 *.tar.gz
 plug.vim.old
+misc/pkgs/*.txt
