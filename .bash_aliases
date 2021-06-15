@@ -20,7 +20,7 @@ alias ...='cd ../../'
 if [[ -d ~/Dropbox ]] ; then alias dbox='cd ~/Dropbox' ; fi
 if [[ -d ~/Schreibtisch ]] ; then alias des='cd ~/Schreibtisch' ; fi
 if [[ -d ~/Repositories ]] ; then alias repos='cd ~/Repositories' ; fi
-if [[ -d ~/Dropbox/wise2021 ]] ; then alias sem='cd ~/Dropbox/sose21' ; fi
+if [[ -d ~/Dropbox/sose21 ]] ; then alias sem='cd ~/Dropbox/sose21' ; fi
 if [[ -d ~/Dokumente/3dprinting ]] ; then alias 3d='cd ~/Dokumente/3dprinting' ; fi
 if [[ -d ~/Repositories/dotfiles ]] ; then alias dotf='cd ~/Repositories/dotfiles' ; fi
 

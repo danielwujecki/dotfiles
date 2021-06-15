@@ -56,3 +56,6 @@ GRUB_SAVEDEFAULT=true
 
 # Uncomment to disable submenus in boot menu
 #GRUB_DISABLE_SUBMENU=y
+
+# detect other bootable partitions and systems
+GRUB_DISABLE_OS_PROBER=false
