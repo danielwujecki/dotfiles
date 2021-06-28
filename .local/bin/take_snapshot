@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $EUID -ne 0 ]] ; then
+    echo "Please run as root"
+    exit 1
+fi
+
+ROOTSNAP="@-$(date +%d-%m-%y)"
+HOMESNAP="@home-$(date +%d-%m-%y)"
+
+if [[ ! -d /.btrfs/@ ]] ; then
+    echo 'root subvolume "@" not existing'
+    exit 1
+fi
+
+if [[ ! -d /.btrfs/@home ]] ; then
+    echo 'home subvolume "@home" not existing'
+    exit 1
+fi
+
+if [[ ! -d /.snapshots ]] ; then
+    echo 'snapshot subvolume "@snapshots" not mounted to /.snapshots'
+    exit 1
+fi
+
+if [[ -d /.snapshots/$ROOTSNAP || -d /.snapshots/$HOMESNAP ]] ; then
+    echo "There are already snapshots with names $ROOTSNAP or $HOMESNAP"
+    exit 1
+fi
+
+btrfs subvolume snapshot "/.btrfs/@" "/.snapshots/$ROOTSNAP"
+btrfs subvolume snapshot "/.btrfs/@home" "/.snapshots/$HOMESNAP"

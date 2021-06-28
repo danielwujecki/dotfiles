@@ -56,6 +56,7 @@ cp -r "$HOME"/.local/bin/homesyncdown "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/polybar_normal "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/pycl "$HOME"/Repositories/dotfiles/.local/bin/
 #cp -r "$HOME"/.local/bin/screenlock "$HOME"/Repositories/dotfiles/.local/bin/
+cp -r "$HOME"/.local/bin/take_snapshot "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/texclean "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/toggletouchpad "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/undock "$HOME"/Repositories/dotfiles/.local/bin/
