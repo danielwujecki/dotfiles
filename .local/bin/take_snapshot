@@ -6,8 +6,9 @@ if [[ $EUID -ne 0 ]] ; then
     exit 1
 fi
 
-ROOTSNAP="@-$(date +%d-%m-%y)"
-HOMESNAP="@home-$(date +%d-%m-%y)"
+MINDAY="$((60 * $(date +%H) + $(date +%M)))"
+ROOTSNAP="@-$(date +%d-%m-%y)-$MINDAY"
+HOMESNAP="@home-$(date +%d-%m-%y)-$MINDAY"
 
 if [[ ! -d /.btrfs/@ ]] ; then
     echo 'root subvolume "@" not existing'
@@ -29,5 +30,5 @@ if [[ -d /.snapshots/$ROOTSNAP || -d /.snapshots/$HOMESNAP ]] ; then
     exit 1
 fi
 
-btrfs subvolume snapshot "/.btrfs/@" "/.snapshots/$ROOTSNAP"
-btrfs subvolume snapshot "/.btrfs/@home" "/.snapshots/$HOMESNAP"
+btrfs subvolume snapshot -r "/.btrfs/@" "/.snapshots/$ROOTSNAP"
+btrfs subvolume snapshot -r "/.btrfs/@home" "/.snapshots/$HOMESNAP"
