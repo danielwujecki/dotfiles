@@ -62,6 +62,10 @@ folder () {
     fi
 
     if [[ $1 ]] ; then
+        if [[ ! -d $1 ]] ; then
+            echo " $1 is not a directory."
+            return 1
+        fi
         NAUTILUSPATH="$1"
     else
         NAUTILUSPATH="./"
