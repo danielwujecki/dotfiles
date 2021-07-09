@@ -26,32 +26,34 @@ yay () {
         return 1
     fi
 
+    if [[ -x /usr/bin/flatpak ]] ; then
+        flatpak update || return 1
+    else
+        echo -e "\n${RED}Flatpak not installed.${WHITE}\n"
+    fi
+
     if [[ -x $HOME/.emacs.d/bin/doom ]] ; then
         doom -y upgrade || return 1
     else
         echo -e "\n${RED}Doom emacs not installed.${WHITE}\n"
-        return 1
     fi
 
     if [[ -x /usr/bin/nvim ]] ; then
         nvim -c "PlugUpgrade" -c "PlugUpdate" -c "quit" -c "quit" || return 1
     else
         echo -e "\n${RED}neovim not installed.${WHITE}\n"
-        return 1
     fi
 
     if [[ -d $HOME/.oh-my-zsh ]] ; then
         omz update || return 1
     else
         echo -e "\n${RED}Oh-my-zsh not installed.${WHITE}\n"
-        return 1
     fi
 
     if [[ -d $HOME/.miniconda3 ]] ; then
         zsh -c "source $HOME/.zshrc; conda_init; conda update -y --all" || return 1
     else
         echo -e "\n${RED}Dotfiles repository not found.${WHITE}\n"
-        return 1
     fi
 }
 
