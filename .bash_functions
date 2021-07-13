@@ -32,12 +32,6 @@ yay () {
         echo -e "\n${RED}Flatpak not installed.${WHITE}\n"
     fi
 
-    if [[ -x $HOME/.emacs.d/bin/doom ]] ; then
-        doom -y upgrade || return 1
-    else
-        echo -e "\n${RED}Doom emacs not installed.${WHITE}\n"
-    fi
-
     if [[ -x /usr/bin/nvim ]] ; then
         nvim -c "PlugUpgrade" -c "PlugUpdate" -c "quit" -c "quit" || return 1
     else
@@ -54,6 +48,12 @@ yay () {
         zsh -c "source $HOME/.zshrc; conda_init; conda update -y --all" || return 1
     else
         echo -e "\n${RED}Dotfiles repository not found.${WHITE}\n"
+    fi
+
+    if [[ -x $HOME/.emacs.d/bin/doom ]] ; then
+        doom -y upgrade || return 1
+    else
+        echo -e "\n${RED}Doom emacs not installed.${WHITE}\n"
     fi
 }
 
