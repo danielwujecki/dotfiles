@@ -6,9 +6,8 @@ if [[ $EUID -ne 0 ]] ; then
     exit 1
 fi
 
-MINDAY="$((60 * $(date +%H) + $(date +%M)))"
-ROOTSNAP="@-$(date +%d-%m-%y)-$MINDAY"
-HOMESNAP="@home-$(date +%d-%m-%y)-$MINDAY"
+ROOTSNAP="@-$(date +%d-%m-%y-%H%M)"
+HOMESNAP="@home-$(date +%d-%m-%y-%H%M)"
 
 if [[ ! -d /.btrfs/@ ]] ; then
     echo 'root subvolume "@" not existing'
