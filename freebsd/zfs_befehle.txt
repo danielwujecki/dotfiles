@@ -1,0 +1,7 @@
+ zfs list
+ zfs snapshot
+ zfs snapshot -r zroot@pre-gnome
+ zfs list -t snapshot
+ zfs destroy zroot/ROOT@test
+ man zfs-rollback
+ man zfs-destory

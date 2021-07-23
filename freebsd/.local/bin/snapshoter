@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+print_usage () {
+    echo -e "snapshoter - create, delete and restore zfs snapshots on a default freebsd install\n"
+    echo "usage: snapshoter create|delete|restore <snapshot-name>"
+}
+
+if [[ $EUID -ne 0 ]] ; then
+    echo "Please run as root"
+    print_usage
+    exit 1
+fi
+
+if [[ $# -ne 2 || ! $1 =~ ^(create|delete|restore)$ ]] ; then
+    print_usage
+    exit 1
+fi
+
+if [[ $1 = 'create' ]] ; then
+    zfs snapshot -r "zroot@$2"
+    zfs destroy "zroot@$2"
+    zfs destroy "zroot/ROOT@$2"
+    exit 0
+fi
+
+if [[ $1 = 'delete' ]] ; then
+    zfs destroy "zroot/usr/home@$2"
+    zfs destroy "zroot/usr/ports@$2"
+    zfs destroy "zroot/usr/src@$2"
+    zfs destroy "zroot/usr@$2"
+
+    zfs destroy "zroot/var/audit@$2"
+    zfs destroy "zroot/var/crash@$2"
+    zfs destroy "zroot/var/log@$2"
+    zfs destroy "zroot/var/mail@$2"
+    zfs destroy "zroot/var/tmp@$2"
+    zfs destroy "zroot/var@$2"
+    
+    zfs destroy "zroot/tmp@$2"
+    zfs destroy "zroot/ROOT/default@$2"
+
+    exit 0
+fi
+
+if [[ $1 = 'restore' ]] ; then
+    zfs rollback -r "zroot/usr/home@$2"
+    zfs rollback -r "zroot/usr/ports@$2"
+    zfs rollback -r "zroot/usr/src@$2"
+    zfs rollback -r "zroot/usr@$2"
+
+    zfs rollback -r "zroot/var/audit@$2"
+    zfs rollback -r "zroot/var/crash@$2"
+    zfs rollback -r "zroot/var/log@$2"
+    zfs rollback -r "zroot/var/mail@$2"
+    zfs rollback -r "zroot/var/tmp@$2"
+    zfs rollback -r "zroot/var@$2"
+    
+    zfs rollback -r "zroot/tmp@$2"
+    zfs rollback -r "zroot/ROOT/default@$2"
+
+    exit 0
+fi
+
+# NAME                 USED  AVAIL     REFER  MOUNTPOINT
+# zroot               2.35G   220G       96K  /zroot
+# zroot/ROOT          1.60G   220G       96K  none
+# zroot/ROOT/default  1.60G   220G     1.60G  /
+# zroot/tmp            160K   220G       96K  /tmp
+# zroot/usr            759M   220G       96K  /usr
+# zroot/usr/home      43.8M   220G     43.5M  /usr/home
+# zroot/usr/ports      715M   220G      715M  /usr/ports
+# zroot/usr/src         96K   220G       96K  /usr/src
+# zroot/var            872K   220G       96K  /var
+# zroot/var/audit       96K   220G       96K  /var/audit
+# zroot/var/crash       96K   220G       96K  /var/crash
+# zroot/var/log        320K   220G      204K  /var/log
+# zroot/var/mail       160K   220G      104K  /var/mail
+# zroot/var/tmp        104K   220G       96K  /var/tmp
