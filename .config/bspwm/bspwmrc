@@ -82,7 +82,7 @@ pgrep -x telegram-deskto > /dev/null || telegram-desktop -startintray &
 pgrep -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
 
 # start desktop programs
-sleep 1
-pgrep -x firefox > /dev/null || (bspc desktop -f 1 && firefox &)
+#sleep 1
+#pgrep -x firefox > /dev/null || (bspc desktop -f 1 && firefox &)
 #sleep 1
 #pgrep -x thunderbird > /dev/null || (bspc desktop -f 9 && thunderbird &)

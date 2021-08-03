@@ -62,3 +62,5 @@
               x-stretch-cursor t)
 
 (setq +latex-viewers '(zathura))
+
+(setq org-startup-folded t)
