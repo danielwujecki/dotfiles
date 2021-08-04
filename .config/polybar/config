@@ -59,13 +59,14 @@ font-0 = "JetBrains Mono:size=11;3"
 ; Arch Logo launcher
 font-1 = "JetBrainsMono Nerd Font:size=16;3"
 ; icons
-;font-2 = "JetBrainsMono Nerd Font:size=14;4"
+; font-2 = "JetBrainsMono Nerd Font:size=14;4"
 
 locale = de_DE.UTF-8
 
-modules-left = launcher readupdates sep bspwm xwindow
-modules-right = cpu memory sep audio backlight battery date sep
-; modules-center = spotify
+modules-left = launcher sep bspwm xwindow
+modules-right = cpu memory sep audio backlight battery sep
+modules-center = date
+; unused modules: spotify, backlight, battery, readupdates
 
 module-margin = 0
 module-margin-left = 0
@@ -254,10 +255,12 @@ animation-charging-foreground = ${colors.foreground-alt}
 type = internal/date
 interval = 1
 
-time = %{F#d07ef2}%{T3} %{T-}%H:%M%{F-}
-date = %{F#65a2d9}%{T3} %{T-}%a, %d. %b%{F-}
+; time = %{F#d07ef2}%{T3} %{T-}%H:%M%{F-}
+; date = %{F#65a2d9}%{T3}  %{T-}%a, %d. %b%{F-}
+time = %{F#d07ef2}%H:%M%{F-}
+date = %{F#65a2d9}%a, %d. %b%{F-}
 
-label = %time%  %date%
+label = %date%  %time%
 label-font = 1
 
 ###############################################################################
