@@ -66,9 +66,10 @@ bspc rule -a Emacs state=tiled
 #bspc rule -a Screenkey manage=off
 
 # start background programs
-"$HOME"/.local/bin/fehbg &
-"$HOME"/.local/bin/polybar_normal > /dev/null &
-"$HOME"/.config/polybar/check_updates.sh > /dev/null &
+source "$HOME"/.bash_functions
+fehbg &
+launch_polybar &
+"$HOME"/.local/bin/check_updates &
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom &
 pgrep -x lxpolkit > /dev/null || lxpolkit &

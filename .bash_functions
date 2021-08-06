@@ -75,3 +75,62 @@ folder () {
 
     zsh -c "nautilus $NAUTILUSPATH > /dev/null 2>&1 &!"
 }
+
+fehbg () {
+    wp_path="$HOME/Bilder/Wallpaper/selected"
+
+    if [[ ! -d $wp_path ]] ; then return 1 ; fi
+
+    until [ -f "$wp_path/$sel_wp" ] ; do
+        sel_wp=$(ls "$wp_path" | shuf -n 1)
+    done
+
+    feh --no-fehbg --bg-fill "$wp_path/$sel_wp"
+    betterlockscreen -u "$wp_path/$sel_wp" -r "2560x1440"
+}
+
+launch_polybar () {
+    while pgrep -u $UID -x polybar > /dev/null; do
+        killall -q polybar
+        sleep 1
+    done
+    polybar -r mybar &
+    echo "Bars launched..."
+}
+
+pycl () {
+    delcand=$(find ./ -regex '.*/\(__pycache__\|\.ipynb_checkpoints\)')
+    if [ -z "$delcand" ] ; then
+        echo "Nothing to clean up."
+        return 0
+    fi
+    for dir in $delcand ; do
+        echo "Wan't to remove" "$dir"
+        rm -rI "$dir"
+    done
+}
+
+texclean () {
+    rm -rf ./*.aux \
+           ./.auctex-auto \
+           ./*.fdb_latexmk  \
+           ./*.fls \
+           ./*.log \
+           ./*.out \
+           ./*.lof \
+           ./*.bbl \
+           ./*.bcf \
+           ./*.blg \
+           ./*.run.xml \
+           ./*.toc \
+           ./*.synctex.gz \
+           ./*.bib.sav \
+           ./*.bib.bak \
+           ./*.lot \
+           ./*.nav \
+           ./*.snm \
+           ./*.tdo \
+           ./*.dvi \
+           ./*.out.ps \
+           ./*.xdv
+}

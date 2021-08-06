@@ -1,3 +1,0 @@
-#!/bin/bash
-img="$HOME/Bilder/wallpapers/thinkpad.png"
-i3lock -n -t -i "$img"

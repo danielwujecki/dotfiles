@@ -2,6 +2,7 @@
 
 # dotfiles in ~/
 cp "$HOME"/Repositories/dotfiles/.bash_aliases "$HOME"/
+cp "$HOME"/Repositories/dotfiles/.bash_functions "$HOME"/
 #cp "$HOME"/Repositories/dotfiles/.bashrc "$HOME"/
 #cp "$HOME"/Repositories/dotfiles/.gitconfig "$HOME"/
 #cp "$HOME"/Repositories/dotfiles/.gtkrc-2.0 "$HOME"/
@@ -39,16 +40,11 @@ cp "$HOME"/Repositories/dotfiles/.config/redshift.conf "$HOME"/.config/
 #cp "$HOME"/Repositories/dotfiles/.config/user-dirs.locale "$HOME"/.config/
 
 # ~/.local/
+cp -r "$HOME"/Repositories/dotfiles/.local/bin/check_updates "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/dock "$HOME"/.local/bin/
-cp -r "$HOME"/Repositories/dotfiles/.local/bin/fehbg "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/homesyncup "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/homesyncdown "$HOME"/.local/bin/
-#cp -r "$HOME"/Repositories/dotfiles/.local/bin/polybar_dock "$HOME"/.local/bin/
-cp -r "$HOME"/Repositories/dotfiles/.local/bin/polybar_normal "$HOME"/.local/bin/
-cp -r "$HOME"/Repositories/dotfiles/.local/bin/pycl "$HOME"/.local/bin/
-#cp -r "$HOME"/Repositories/dotfiles/.local/bin/screenlock "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/take_snapshot "$HOME"/.local/bin/
-cp -r "$HOME"/Repositories/dotfiles/.local/bin/texclean "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/toggletouchpad "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/undock "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/share/applications/emacs.desktop \

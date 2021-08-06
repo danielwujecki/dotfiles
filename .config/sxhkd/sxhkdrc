@@ -189,4 +189,4 @@ super + ctrl + space
 
 # shuffle wallpaper
 super + w
-    "$HOME/.local/bin/fehbg"
+    bash -c 'source "$HOME"/.bash_functions && fehbg'

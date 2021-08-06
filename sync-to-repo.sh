@@ -2,6 +2,7 @@
 
 # dotfiles in ~/
 cp "$HOME"/.bash_aliases "$HOME"/Repositories/dotfiles/
+cp "$HOME"/.bash_functions "$HOME"/Repositories/dotfiles/
 #cp "$HOME"/.bashrc "$HOME"/Repositories/dotfiles/
 #cp "$HOME"/.gitconfig "$HOME"/Repositories/dotfiles/
 cp "$HOME"/.gtkrc-2.0 "$HOME"/Repositories/dotfiles/
@@ -20,7 +21,6 @@ cp -r "$HOME"/.config/kitty "$HOME"/Repositories/dotfiles/.config/
 cp "$HOME"/.config/nvim/init.vim "$HOME"/Repositories/dotfiles/.config/nvim/
 #cp -r "$HOME"/.config/pacman "$HOME"/Repositories/dotfiles/.config/
 cp -r "$HOME"/.config/picom "$HOME"/Repositories/dotfiles/.config/
-cp "$HOME"/.config/polybar/check_updates.sh "$HOME"/Repositories/dotfiles/.config/polybar/
 cp "$HOME"/.config/polybar/config "$HOME"/Repositories/dotfiles/.config/polybar/
 cp "$HOME"/.config/polybar/spotify_status.py "$HOME"/Repositories/dotfiles/.config/polybar/
 cp "$HOME"/.config/ranger/commands.py "$HOME"/Repositories/dotfiles/.config/ranger/
@@ -48,16 +48,11 @@ cp "$HOME"/.config/redshift.conf "$HOME"/Repositories/dotfiles/.config/
 #cp "$HOME"/.config/user-dirs.locale "$HOME"/Repositories/dotfiles/.config/
 
 # ~/.local/
+cp -r "$HOME"/.local/bin/check_updates "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/dock "$HOME"/Repositories/dotfiles/.local/bin/
-cp -r "$HOME"/.local/bin/fehbg "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/homesyncup "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/homesyncdown "$HOME"/Repositories/dotfiles/.local/bin/
-#cp -r "$HOME"/.local/bin/polybar_dock "$HOME"/Repositories/dotfiles/.local/bin/
-cp -r "$HOME"/.local/bin/polybar_normal "$HOME"/Repositories/dotfiles/.local/bin/
-cp -r "$HOME"/.local/bin/pycl "$HOME"/Repositories/dotfiles/.local/bin/
-#cp -r "$HOME"/.local/bin/screenlock "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/take_snapshot "$HOME"/Repositories/dotfiles/.local/bin/
-cp -r "$HOME"/.local/bin/texclean "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/toggletouchpad "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/undock "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/share/applications/emacs.desktop \
