@@ -24,4 +24,5 @@ if [ -f "$usermodmap" ]; then
 fi
 
 pgrep -x ssh-agent > /dev/null || eval "$(ssh-agent)"
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 exec bspwm > "$HOME"/.config/bspwm/bspwm.log 2>&1
