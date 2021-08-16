@@ -86,7 +86,7 @@ fehbg () {
     done
 
     feh --no-fehbg --bg-fill "$wp_path/$sel_wp"
-    betterlockscreen -u "$wp_path/$sel_wp" -r "2560x1440"
+    betterlockscreen -u "$wp_path/$sel_wp" --fx dimblur
 }
 
 launch_polybar () {
