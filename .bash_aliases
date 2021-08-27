@@ -67,7 +67,6 @@ fi
 
 # ssh
 alias ssh='TERM=xterm-256color ssh'
-alias sraspi='ssh sraspi'
 
 if [[ -f ~/.ssh/ssh_rsa_privat ]] ; then
     alias pokssh='ssh-add ~/.ssh/ssh_rsa_privat'
