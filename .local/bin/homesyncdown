@@ -15,16 +15,16 @@
 # "--bwlimit=5m": Beschränke Traffic auf 5MiB
 # "--stats": zeigt einen ausführlicheren Bericht am Ende einer Übertragung an
 
-hostname_dest="Abacus"
-rsync_flags="-uahbHP --delete --backup-dir=/home/daniel/rsync_backup -e ssh"
+hostname_dest="daniel@home.shilunski.de"
+rsync_flags=(-uahbHP --delete --backup-dir=/home/daniel/rsync_backup --rsh="ssh -p 2231")
 
-rsync $rsync_flags "$hostname_dest":/home/daniel/Arduino      /home/daniel/
-rsync $rsync_flags "$hostname_dest":/home/daniel/Bilder       /home/daniel/
-rsync $rsync_flags "$hostname_dest":/home/daniel/Dokumente    /home/daniel/
-rsync $rsync_flags "$hostname_dest":/home/daniel/Downloads    /home/daniel/
-rsync $rsync_flags "$hostname_dest":/home/daniel/Dropbox      /home/daniel/
-rsync $rsync_flags "$hostname_dest":/home/daniel/Musik        /home/daniel/
-rsync $rsync_flags "$hostname_dest":/home/daniel/Repositories /home/daniel/
-rsync $rsync_flags "$hostname_dest":/home/daniel/Schreibtisch /home/daniel/
-rsync $rsync_flags "$hostname_dest":/home/daniel/Studium      /home/daniel/
-rsync $rsync_flags "$hostname_dest":/home/daniel/Videos       /home/daniel/
+rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Arduino      /home/daniel/
+rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Bilder       /home/daniel/
+rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Dokumente    /home/daniel/
+rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Downloads    /home/daniel/
+rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Dropbox      /home/daniel/
+rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Musik        /home/daniel/
+rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Repositories /home/daniel/
+rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Schreibtisch /home/daniel/
+rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Studium      /home/daniel/
+rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Videos       /home/daniel/
