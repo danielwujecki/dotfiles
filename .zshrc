@@ -22,9 +22,12 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="/home/daniel/.oh-my-zsh"
 
-ZSH_THEME="myone"
-#ZSH_THEME="lukerandall"
-# "bira" "gallifrey" "gentoo" "kafeitu" "wuffers"
+# other nice themes: "bira" "gallifrey" "gentoo" "kafeitu" "wuffers"
+if [[ -n $SSH_CONNECTION ]] ; then
+    ZSH_THEME="lukerandall"
+else
+    ZSH_THEME="myone"
+fi
 
 # Uncomment the following line to automatically update without prompting.
 DISABLE_UPDATE_PROMPT="true"
