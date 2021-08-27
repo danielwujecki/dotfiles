@@ -71,6 +71,7 @@ fi
 #    export MANPAGER="nvim -c 'set ft=man' -"
 #fi
 if [[ -x /usr/bin/bat ]] ; then
+    export PAGER="bat -n"
     export MANPAGER="sh -c 'col -bx | bat -l man -n'"
 fi
 

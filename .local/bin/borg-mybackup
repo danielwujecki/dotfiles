@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+calc_next_index () {
+    if [[ ! $# -eq 2 ]] ; then
+        echo "calc_next_index requires exactly two arguments. Aborting."
+        exit 1
+    fi
+    INDEX="$(echo "$1" | sed "s/.*$2-\([0-9]\{3\}\).*$/\1+1/;t;d" | bc | sort -n | tail -n1 | xargs printf '%03d')"
+
+    if [[ -n $(echo "$1" | grep "$2-$INDEX") ]] ; then
+        echo "$2-$INDEX is an existing archive. Aborting."
+        exit 1
+    fi
+    echo "$INDEX"
+}
+
+if [[ $EUID -ne 0 ]] ; then
+    echo "Please run as root"
+    exit 1
+fi
+
+HOSTNAME="$(cat /etc/hostname)"
+if [[ $HOSTNAME = 'ArchX1' ]] ; then
+    ARCHIVE_HOST='x1carbon'
+elif [[ $HOSTNAME = 'Abacus' ]] ; then
+    ARCHIVE_HOST='abacus'
+else
+    echo "Hostname is neither 'ArchX1' or 'Abacus'. Aborting."
+    exit 1
+fi
+
+BORG_CMD='borg create -xspC zstd'
+BASE_PATH_ROOT='/mnt/borg-bkup-root'
+BASE_PATH_USER='/mnt/borg-bkup-user'
+
+# check if disk is connected
+# check if not already opened
+#cryptsetup open /dev/disk/by-uuid/d2ab6a0d-333d-4726-b461-ca663042bafd bkup0
+
+# check if nothing is mounted at /mnt
+# check if disk exists
+#mount /dev/disk/by-uuid/79d55b92-46c5-4dde-90a4-abbe19903c02 /mnt
+
+ROOT_REPO_BKUPS="$(borg list $BASE_PATH_ROOT)"
+USER_REPO_BKUPS="$(su -c "borg list $BASE_PATH_USER" - daniel)"
+
+cd /boot
+calc_next_index "$ROOT_REPO_BKUPS" "$ARCHIVE_HOST-boot"
+#$BORG_CMD "$BASE_PATH_ROOT::$ARCHIVE_HOST-boot-$INDEX" .
+
+cd /.btrfs/@
+calc_next_index "$ROOT_REPO_BKUPS" "$ARCHIVE_HOST-root"
+#$BORG_CMD "$BASE_PATH_ROOT::$ARCHIVE_HOST-root-$INDEX" .
+
+cd /.btrfs/@home
+calc_next_index "$USER_REPO_BKUPS" "$ARCHIVE_HOST-home-daniel"
+#su -c "$BORG_CMD $BASE_PATH_USER::$ARCHIVE_HOST-home-daniel-$INDEX ." - daniel
+
+#borg list "$BASE_PATH_ROOT"
+#su -c "borg list $BASE_PATH_USER" - daniel
+
+#umount /mnt
+#vgchange -an vgb0
+#cryptsetup close bkup0

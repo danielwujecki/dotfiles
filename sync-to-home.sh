@@ -17,6 +17,7 @@ cp "$HOME"/Repositories/dotfiles/.zshrc "$HOME"/
 cp -r "$HOME"/Repositories/dotfiles/.config/bspwm "$HOME"/.config/
 cp -r "$HOME"/Repositories/dotfiles/.config/dunst "$HOME"/.config/
 cp -r "$HOME"/Repositories/dotfiles/.config/gtk-3.0 "$HOME"/.config/
+cp -r "$HOME"/Repositories/dotfiles/.config/keepassxc "$HOME"/.config/
 cp -r "$HOME"/Repositories/dotfiles/.config/kitty "$HOME"/.config/
 cp -r "$HOME"/Repositories/dotfiles/.config/nvim "$HOME"/.config/
 #cp -r "$HOME"/Repositories/dotfiles/.config/pacman "$HOME"/.config/
@@ -40,6 +41,7 @@ cp "$HOME"/Repositories/dotfiles/.config/redshift.conf "$HOME"/.config/
 #cp "$HOME"/Repositories/dotfiles/.config/user-dirs.locale "$HOME"/.config/
 
 # ~/.local/
+cp -r "$HOME"/Repositories/dotfiles/.local/bin/borg-mybackup "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/check_updates "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/dock "$HOME"/.local/bin/
 cp -r "$HOME"/Repositories/dotfiles/.local/bin/homesyncup "$HOME"/.local/bin/
