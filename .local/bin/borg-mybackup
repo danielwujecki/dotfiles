@@ -81,17 +81,16 @@ fi
 ROOT_REPO_BKUPS="$(borg list $BASE_PATH_ROOT)"
 USER_REPO_BKUPS="$(su -c "borg list $BASE_PATH_USER" - daniel)"
 
-cd /boot
 calc_next_index "$ROOT_REPO_BKUPS" "$ARCHIVE_HOST-boot"
+cd /boot
 $BORG_CMD "$BASE_PATH_ROOT::$ARCHIVE_HOST-boot-$INDEX" .
 
-cd /.btrfs/@
 calc_next_index "$ROOT_REPO_BKUPS" "$ARCHIVE_HOST-root"
+cd /.btrfs/@
 $BORG_CMD "$BASE_PATH_ROOT::$ARCHIVE_HOST-root-$INDEX" .
 
-cd /.btrfs/@home
 calc_next_index "$USER_REPO_BKUPS" "$ARCHIVE_HOST-home-daniel"
-su -c "$BORG_CMD $BASE_PATH_USER::$ARCHIVE_HOST-home-daniel-$INDEX ." - daniel
+su -c "cd /.btrfs/@home && $BORG_CMD $BASE_PATH_USER::$ARCHIVE_HOST-home-daniel-$INDEX ." - daniel
 
 borg list "$BASE_PATH_ROOT"
 echo ""
