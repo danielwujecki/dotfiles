@@ -111,7 +111,7 @@ pycl () {
 }
 
 texclean () {
-    rm -rf ./*.aux \
+    bash -c "rm -rf ./*.aux \
            ./.auctex-auto \
            ./*.fdb_latexmk  \
            ./*.fls \
@@ -132,5 +132,5 @@ texclean () {
            ./*.tdo \
            ./*.dvi \
            ./*.out.ps \
-           ./*.xdv
+           ./*.xdv"
 }
