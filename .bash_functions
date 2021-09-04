@@ -77,16 +77,25 @@ folder () {
 }
 
 fehbg () {
-    wp_path="$HOME/Bilder/Wallpaper/selected"
+    if [[ "$#" -ge 1 ]] ; then
+        wp_path="$1"
+    else
+        wp_dir="$HOME/Bilder/Wallpaper/selected"
 
-    if [[ ! -d $wp_path ]] ; then return 1 ; fi
+        if [[ ! -d $wp_dir ]] ; then return 1 ; fi
 
-    until [ -f "$wp_path/$sel_wp" ] ; do
-        sel_wp=$(ls "$wp_path" | shuf -n 1)
-    done
+        until [[ -f $wp_path ]] ; do
+            wp_name="$(ls "$wp_dir" | shuf -n 1)"
+            wp_path="$wp_dir/$wp_name"
+        done
+    fi
 
-    feh --no-fehbg --bg-fill "$wp_path/$sel_wp"
-    betterlockscreen -u "$wp_path/$sel_wp" --fx dimblur
+    if [[ ! -f $wp_path ]] ; then
+        echo "Error: wallpaper path is no file."
+        return 1
+    fi
+    feh --no-fehbg --bg-fill "$wp_path"
+    betterlockscreen -u "$wp_path" --fx dimblur
 }
 
 launch_polybar () {

@@ -1,5 +1,6 @@
 configuration {
-    theme: "mytheme";
+    // theme: "mytheme";
+    theme: "Arc-Dark";
 	modi: "drun,window,run";
     display-drun: "Apps:";
     display-window: "Running:";

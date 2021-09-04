@@ -11,12 +11,9 @@ if [ -d "$HOME/.cargo/bin" ] ; then
     PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-if [ -d "$HOME/.pyenv/bin" ] ; then
-    PATH="$HOME/.pyenv/bin:$PATH"
-fi
-
 if [ -d "$HOME/.pyenv/shims" ] ; then
-    PATH="$HOME/.pyenv/shims:$PATH"
+    export PYENV_ROOT="$HOME/.pyenv"
+    PATH="$PYENV_ROOT/shims:$PATH"
 fi
 
 # Path to your oh-my-zsh installation.
