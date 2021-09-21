@@ -3,11 +3,8 @@
     a4paper,
     notitlepage,
     %parskip=half,
-    egregdoesnotlikesansseriftitles
 ]{scrartcl}
-\usepackage[english, ngerman]{babel}
-%\usepackage[utf8]{inputenc}
-%\usepackage[T1]{fontenc}
+\usepackage[main=english, ngerman]{babel}
 \usepackage{microtype}
 \usepackage{hyperref}
 \usepackage{fontspec}
@@ -27,6 +24,13 @@
 \maketitle
 %\newpage
 
+\section{Restart and Quit bspwm}
+\begin{tabular}{p{4cm}l}
+    mod + r             & restart sxhkd                         \\
+    mod + shift + r     & restart bspwm                         \\
+    mod + alt + e       & exit bspwm
+\end{tabular}
+
 \section{Launch and Quit Programs}
 \begin{tabular}{p{4cm}l}
     mod + return            & open terminal                         \\
@@ -36,29 +40,26 @@
     mod + shift + d         & kill program
 \end{tabular}
 
-\section{Restart and Quit bspwm}
+\section{Focus Windows}
 \begin{tabular}{p{4cm}l}
-    mod + r             & restart sxhkd                         \\
-    mod + shift + r     & restart bspwm                         \\
-    mod + alt + e       & exit bspwm
+    mod + h,j,k,l         & move focus into direction        \\
+    mod + 1--9,0          & move focus to desktop         \\
+    mod + tab             & switch to last desktop
 \end{tabular}
 
-\section{Lock and Suspend}
+\section{Move Windows}
 \begin{tabular}{p{4cm}l}
-    mod + o             & lock screen                           \\
-    mod + shift + o     & suspend + lock screen
+    mod + b                & swap current node with biggest node on desktop \\
+    mod + shift + h,j,k,l  & move window into direction        \\
+    mod + shift + 1--9,0   & move window to desktop         \\
+    mod + alt + 1--9,0     & move window to desktop and stay focused       \\
+    mod + arrow keys       & move floating window              \\
+    mod + mouse1           & move in arbitrary direction
 \end{tabular}
 
-\section{Screenshots}
+\section{Move Desktops}
 \begin{tabular}{p{4cm}l}
-    mod + print         & take screenshot                       \\
-    mod + shift + print & take screenshot of current window
-\end{tabular}
-
-\section{Toggle Gaps}
-\begin{tabular}{p{4cm}l}
-    mod + g             & set gaps                              \\
-    mod + shift + g     & remove gaps
+    mod + shift + tab     & move desktop to next monitor
 \end{tabular}
 
 \section{Window Layout}
@@ -70,28 +71,6 @@
     mod + f             & switch to fullscreen layout
 \end{tabular}
 
-\section{Focus Windows}
-\begin{tabular}{p{4cm}l}
-    mod + h,j,k,l         & move focus into direction        \\
-    mod + 1--9,0          & move focus to workspace         \\
-    mod + tab             & switch to last workspace
-\end{tabular}
-
-\section{Move Windows}
-\begin{tabular}{p{4cm}l}
-    mod + m               & swap current node with biggest node on workspace \\
-    mod + shift + h,j,k,l & move window into direction        \\
-    mod + shift + 1--9,0   & move window to workspace         \\
-    mod + alt + 1--9,0     & move window to workspace and stay focused       \\
-    mod + arrow keys      & move floating window              \\
-    mod + mouse1          & move in arbitrary direction
-\end{tabular}
-
-\section{Move Desktops}
-\begin{tabular}{p{4cm}l}
-    mod + shift + tab     & move desktop to next monitor
-\end{tabular}
-
 \section{Resize Windows}
 \begin{tabular}{p{4cm}l}
     mod + alt + h,j,k,l   & expand a window by moving one of its side outward        \\
@@ -99,16 +78,30 @@
     mod + mouse2,mouse3   & resize in arbitrary direction
 \end{tabular}
 
+\section{Window Flags}
+\begin{tabular}{p{4cm}l}
+    super + i           & hide node                         \\
+    super + shift + i   & unhide one node                   \\
+    super + shift + p   & don't further tile a node         \\
+    super + shift + s   & keep a node on active desktop
+\end{tabular}
+
 \section{Mark Areas}
 \begin{tabular}{p{4cm}l}
     mod + ctrl + h,j,k,l  & preselect area                    \\
-    mod + ctrl + 1--9     & preselect split ratio            \\
+    mod + ctrl + 1--9     & preselect split ratio             \\
     mod + ctrl + space    & cancel preselection
 \end{tabular}
 
-%\section{}
-%\begin{tabular}{p{3cm}l}
-%    print               & bla                                   \\
-%\end{tabular}
+\section{Special Keys}
+\begin{tabular}{p{4cm}l}
+    mod + g             & set gaps                              \\
+    mod + shift + g     & remove gaps                           \\
+    mod + o             & lock screen                           \\
+    mod + shift + o     & suspend + lock screen                 \\
+    mod + print         & take screenshot                       \\
+    mod + shift + print & take screenshot of current window     \\
+    mod + w             & shuffle wallpaper
+\end{tabular}
 
 \end{document}

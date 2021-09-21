@@ -7,26 +7,6 @@
 #############################
 
 #############################
-#  launch + quit programms  #
-#############################
-
-# terminal emulator
-super + Return
-    kitty
-
-# launch emacs
-super + shift + Return
-    emacsclient -c -a ''
-
-# program launcher
-super + d
-    rofi -show drun
-
-# close and kill
-super + shift + {q,d}
-    bspc node -{c,k}
-
-#############################
 #   restart + quit bspwm    #
 #############################
 
@@ -41,75 +21,28 @@ super + alt + e
     pkill ssh-agent ; bspc quit
 
 #############################
-#      Lock and Suspend     #
+#  launch + quit programms  #
 #############################
 
-# lock screen
-super + o
-    betterlockscreen -l dimblur --off 1
+# terminal emulator
+super + Return
+    kitty
 
-super + shift + o
-    systemctl suspend && betterlockscreen -l dimblur
+# open emacs
+super + shift + Return
+    emacsclient -c -a ''
 
-#############################
-#        Screenshots        #
-#############################
+# program launcher
+super + d
+    rofi -show drun
 
-# screenshots
-super + Print
-    scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'
-super + shift + Print
-    scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'
-
-#############################
-#       Special Keys        #
-#############################
-
-# Pulse Audio controls
-XF86AudioRaiseVolume
-    pulsemixer --change-volume +5
-XF86AudioLowerVolume
-    pulsemixer --change-volume -5
-XF86AudioMute
-    pulsemixer --toggle-mute
-
-# Sreen brightness controls
-XF86MonBrightnessUp
-    xbacklight -inc 5
-XF86MonBrightnessDown
-    xbacklight -dec 5
-
-# Touchpad controls
-XF86TouchpadToggle
-    $HOME/.config/i3/toggletouchpad.sh
-
+# close and kill
+super + shift + {q,d}
+    bspc node -{c,k}
 
 #############################
-#        Toggle Gaps        #
+#       Focus Windows       #
 #############################
-
-super + {_,shift} + g
-    bspc config window_gap {12,0}
-
-#############################
-#       Window Layout       #
-#############################
-
-# alternate between the tiled and monocle layout
-super + m
-    bspc desktop -l next
-
-# set the window state
-super + {t,shift + t,s,f}
-    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
-#############################
-#           Focus           #
-#############################
-
-# focus the last desktop
-super + Tab
-    bspc desktop -f last
 
 # focus the node in the given direction
 super + {h,j,k,l}
@@ -118,6 +51,10 @@ super + {h,j,k,l}
 # focus desktop
 super + {1-9,0}
     bspc desktop -f '{1-9,0}'
+
+# focus the last desktop
+super + Tab
+    bspc desktop -f last
 
 #############################
 #        Move Windows       #
@@ -155,6 +92,18 @@ super + shift + Tab
     done
 
 #############################
+#       Window Layout       #
+#############################
+
+# alternate between the tiled and monocle layout
+super + m
+    bspc desktop -l next
+
+# set the window state
+super + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+#############################
 #       Resize Windows      #
 #############################
 
@@ -165,6 +114,26 @@ super + alt + {h,j,k,l}
 # contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
     bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+#############################
+#       Window Flags        #
+#############################
+
+# hide node
+super + i
+    bspc node -g hidden
+
+# unhide one node
+super + shift + i
+    bspc node any.local.window.hidden -g hidden
+
+# don't further tile a node
+super + shift + p
+    bspc node -g private
+
+# keep a node on active desktop
+super + shift + s
+    bspc node -g sticky
 
 #############################
 #        Mark Areas         #
@@ -182,11 +151,47 @@ super + ctrl + {1-9}
 super + ctrl + space
     bspc node -p cancel
 
-##################################
-#             Testing            #
-# not yet included in keymap.pdf #
-##################################
+#############################
+#       Special Keys        #
+#############################
+
+# toggle gaps
+super + {_,shift} + g
+    bspc config window_gap {12,0}
+
+# lock screen
+super + o
+    betterlockscreen -l dimblur --off 1
+
+super + shift + o
+    systemctl suspend && betterlockscreen -l dimblur
+
+# screenshot
+super + Print
+    scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'
+
+# screenshot of current window
+super + shift + Print
+    scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'
 
 # shuffle wallpaper
 super + w
     bash -c 'source "$HOME"/.bash_functions && fehbg'
+
+# Pulse Audio controls
+XF86AudioRaiseVolume
+    pulsemixer --change-volume +5
+XF86AudioLowerVolume
+    pulsemixer --change-volume -5
+XF86AudioMute
+    pulsemixer --toggle-mute
+
+# Sreen brightness controls
+XF86MonBrightnessUp
+    xbacklight -inc 5
+XF86MonBrightnessDown
+    xbacklight -dec 5
+
+# Touchpad controls
+#XF86TouchpadToggle
+#    $HOME/.config/i3/toggletouchpad.sh
