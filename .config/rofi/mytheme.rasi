@@ -10,13 +10,7 @@
 
 #window {
     border: 3px;
-    border-radius: 0px;
     padding: 6px;
-}
-
-#mainbox {
-    border: 0px;
-    padding: 0px;
 }
 
 #inputbar {
@@ -24,21 +18,19 @@
     padding: 0px 0px 6px;
 }
 
-prompt {
+#prompt {
     padding: 3px 0px 0px 0px;
 }
 
-entry {
+#entry {
     background-color: #1b1918;
-    padding: 4px 4px 4px 6px;
+    padding: 4px 4px 4px 8px;
     border-radius: 4px;
-    vertical-align: 0.5;
 }
 
 #listview {
     columns: 2;
     lines: 9;
-
     scrollbar: true;
 
     spacing: 0px;
@@ -46,40 +38,38 @@ entry {
     border: 2px 0px 0px;
 }
 
+#scrollbar {
+    border-radius: 4px;
+    handle-color: #1793d1;
+    handle-width: 6px;
+    background-color: #262626;
+}
+
 #element {
-    border: 0px;
     padding: 6px;
-    border-radius: 0px;
+    border-radius: 2px;
     background-color: #1b1918;
 }
 
-#element-icon {
-    size: 40;
-    margin: 0px 6px 0px 0px;
-}
-
-#element-text {
-    vertical-align: 0.5;
-}
-
 #element alternate {
-    border: 0px;
-    border-radius: 0px;
+    border-radius: 2px;
     background-color: #2b2928;
 }
 
 #element selected {
-    border-radius: 6px;
+    border-radius: 4px;
     background-color: #1793d1;
 }
 
-#scrollbar {
-    border: 0px;
-    border-radius: 4px;
-    margin: 0px 0px 0px 6;
-    handle-color: #1793d1;
-    handle-width: 6px;
-    background-color: #262626;
+#element-icon {
+    size: 30;
+    margin: 0px 6px 0px 0px;
+    background-color: inherit;
+}
+
+#element-text {
+    vertical-align: 0.5;
+    background-color: inherit;
 }
 
 // vim:ft=css
