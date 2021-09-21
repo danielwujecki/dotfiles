@@ -73,6 +73,7 @@ launch_polybar &
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom &
 pgrep -x lxpolkit > /dev/null || lxpolkit &
+pgrep -x birdtray > /dev/null || birdtray &
 pgrep -x nm-applet > /dev/null || nm-applet &
 #pgrep -x emacs > /dev/null || emacs --daemon &
 pgrep -u daniel -x dunst > /dev/null || dunst &
