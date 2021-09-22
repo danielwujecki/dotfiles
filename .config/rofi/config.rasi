@@ -1,12 +1,16 @@
 configuration {
     theme: "mytheme";
     // theme: "Arc-Dark";
-	modi: "drun,window,run";
+
+	modi: "drun,window";
     display-drun: "Apps:";
     display-window: "Running:";
     display-run: "run:";
+
 	show-icons: true;
     icon-theme: "Papirus-Dark";
+    font: "JetBrains Mono 12";
+
 	terminal: "kitty";
 }
 

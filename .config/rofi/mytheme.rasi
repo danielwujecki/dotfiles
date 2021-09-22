@@ -1,11 +1,8 @@
 * {
     width: 1000;
-
+    text-color: #eaeaea;
     border-color: #4b4948;
     background-color: #3b3938;
-
-    text-color: #eaeaea;
-    font: "JetBrains Mono 13";
 }
 
 #window {

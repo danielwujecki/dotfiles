@@ -96,7 +96,6 @@ click-left = "bash -c 'rofi -show drun'"
 
 [module/readupdates]
 type=custom/script
-
 exec = cat $HOME/.cache/current_updates.txt
 tail = false
 interval = 30
@@ -163,16 +162,16 @@ label-font = 1
 type = internal/cpu
 interval = 1
 
-label = %{T3}﬙ %{T-}%percentage:2%%
+label = %{F#65a2d9}%{T3}﬙ %{T-}%{F-}%percentage:2%%
 label-font = 1
-label-foreground = ${colors.blue}
+;label-foreground = ${colors.blue}
 
 [module/memory]
 type = internal/memory
 interval = 2
-label = %{T3} %{T-}%percentage_used%%
+label = %{F#d07ef2}%{T3} %{T-}%{F-}%percentage_used%%
 label-font = 1
-label-foreground = ${colors.purple}
+;label-foreground = ${colors.purple}
 
 [module/audio]
 type = internal/pulseaudio
@@ -185,7 +184,7 @@ format-volume = <ramp-volume><label-volume>
 
 label-volume = %percentage%%
 label-volume-font = 1
-label-volume-foreground = ${colors.yellow}
+;label-volume-foreground = ${colors.yellow}
 
 label-muted = %{T3} %{T-}
 label-muted-font = 1
@@ -204,7 +203,7 @@ format = <ramp><label>
 
 label = %percentage%%
 label-font = 1
-label-foreground = ${colors.blue}
+;label-foreground = ${colors.blue}
 ramp-0 = %{T3} %{T-}
 ramp-1 = %{T3} %{T-}
 ramp-2 = %{T3} %{T-}
@@ -255,10 +254,12 @@ animation-charging-foreground = ${colors.foreground-alt}
 type = internal/date
 interval = 1
 
-; time = %{F#d07ef2}%{T3} %{T-}%H:%M%{F-}
-; date = %{F#65a2d9}%{T3}  %{T-}%a, %d. %b%{F-}
-time = %{F#d07ef2}%H:%M%{F-}
-date = %{F#65a2d9}%a, %d. %b%{F-}
+;time = %{F#d07ef2}%{T3} %{T-}%H:%M%{F-}
+;date = %{F#65a2d9}%{T3}  %{T-}%a, %d. %b%{F-}
+;time = %{F#d07ef2}%H:%M%{F-}
+;date = %{F#65a2d9}%a, %d. %b%{F-}
+time = %H:%M
+date = %a, %d. %b
 
 label = %date%  %time%
 label-font = 1
