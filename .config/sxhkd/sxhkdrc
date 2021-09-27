@@ -89,6 +89,10 @@ super + Tab
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# focus the node for the given path jump
+super + alt + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
 #############################
 #       Window Layout       #
 #############################
