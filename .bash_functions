@@ -26,11 +26,11 @@ yay () {
         return 1
     fi
 
-    if [[ -x /usr/bin/flatpak ]] ; then
-        flatpak update || return 1
-    else
-        echo -e "\n${RED}Flatpak not installed.${WHITE}\n"
-    fi
+    #if [[ -x /usr/bin/flatpak ]] ; then
+    #    flatpak update || return 1
+    #else
+    #    echo -e "\n${RED}Flatpak not installed.${WHITE}\n"
+    #fi
 
     if [[ -x /usr/bin/nvim ]] ; then
         nvim -c "PlugUpgrade" -c "PlugUpdate" -c "quit" -c "quit" || return 1
