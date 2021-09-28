@@ -75,17 +75,12 @@ pgrep -x picom > /dev/null || picom &
 pgrep -x lxpolkit > /dev/null || lxpolkit &
 pgrep -x birdtray > /dev/null || birdtray &
 pgrep -x nm-applet > /dev/null || nm-applet &
-#pgrep -x emacs > /dev/null || emacs --daemon &
+pgrep -x emacs > /dev/null || emacs --daemon &
 pgrep -u daniel -x dunst > /dev/null || dunst &
 pgrep -x redshift-gtk > /dev/null || redshift-gtk &
 pgrep -x blueman-applet > /dev/null || blueman-applet &
 pgrep -x element-desktop > /dev/null || element-desktop --hidden &
-#pgrep -x telegram-desktop > /dev/null || telegram-desktop -startintray &
+pgrep -x telegram-desktop > /dev/null || telegram-desktop -startintray &
 pgrep -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
 
-# start desktop programs
-#sleep 1
-#pgrep -x firefox > /dev/null || (bspc desktop -f 1 && firefox &)
-#sleep 1
-#pgrep -x thunderbird > /dev/null || (bspc desktop -f 9 && thunderbird &)
 bspc desktop -f 1
