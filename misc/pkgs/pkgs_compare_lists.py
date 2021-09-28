@@ -21,7 +21,7 @@ def get_difference(a: list, b: list) -> (list, list):
     return missingA, missingB
 
 
-if __name__ == "__main__":
+def validate_default_lists():
     pkgs_all     = read_pkg_list('pkgs_all.txt')
     pkgs_deps    = read_pkg_list('pkgs_dependencies.txt')
     pkgs_expl    = read_pkg_list('pkgs_explicitly.txt')
@@ -39,3 +39,14 @@ if __name__ == "__main__":
 
     print("\nExplicitly Installed Packages, which are also an dependency")
     print("\n".join(list(set(pkgs_expl) - set(pkgs_not_req))))
+
+
+if __name__ == "__main__":
+    validate_default_lists()
+
+    #pkgs_gnome = read_pkg_list("pkgs_gnome.txt")
+    #pkgs_gnome_current = read_pkg_list("pkgs_gnome_current.txt")
+
+    #missA, missB = get_difference(pkgs_gnome, pkgs_gnome_current)
+    #print(missA)
+    #print(missB)

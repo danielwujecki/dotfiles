@@ -5,7 +5,7 @@
 
 # -d = installed as dependency
 # -e = explicitly installed
-# -t = packages not required by any pacakge
+# -t = packages not required by any package
 # -tt = same as -t, but ignoring optional deps
 
 # -n = packages found in repos
