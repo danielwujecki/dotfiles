@@ -84,7 +84,7 @@ UsePAM yes
 #AllowAgentForwarding yes
 #AllowTcpForwarding yes
 #GatewayPorts no
-X11Forwarding no
+X11Forwarding yes
 #X11DisplayOffset 10
 #X11UseLocalhost yes
 #PermitTTY yes
@@ -116,3 +116,6 @@ Subsystem	sftp	/usr/lib/ssh/sftp-server
 #	ForceCommand cvs server
 
 AllowUsers daniel
+
+Match address 10.0.0.0/24
+    PasswordAuthentication yes
