@@ -9,33 +9,32 @@ if [[ $? -ne 0 ]] ; then
     exit 2
 fi
 
-filepath="$HOME/.cache/current_updates.txt"
+FILEPATH="$HOME/.cache/current_updates.txt"
+UPAC="$(checkupdates | wc -l)"
+UAUR="$(pikaur -Qua 2> /dev/null | wc -l)"
 
-upac=$(checkupdates | wc -l)
-uaur=$(pikaur -Qua 2> /dev/null | wc -l)
-
-if [[ $upac -gt 0 ]] ; then
-    if [[ $upac -eq 1 ]] ; then
-        upac="$upac update"
+if [[ $UPAC -gt 0 ]] ; then
+    if [[ $UPAC -eq 1 ]] ; then
+        UPAC="$UPAC update"
     else
-        upac="$upac updates"
+        UPAC="$UPAC updates"
     fi
 else
-    upac=""
+    UPAC=""
 fi
 
-if [[ $uaur -gt 0 ]] ; then
-    if [[ -n $upac ]] ; then
-        uaur="; $uaur aur"
+if [[ $UAUR -gt 0 ]] ; then
+    if [[ -n $UPAC ]] ; then
+        UAUR="; $UAUR aur"
     else
-        uaur="$uaur aur"
+        UAUR="$UAUR aur"
     fi
 else
-    uaur=""
+    UAUR=""
 fi
 
-if [[ -n $upac || -n $uaur ]] ; then
-    echo "($upac$uaur)" > "$filepath"
+if [[ -n $UPAC || -n $UAUR ]] ; then
+    echo "($UPAC$UAUR)" > "$FILEPATH"
 else
-    echo "" > "$filepath"
+    echo -n "" > "$FILEPATH"
 fi

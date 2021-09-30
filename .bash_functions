@@ -103,7 +103,7 @@ launch_polybar () {
         killall -q polybar
         sleep 1
     done
-    polybar -r mybar &
+    zsh -c "polybar mybar &!"
     echo "Bars launched..."
 }
 

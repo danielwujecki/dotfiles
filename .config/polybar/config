@@ -64,7 +64,7 @@ font-1 = "JetBrainsMono Nerd Font:size=16;3"
 locale = de_DE.UTF-8
 
 modules-left = launcher sep bspwm xwindow
-modules-right = cpu memory sep audio backlight battery sep
+modules-right = readupdates kernelupdate sep cpu memory sep audio backlight battery sep
 modules-center = date
 ; unused modules: spotify, backlight, battery, readupdates
 
@@ -93,15 +93,6 @@ content-font = 2
 content-margin = 1
 content-foreground = ${colors.arch}
 click-left = "bash -c 'rofi -show drun'"
-
-[module/readupdates]
-type=custom/script
-exec = cat $HOME/.cache/current_updates.txt
-tail = false
-interval = 30
-format = <label>
-label = %output%
-label-font = 1
 
 [module/sep]
 type = custom/text
@@ -157,6 +148,26 @@ label-font = 1
 ###############################################################################
 ############                       MODULES RIGHT                   ############
 ###############################################################################
+
+[module/readupdates]
+type=custom/script
+exec = cat "$HOME/.cache/current_updates.txt"
+tail = false
+interval = 30
+format = <label>
+label = %output%
+label-font = 1
+label-foreground = ${colors.blue}
+
+[module/kernelupdate]
+type=custom/script
+exec = cat "$HOME/.cache/check_new_kernel.txt"
+tail = false
+interval = 30
+format = <label>
+label = %output%
+label-font = 1
+label-foreground = ${colors.yellow}
 
 [module/cpu]
 type = internal/cpu
