@@ -70,6 +70,7 @@ source "$HOME"/.bash_functions
 fehbg &
 launch_polybar &
 "$HOME"/.local/bin/check_updates &
+"$HOME"/.local/bin/check_new_kernel &
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom &
 pgrep -x lxpolkit > /dev/null || lxpolkit &
