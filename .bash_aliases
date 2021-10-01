@@ -3,6 +3,8 @@
 # wichtigstes kommmando auf dem terminal - ls
 if [[ -x /usr/bin/exa ]] ; then
     alias ll='exa -Hglam --git --color=auto --group-directories-first'
+    alias lll='ll'
+    alias llll='ll'
     alias tree='exa -Ta'
 else
     alias ll='ls -lAh --color=auto --group-directories-first'
