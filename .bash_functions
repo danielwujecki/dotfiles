@@ -68,12 +68,12 @@ folder () {
             echo " $1 is not a directory."
             return 1
         fi
-        NAUTILUSPATH="$1"
+        FILEPATH="$1"
     else
-        NAUTILUSPATH="./"
+        FILEPATH="./"
     fi
 
-    zsh -c "nautilus $NAUTILUSPATH > /dev/null 2>&1 &!"
+    zsh -c "pcmanfm $FILEPATH > /dev/null 2>&1 &!"
 }
 
 fehbg () {
