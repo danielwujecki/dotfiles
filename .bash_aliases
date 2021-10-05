@@ -10,10 +10,12 @@ else
     alias ll='ls -lAh --color=auto --group-directories-first'
 fi
 
+# damit jeder alias auch als root funktioniert
 if [[ -x /usr/bin/doas ]] ; then
-    # damit jeder alias auch als root funktioniert
     alias doas='doas '
-    alias sudo='doas '
+fi
+if [[ -x /usr/bin/sudo ]] ; then
+    alias sudo='sudo '
 fi
 
 # orte
