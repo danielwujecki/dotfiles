@@ -10,7 +10,7 @@ if [[ $? -ne 0 ]] ; then
 fi
 
 FILEPATH="$HOME/.cache/check_new_kernel.txt"
-NEWKERNEL="$(checkupdates | grep -E '^linux\s+[1-9.-]+\.arch[1-9]+-[1-9]+\s+->\s+[1-9.-]+\.arch[1-9]+-[1-9]+')"
+NEWKERNEL="$(checkupdates | grep -E '^linux\s+[1-9.-]+\.arch[1-9]+-[1-9]+')"
 
 if [[ -n $NEWKERNEL ]] ; then
     echo "new kernel" > "$FILEPATH"
