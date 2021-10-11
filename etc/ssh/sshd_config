@@ -55,6 +55,7 @@ AuthorizedKeysFile	.ssh/authorized_keys
 
 # To disable tunneled clear text passwords, change to no here!
 PasswordAuthentication no
+AuthenticationMethods publickey
 #PermitEmptyPasswords no
 
 # Change to no to disable s/key passwords
@@ -119,3 +120,4 @@ AllowUsers daniel
 
 Match address 10.0.0.0/24
     PasswordAuthentication yes
+    AuthenticationMethods password publickey
