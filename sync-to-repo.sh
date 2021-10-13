@@ -22,8 +22,7 @@ cp -r "$HOME"/.config/kitty "$HOME"/Repositories/dotfiles/.config/
 cp "$HOME"/.config/nvim/init.vim "$HOME"/Repositories/dotfiles/.config/nvim/
 #cp -r "$HOME"/.config/pacman "$HOME"/Repositories/dotfiles/.config/
 cp -r "$HOME"/.config/picom "$HOME"/Repositories/dotfiles/.config/
-cp "$HOME"/.config/polybar/config "$HOME"/Repositories/dotfiles/.config/polybar/
-cp "$HOME"/.config/polybar/spotify_status.py "$HOME"/Repositories/dotfiles/.config/polybar/
+cp -r "$HOME"/.config/polybar "$HOME"/Repositories/dotfiles/.config/
 cp "$HOME"/.config/ranger/commands.py "$HOME"/Repositories/dotfiles/.config/ranger/
 cp "$HOME"/.config/ranger/commands_full.py "$HOME"/Repositories/dotfiles/.config/ranger/
 cp "$HOME"/.config/ranger/rc.conf "$HOME"/Repositories/dotfiles/.config/ranger/
