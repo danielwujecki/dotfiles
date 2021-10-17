@@ -42,7 +42,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # Which plugins would you like to load?
 plugins=(
 # general
-    #colored-man-pages # see 'set man viewer' below
+    colored-man-pages # also see 'set man viewer' below
     history
 
 # python
@@ -70,10 +70,10 @@ fi
 #if [[ -x /usr/bin/nvim ]] ; then
 #    export MANPAGER="nvim -c 'set ft=man' -"
 #fi
-if [[ -x /usr/bin/bat ]] ; then
-    export PAGER="bat -n"
-    export MANPAGER="sh -c 'col -bx | bat -l man -n'"
-fi
+#if [[ -x /usr/bin/bat ]] ; then
+#    export PAGER="bat -n"
+#    export MANPAGER="sh -c 'col -bx | bat -l man -n'"
+#fi
 
 # make virsh compatible with virt-manager
 export LIBVIRT_DEFAULT_URI="qemu:///system"

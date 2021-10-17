@@ -103,7 +103,13 @@ launch_polybar () {
         killall -q polybar
         sleep 1
     done
-    zsh -c "polybar mybar -c $HOME/.config/polybar/config.ini > /tmp/polybar.log 2>&1 &!"
+
+    BARNAME=mybar
+    if [[ $(cat /etc/hostname) = ArchX1 ]] ; then
+        BARNAME=archx1
+    fi
+
+    zsh -c "polybar $BARNAME -c $HOME/.config/polybar/config.ini > /tmp/polybar.log 2>&1 &!"
     echo "Bars launched..."
 }
 
