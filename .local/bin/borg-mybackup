@@ -49,7 +49,7 @@ if [[ ! -h /dev/disk/by-uuid/79d55b92-46c5-4dde-90a4-abbe19903c02 ]] ; then
 
     echo "Crpytsetup open: bkup0"
     cryptsetup open /dev/disk/by-uuid/d2ab6a0d-333d-4726-b461-ca663042bafd bkup0
-    sleep 0.2 # wait to create the symlinks and stuff
+    sleep 2 # wait to create the symlinks and stuff
 
     # check if disk exists
     if [[ ! -h /dev/disk/by-uuid/79d55b92-46c5-4dde-90a4-abbe19903c02 ]] ; then
