@@ -17,7 +17,7 @@ if [ -d "$HOME/.pyenv/shims" ] ; then
 fi
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/daniel/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # other nice themes: "bira" "gallifrey" "gentoo" "kafeitu" "wuffers"
 if [[ -n $SSH_CONNECTION ]] ; then
