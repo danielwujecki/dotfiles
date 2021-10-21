@@ -109,7 +109,7 @@ launch_polybar () {
         BARNAME=archx1
     fi
 
-    zsh -c "polybar $BARNAME -c $HOME/.config/polybar/config.ini > /tmp/polybar.log 2>&1 &!"
+    zsh -c "polybar $BARNAME -c $HOME/.config/polybar/config.ini > $HOME/.cache/polybar.log 2>&1 &!"
     echo "Bars launched..."
 }
 

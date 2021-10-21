@@ -25,4 +25,4 @@ fi
 
 pgrep -x ssh-agent > /dev/null || eval "$(ssh-agent)"
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-exec bspwm > /tmp/bspwm.log 2>&1
+exec bspwm > "$HOME/.cache/bspwm.log" 2>&1
