@@ -149,3 +149,11 @@ texclean () {
            ./*.out.ps \
            ./*.xdv"
 }
+
+tu () {
+    if [[ "$#" -ne 1 ]] ; then
+        echo "Usage: tu <last-part-ip>"
+        return 1
+    fi
+    tmux new -s "tu$1" "ssh mulfadmin@130.149.133.$1"
+}

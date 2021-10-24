@@ -159,7 +159,7 @@ super + {_,shift} + g
 
 # lock screen
 super + o
-    betterlockscreen -l dimblur --off 1
+    betterlockscreen -l dimblur
 
 super + shift + o
     systemctl suspend && betterlockscreen -l dimblur
