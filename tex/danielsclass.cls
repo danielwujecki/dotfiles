@@ -104,6 +104,7 @@
 \RequirePackage[section]{placeins}
 
 %\RequirePackage{tabularx}
+%\RequirePackage{array}
 %\RequirePackage{booktabs}
 %\RequirePackage{diagbox}
 

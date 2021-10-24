@@ -90,7 +90,7 @@ cd /.btrfs/@
 $BORG_CMD "$BASE_PATH_ROOT::$ARCHIVE_HOST-root-$INDEX" .
 
 calc_next_index "$USER_REPO_BKUPS" "$ARCHIVE_HOST-home-daniel"
-su -c "cd /.btrfs/@home && $BORG_CMD $BASE_PATH_USER::$ARCHIVE_HOST-home-daniel-$INDEX ." - daniel
+su -c "cd /.btrfs/@home && $BORG_CMD $BASE_PATH_USER::$ARCHIVE_HOST-home-daniel-$INDEX daniel" - daniel
 
 borg list "$BASE_PATH_ROOT"
 echo ""
