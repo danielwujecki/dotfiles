@@ -155,5 +155,20 @@ tu () {
         echo "Usage: tu <last-part-ip>"
         return 1
     fi
+
+    if [[ $(tmux ls | grep "tu$1") ]] ; then
+        tmux a -t "tu$1"
+        return 0
+    fi
+
     tmux new -s "tu$1" "ssh mulfadmin@130.149.133.$1"
+}
+
+troot () {
+    if [[ $(tmux ls | grep 'troot') ]] ; then
+        tmux a -t troot
+        return 0
+    fi
+
+    tmux new -s troot doas su -
 }

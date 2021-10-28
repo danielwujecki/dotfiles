@@ -126,6 +126,7 @@
 \newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
 \newcommand{\Set}[2]{\left\lbrace#1\mid#2\right\rbrace}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\sprod}[2]{\left\langle#1,#2\right\rangle}
 \DeclareMathOperator{\var}{var}
 \DeclareMathOperator*{\argmin}{argmin}
 

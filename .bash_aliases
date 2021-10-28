@@ -55,7 +55,7 @@ if [[ -x /usr/bin/emacs && -x /usr/bin/emacsclient ]] ; then
     alias emacs='emacsclient -t -a ""'
 fi
 if [[ -x /usr/bin/latexmk ]] ; then
-    alias latex='latexmk && texclean'
+    alias latex='latexmk'
 fi
 if [[ -x /usr/bin/pikaur ]] ; then
     alias pac='pikaur'
