@@ -75,5 +75,6 @@ cp -r "$HOME"/.doom.d "$HOME"/Repositories/dotfiles/
 cp /etc/doas.conf "$HOME"/Repositories/dotfiles/etc/
 cp /etc/pacman.conf "$HOME"/Repositories/dotfiles/etc/
 cp /etc/thinkfan.conf "$HOME"/Repositories/dotfiles/etc/
+cp /etc/default/grub "$HOME"/Repositories/dotfiles/etc/default/
 
 echo "Done with sync to repo!"

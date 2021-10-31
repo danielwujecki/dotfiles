@@ -23,6 +23,9 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-pgrep -x ssh-agent > /dev/null || eval "$(ssh-agent)"
+# crazy fixes
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+pgrep -x ssh-agent > /dev/null || eval "$(ssh-agent)"
 exec bspwm > "$HOME/.cache/bspwm.log" 2>&1

@@ -65,5 +65,6 @@ cp -r "$HOME"/Repositories/dotfiles/.doom.d "$HOME"/
 #doas cp "$HOME"/Repositories/dotfiles/etc/doas.conf /etc/
 #doas cp "$HOME"/Repositories/dotfiles/etc/pacman.conf /etc/
 #doas cp "$HOME"/Repositories/dotfiles/etc/thinkfan.conf /etc/
+#doas cp "$HOME"/Repositories/dotfiles/etc/default/grub /etc/default/
 
 echo "Done with sync to home!"
