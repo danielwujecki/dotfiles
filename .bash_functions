@@ -41,7 +41,7 @@ yay () {
     if [[ -d $HOME/.miniconda3 ]] ; then
         zsh -c "source $HOME/.zshrc; conda_init; conda update -y --all" || return 1
     else
-        echo -e "\n${RED}Dotfiles repository not found.${WHITE}\n"
+        echo -e "\n${RED}Miniconda not installed.${WHITE}\n"
     fi
 
     if [[ -x $HOME/.emacs.d/bin/doom ]] ; then

@@ -26,7 +26,6 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;; doom-horizon; doom-oceanic-next
 (setq doom-theme 'doom-one)
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -61,6 +60,12 @@
               window-combination-resize t
               x-stretch-cursor t)
 
+(setq org-journal-dir "~/Dokumente/org/journal"
+      org-journal-file-type 'monthly
+      org-journal-start-on-weekday t
+      org-journal-file-format "%Y-%m.org"
+      org-journal-date-format "%A, %d.%m.%Y")
+
 (setq +latex-viewers '(zathura))
 
-(setq org-startup-folded t)
+(after! org (setq org-startup-folded t))
