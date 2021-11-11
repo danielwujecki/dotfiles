@@ -89,46 +89,40 @@ nmap <C-l> :!latexmk %<Return>
 
 if !exists('g:vscode')
 
-call plug#begin('~/.vim/plugged')
-"Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'aonemd/kuroi.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+  call plug#begin('~/.vim/plugged')
+    Plug 'aonemd/kuroi.vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' }
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
+    Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+    Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' }
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
 
-Plug 'jiangmiao/auto-pairs'
-"Plug 'airblade/vim-gitgutter'
-Plug 'vim-python/python-syntax'
+    Plug 'jiangmiao/auto-pairs'
+    "Plug 'jreybert/vimagit'
+    "Plug 'airblade/vim-gitgutter'
 
-"Plug 'jreybert/vimagit'
-Plug 'sheerun/vim-polyglot'
-call plug#end()
+    Plug 'sheerun/vim-polyglot'
+  call plug#end()
 
-map ; :FZF<Return>
-let g:python_highlight_all=1
+  map <C-n> :NERDTreeToggle<Return>
+  let NERDTreeShowLineNumbers=1
+  let NERDTreeShowHidden=1
 
-map <C-n> :NERDTreeToggle<Return>
-let NERDTreeShowLineNumbers=1
-let NERDTreeShowHidden=1
+  " airline settings
+  let g:airline_theme = "hybrid"
+  let g:airline_symbols_ascii=1
+  let g:airline#extensions#tabline#enabled=1
 
-" airline settings
-let g:airline_theme='hybrid'
-let g:airline_symbols_ascii=1
-let g:airline#extensions#tabline#enabled=1
+  if (has("nvim"))
+      if (has("termguicolors"))
+        set termguicolors
+      endif
 
-if (has("nvim"))
-    " material-hybrid theme
-    "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    "set background=dark
-    "colorscheme hybrid_material
-
-    set termguicolors
     set background=dark
     colorscheme kuroi
-endif
-"colorscheme peachpuff
+  else
+      colorscheme peachpuff
+  endif
 
 endif " !exists('g:vscode')
