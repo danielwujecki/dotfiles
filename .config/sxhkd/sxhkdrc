@@ -176,6 +176,12 @@ super + shift + Print
 super + w
     bash -c 'source "$HOME"/.bash_functions && fehbg'
 
+# keyboard mapping
+super + alt + u
+    setxkbmap -layout us -model pc105 -option caps:escape
+super + alt + d
+    setxkbmap -layout de -model pc105 -variant nodeadkeys -option caps:escape
+
 # Pulse Audio controls
 XF86AudioRaiseVolume
     pulsemixer --change-volume +5
