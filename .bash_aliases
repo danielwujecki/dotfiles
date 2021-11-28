@@ -86,4 +86,7 @@ fi
 alias pyc='ipython'
 
 # misc
-if [[ -x /usr/bin/curl ]] ; then alias wetter='curl "wttr.in/Berlin?lang=de"' ; fi
+if [[ -x /usr/bin/curl ]] ; then
+    alias wetter='curl "wttr.in/Berlin?lang=de"'
+    alias myip='curl "ifconfig.me/all"'
+fi

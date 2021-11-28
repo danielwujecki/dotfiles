@@ -1,7 +1,4 @@
 configuration {
-    theme: "mytheme";
-    // theme: "Arc-Dark";
-
 	modi: "drun,window";
     display-drun: "Apps:";
     display-window: "Running:";
@@ -13,5 +10,7 @@ configuration {
 
 	terminal: "kitty";
 }
+@theme "mytheme"
+// @theme "Arc-Dark"
 
 // vim:ft=css
