@@ -65,7 +65,9 @@
       org-journal-file-type 'monthly
       org-journal-start-on-weekday t
       org-journal-file-format "%Y-%m.org"
-      org-journal-date-format "%A, %d.%m.%Y")
+      org-journal-date-format "%A, %d.%m.%Y"
+      org-image-actual-width nil
+      org-startup-with-inline-images t)
 
 (setq +latex-viewers '(zathura))
 

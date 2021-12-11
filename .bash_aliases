@@ -34,6 +34,8 @@ if [[ -x /usr/bin/nvim && -x /usr/bin/fzf ]] ; then alias vf='nvim $(fzf)' ; fi
 if [[ -x /usr/bin/rclone && -d ~/Dropbox ]] ; then
     alias dboxup='rclone sync -i ~/Dropbox Dropbox:/'
     alias dboxdown='rclone sync -i Dropbox:/ ~/Dropbox'
+    alias dboxupf='rclone sync -P ~/Dropbox Dropbox:/'
+    alias dboxdownf='rclone sync -P Dropbox:/ ~/Dropbox'
 fi
 
 # programme
