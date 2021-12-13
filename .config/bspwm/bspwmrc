@@ -23,17 +23,17 @@ xran="$(xrandr -q)"
 
 if [[ $LAPTOP ]] ; then
 
-    dp22="$(echo "$xran" | grep -- 'DP2-2 connected')"
+    dp21="$(echo "$xran" | grep -- 'DP2-1 connected')"
     dp23="$(echo "$xran" | grep -- 'DP2-3 connected')"
-    if [[ -n $dp22 && -n $dp23 ]] ; then
+    if [[ -n $dp21 && -n $dp23 ]] ; then
         xrandr --output eDP1 --off --output DP1 --off --output DP2 --off \
-            --output DP2-1 --off --output DP2-2 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
+            --output DP2-2 --off --output DP2-1 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
             --output DP2-3 --off --output HDMI1 --off --output VIRTUAL1 --off
         xrandr --output eDP1 --off --output DP1 --off --output DP2 --off \
-            --output DP2-1 --off --output DP2-2 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
+            --output DP2-2 --off --output DP2-1 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
             --output DP2-3 --primary --mode 2560x1440 --pos 2560x0 --rotate normal --dpi 128 \
             --output HDMI1 --off --output VIRTUAL1 --off
-        bspc monitor "DP2-2" -d 0 1
+        bspc monitor "DP2-1" -d 0 1
         bspc monitor "DP2-3" -d 2 3 4 5 6 7 8 9
     else
         xrandr --output eDP1 --primary --mode 2560x1440 --pos 0x0 --rotate normal \
