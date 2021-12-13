@@ -15,8 +15,8 @@
 # "--bwlimit=5m": Beschränke Traffic auf 5MiB
 # "--stats": zeigt einen ausführlicheren Bericht am Ende einer Übertragung an
 
-hostname_dest="daniel@home.shilunski.de"
-rsync_flags=(-uahbHP --delete --backup-dir=/home/daniel/rsync_backup --rsh="ssh -p 2231")
+hostname_dest="daniel@abacus.fritz.box"
+rsync_flags=(-uahbHP --delete --backup-dir=/home/daniel/rsync_backup --rsh="ssh -p 22")
 
 rsync "${rsync_flags[@]}" /home/daniel/Arduino      "$hostname_dest":/home/daniel/
 rsync "${rsync_flags[@]}" /home/daniel/Bilder       "$hostname_dest":/home/daniel/
