@@ -1,0 +1,23 @@
+# /dev/sda2 LABEL=gentoo_root subvol=@gen-root
+UUID=05d2a62b-f874-4b0d-bb73-912fd5ea4e4a   /                          btrfs   rw,noatime,compress=zstd:2,ssd,space_cache,subvolid=257    0 0
+
+# /dev/sda2 LABEL=gentoo_root subvol=@gen-cache
+UUID=05d2a62b-f874-4b0d-bb73-912fd5ea4e4a   /var/cache                  btrfs   rw,noatime,compress=zstd:2,ssd,space_cache,subvolid=258    0 0
+
+# /dev/sda2 LABEL=gentoo_root subvol=@gen-db
+UUID=05d2a62b-f874-4b0d-bb73-912fd5ea4e4a   /var/db                     btrfs   rw,noatime,compress=zstd:2,ssd,space_cache,subvolid=259    0 0
+
+# /dev/sda2 LABEL=gentoo_root subvol=@gen-home
+UUID=05d2a62b-f874-4b0d-bb73-912fd5ea4e4a   /home                       btrfs   rw,noatime,compress=zstd:2,ssd,space_cache,subvolid=260    0 0
+
+# /dev/sda2 LABEL=gentoo_root subvol=@gen-src
+UUID=05d2a62b-f874-4b0d-bb73-912fd5ea4e4a   /usr/src                    btrfs   rw,noatime,compress=zstd:2,ssd,space_cache,subvolid=261    0 0
+
+# /dev/sda2 LABEL=gentoo_root subvol=@snap
+UUID=05d2a62b-f874-4b0d-bb73-912fd5ea4e4a   /.snapshots                 btrfs   rw,noatime,compress=zstd:2,ssd,space_cache,subvolid=262    0 0
+
+# /dev/sda2 LABEL=gentoo_root subvol=/
+UUID=05d2a62b-f874-4b0d-bb73-912fd5ea4e4a   /.btrfs                     btrfs   rw,noatime,compress=zstd:2,ssd,space_cache,subvolid=5      0 0
+
+# /dev/sda1 LABEL=GENTOOBOOT
+UUID=44E3-D0F5                              /boot                       vfat    rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro    0 2
