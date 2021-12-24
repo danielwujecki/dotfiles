@@ -59,6 +59,10 @@ super + shift + Tab
 #  Window Focus & Position  #
 #############################
 
+# focus the node for the given path jump
+super + alt + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
 # focus the node in the given direction
 super + {h,j,k,l}
     bspc node -f {west,south,north,east}
@@ -88,10 +92,6 @@ super + Tab
 # move a floating window
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
-
-# focus the node for the given path jump
-super + alt + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
 
 #############################
 #       Window Layout       #
