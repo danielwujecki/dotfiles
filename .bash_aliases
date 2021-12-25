@@ -29,6 +29,10 @@ if [[ -d ~/Dokumente/3dprinting ]] ; then alias 3d='cd ~/Dokumente/3dprinting' ;
 if [[ -d ~/Repositories/dotfiles ]] ; then alias dotf='cd ~/Repositories/dotfiles' ; fi
 
 # shortcuts
+alias sleep='systemctl suspend'
+alias suspend='systemctl suspend'
+alias hn='systemctl hibernate'
+alias hibernate='systemctl hibernate'
 if [[ -x /usr/bin/ranger ]] ; then alias r='ranger' ; fi
 if [[ -x /usr/bin/nvim && -x /usr/bin/fzf ]] ; then alias vf='nvim $(fzf)' ; fi
 if [[ -x /usr/bin/rclone && -d ~/Dropbox ]] ; then
