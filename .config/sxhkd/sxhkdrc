@@ -164,6 +164,9 @@ super + o
 super + shift + o
     systemctl suspend && betterlockscreen -l dimblur
 
+super + alt + o
+    systemctl hibernate
+
 # screenshot
 super + Print
     scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'

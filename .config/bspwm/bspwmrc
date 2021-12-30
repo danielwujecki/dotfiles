@@ -114,12 +114,8 @@ pgrep -u "$LOGNAME" -x redshift-gtk > /dev/null || redshift-gtk &
 if [[ $LAPTOP ]] ; then
     pgrep -u "$LOGNAME" -x blueman-applet > /dev/null || blueman-applet &
 fi
-#pgrep -u "$LOGNAME" -x element-desktop > /dev/null || element-desktop --hidden &
-#pgrep -u "$LOGNAME" -x telegram-desktop > /dev/null || telegram-desktop -startintray &
+pgrep -u "$LOGNAME" -x element-desktop > /dev/null || element-desktop --hidden &
+pgrep -u "$LOGNAME" -x telegram-desktop > /dev/null || telegram-desktop -startintray &
 pgrep -u "$LOGNAME" -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
 
 bspc desktop -f 1
-if [[ -z $LAPTOP ]] ; then
-    bspc desktop -f 2
-    numlockx on
-fi
