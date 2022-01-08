@@ -57,8 +57,8 @@
 %\usepackage{booktabs}
 %\usepackage{diagbox}
 
-\RequirePackage{amsmath,amssymb,amsthm,mathtools}
-%\RequirePackage[obeyDraft,colorinlistoftodos]{todonotes}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+%\usepackage[obeyDraft,colorinlistoftodos]{todonotes}
 
 %%% COMMANDS %%%
 %\newcommand{\missing}[1]{\todo[inline]{#1}}
@@ -75,6 +75,7 @@
 \newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
 \newcommand{\Set}[2]{\left\lbrace#1\mid#2\right\rbrace}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\sprod}[2]{\left\langle#1,#2\right\rangle}
 \DeclareMathOperator{\var}{var}
 \DeclareMathOperator*{\argmin}{argmin}
 
@@ -102,6 +103,13 @@
   citecolor=green!40!black,
 }
 
+\AtBeginSection[]{
+    \begin{frame}
+        \frametitle{Inhaltsverzeichnis}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
 \title{\mytitle{}}
 \subtitle{\mysubtitle{}}
 \author{\myname{}}
@@ -115,10 +123,10 @@
 
 \frame{\titlepage}
 
-\begin{frame}
-    \frametitle{Inhaltsverzeichnis}
-    \tableofcontents
-\end{frame}
+%\begin{frame}
+%    \frametitle{Inhaltsverzeichnis}
+%    \tableofcontents
+%\end{frame}
 
 \section{Algorithm}
 
