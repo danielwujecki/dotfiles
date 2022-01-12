@@ -67,8 +67,14 @@
       org-journal-file-format "%Y-%m.org"
       org-journal-date-format "%A, %d.%m.%Y"
       org-image-actual-width nil
-      org-startup-with-inline-images t)
-
-(setq +latex-viewers '(zathura))
+      org-startup-with-inline-images t
+      +latex-viewers '(zathura))
 
 (after! org (setq org-startup-folded t))
+
+(add-hook! 'persp-mode-hook
+  (when persp-mode
+    (unless (+workspace-exists-p "org")
+      (if (+workspace-exists-p "main")
+          (+workspace-rename "main" "org")
+        (+workspace-new "org")))))
