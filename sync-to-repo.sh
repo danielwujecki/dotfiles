@@ -49,8 +49,7 @@ cp "$HOME"/.config/redshift.conf "$HOME"/Repositories/dotfiles/.config/
 
 # ~/.local/
 cp -r "$HOME"/.local/bin/borg-mybackup "$HOME"/Repositories/dotfiles/.local/bin/
-cp -r "$HOME"/.local/bin/check_new_kernel "$HOME"/Repositories/dotfiles/.local/bin/
-cp -r "$HOME"/.local/bin/check_updates "$HOME"/Repositories/dotfiles/.local/bin/
+cp -r "$HOME"/.local/bin/checkupdates_custom "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/dock "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/homesyncup "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/homesyncdown "$HOME"/Repositories/dotfiles/.local/bin/

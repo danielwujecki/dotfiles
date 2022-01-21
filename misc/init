@@ -1,0 +1,91 @@
+#!/usr/bin/busybox ash
+
+gnu_logo() {
+    echo "H4sIAAAAAAAAA21QSW7DMBC76xW8yQE0o7tySf8hwONugIE2hy43Pz7U4sgtMjBkiKQ5pAFgFisjAWOCwAvUAep5VYFgG/TGqyhgVMSiiHg0RgmyS4VNDZpVC8hz7horpEvpromk1JKndM5a121DQ1PSdAzWP8hQ2vqa01nS5htrzJoy88h9XWSlnGgxx73b5USIh8EygnrXgsYg4nsR9tccRE2kVO7/yEffBNPEEIxz2ilEciVZyVtcpp14Xa7r28fl6Xl5+f2+y9GsWI1LZeyFHGfI4as/g4WjGut1/flaPt8PzkMLnNMRb4yvr794Z/j8x2vS+ACGnZ27AS+y1LlOAgAA" | base64 -d | gzip -d | cat
+}
+
+launch_shell() {
+    echo "H4sIAAAAAAAAA23P0QmAMAwE0P9OcX8qiFlAnCRwi2R4L4kgWFsI4eVoKIi/89URCLKdoNrqHk2oKZVbCJfrmqC71gRVN1i9t+VECWdydLZ0Vb2AU3t5kJaRndpFyw6v0pJ8TD+o8KTjBscmSBDwAAAA" | base64 -d | gzip -d | cat
+
+    export PS1='[initramfs \W]\$ '
+    [ "$1" = "--exec" ] && exec sh -i
+    sh -i
+}
+
+/usr/bin/busybox --install -s
+ln -s /usr/bin/kmod /usr/bin/modprobe
+ln -s /usr/bin/kmod /usr/bin/lsmod
+gnu_logo
+
+echo ":: mount /proc /sys /dev /run"
+mount -t proc     proc /proc -o nosuid,noexec,nodev
+mount -t sysfs    sys  /sys  -o nosuid,noexec,nodev
+mount -t devtmpfs dev  /dev  -o nosuid,mode=0755
+mount -t tmpfs    run  /run  -o nosuid,nodev,mode=0755
+
+#echo ":: parse cmdline" # TODO remove later
+#. /init_functions
+#parse_cmdline < /proc/cmdline
+
+echo ":: load modules"
+modprobe -a -q xhci_pci
+modprobe -a -q usbhid
+modprobe -a -q hid_apple
+modprobe -a -q dm-crypt
+
+echo ":: decrypt root"
+# TODO: get cryptdevice from kernel command line
+cryptdevice="/dev/nvme0n1p4"
+if [ ! -b "$cryptdevice" ] ; then
+    echo "cryptdevice '$cryptdevice' not found."
+    launch_shell --exec
+fi
+mkdir -p /run/cryptsetup
+/usr/bin/cryptsetup luksOpen --allow-discards "$cryptdevice" "abacus_crypt" || launch_shell --exec
+
+echo ":: setup lvm"
+#lvm vgchange -ay vgsys
+#lvm vgscan --mknodes
+lvm lvchange -ay vgsys/arch_root
+
+#echo ":: setup hibernation"
+## TODO: get resumedevice from kernel command line
+#resumedevice="/dev/vgsys/arch_swap"
+#if [ ! -b "$resumedevice" ] ; then
+#    echo "Resume '$resumedevice' not found."
+#else
+#    if [ -e /sys/power/resume ]; then
+#        printf "%d:%d" $(stat -Lc "0x%t 0x%T" "$resumedevice") > /sys/power/resume
+#    else
+#        echo "no hibernation support found"
+#    fi
+#fi
+
+echo ":: mount root"
+# TODO: get rootdevice from kernel command line
+rootdevice="/dev/dm-1"
+if [ ! -b "$rootdevice" ] ; then
+    echo "root '$rootdevice' not found. You should call 'cryptsetup close' and 'poweroff'."
+    launch_shell --exec
+fi
+#fsck.btrfs "$rootdevice" # TODO may replace by btrfs check?
+retval="$?"
+if [ "$retval" -ne 0 ] ; then
+    echo "fsck return value is $retval."
+    echo "You should call 'cryptsetup close' and 'poweroff'."
+    launch_shell --exec
+fi
+mount -t btrfs -o rw,noatime,compress=lzo,ssd,space_cache,subvolid=256 "$rootdevice" /new_root || launch_shell --exec
+
+# TODO drop into console option
+
+echo ":: umount /proc /sys /dev /run"
+umount /proc
+umount /sys
+umount /dev
+umount /run
+
+echo ":: launch init"
+exec /usr/bin/switch_root /new_root /sbin/init
+
+# vim: set ft=sh ts=4 sw=4 et:

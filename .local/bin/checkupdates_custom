@@ -9,9 +9,11 @@ if [[ $? -ne 0 ]] ; then
     exit 2
 fi
 
-FILEPATH="$HOME/.cache/current_updates.txt"
-UPAC="$(checkupdates | wc -l)"
+FILEPATH="$HOME/.cache/updates.txt"
+UPDATES="$(checkupdates)"
+UPAC="$(echo "$UPDATES" | wc -l)"
 UAUR="$(pikaur -Qua 2> /dev/null | wc -l)"
+NEWKERNEL="$(echo "$UPDATES" | grep -E '^linux-lts\s+.*$')"
 
 if [[ $UPAC -gt 0 ]] ; then
     if [[ $UPAC -eq 1 ]] ; then
@@ -33,8 +35,13 @@ else
     UAUR=""
 fi
 
+if [[ -n $NEWKERNEL ]] ; then
+    NEWKERNEL="; kernel"
+fi
+
 if [[ -n $UPAC || -n $UAUR ]] ; then
-    echo "($UPAC$UAUR)" > "$FILEPATH"
+    echo "($UPAC$UAUR$NEWKERNEL)" > "$FILEPATH"
+    echo "$UPDATES" >> "$FILEPATH"
 else
     echo -n "" > "$FILEPATH"
 fi
