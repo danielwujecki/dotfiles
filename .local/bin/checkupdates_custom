@@ -15,12 +15,8 @@ UPAC="$(echo "$UPDATES" | wc -l)"
 UAUR="$(pikaur -Qua 2> /dev/null | wc -l)"
 NEWKERNEL="$(echo "$UPDATES" | grep -E '^linux-lts\s+.*$')"
 
-if [[ $UPAC -gt 0 ]] ; then
-    if [[ $UPAC -eq 1 ]] ; then
-        UPAC="$UPAC update"
-    else
-        UPAC="$UPAC updates"
-    fi
+if [[ $UPAC -gt 1 ]] ; then
+    UPAC="$UPAC updates"
 else
     UPAC=""
 fi

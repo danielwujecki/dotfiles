@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 MNTPNT="/mnt/gentoo"
-BLKDEV="/dev/sda2"
+BLKDEV="/dev/vgsys/gentoo_root"
 
 if [[ ! -d $MNTPNT ]] ; then
     echo "$MNTPNT not found."
@@ -13,19 +13,22 @@ if [[ ! -b $BLKDEV ]] ; then
     exit 1
 fi
 
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@gen-root  "$BLKDEV" "$MNTPNT"              && echo "@gen-root"
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@gen-cache "$BLKDEV" "$MNTPNT/var/cache"    && echo "@gen-cache"
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@gen-db    "$BLKDEV" "$MNTPNT/var/db"       && echo "@gen-db"
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@gen-home  "$BLKDEV" "$MNTPNT/home"         && echo "@gen-home"
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@gen-src   "$BLKDEV" "$MNTPNT/usr/src"      && echo "@gen-src"
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@snap      "$BLKDEV" "$MNTPNT/.snapshots"   && echo "@snap"
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvolid=5        "$BLKDEV" "$MNTPNT/.btrfs"       && echo "subvolid=5"
-mount /dev/sda1 "$MNTPNT/boot"
+mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@          "$BLKDEV" "$MNTPNT"            && echo "@"
+mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@cache     "$BLKDEV" "$MNTPNT/var/cache"  && echo "@cache"
+mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@db        "$BLKDEV" "$MNTPNT/var/db"     && echo "@db"
+mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@home      "$BLKDEV" "$MNTPNT/home"       && echo "@home"
+mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@snapshots "$BLKDEV" "$MNTPNT/.snapshots" && echo "@snapshots"
+mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@src       "$BLKDEV" "$MNTPNT/usr/src"    && echo "@src"
+mount -o noatime,compress=zstd:2,space_cache,ssd,subvolid=5        "$BLKDEV" "$MNTPNT/.btrfs"     && echo "subvolid=5"
+mount /dev/sda "$MNTPNT/boot"
 
-mount --types proc /proc /mnt/gentoo/proc && echo "proc"
-mount --rbind /sys /mnt/gentoo/sys
-mount --make-rslave /mnt/gentoo/sys && echo "sys"
-mount --rbind /dev /mnt/gentoo/dev
-mount --make-rslave /mnt/gentoo/dev && echo "dev"
+cp --dereference /etc/resolv.conf "$MNTPNT/etc/"
+mount --types proc /proc "$MNTPNT/proc" && echo "proc"
+mount --rbind /sys       "$MNTPNT/sys"
+mount --make-rslave      "$MNTPNT/sys"  && echo "sys"
+mount --rbind /dev       "$MNTPNT/dev"
+mount --make-rslave      "$MNTPNT/dev"  && echo "dev"
+mount --bind /run        "$MNTPNT/run"
+mount --make-slave       "$MNTPNT/run"
 
 echo "done"
