@@ -13,13 +13,13 @@ if [[ ! -b $BLKDEV ]] ; then
     exit 1
 fi
 
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@          "$BLKDEV" "$MNTPNT"            && echo "@"
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@cache     "$BLKDEV" "$MNTPNT/var/cache"  && echo "@cache"
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@db        "$BLKDEV" "$MNTPNT/var/db"     && echo "@db"
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@home      "$BLKDEV" "$MNTPNT/home"       && echo "@home"
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@snapshots "$BLKDEV" "$MNTPNT/.snapshots" && echo "@snapshots"
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvol=@src       "$BLKDEV" "$MNTPNT/usr/src"    && echo "@src"
-mount -o noatime,compress=zstd:2,space_cache,ssd,subvolid=5        "$BLKDEV" "$MNTPNT/.btrfs"     && echo "subvolid=5"
+mount -o noatime,compress=zstd:2,ssd,subvol=@          "$BLKDEV" "$MNTPNT"            && echo "@"
+mount -o noatime,compress=zstd:2,ssd,subvol=@cache     "$BLKDEV" "$MNTPNT/var/cache"  && echo "@cache"
+mount -o noatime,compress=zstd:2,ssd,subvol=@db        "$BLKDEV" "$MNTPNT/var/db"     && echo "@db"
+mount -o noatime,compress=zstd:2,ssd,subvol=@home      "$BLKDEV" "$MNTPNT/home"       && echo "@home"
+mount -o noatime,compress=zstd:2,ssd,subvol=@snapshots "$BLKDEV" "$MNTPNT/.snapshots" && echo "@snapshots"
+mount -o noatime,compress=zstd:2,ssd,subvol=@src       "$BLKDEV" "$MNTPNT/usr/src"    && echo "@src"
+mount -o noatime,compress=zstd:2,ssd,subvolid=5        "$BLKDEV" "$MNTPNT/.btrfs"     && echo "subvolid=5"
 mount /dev/sda "$MNTPNT/boot"
 
 cp --dereference /etc/resolv.conf "$MNTPNT/etc/"

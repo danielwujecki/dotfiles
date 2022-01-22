@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-calc_next_index () {
+BORG_CMD='borg create -xspC zstd'
+BASE_PATH_ROOT='borg-bkup-root'
+BASE_PATH_USER='borg-bkup-user'
+declare -A UUIDS=(["e3a245bb-56f8-4a6f-bb54-b349f36fba93"]="2381fa6d-228c-4246-bbe2-2234193b0344" \
+                  ["d2ab6a0d-333d-4726-b461-ca663042bafd"]="79d55b92-46c5-4dde-90a4-abbe19903c02")
+
+BASE_PATH_ROOT="/mnt/$BASE_PATH_ROOT"
+BASE_PATH_USER="/mnt/$BASE_PATH_USER"
+HOSTNAME="$(cat /etc/hostname | tr '[:upper:]' '[:lower:]')"
+
+calc_next_index() {
     if [[ ! $# -eq 2 ]] ; then
         echo "calc_next_index requires exactly two arguments. Aborting."
         exit 1
@@ -9,9 +19,13 @@ calc_next_index () {
     INDEX="$(echo "$1" | sed "s/.*$2-\([0-9]\{3\}\).*$/\1+1/;t;d" | bc | sort -n | tail -n1 | xargs printf '%03d')"
 
     if [[ -n $(echo "$1" | grep "$2-$INDEX") ]] ; then
-        echo "$2-$INDEX is an existing archive. Aborting."
+        echo "$2-$INDEX is an existing archive. Something went wrong. Aborting."
         exit 1
     fi
+}
+
+get_volg() {
+    VOLG="$(pvs | egrep '\s*/dev/mapper/backup-disk\s+.*' | sed 's/^\s*\/dev\/mapper\/backup-disk\s\+\(\w\+\)\s\+.*/\1/')"
 }
 
 if [[ $EUID -ne 0 ]] ; then
@@ -19,48 +33,56 @@ if [[ $EUID -ne 0 ]] ; then
     exit 1
 fi
 
-HOSTNAME="$(cat /etc/hostname)"
-if [[ $HOSTNAME = 'ArchX1' ]] ; then
-    ARCHIVE_HOST='x1carbon'
-elif [[ $HOSTNAME = 'Abacus' ]] ; then
-    ARCHIVE_HOST='abacus'
-else
-    echo "Hostname is neither 'ArchX1' or 'Abacus'. Aborting."
-    exit 1
-fi
-
-BORG_CMD='borg create -xspC zstd'
-BASE_PATH_ROOT='/mnt/borg-bkup-root'
-BASE_PATH_USER='/mnt/borg-bkup-user'
-
 # check if backup disk is connected
-if [[ ! -h /dev/disk/by-uuid/d2ab6a0d-333d-4726-b461-ca663042bafd ]] ; then
+DISK_FOUND=""; LVM_UUID=""; VOLG=""
+for K_UUID in "${!UUIDS[@]}" ; do
+    V_UUID="${UUIDS[$K_UUID]}"
+    if [[ -e /dev/disk/by-uuid/$K_UUID ]] ; then
+        if [[ -z $DISK_FOUND ]] ; then
+            CRYPT_UUID="$K_UUID"
+        fi
+        DISK_FOUND="yes"
+        if [[ -e /dev/disk/by-uuid/$V_UUID ]] ; then
+            LVM_UUID="$V_UUID"
+            break
+        fi
+    fi
+done
+
+if [[ -z $DISK_FOUND ]] ; then
     echo "No Backup disk found. Aborting."
     exit 1
 fi
 
 # try to open backup disk
-if [[ ! -h /dev/disk/by-uuid/79d55b92-46c5-4dde-90a4-abbe19903c02 ]] ; then
+if [[ -z $LVM_UUID ]] ; then
     # check if nothing is mounted at /mnt
     if [[ -n "$(findmnt /mnt)" ]] ; then
         echo "There is something mounted at /mnt. Aborting."
         exit 1
     fi
 
-    echo "Crpytsetup open: bkup0"
-    cryptsetup open /dev/disk/by-uuid/d2ab6a0d-333d-4726-b461-ca663042bafd bkup0
-    sleep 2 # wait to create the symlinks and stuff
+    echo "Crpytsetup open"
+    cryptsetup open "/dev/disk/by-uuid/$CRYPT_UUID" backup-disk
+    sleep 2
+    get_volg
+    if [[ -n $VOLG ]] ; then
+        vgchange -ay "$VOLG"
+        sleep 2
+    fi
 
     # check if disk exists
-    if [[ ! -h /dev/disk/by-uuid/79d55b92-46c5-4dde-90a4-abbe19903c02 ]] ; then
+    LVM_UUID="${UUIDS[$CRYPT_UUID]}"
+    echo "$LVM_UUID"
+    if [[ ! -e /dev/disk/by-uuid/$LVM_UUID ]] ; then
         echo "Failed opening backup disk. Aborting."
         exit 1
     fi
 fi
 
 # try to mount backup disk
-BKUPMNT="$(findmnt UUID='79d55b92-46c5-4dde-90a4-abbe19903c02' || true)"
-if [[ -z "$(echo "$BKUPMNT" | grep '/mnt')" ]] ; then
+BKUPMNT="$(findmnt "UUID=$LVM_UUID" || true)"
+if [[ -z "$(echo "$BKUPMNT" | egrep '^/mnt\s+.*$')" ]] ; then
     if [[ -n "$(findmnt /mnt)" ]] ; then
         echo "There is something else mounted at /mnt. Aborting."
         exit 1
@@ -71,40 +93,53 @@ if [[ -z "$(echo "$BKUPMNT" | grep '/mnt')" ]] ; then
         exit 1
     fi
 
-    mount /dev/disk/by-uuid/79d55b92-46c5-4dde-90a4-abbe19903c02 /mnt
-    if [[ -z "$(findmnt UUID='79d55b92-46c5-4dde-90a4-abbe19903c02' | grep '/mnt')" ]] ; then
+    mount "/dev/disk/by-uuid/$LVM_UUID" /mnt
+    if [[ -z "$(findmnt "UUID=$LVM_UUID" | egrep '^/mnt\s+.*$')" ]] ; then
         echo "Failed to mount. Aborting."
         exit 1
     fi
 fi
 
+# check if borg repositories exists
+if [[ ! -f $BASE_PATH_ROOT/config ]] ; then
+    echo "Didn't found borg repository at $BASE_PATH_ROOT."
+    exit 1
+fi
+if [[ ! -f $BASE_PATH_USER/config ]] ; then
+    echo "Didn't found borg repository at $BASE_PATH_USER."
+    exit 1
+fi
+
+# do actual backup
 ROOT_REPO_BKUPS="$(borg list $BASE_PATH_ROOT)"
 USER_REPO_BKUPS="$(su -c "borg list $BASE_PATH_USER" - daniel)"
 
-calc_next_index "$ROOT_REPO_BKUPS" "$ARCHIVE_HOST-boot"
-cd /boot
-$BORG_CMD "$BASE_PATH_ROOT::$ARCHIVE_HOST-boot-$INDEX" .
+calc_next_index "$ROOT_REPO_BKUPS" "$HOSTNAME-boot"
+cd /boot && $BORG_CMD "$BASE_PATH_ROOT::$HOSTNAME-boot-$INDEX" .
 
-calc_next_index "$ROOT_REPO_BKUPS" "$ARCHIVE_HOST-root"
-cd /.btrfs/@
-$BORG_CMD "$BASE_PATH_ROOT::$ARCHIVE_HOST-root-$INDEX" .
+calc_next_index "$ROOT_REPO_BKUPS" "$HOSTNAME-root"
+cd /.btrfs/@ && $BORG_CMD "$BASE_PATH_ROOT::$HOSTNAME-root-$INDEX" .
 
-calc_next_index "$USER_REPO_BKUPS" "$ARCHIVE_HOST-home-daniel"
-su -c "cd /.btrfs/@home && $BORG_CMD $BASE_PATH_USER::$ARCHIVE_HOST-home-daniel-$INDEX daniel" - daniel
+calc_next_index "$USER_REPO_BKUPS" "$HOSTNAME-home-daniel"
+su -c "cd /.btrfs/@home && $BORG_CMD $BASE_PATH_USER::$HOSTNAME-home-daniel-$INDEX daniel" - daniel
 
-borg list "$BASE_PATH_ROOT"
-echo ""
-su -c "borg list $BASE_PATH_USER" - daniel
+borg list "$BASE_PATH_ROOT" | tail -n10
+echo "-----------------------------------------------"
+su -c "borg list $BASE_PATH_USER" - daniel | tail -n10
 
+# eject backup disk if required
 while true; do
     read -p 'Try to eject the backup disk? [y/n] ' YN
     case "$YN" in
-        [YyJj] ) break;;
-        [Nn]   ) exit 0;;
-        *      ) echo "Please answer yes or no [y/n].";;
+        [YyJj] ) break  ;;
+        [Nn]   ) exit 0 ;;
+        *      ) echo "Please answer yes or no [y/n]." ;;
     esac
 done
 
 umount /mnt
-vgchange -an vgb0
-cryptsetup close bkup0
+if [[ -z $VOLG ]] ; then
+    get_volg
+fi
+vgchange -an "$VOLG"
+cryptsetup close backup-disk
