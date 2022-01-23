@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+RED='\033[0;31m'
+WHITE='\033[0m'
+
+if [[ -x /usr/bin/pikaur ]] ; then
+    pikaur -Syu || exit 1
+    echo "" > $HOME/.cache/current_updates.txt
+else
+    echo -e "\n${RED}Pikaur not installed.${WHITE}\n"
+    exit 1
+fi
+
+#if [[ -x /usr/bin/flatpak ]] ; then
+#    flatpak update || exit 1
+#else
+#    echo -e "\n${RED}Flatpak not installed.${WHITE}\n"
+#fi
+
+if [[ -x /usr/bin/nvim ]] ; then
+    nvim -c "PlugUpgrade" -c "PlugUpdate" -c "quit" -c "quit" || exit 1
+else
+    echo -e "\n${RED}neovim not installed.${WHITE}\n"
+fi
+
+if [[ -d $HOME/.miniconda3 ]] ; then
+    zsh -c "source $HOME/.zshrc; conda_init; conda update -y --all" || exit 1
+else
+    echo -e "\n${RED}Miniconda not installed.${WHITE}\n"
+fi
+
+if [[ -d $HOME/.oh-my-zsh ]] ; then
+    omz update || exit 1
+else
+    echo -e "\n${RED}Oh-my-zsh not installed.${WHITE}\n"
+fi
+
+if [[ -x $HOME/.emacs.d/bin/doom ]] ; then
+    doom -y upgrade || exit 1
+else
+    echo -e "\n${RED}Doom emacs not installed.${WHITE}\n"
+fi

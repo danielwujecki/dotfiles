@@ -177,7 +177,7 @@ super + shift + Print
 
 # shuffle wallpaper
 super + w
-    bash -c 'source "$HOME"/.bash_functions && fehbg'
+    "$HOME"/.local/bin/fehbg
 
 # keyboard mapping
 super + alt + u

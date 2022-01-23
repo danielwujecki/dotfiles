@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ "$#" -ge 1 ]] ; then
+    wp_path="$1"
+else
+    wp_dir="$HOME/Bilder/Wallpaper/selected"
+    wp_path=""
+
+    [[ -d $wp_dir ]] || exit 1
+
+    until [[ -f $wp_path ]] ; do
+        wp_name="$(ls "$wp_dir" | shuf -n 1)"
+        wp_path="$wp_dir/$wp_name"
+    done
+fi
+
+if [[ ! -f $wp_path ]] ; then
+    echo "Error: wallpaper path is no file."
+    exit 1
+fi
+feh --no-fehbg --bg-fill "$wp_path"
+betterlockscreen -u "$wp_path" --fx dimblur

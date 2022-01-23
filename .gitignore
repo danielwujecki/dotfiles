@@ -6,8 +6,6 @@
 .viminfo
 .wget-hsts
 .Xauthority
-.zsh_history
-.python_history
 *history*
 
 # latex
@@ -37,4 +35,6 @@ tex/*.pdf
 # misc files
 *.tar.gz
 plug.vim.old
-misc/pkgs/*.txt
+pkg-list/*.txt
+todos*.txt
+make.conf.*

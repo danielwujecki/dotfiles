@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+bash -c "rm -rf ./*.aux \
+       ./.auctex-auto \
+       ./*.fdb_latexmk  \
+       ./*.fls \
+       ./*.log \
+       ./*.out \
+       ./*.lof \
+       ./*.bbl \
+       ./*.bcf \
+       ./*.blg \
+       ./*.run.xml \
+       ./*.toc \
+       ./*.synctex.gz \
+       ./*.bib.sav \
+       ./*.bib.bak \
+       ./*.lot \
+       ./*.nav \
+       ./*.snm \
+       ./*.tdo \
+       ./*.dvi \
+       ./*.out.ps \
+       ./*.xdv"

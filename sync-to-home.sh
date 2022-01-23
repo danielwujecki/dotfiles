@@ -2,7 +2,6 @@
 
 # dotfiles in ~/
 cp "$HOME"/Repositories/dotfiles/.bash_aliases "$HOME"/
-cp "$HOME"/Repositories/dotfiles/.bash_functions "$HOME"/
 #cp "$HOME"/Repositories/dotfiles/.bashrc "$HOME"/
 #cp "$HOME"/Repositories/dotfiles/.gitconfig "$HOME"/
 #cp "$HOME"/Repositories/dotfiles/.gtkrc-2.0 "$HOME"/

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -gt 1 ]] ; then
+    echo "Usage: $0 [path]"
+    exit 1
+elif [[ $# -eq 1 ]] ; then
+    FILEPATH="$1"
+else
+    FILEPATH=""
+fi
+
+if [[ -n $FILEPATH && ! -d $FILEPATH ]] ; then
+    echo " $1 is not a directory."
+    exit 1
+else
+    FILEPATH="./"
+fi
+
+zsh -c "pcmanfm $FILEPATH > /dev/null 2>&1 &!"

@@ -111,10 +111,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
-
 # If you come from bash you might have to change your $PATH.
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"

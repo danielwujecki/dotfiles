@@ -1,5 +1,5 @@
-#!/usr/bin/bash
-
+#!/usr/bin/env bash
+set -euo pipefail
 # run this as crontab, rather than a polybar module
 
 # check for network

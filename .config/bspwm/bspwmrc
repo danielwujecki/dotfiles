@@ -98,9 +98,8 @@ bspc rule -a Emacs state=tiled
 ########################################################
 
 # start background programs
-source "$HOME"/.bash_functions
-fehbg &
-launch_polybar &
+"$HOME"/.local/bin/fehbg &
+"$HOME"/.local/bin/launch_polybar &
 "$HOME"/.local/bin/checkupdates_custom &
 pgrep -u "$LOGNAME" -x sxhkd > /dev/null || sxhkd &
 pgrep -u "$LOGNAME" -x picom > /dev/null || picom &

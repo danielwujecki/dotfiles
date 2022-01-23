@@ -1,4 +1,5 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
+set -euo pipefail
 
 MNTPNT="/mnt/gentoo"
 BLKDEV="/dev/vgsys/gentoo_root"

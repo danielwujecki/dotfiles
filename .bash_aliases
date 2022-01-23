@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 # wichtigstes kommmando auf dem terminal - ls
 if [[ -x /usr/bin/exa ]] ; then
@@ -11,29 +11,27 @@ else
 fi
 
 # damit jeder alias auch als root funktioniert
-if [[ -x /usr/bin/doas ]] ; then
-    alias doas='doas '
-fi
-if [[ -x /usr/bin/sudo ]] ; then
-    alias sudo='sudo '
-fi
+[[ -x /usr/bin/doas ]] && alias doas='doas '
+[[ -x /usr/bin/sudo ]] && alias sudo='sudo '
 
 # orte
-alias ..='cd ../'
+alias  ..='cd ../'
 alias ...='cd ../../'
-if [[ -d ~/Dropbox ]] ; then alias dbox='cd ~/Dropbox' ; fi
-if [[ -d ~/Schreibtisch ]] ; then alias des='cd ~/Schreibtisch' ; fi
-if [[ -d ~/Repositories ]] ; then alias repos='cd ~/Repositories' ; fi
-if [[ -d ~/Dropbox/wise2122 ]] ; then alias sem='cd ~/Dropbox/wise2122' ; fi
-if [[ -d ~/Dokumente/3dprinting ]] ; then alias 3d='cd ~/Dokumente/3dprinting' ; fi
-if [[ -d ~/Repositories/dotfiles ]] ; then alias dotf='cd ~/Repositories/dotfiles' ; fi
+[[ -d ~/Dropbox ]]               && alias dbox='cd ~/Dropbox'
+[[ -d ~/Schreibtisch ]]          && alias des='cd ~/Schreibtisch'
+[[ -d ~/Repositories ]]          && alias repos='cd ~/Repositories'
+[[ -d ~/Dropbox/wise2122 ]]      && alias sem='cd ~/Dropbox/wise2122'
+[[ -d ~/Dokumente/3dprinting ]]  && alias 3d='cd ~/Dokumente/3dprinting'
+[[ -d ~/Repositories/dotfiles ]] && alias dotf='cd ~/Repositories/dotfiles'
 
 # shortcuts
-alias suspend='systemctl suspend'
-alias hn='systemctl hibernate'
-alias hibernate='systemctl hibernate'
-if [[ -x /usr/bin/ranger ]] ; then alias r='ranger' ; fi
-if [[ -x /usr/bin/nvim && -x /usr/bin/fzf ]] ; then alias vf='nvim $(fzf)' ; fi
+[[ -x /usr/bin/ranger ]] && alias r='ranger'
+[[ -x /usr/bin/nvim && -x /usr/bin/fzf ]] && alias vf='nvim $(fzf)'
+if [[ -x /usr/bin/systemctl ]] ; then
+    alias suspend='systemctl suspend'
+    alias hn='systemctl hibernate'
+    alias hibernate='systemctl hibernate'
+fi
 if [[ -x /usr/bin/rclone && -d ~/Dropbox ]] ; then
     alias dboxup='rclone sync -i ~/Dropbox Dropbox:/'
     alias dboxdown='rclone sync -i Dropbox:/ ~/Dropbox'
@@ -46,24 +44,17 @@ alias df='df -Th'
 alias du='du -sh'
 alias rm='rm -I'
 alias mv='mv -i'
-if [[ -x /usr/bin/bat ]] ; then alias cat='bat' ; fi
-if [[ -x /usr/bin/fd ]] ; then alias fd='fd -iIH' ; fi
-if [[ -x /usr/bin/htop ]] ; then alias top='htop' ; fi
-if [[ -x /usr/bin/colordiff ]] ; then alias diff='colordiff' ; fi
-if [[ -x /usr/bin/xclip ]] ; then alias xclip='xclip -sel c' ; fi
-if [[ -x /usr/bin/pwgen ]] ; then alias pwgen='pwgen -cns 14 1' ; fi
+[[ -x /usr/bin/fd ]]        && alias fd='fd -iIH'
+[[ -x /usr/bin/xclip ]]     && alias xclip='xclip -sel c'
+[[ -x /usr/bin/pwgen ]]     && alias pwgen='pwgen -cns 14 1'
+[[ -x /usr/bin/latexmk ]]   && alias latex='latexmk'
+[[ -x /usr/bin/colordiff ]] && alias diff='colordiff'
 if [[ -x /usr/bin/nvim ]] ; then
     alias vi='nvim'
     alias vim='nvim'
 fi
 if [[ -x /usr/bin/emacs && -x /usr/bin/emacsclient ]] ; then
     alias emacs='emacsclient -t -a ""'
-fi
-if [[ -x /usr/bin/latexmk ]] ; then
-    alias latex='latexmk'
-fi
-if [[ -x /usr/bin/pikaur ]] ; then
-    alias pac='pikaur'
 fi
 
 # usb
@@ -74,24 +65,22 @@ if [[ -x /usr/bin/udisksctl ]] ; then
 fi
 
 # ssh
-alias ssh='TERM=xterm-256color ssh'
-
-if [[ -f ~/.ssh/ssh_ed25519_privat ]] ; then
-    alias pkssh='ssh-add ~/.ssh/ssh_ed25519_privat'
-fi
-if [[ -f ~/.ssh/ssh_ed25519_innocampus ]] ; then
-    alias wkssh='ssh-add ~/.ssh/ssh_ed25519_innocampus'
-fi
+[[ -x /usr/bin/ssh ]]                  && alias ssh='TERM=xterm-256color ssh'
+[[ -f ~/.ssh/ssh_ed25519_privat ]]     && alias pkssh='ssh-add ~/.ssh/ssh_ed25519_privat'
+[[ -f ~/.ssh/ssh_ed25519_innocampus ]] && alias wkssh='ssh-add ~/.ssh/ssh_ed25519_innocampus'
 
 # python
 if [[ -f /home/daniel/.pyenv/versions/mypython/bin/activate ]] ; then
     alias mypy='pyenv activate mypython'
     alias mypye='pyenv deactivate'
+    alias pyc='ipython'
 fi
-alias pyc='ipython'
 
 # misc
 if [[ -x /usr/bin/curl ]] ; then
     alias wetter='curl "wttr.in/Berlin?lang=de"'
     alias myip='curl "ifconfig.me/all"'
+fi
+if [[ -x $HOME/.miniconda3/bin/conda ]] ; then
+    alias conda_init='eval "$($HOME/.miniconda3/bin/conda shell.zsh hook)"'
 fi

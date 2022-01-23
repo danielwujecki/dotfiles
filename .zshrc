@@ -82,10 +82,6 @@ if [ -f ~/.bash_aliases ] ; then
     . ~/.bash_aliases
 fi
 
-if [ -f ~/.bash_functions ] ; then
-    . ~/.bash_functions
-fi
-
 # command counter
 #setopt PROMPT_SUBST
 #[[ $cmdcount -ge 1 ]] || cmdcount=1

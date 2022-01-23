@@ -1,0 +1,47 @@
+#!/usr/bin/busybox ash
+
+launch_shell() {
+    export PS1='[initramfs \W]\$ '
+    [ "$1" = "--exec" ] && exec sh -i
+    sh -i
+}
+
+/usr/bin/busybox --install -s
+
+mount -t proc     proc /proc -o nosuid,noexec,nodev
+mount -t sysfs    sys  /sys  -o nosuid,noexec,nodev
+mount -t devtmpfs dev  /dev  -o nosuid,mode=0755
+mount -t tmpfs    run  /run  -o nosuid,nodev,mode=0755
+
+modprobe aesni_intel 
+modprobe crypto_simd
+modprobe cryptd
+modprobe xts
+
+cryptdevice="/dev/sdb"
+if [ ! -b "$cryptdevice" ] ; then
+    echo "cryptdevice '$cryptdevice' not found."
+    launch_shell --exec
+fi
+mkdir -p /run/cryptsetup
+/usr/bin/cryptsetup luksOpen --allow-discards "$cryptdevice" "sdb_crypt" || launch_shell --exec
+
+lvm vgscan --mknodes
+lvm lvchange -aly vgsys/gentoo_root
+lvm vgscan --mknodes
+
+rootdevice="/dev/vgsys/gentoo_root"
+if [ ! -b "$rootdevice" ] ; then
+    echo "root '$rootdevice' not found. You should call 'cryptsetup close' and 'poweroff'."
+    launch_shell --exec
+fi
+mount -t btrfs -o ro,noatime,compress=zstd:2,ssd,subvolid=256 "$rootdevice" /mnt || launch_shell --exec
+
+umount /proc
+umount /sys
+umount /dev
+umount /run
+
+exec /usr/bin/switch_root /mnt /sbin/init
+
+# vim: set ft=sh ts=4 sw=4 et:

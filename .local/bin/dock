@@ -1,4 +1,6 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 xran="$(xrandr -q)"
 dp21="$(echo "$xran" | grep -- 'DP2-1 connected')"
 dp23="$(echo "$xran" | grep -- 'DP2-3 connected')"
