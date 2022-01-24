@@ -1,6 +1,7 @@
 # directories
 .cache/
 .auctex-auto/
+pkg-list/
 
 # private dotfiles
 .viminfo
@@ -33,8 +34,6 @@
 tex/*.pdf
 
 # misc files
-*.tar.gz
 plug.vim.old
-pkg-list/*.txt
 todos*.txt
 make.conf.*

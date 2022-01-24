@@ -3,3 +3,5 @@ app-text/texlive-core xetex
 sys-apps/busybox -pam static
 virtual/libcrypt static-libs
 sys-libs/libxcrypt static-libs
+app-containers/docker btrfs device-mapper
+app-containers/containerd btrfs device-mapper
