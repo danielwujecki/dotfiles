@@ -47,12 +47,12 @@ cp "$HOME"/.config/redshift.conf "$HOME"/Repositories/dotfiles/.config/
 #cp "$HOME"/.config/user-dirs.locale "$HOME"/Repositories/dotfiles/.config/
 
 # ~/.local/
-cp -r "$HOME"/.local/bin/borg-mybackup "$HOME"/Repositories/dotfiles/.local/bin/
+cp -r "$HOME"/.local/bin/mybackup "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/checkupdates_custom "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/dock "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/homesyncup "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/homesyncdown "$HOME"/Repositories/dotfiles/.local/bin/
-cp -r "$HOME"/.local/bin/take_snapshot "$HOME"/Repositories/dotfiles/.local/bin/
+cp -r "$HOME"/.local/bin/take-snapshot "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/toggletouchpad "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/bin/undock "$HOME"/Repositories/dotfiles/.local/bin/
 cp -r "$HOME"/.local/share/applications/emacs.desktop \
