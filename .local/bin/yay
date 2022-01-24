@@ -24,8 +24,8 @@ else
     echo -e "\n${RED}neovim not installed.${WHITE}\n"
 fi
 
-if [[ -d $HOME/.miniconda3 ]] ; then
-    zsh -c "source $HOME/.zshrc; conda_init; conda update -y --all" || exit 1
+if [[ -x $HOME/.miniconda3/bin/conda ]] ; then
+    zsh -c "eval $($HOME/.miniconda3/bin/conda shell.zsh hook); conda update -y --all" || exit 1
 else
     echo -e "\n${RED}Miniconda not installed.${WHITE}\n"
 fi

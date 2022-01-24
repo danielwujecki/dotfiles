@@ -1,5 +1,8 @@
 UUID="0A9C-1A6C"            /boot       vfat    rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro    0 2
 
+# swap
+UUID="5af01fa8-6c65-4d79-b590-0a73c25afc68" none swap defaults,noatime 0 0
+
 # ID 256 gen 901 top level 5 path @
 /dev/vgsys/gentoo_root      /           btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=256    0 0
 
@@ -10,7 +13,7 @@ UUID="0A9C-1A6C"            /boot       vfat    rw,noatime,fmask=0022,dmask=0022
 /dev/vgsys/gentoo_root      /var/cache	btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=260    0 0
 
 # ID 261 gen 896 top level 5 path @db
-/dev/vgsys/gentoo_root      /var/db	btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=261    0 0
+/dev/vgsys/gentoo_root      /var/db     btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=261    0 0
 
 # ID 262 gen 868 top level 5 path @src
 /dev/vgsys/gentoo_root      /usr/src    btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=262    0 0

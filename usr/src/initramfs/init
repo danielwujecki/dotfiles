@@ -1,47 +1,78 @@
 #!/usr/bin/busybox ash
 
+gnu_logo() {
+    GNU="H4sIAAAAAAAAA21QSW7DMBC76xW8yQE0o7tySf8hwONugIE2hy43Pz7U4sgtMjBkiKQ5pB04s1gZ
+    CRgTBF6gDlDPqwoE26A3XkUBoyIWRcSjMUqQXSpsatCsWkCec9dYIV1Kd00kpZY8pXPWum4bGpqS
+    pmOw/kGG0tbXnM6SNt9YY9aUmUfu6yIr5USLOe7dLidCPAyWEdS7FjQGEd+LsL/mIGoipXL/Rz76
+    JpgmhmCc004hkivJSt7iMu3E63Jd3z4uT8/Ly+/3XY5mxWpcKmMv5DhDDl/9GSwc1Viv68/X8vl+
+    cB5a4JyOeGN8ff3FO8PnP16Txgcw7OzcDdgxgJVPAgAA"
+    echo "$GNU" | sed 's/ //g' | base64 -d | gzip -d | cat
+}
+
 launch_shell() {
-    export PS1='[initramfs \W]\$ '
-    [ "$1" = "--exec" ] && exec sh -i
-    sh -i
+    export PS1='[busybox \W]\$ '
+    [ "$1" = "--exec" ] && exec setsid cttyhack ash -i
+    setsid cttyhack ash -i
+}
+
+cmdline() {
+    local value
+    value=" $(cat /proc/cmdline) "
+    value="${value##* ${1}=}"
+    value="${value%% *}"
+    [ -n "$value" ] && echo "$value"
 }
 
 /usr/bin/busybox --install -s
+gnu_logo
 
 mount -t proc     proc /proc -o nosuid,noexec,nodev
 mount -t sysfs    sys  /sys  -o nosuid,noexec,nodev
 mount -t devtmpfs dev  /dev  -o nosuid,mode=0755
 mount -t tmpfs    run  /run  -o nosuid,nodev,mode=0755
 
-modprobe aesni_intel 
-modprobe crypto_simd
-modprobe cryptd
-modprobe xts
+# TODO amd ucode
 
-cryptdevice="/dev/sdb"
-if [ ! -b "$cryptdevice" ] ; then
-    echo "cryptdevice '$cryptdevice' not found."
-    launch_shell --exec
+cryptdevice_uuid="$(cmdline 'rd.luks.uuid')"
+if [ -n "$cryptdevice_uuid" ] ; then
+    cryptdevice="$(findfs "UUID=$cryptdevice_uuid")"
+    [ -b "$cryptdevice" ] || launch_shell --exec
+    mkdir -p /run/cryptsetup
+    cryptsetup luksOpen --allow-discards "$cryptdevice" "root_crypt" || launch_shell --exec
 fi
-mkdir -p /run/cryptsetup
-/usr/bin/cryptsetup luksOpen --allow-discards "$cryptdevice" "sdb_crypt" || launch_shell --exec
 
-lvm vgscan --mknodes
-lvm lvchange -aly vgsys/gentoo_root
-lvm vgscan --mknodes
-
-rootdevice="/dev/vgsys/gentoo_root"
-if [ ! -b "$rootdevice" ] ; then
-    echo "root '$rootdevice' not found. You should call 'cryptsetup close' and 'poweroff'."
-    launch_shell --exec
+lvm_vg="$(cmdline 'rd.lvm.vg')"
+if [ -n "$lvm_vg" ] ; then
+    lvm vgchange -aly "$lvm_vg"
+    lvm vgscan --mknodes
 fi
-mount -t btrfs -o ro,noatime,compress=zstd:2,ssd,subvolid=256 "$rootdevice" /mnt || launch_shell --exec
+
+resume="$(cmdline 'resume')"
+resumedev="$(findfs "$resume")"
+if [ -e /sys/power/resume -a -b "$resumedev" ] ; then
+    printf "%d:%d" $(stat -Lc "0x%t 0x%T" "$resumedev") > /sys/power/resume
+fi
+
+rootdevice_cmd="$(cmdline 'root')"
+rootdevice="$(findfs "$rootdevice_cmd")"
+[ -b "$rootdevice" -o -h "$rootdevice" ] || launch_shell --exec
+
+# TODO fsck
+
+fstype="$(cmdline 'rootfstype')"
+[ -n "$fstype" ] || fstype="auto"
+rflags="$(cmdline 'rootflags')"
+[ -n "$rflags" ] || rflags="ro,noatime"
+mount -t "$fstype" -o "$rflags" "$rootdevice" /mnt || launch_shell --exec
+
+rdbreak="$(cmdline 'rd.break')"
+[ -z "$rdbreak" ] || launch_shell
 
 umount /proc
 umount /sys
 umount /dev
 umount /run
 
-exec /usr/bin/switch_root /mnt /sbin/init
+exec switch_root /mnt /sbin/init
 
 # vim: set ft=sh ts=4 sw=4 et:
