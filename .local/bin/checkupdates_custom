@@ -13,7 +13,7 @@ FILEPATH="$HOME/.cache/updates.txt"
 UPDATES="$(checkupdates)"
 UPAC="$(echo "$UPDATES" | wc -l)"
 UAUR="$(pikaur -Qua 2> /dev/null | wc -l)"
-NEWKERNEL="$(echo "$UPDATES" | grep -E '^linux-lts\s+.*$')"
+NEWKERNEL="$(echo "$UPDATES" | egrep '^linux-lts\s+.*$')"
 
 if [[ $UPAC -gt 1 ]] ; then
     UPAC="$UPAC updates"

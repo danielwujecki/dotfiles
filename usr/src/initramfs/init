@@ -48,7 +48,7 @@ if [ -n "$lvm_vg" ] ; then
 fi
 
 resume="$(cmdline 'resume')"
-resumedev="$(findfs "$resume")"
+[ -z "$resume" ] || resumedev="$(findfs "$resume")"
 if [ -e /sys/power/resume -a -b "$resumedev" ] ; then
     printf "%d:%d" $(stat -Lc "0x%t 0x%T" "$resumedev") > /sys/power/resume
 fi

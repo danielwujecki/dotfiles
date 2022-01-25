@@ -18,7 +18,7 @@ calc_next_index() {
     fi
     INDEX="$(echo "$1" | sed "s/.*$2-\([0-9]\{3\}\).*$/\1+1/;t;d" | bc | sort -n | tail -n1 | xargs printf '%03d')"
 
-    if [[ -n $(echo "$1" | grep "$2-$INDEX") ]] ; then
+    if echo "$1" | grep -q "$2-$INDEX" then
         echo "$2-$INDEX is an existing archive. Something went wrong. Aborting."
         exit 1
     fi
@@ -82,7 +82,7 @@ fi
 
 # try to mount backup disk
 BKUPMNT="$(findmnt "UUID=$LVM_UUID" || true)"
-if [[ -z "$(echo "$BKUPMNT" | egrep '^/mnt\s+.*$')" ]] ; then
+if ! echo "$BKUPMNT" | egrep -q '^/mnt\s+.*$' ; then
     if [[ -n "$(findmnt /mnt)" ]] ; then
         echo "There is something else mounted at /mnt. Aborting."
         exit 1
@@ -94,7 +94,7 @@ if [[ -z "$(echo "$BKUPMNT" | egrep '^/mnt\s+.*$')" ]] ; then
     fi
 
     mount "/dev/disk/by-uuid/$LVM_UUID" /mnt
-    if [[ -z "$(findmnt "UUID=$LVM_UUID" | egrep '^/mnt\s+.*$')" ]] ; then
+    if ! findmnt "UUID=$LVM_UUID" | egrep -q '^/mnt\s+.*$' ; then
         echo "Failed to mount. Aborting."
         exit 1
     fi

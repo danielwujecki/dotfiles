@@ -3,6 +3,7 @@ set -euo pipefail
 
 MNTPNT="/mnt/gentoo"
 BLKDEV="/dev/vgsys/gentoo_root"
+BOOTDEV="/dev/nvme0n1p1"
 
 if [[ ! -d $MNTPNT ]] ; then
     echo "$MNTPNT not found."
@@ -21,7 +22,7 @@ mount -o noatime,compress=zstd:2,ssd,subvol=@home      "$BLKDEV" "$MNTPNT/home" 
 mount -o noatime,compress=zstd:2,ssd,subvol=@snapshots "$BLKDEV" "$MNTPNT/.snapshots" && echo "@snapshots"
 mount -o noatime,compress=zstd:2,ssd,subvol=@src       "$BLKDEV" "$MNTPNT/usr/src"    && echo "@src"
 mount -o noatime,compress=zstd:2,ssd,subvolid=5        "$BLKDEV" "$MNTPNT/.btrfs"     && echo "subvolid=5"
-mount /dev/sda "$MNTPNT/boot"
+mount "$BOOTDEV" "$MNTPNT/boot"
 
 cp --dereference /etc/resolv.conf "$MNTPNT/etc/"
 mount --types proc /proc "$MNTPNT/proc" && echo "proc"

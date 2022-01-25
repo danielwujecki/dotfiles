@@ -22,8 +22,6 @@ cp "$HOME"/.config/nvim/init.vim "$HOME"/Repositories/dotfiles/.config/nvim/
 #cp -r "$HOME"/.config/pacman "$HOME"/Repositories/dotfiles/.config/
 cp -r "$HOME"/.config/picom "$HOME"/Repositories/dotfiles/.config/
 cp -r "$HOME"/.config/polybar "$HOME"/Repositories/dotfiles/.config/
-cp "$HOME"/.config/ranger/commands.py "$HOME"/Repositories/dotfiles/.config/ranger/
-cp "$HOME"/.config/ranger/commands_full.py "$HOME"/Repositories/dotfiles/.config/ranger/
 cp "$HOME"/.config/ranger/rc.conf "$HOME"/Repositories/dotfiles/.config/ranger/
 cp "$HOME"/.config/ranger/rifle.conf "$HOME"/Repositories/dotfiles/.config/ranger/
 cp "$HOME"/.config/ranger/scope.sh "$HOME"/Repositories/dotfiles/.config/ranger/
