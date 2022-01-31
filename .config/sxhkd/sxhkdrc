@@ -12,6 +12,7 @@
 
 # make sxhkd reload its configuration files:
 super + r
+    notify-send "sxhkd reloaded"
     pkill -USR1 -x sxhkd
 
 super + shift + r
@@ -169,10 +170,12 @@ super + alt + o
 
 # screenshot
 super + Print
+    notify-send "Screenshot taken"
     scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'
 
 # screenshot of current window
 super + shift + Print
+    notify-send "Screenshot of current window taken"
     scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'
 
 # shuffle wallpaper

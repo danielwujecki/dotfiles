@@ -4,6 +4,11 @@ set -euo pipefail
 RED='\033[0;31m'
 WHITE='\033[0m'
 
+if [[ ! -x /usr/bin/zsh ]] ; then
+    echo -e "\n${RED}zsh not installed.${WHITE}\n"
+    exit 1
+fi
+
 if [[ -x /usr/bin/pikaur ]] ; then
     pikaur -Syu || exit 1
     echo "" > $HOME/.cache/current_updates.txt
@@ -31,7 +36,7 @@ else
 fi
 
 if [[ -d $HOME/.oh-my-zsh ]] ; then
-    omz update || exit 1
+    zsh -c "source $HOME/.zshrc && omz update" || exit 1
 else
     echo -e "\n${RED}Oh-my-zsh not installed.${WHITE}\n"
 fi
