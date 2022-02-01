@@ -1,0 +1,2 @@
+# required by app-text/pandoc
+dev-lang/ghc ~amd64

@@ -1,0 +1,2 @@
+# required by app-misc/fdupes
+dev-libs/libpcre2 pcre32

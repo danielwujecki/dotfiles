@@ -1,26 +1,32 @@
-# LABEL=EFIBOOT /dev/nvme0n1p1
-UUID=8FCE-7967              /boot                                vfat    rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro    0 2
+# ID 256 path @
+/dev/vgsys/gentoo_root      /                    btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=256    0 0
 
-# LABEL=arch_root subvol=@ UUID=13b43b05-72d3-4b14-98b2-9ace3bedc4c1
-/dev/vgsys/arch_root        /                                   btrfs   rw,noatime,compress=lzo,ssd,space_cache,subvolid=256    0 0
+# ID 257 path @home
+/dev/vgsys/gentoo_root      /home                btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=257    0 0
 
-# LABEL=arch_root subvol=@home UUID=13b43b05-72d3-4b14-98b2-9ace3bedc4c1
-/dev/vgsys/arch_root        /home                               btrfs   rw,noatime,compress=lzo,ssd,space_cache,subvolid=257    0 0
+# ID 262 path @daniel-cache
+/dev/vgsys/gentoo_root      /home/daniel/.cache  btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=262    0 0
 
-# LABEL=arch_root subvol=@daniel-cache UUID=13b43b05-72d3-4b14-98b2-9ace3bedc4c1
-/dev/vgsys/arch_root        /home/daniel/.cache                 btrfs   rw,noatime,compress=lzo,ssd,space_cache,subvolid=439    0 0
+# ID 258 path @cache
+/dev/vgsys/gentoo_root      /var/cache           btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=258    0 0
 
-# LABEL=arch_root subvol=@snapshots UUID=13b43b05-72d3-4b14-98b2-9ace3bedc4c1
-/dev/vgsys/arch_root        /.snapshots                         btrfs   rw,noatime,compress=lzo,ssd,space_cache,subvolid=258    0 0
+# ID 261 path @snapshots
+/dev/vgsys/gentoo_root      /.snapshots          btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=261    0 0
 
-# LABEL=arch_root subvol=@pkg UUID=13b43b05-72d3-4b14-98b2-9ace3bedc4c1
-/dev/vgsys/arch_root        /var/cache/pacman/pkg               btrfs   rw,noatime,compress=lzo,ssd,space_cache,subvolid=259    0 0
+# ID 5 path /
+/dev/vgsys/gentoo_root      /.btrfs              btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=5      0 0
 
-# LABEL=arch_root subvol=/ UUID=13b43b05-72d3-4b14-98b2-9ace3bedc4c1
-/dev/vgsys/arch_root        /.btrfs                             btrfs   rw,noatime,compress=lzo,ssd,space_cache,subvolid=5      0 0
+# boot
+UUID="8FCE-7967"            /boot                vfat    rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 0
 
-# LABEL=arch_swap UUID=c1555e97-ba95-4d1a-9138-b6faf7f4c716
-/dev/vgsys/arch_swap        none                                swap    defaults,noatime                                        0 0
+# portage tmpfs
+tmpfs                       /tmp                 tmpfs   rw,nosuid,noatime,nodev,size=8G,mode=1777                             0 0
 
-# LABEL=os_images UUID=4963cb87-ca37-4a3b-b28a-751fd862b0f7
-/dev/vg1/os_images          /run/media/daniel/os_images         ext4    defaults,nofail,noatime                                 0 0
+# portage tmpfs
+tmpfs                       /dev/shm             tmpfs   rw,nosuid,noatime,nodev,size=8G,mode=1777                             0 0
+
+# portage tmpfs
+tmpfs                       /var/tmp/portage     tmpfs   rw,nosuid,noatime,nodev,size=12G,uid=portage,gid=portage,mode=775     0 0
+
+# swap
+UUID="9aafef78-399c-49aa-9e3e-ee7e9c2f44ce" none swap    defaults,noatime                                                      0 0

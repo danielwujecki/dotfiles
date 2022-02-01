@@ -1,69 +1,25 @@
 ! High DPI Xorg Settings
-!Xft.dpi: 128
-!Xft.autohint: 0
-!Xft.lcdfilter: lcddefault
-!Xft.hintstyle: hintfull
-!Xft.hinting: 1
-!Xft.antialias: 1
-!Xft.rgba: rgb
-!Xcursor.size: 30
+Xft.dpi: 96
+rofi.dpi: 96
 
-!rofi.dpi: 128
-
-! ###############################
-!  _   _ ____               _   
-! | | | |  _ \ __  ____   _| |_ 
-! | | | | |_) |\ \/ /\ \ / / __|
-! | |_| |  _ <  >  <  \ V /| |_ 
-!  \___/|_| \_\/_/\_\  \_/  \__|
-!
-! ###############################
-
-urxvt.font: xft:JetBrainsMono Nerd Font:style=Regular:size=11
-urxvt.boldFont: xft:JetBrains Mono:style=Bold:size=11
-urxvt.letterSpace: -1.2
-
-urxvt.cursorBlink: true
-urxvt.cursorUnderline: true
-urxvt.saveline: 10000
-urxvt.scrollBar: false
-urxvt.internalBorder: 4
-urxvt.pointerBlank: true
-
-!! ### ayu-colors ###
-! special
-urxvt.foreground: #cecfc9
-urxvt.background: #1f2430 
-urxvt.cursorColor: #cbccc6
-
-! black
-urxvt.color0: #002b36
-urxvt.color8: #657b83
-
-! red
-urxvt.color1: #dc322f
-urxvt.color9: #dc322f
-
-! green
-urxvt.color2: #86b300
-urxvt.color10: #86b300
-
-! yellow
-urxvt.color3: #b58900
-urxvt.color11: #b58900
-
-! blue
-urxvt.color4: #399ee6
-urxvt.color12: #399ee6
-
-! magenta
-urxvt.color5: #a37acc
-urxvt.color13: #a37acc
-
-! cyan
-urxvt.color6: #4cbf99
-urxvt.color14: #4cbf99
-
-! white
-urxvt.color7: #cbccc6
-urxvt.color15: #cbccc6
+xterm*utf8: 1
+xterm*faceName: JetBrains Mono:size=12
+xterm*selectToClipboard: true
+xterm*background: #1b1918
+xterm*foreground: #eaeaea
+xterm*color0:  #2e3436
+xterm*color8:  #555753
+xterm*color1:  #cc0000
+xterm*color9:  #ef2929
+xterm*color2:  #4e9a06
+xterm*color10: #8ae234
+xterm*color3:  #c4a000
+xterm*color11: #fce94f
+xterm*color4:  #3465a4
+xterm*color12: #729fcf
+xterm*color5:  #75507b
+xterm*color13: #ad7fa8
+xterm*color6:  #06989a
+xterm*color14: #34e2e2
+xterm*color7:  #d3d7cf
+xterm*color15: #eeeeec

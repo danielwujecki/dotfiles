@@ -9,20 +9,6 @@ if [[ ! -x /usr/bin/zsh ]] ; then
     exit 1
 fi
 
-if [[ -x /usr/bin/pikaur ]] ; then
-    pikaur -Syu || exit 1
-    echo "" > $HOME/.cache/current_updates.txt
-else
-    echo -e "\n${RED}Pikaur not installed.${WHITE}\n"
-    exit 1
-fi
-
-#if [[ -x /usr/bin/flatpak ]] ; then
-#    flatpak update || exit 1
-#else
-#    echo -e "\n${RED}Flatpak not installed.${WHITE}\n"
-#fi
-
 if [[ -x /usr/bin/nvim ]] ; then
     nvim -c "PlugUpgrade" -c "PlugUpdate" -c "quit" -c "quit" || exit 1
 else
@@ -46,3 +32,16 @@ if [[ -x $HOME/.emacs.d/bin/doom ]] ; then
 else
     echo -e "\n${RED}Doom emacs not installed.${WHITE}\n"
 fi
+
+if [[ -d $HOME/.local/bin ]] ; then
+    wget https://raw.githubusercontent.com/dylanaraps/pfetch/master/pfetch -O $HOME/.local/bin/pfetch
+    chmod 754 $HOME/.local/bin/pfetch
+else
+    echo -e "\n${RED}No $HOME/.local/bin.${WHITE}\n"
+fi
+
+#if [[ -x /usr/bin/flatpak ]] ; then
+#    flatpak update || exit 1
+#else
+#    echo -e "\n${RED}Flatpak not installed.${WHITE}\n"
+#fi

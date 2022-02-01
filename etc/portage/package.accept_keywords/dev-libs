@@ -1,0 +1,4 @@
+dev-libs/cudnn ~amd64
+
+# required by media-gfx/prusaslicer
+dev-libs/cereal ~amd64

@@ -1,0 +1,5 @@
+# required by sys-apps/busybox
+sys-libs/libxcrypt static-libs
+
+# required by net-im/zoom
+sys-libs/zlib minizip

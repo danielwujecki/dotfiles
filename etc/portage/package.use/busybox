@@ -1,3 +1,0 @@
-sys-apps/busybox -pam static
-virtual/libcrypt static-libs
-sys-libs/libxcrypt static-libs

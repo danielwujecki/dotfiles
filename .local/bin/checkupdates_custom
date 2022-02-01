@@ -2,42 +2,14 @@
 set -uo pipefail
 # run this as crontab, rather than a polybar module
 
-# check for network
-ping -c1 "debian.org"
-if [[ $? -ne 0 ]] ; then
-    echo "No network connection!" > /dev/stderr
-    exit 2
-fi
-
 FILEPATH="$HOME/.cache/updates.txt"
-UPDATES="$(checkupdates)"
-UPAC="$(echo "$UPDATES" | wc -l)"
-UAUR="$(pikaur -Qua 2> /dev/null | wc -l)"
-NEWKERNEL="$(echo "$UPDATES" | egrep '^linux-lts\s+.*$')"
 
-if [[ $UPAC -gt 1 ]] ; then
-    UPAC="$UPAC updates"
+kernelpath="$(find /usr/src -maxdepth 1 -name 'linux-*' -type d | sort -V | tail -n1)"
+latestver="$(basename $kernelpath)"
+currver="$(readlink /usr/src/linux)"
+
+if [[ $latestver = $currver ]] ; then
+    echo "" > "$FILEPATH"
 else
-    UPAC=""
-fi
-
-if [[ $UAUR -gt 0 ]] ; then
-    if [[ -n $UPAC ]] ; then
-        UAUR="; $UAUR aur"
-    else
-        UAUR="$UAUR aur"
-    fi
-else
-    UAUR=""
-fi
-
-if [[ -n $NEWKERNEL ]] ; then
-    NEWKERNEL="; kernel"
-fi
-
-if [[ -n $UPAC || -n $UAUR ]] ; then
-    echo "($UPAC$UAUR$NEWKERNEL)" > "$FILEPATH"
-    echo "$UPDATES" >> "$FILEPATH"
-else
-    echo -n "" > "$FILEPATH"
+    echo "(new kernel)" > "$FILEPATH"
 fi

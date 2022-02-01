@@ -1,8 +1,7 @@
 {
     "telemetry.enableTelemetry": false,
     "editor.minimap.enabled": false,
-    "latex-workshop.view.pdf.viewer": "tab",
-    "editor.tabSize": 4,
+    "latex-workshop.view.pdf.viewer": "external",
     "files.trimTrailingWhitespace": true,
     "editor.formatOnPaste": true,
     "editor.multiCursorModifier": "ctrlCmd",
@@ -11,8 +10,9 @@
     "extensions.ignoreRecommendations": true,
     "python.jediEnabled": true,
     "python.linting.pylintArgs": [
-        "--extension-pkg-whitelist=cv2",
-        "--disable=C0111,C0301,C0103"
+        "--disable=C0111,C0301,C0103",
+        // "--extension-pkg-whitelist=cv2",
+        "--generated-members=torch.*,cv2.*"
     ],
     "[python]": {},
     "cSpell.language": "de,en,de-DE",
@@ -55,8 +55,9 @@
     "editor.lineNumbers": "relative",
     "python.terminal.executeInFileDir": true,
     "cSpell.userWords": [
-        "PYTHONPATH",
-        "imshow"
+        "aufbewart",
+        "imshow",
+        "PYTHONPATH"
     ],
     "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
     "keyboard.dispatch": "keyCode",
@@ -67,8 +68,25 @@
     "arduino.path": "/usr/bin",
     "rust-client.disableRustup": true,
     "cmake.configureOnOpen": true,
-    "workbench.iconTheme": "eq-material-theme-icons",
-    "workbench.colorTheme": "Material Theme High Contrast",
+    "workbench.colorTheme": "Material Theme Darker High Contrast",
     "vscode-neovim.neovimPath": "/usr/bin/nvim",
-    "vscode-neovim.neovimInitPath": "/home/daniel/.config/nvim/init.vim"
+    "vscode-neovim.neovimInitPath": "/home/daniel/.config/nvim/init.vim",
+    "python.languageServer": "Jedi",
+    "gitlens.hovers.currentLine.over": "line",
+    "workbench.iconTheme": "material-icon-theme",
+    "jupyter.sendSelectionToInteractiveWindow": true,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    "julia.enableTelemetry": false,
+    "workbench.colorCustomizations": {
+        "[Material Theme Darker High Contrast]": {}
+    }
 }

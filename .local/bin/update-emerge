@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $EUID -ne 0 ]] ; then
+    echo "Please run as root"
+    exit 1
+fi
+
+emerge --sync                   || exit 1
+emerge -u -1 portage            || exit 1
+emerge -avutDN @world           || exit 1
+emerge -avt @preserved-rebuild  || exit 1
+eclean-dist -d                  || exit 1
+emerge -ac                      || exit 1

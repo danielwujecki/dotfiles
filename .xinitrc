@@ -1,31 +1,13 @@
 #!/bin/sh
 
-userresources=$HOME/.Xresources
-usermodmap=$HOME/.Xmodmap
-sysresources=/etc/X11/xinit/.Xresources
-sysmodmap=/etc/X11/xinit/.Xmodmap
-
-# merge in defaults and keymaps
-
-if [ -f $sysresources ]; then
-    xrdb -merge $sysresources
-fi
-
-if [ -f $sysmodmap ]; then
-    xmodmap $sysmodmap
-fi
+userresources="$HOME/.Xresources"
 
 if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
 fi
 
-if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
-fi
-
-# crazy fixes
-dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+# crazy fix(es)
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-pgrep -x ssh-agent > /dev/null || eval "$(ssh-agent)"
-exec bspwm > "$HOME/.cache/bspwm.log" 2>&1
+pgrep -u "$LOGNAME" -x ssh-agent > /dev/null || eval "$(ssh-agent)"
+exec dbus-run-session bspwm > "$HOME/.cache/bspwm.log" 2>&1

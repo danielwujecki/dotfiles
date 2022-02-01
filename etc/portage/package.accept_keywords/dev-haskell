@@ -1,0 +1,2 @@
+# required by app-text/pandoc
+dev-haskell/* ~amd64

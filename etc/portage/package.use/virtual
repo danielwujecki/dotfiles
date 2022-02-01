@@ -1,0 +1,2 @@
+# required by sys-apps/busybox
+virtual/libcrypt static-libs

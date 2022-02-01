@@ -3,7 +3,7 @@ set -euo pipefail
 
 KEEP_VERS=3
 
-if [[ -z $1 ]] ; then
+if [[ $# -ne 1 ]] ; then
     echo "Kernel version argument missing!"
     eselect kernel list
     exit 1
@@ -14,6 +14,10 @@ if [[ $EUID -ne 0 ]] ; then
     exit 1
 fi
 
+eselect kernel set "$1" || exit 1
+cd /usr/src/linux
+rm -rf usr/*.cpio
+
 arch="$(uname -m)"
 curr_version="$(uname -r)"
 new_version="$(echo "$1" | sed s/linux-//g)"
@@ -22,24 +26,25 @@ new_plain_version="$(echo "$new_version" | sed s/-gentoo//g)"
 jobs="$(nproc)"
 lavg="$(nproc --ignore 2)"
 
-eselect kernel set "$1" || exit 1
-cd /usr/src/linux
-rm -rf usr/*.cpio
-
 if [[ $new_version != $curr_version ]] ; then
 	cp -v /usr/src/linux-$curr_version/.config /usr/src/linux/.config
 	make olddefconfig || exit 1
-fi;
+fi
 
-time make -j$jobs -l$lavg all || exit 1
-make -j$jobs -l$lavg modules_install || exit 1
+/usr/bin/time -f 'Compile time: %es' -o '/tmp/ktime.txt' make -j "$jobs" -l "$lavg" all || exit 1
+make -j "$jobs" -l "$lavg" modules_install || exit 1
 
-cp "arch/$arch/boot/bzImage" "/boot/vmlinuz-$new_version-gentoo"
+emerge @module-rebuild
+
+cp "arch/$arch/boot/bzImage" "/boot/vmlinuz-$new_version"
+vgs | grep -q 'vg0' && vgchange -an vg0
+vgs | grep -q 'vg1' && vgchange -an vg1
 grub-mkconfig -o /boot/grub/grub.cfg
+vgs | grep -q 'vg0' && vgchange -ay vg0
+vgs | grep -q 'vg1' && vgchange -ay vg1
 
-EMERGE_DEFAULT_OPTS="--jobs=$jobs --load-average=$lavg" emerge @module-rebuild
-
-echo "Removing old kernel versions..."
-find /boot        -maxdepth 1 -name 'vmlinuz-*' -type f | sort -V | head -n "-$KEEP_VERS" | xargs rm -v
+echo -e "\nRemoving old kernel versions..."
+find /boot        -maxdepth 1 -name 'vmlinuz-*' -type f | sort -V | head -n "-$KEEP_VERS" | xargs rm -fv
 find /usr/src     -maxdepth 1 -name 'linux-*'   -type d | sort -V | head -n "-$KEEP_VERS" | xargs rm -rfv
 find /lib/modules -maxdepth 1 -name '*-gentoo'  -type d | sort -V | head -n "-$KEEP_VERS" | xargs rm -rfv
+echo '' && cat /tmp/ktime.txt

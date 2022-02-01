@@ -3,7 +3,7 @@
 # This is the sshd server system-wide configuration file.  See
 # sshd_config(5) for more information.
 
-# This sshd was compiled with PATH=/usr/local/sbin:/usr/local/bin:/usr/bin
+# This sshd was compiled with PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 # The strategy used for options in the default sshd_config shipped with
 # OpenSSH is to specify options with their default value where
@@ -107,7 +107,7 @@ PrintMotd no # pam does that
 #Banner none
 
 # override default of no subsystems
-Subsystem	sftp	/usr/lib/ssh/sftp-server
+Subsystem	sftp	/usr/lib64/misc/sftp-server
 
 # Example of overriding settings on a per-user basis
 #Match User anoncvs
@@ -116,8 +116,13 @@ Subsystem	sftp	/usr/lib/ssh/sftp-server
 #	PermitTTY no
 #	ForceCommand cvs server
 
-AllowUsers daniel
+# Allow client to pass locale environment variables. #367017
+AcceptEnv LANG LC_ALL LC_COLLATE LC_CTYPE LC_MESSAGES LC_MONETARY LC_NUMERIC LC_TIME LANGUAGE LC_ADDRESS LC_IDENTIFICATION LC_MEASUREMENT LC_NAME LC_PAPER LC_TELEPHONE
 
-Match address 10.0.0.0/24
+# Allow client to pass COLORTERM to match TERM. #658540
+AcceptEnv COLORTERM
+
+AllowUsers daniel
+Match address 192.168.178.0/24
     PasswordAuthentication yes
     AuthenticationMethods password publickey

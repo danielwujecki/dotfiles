@@ -27,10 +27,12 @@ alias ...='cd ../../'
 # shortcuts
 [[ -x /usr/bin/ranger ]] && alias r='ranger'
 [[ -x /usr/bin/nvim && -x /usr/bin/fzf ]] && alias vf='nvim $(fzf)'
-if [[ -x /usr/bin/systemctl ]] ; then
-    alias suspend='systemctl suspend'
-    alias hn='systemctl hibernate'
-    alias hibernate='systemctl hibernate'
+if [[ -x /bin/loginctl ]] ; then
+    #alias suspend='loginctl suspend'
+    #alias hn='loginctl hibernate'
+    #alias hibernate='loginctl hibernate'
+    alias reboot='loginctl reboot'
+    alias poweroff='loginctl poweroff'
 fi
 if [[ -x /usr/bin/rclone && -d ~/Dropbox ]] ; then
     alias dboxup='rclone sync -i ~/Dropbox Dropbox:/'
