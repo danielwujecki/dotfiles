@@ -4,7 +4,7 @@ set -euo pipefail
 RED='\033[0;31m'
 WHITE='\033[0m'
 
-if [[ ! -x /usr/bin/zsh ]] ; then
+if [[ ! -x /bin/zsh ]] ; then
     echo -e "\n${RED}zsh not installed.${WHITE}\n"
     exit 1
 fi
@@ -31,13 +31,6 @@ if [[ -x $HOME/.emacs.d/bin/doom ]] ; then
     doom -y upgrade || exit 1
 else
     echo -e "\n${RED}Doom emacs not installed.${WHITE}\n"
-fi
-
-if [[ -d $HOME/.local/bin ]] ; then
-    wget https://raw.githubusercontent.com/dylanaraps/pfetch/master/pfetch -O $HOME/.local/bin/pfetch
-    chmod 754 $HOME/.local/bin/pfetch
-else
-    echo -e "\n${RED}No $HOME/.local/bin.${WHITE}\n"
 fi
 
 #if [[ -x /usr/bin/flatpak ]] ; then

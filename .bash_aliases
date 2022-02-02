@@ -28,9 +28,9 @@ alias ...='cd ../../'
 [[ -x /usr/bin/ranger ]] && alias r='ranger'
 [[ -x /usr/bin/nvim && -x /usr/bin/fzf ]] && alias vf='nvim $(fzf)'
 if [[ -x /bin/loginctl ]] ; then
-    #alias suspend='loginctl suspend'
-    #alias hn='loginctl hibernate'
-    #alias hibernate='loginctl hibernate'
+    alias suspend='loginctl suspend'
+    alias hn='loginctl hibernate'
+    alias hibernate='loginctl hibernate'
     alias reboot='loginctl reboot'
     alias poweroff='loginctl poweroff'
 fi

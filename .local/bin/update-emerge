@@ -6,7 +6,7 @@ if [[ $EUID -ne 0 ]] ; then
     exit 1
 fi
 
-emerge --sync                   || exit 1
+emaint sync -r gentoo           || exit 1
 emerge -u -1 portage            || exit 1
 emerge -avutDN @world           || exit 1
 emerge -avt @preserved-rebuild  || exit 1

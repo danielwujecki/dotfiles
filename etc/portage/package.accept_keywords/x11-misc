@@ -1,2 +1,5 @@
 x11-misc/birdtray ~amd64
 x11-misc/pcmanfm ~amd64
+
+x11-misc/betterlockscreen ~amd64
+x11-misc/i3lock-color ~amd64

@@ -29,6 +29,7 @@ lavg="$(nproc --ignore 2)"
 if [[ $new_version != $curr_version ]] ; then
 	cp -v /usr/src/linux-$curr_version/.config /usr/src/linux/.config
 	make olddefconfig || exit 1
+    echo "" > "$HOME/.cache/updates.txt"
 fi
 
 /usr/bin/time -f 'Compile time: %es' -o '/tmp/ktime.txt' make -j "$jobs" -l "$lavg" all || exit 1

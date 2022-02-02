@@ -31,13 +31,12 @@ mount -t sysfs    sys  /sys  -o nosuid,noexec,nodev
 mount -t devtmpfs dev  /dev  -o nosuid,mode=0755
 mount -t tmpfs    run  /run  -o nosuid,nodev,mode=0755
 
-# TODO amd ucode
-
 cryptdevice_uuid="$(cmdline 'rd.luks.uuid')"
 if [ -n "$cryptdevice_uuid" ] ; then
     cryptdevice="$(findfs "UUID=$cryptdevice_uuid")"
     [ -b "$cryptdevice" ] || launch_shell --exec
     mkdir -p /run/cryptsetup
+    # TODO: --allow-discards from cmdline
     cryptsetup luksOpen --allow-discards "$cryptdevice" "root_crypt" || launch_shell --exec
 fi
 
@@ -56,8 +55,6 @@ fi
 rootdevice_cmd="$(cmdline 'root')"
 rootdevice="$(findfs "$rootdevice_cmd")"
 [ -b "$rootdevice" -o -h "$rootdevice" ] || launch_shell --exec
-
-# TODO fsck
 
 fstype="$(cmdline 'rootfstype')"
 [ -n "$fstype" ] || fstype="auto"

@@ -27,7 +27,7 @@ super + alt + e
 
 # terminal emulator
 super + Return
-    kitty
+    kitty || xterm
 
 # open emacs
 super + shift + Return
@@ -163,10 +163,10 @@ super + o
     betterlockscreen -l dimblur
 
 super + shift + o
-    systemctl suspend && betterlockscreen -l dimblur
+    loginctl suspend && betterlockscreen -l dimblur
 
 super + alt + o
-    systemctl hibernate
+    loginctl hibernate
 
 # screenshot
 super + Print

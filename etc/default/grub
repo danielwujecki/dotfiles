@@ -18,7 +18,7 @@ GRUB_TIMEOUT=5
 #GRUB_TIMEOUT_STYLE=menu
 
 # Append parameters to the linux kernel command line
-GRUB_CMDLINE_LINUX="rd.luks.uuid=6999a089-eacd-4651-9c9d-f3b027366ed0 rd.lvm.vg=vgsys rootfstype=btrfs rootflags=ro,noatime,compress=zstd:2,ssd,subvolid=256 rd.luks.allow-discards"
+GRUB_CMDLINE_LINUX="rd.luks.uuid=6999a089-eacd-4651-9c9d-f3b027366ed0 rd.lvm.vg=vgsys rootfstype=btrfs rootflags=ro,noatime,compress=zstd:2,ssd,subvolid=256 resume=UUID=9aafef78-399c-49aa-9e3e-ee7e9c2f44ce rd.luks.allow-discards hid_apple.fnmode=2"
 #
 # Examples:
 #
