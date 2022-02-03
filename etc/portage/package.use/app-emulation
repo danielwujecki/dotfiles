@@ -1,0 +1,2 @@
+app-emulation/qemu -doc -gnutls -jpeg -png -vnc usbredir spice
+app-emulation/libvirt lvm

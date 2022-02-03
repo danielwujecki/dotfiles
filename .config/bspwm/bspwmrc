@@ -101,7 +101,7 @@ bspc rule -a Emacs state=tiled
 # start background programs
 "$HOME"/.local/bin/fehbg &
 "$HOME"/.local/bin/launch-polybar &
-#"$HOME"/.local/bin/checkupdates_custom &
+"$HOME"/.local/bin/checkupdates_custom &
 "$HOME"/.local/bin/take-snapshot --quiet &
 pgrep -u "$LOGNAME" -x sxhkd > /dev/null || sxhkd &
 pgrep -u "$LOGNAME" -x picom > /dev/null || picom &
@@ -116,6 +116,6 @@ if [[ $LAPTOP ]] ; then
 fi
 pgrep -u "$LOGNAME" -x element-desktop > /dev/null || element-desktop --hidden &
 pgrep -u "$LOGNAME" -x telegram-desktop > /dev/null || telegram-desktop -startintray &
-#pgrep -u "$LOGNAME" -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
+pgrep -u "$LOGNAME" -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
 
 bspc desktop -f 1

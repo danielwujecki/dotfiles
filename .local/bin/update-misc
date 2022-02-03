@@ -15,16 +15,23 @@ else
     echo -e "\n${RED}neovim not installed.${WHITE}\n"
 fi
 
+if [[ -n ${PYENV_ROOT+x} && -d $PYENV_ROOT/.git ]] ; then
+    pushd "$PYENV_ROOT"
+    git pull
+    popd > /dev/null
+
+    pyenvvirtualenv="$PYENV_ROOT/plugins/pyenv-virtualenv"
+    if [[ -d $pyenvvirtualenv/.git ]] ; then
+        pushd "$pyenvvirtualenv"
+        git pull
+        popd > /dev/null
+    fi
+fi
+
 if [[ -x $HOME/.miniconda3/bin/conda ]] ; then
     zsh -c "eval $($HOME/.miniconda3/bin/conda shell.zsh hook); conda update -y --all" || exit 1
 else
     echo -e "\n${RED}Miniconda not installed.${WHITE}\n"
-fi
-
-if [[ -d $HOME/.oh-my-zsh ]] ; then
-    zsh -c "source $HOME/.zshrc && omz update" || exit 1
-else
-    echo -e "\n${RED}Oh-my-zsh not installed.${WHITE}\n"
 fi
 
 if [[ -x $HOME/.emacs.d/bin/doom ]] ; then
@@ -33,8 +40,14 @@ else
     echo -e "\n${RED}Doom emacs not installed.${WHITE}\n"
 fi
 
-#if [[ -x /usr/bin/flatpak ]] ; then
-#    flatpak update || exit 1
-#else
-#    echo -e "\n${RED}Flatpak not installed.${WHITE}\n"
-#fi
+if [[ -x /usr/bin/flatpak ]] ; then
+    flatpak update --user -y || exit 1
+else
+    echo -e "\n${RED}Flatpak not installed.${WHITE}\n"
+fi
+
+if [[ -d $HOME/.oh-my-zsh ]] ; then
+    zsh -c "source $HOME/.zshrc && omz update" || exit 1
+else
+    echo -e "\n${RED}Oh-my-zsh not installed.${WHITE}\n"
+fi

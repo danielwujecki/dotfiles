@@ -1,2 +1,4 @@
 dev-util/nvidia-cuda-toolkit ~amd64
 dev-util/nvidia-cuda-sdk ~amd64
+
+dev-util/cargo-ebuild ~amd64

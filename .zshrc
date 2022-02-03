@@ -1,24 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-if [ -d "$HOME/.emacs.d/bin" ] ; then
-    PATH="$HOME/.emacs.d/bin:$PATH"
-fi
-
-if [ -d "$HOME/.cargo/bin" ] ; then
-    PATH="$HOME/.cargo/bin:$PATH"
-fi
-
-if [ -d "$HOME/.pyenv/shims" ] ; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    PATH="$PYENV_ROOT/shims:$PATH"
-fi
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
 # other nice themes: "bira" "gallifrey" "gentoo" "kafeitu" "wuffers"
 if [[ -n $SSH_CONNECTION ]] ; then
     ZSH_THEME="lukerandall"
@@ -26,14 +5,14 @@ else
     ZSH_THEME="myone"
 fi
 
+# user zsh prompt for virtualenv
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
 # Uncomment the following line to automatically update without prompting.
 DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
-
-# user zsh prompt for virtualenv
-export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -52,12 +31,28 @@ plugins=(
 
 # misc
     docker
-    #docker-compose
-    #golang
-    #fzf
 )
 
-source $ZSH/oh-my-zsh.sh
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+source "$ZSH/oh-my-zsh.sh"
+
+# If you come from bash you might have to change your $PATH.
+if [ -d "$HOME/.local/bin" ] ; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "$HOME/.emacs.d/bin" ] ; then
+    export PATH="$HOME/.emacs.d/bin:$PATH"
+fi
+
+if [ -d "$HOME/.cargo/bin" ] ; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+if [ -f ~/.bash_aliases ] ; then
+    . ~/.bash_aliases
+fi
 
 # Preferred editor
 if [[ -x /usr/bin/nvim ]] ; then
@@ -66,31 +61,5 @@ else
     export EDITOR='vi'
 fi
 
-# set man viewer
-#if [[ -x /usr/bin/nvim ]] ; then
-#    export MANPAGER="nvim -c 'set ft=man' -"
-#fi
-#if [[ -x /usr/bin/bat ]] ; then
-#    export PAGER="bat -n"
-#    export MANPAGER="sh -c 'col -bx | bat -l man -n'"
-#fi
-
 # make virsh compatible with virt-manager
 export LIBVIRT_DEFAULT_URI="qemu:///system"
-
-if [ -f ~/.bash_aliases ] ; then
-    . ~/.bash_aliases
-fi
-
-# command counter
-#setopt PROMPT_SUBST
-#[[ $cmdcount -ge 1 ]] || cmdcount=1
-#preexec() { ((cmdcount++)) }
-
-# nice system info
-#if [[ -x /usr/bin/pfetch || -x $HOME/.local/bin/pfetch ]] ; then
-#    pfetch
-#fi
-#if [[ -x $HOME/.local/bin/ufetch ]] ; then
-#    ufetch
-#fi

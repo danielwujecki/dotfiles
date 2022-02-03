@@ -15,8 +15,6 @@ if [[ $EUID -ne 0 ]] ; then
 fi
 
 eselect kernel set "$1" || exit 1
-cd /usr/src/linux
-rm -rf usr/*.cpio
 
 arch="$(uname -m)"
 curr_version="$(uname -r)"
@@ -26,6 +24,10 @@ new_plain_version="$(echo "$new_version" | sed s/-gentoo//g)"
 jobs="$(nproc)"
 lavg="$(nproc --ignore 2)"
 
+cd /usr/src/linux
+rm -rf "/lib/modules/$new_version"
+make clean
+
 if [[ $new_version != $curr_version ]] ; then
 	cp -v /usr/src/linux-$curr_version/.config /usr/src/linux/.config
 	make olddefconfig || exit 1
@@ -34,7 +36,6 @@ fi
 
 /usr/bin/time -f 'Compile time: %es' -o '/tmp/ktime.txt' make -j "$jobs" -l "$lavg" all || exit 1
 make -j "$jobs" -l "$lavg" modules_install || exit 1
-
 emerge @module-rebuild
 
 cp "arch/$arch/boot/bzImage" "/boot/vmlinuz-$new_version"
