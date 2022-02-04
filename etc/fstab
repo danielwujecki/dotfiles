@@ -1,38 +1,38 @@
 # ID 256 path @
-/dev/vgsys/gentoo_root      /                    btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=256    0 0
+/dev/vgsys/gentoo_root                      /                       btrfs rw,noatime,compress=zstd:2,ssd,subvolid=256                           0 0
 
 # ID 257 path @home
-/dev/vgsys/gentoo_root      /home                btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=257    0 0
+/dev/vgsys/gentoo_root                      /home                   btrfs rw,noatime,compress=zstd:2,ssd,subvolid=257                           0 0
 
 # ID 262 path @daniel-cache
-/dev/vgsys/gentoo_root      /home/daniel/.cache  btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=262    0 0
+/dev/vgsys/gentoo_root                      /home/daniel/.cache     btrfs rw,noatime,compress=zstd:2,ssd,subvolid=262                           0 0
 
 # ID 258 path @cache
-/dev/vgsys/gentoo_root      /var/cache           btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=258    0 0
+/dev/vgsys/gentoo_root                      /var/cache              btrfs rw,noatime,compress=zstd:2,ssd,subvolid=258                           0 0
 
 # ID 261 path @snapshots
-/dev/vgsys/gentoo_root      /.snapshots          btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=261    0 0
+/dev/vgsys/gentoo_root                      /.snapshots             btrfs rw,noatime,compress=zstd:2,ssd,subvolid=261                           0 0
 
 # ID 5 path /
-/dev/vgsys/gentoo_root      /.btrfs              btrfs   rw,noatime,compress=zstd:2,ssd,subvolid=5      0 0
-
-# boot
-UUID="8FCE-7967"            /boot                vfat    rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 0
+/dev/vgsys/gentoo_root                      /.btrfs                 btrfs rw,noatime,compress=zstd:2,ssd,subvolid=5                             0 0
 
 # portage tmpfs
-tmpfs                       /tmp                 tmpfs   rw,nosuid,noatime,nodev,size=8G,mode=1777                             0 0
+tmpfs                                       /tmp                    tmpfs rw,nosuid,noatime,nodev,size=8G,mode=1777                             0 0
 
 # portage tmpfs
-tmpfs                       /dev/shm             tmpfs   rw,nosuid,noatime,nodev,size=8G,mode=1777                             0 0
+tmpfs                                       /dev/shm                tmpfs rw,nosuid,noatime,nodev,size=8G,mode=1777                             0 0
 
 # portage tmpfs
-tmpfs                       /var/tmp/portage     tmpfs   rw,nosuid,noatime,nodev,size=12G,uid=portage,gid=portage,mode=775     0 0
-
-# swap
-UUID="9aafef78-399c-49aa-9e3e-ee7e9c2f44ce" none swap    defaults,noatime                                                      0 0
+tmpfs                                       /var/tmp/portage        tmpfs rw,nosuid,noatime,nodev,size=12G,uid=portage,gid=portage,mode=775     0 0
 
 # optional operation system images for KVM/libvirt
-/dev/vg1/os_images          /run/media/daniel/os_images         ext4 defaults,noatime,nofail    0 0
+/dev/vg1/os_images                          /media/os_images        ext4  defaults,noatime,nofail                                               0 0
 
 # optional storage for (already compressed) video formats
-/dev/vg1/vorlesungsvideos   /run/media/daniel/vorlesungsvideos  ext4 defaults,noatime,nofail    0 0
+/dev/vg1/vorlesungsvideos                   /media/vorlesungsvideos ext4  defaults,noatime,nofail                                               0 0
+
+# swap
+UUID="9aafef78-399c-49aa-9e3e-ee7e9c2f44ce" none                    swap  defaults,noatime                                                      0 0
+
+# boot
+UUID="8FCE-7967"                            /boot                   vfat  rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 0

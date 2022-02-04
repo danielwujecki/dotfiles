@@ -7,8 +7,11 @@ if [[ $EUID -ne 0 ]] ; then
 fi
 
 emaint sync -r gentoo           || exit 1
-emerge -u -1 portage            || exit 1
+emaint sync -r guru             || exit 1
+emaint sync -r custom-ebuilds   || exit 1
+emerge -u1 portage              || exit 1
 emerge -avutDN @world           || exit 1
 emerge -avt @preserved-rebuild  || exit 1
 eclean-dist -d                  || exit 1
-emerge -ac                      || exit 1
+emerge -ac --verbose=n          || exit 1
+eix-update                      || exit 1

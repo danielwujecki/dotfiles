@@ -90,5 +90,5 @@ if [[ -n $FORCE ]] || ! echo "$HOME_SUBVOLS" | grep -q "$HOMESNAP_BASE" ; then
     S_CREATED="yes"
 fi
 
-[[ -n $QUIET || -z $S_CREATED ]] || exa -l --color=auto /.snapshots
+[[ -n $QUIET || -z $S_CREATED ]] || ls -lAh --group-directories-first --color=auto /.snapshots
 [[ -n $QUIET || -n $S_CREATED ]] || echo "Already took a snapshot today!"

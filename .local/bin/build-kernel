@@ -21,14 +21,17 @@ curr_version="$(uname -r)"
 new_version="$(echo "$1" | sed s/linux-//g)"
 new_plain_version="$(echo "$new_version" | sed s/-gentoo//g)"
 
+new_build=
+[[ $new_version = $curr_version ]] || new_build="y"
+
 jobs="$(nproc)"
-lavg="$(nproc --ignore 2)"
+lavg="$(nproc --ignore 1)"
 
 cd /usr/src/linux
 rm -rf "/lib/modules/$new_version"
 make clean
 
-if [[ $new_version != $curr_version ]] ; then
+if [[ -n $new_build ]] ; then
 	cp -v /usr/src/linux-$curr_version/.config /usr/src/linux/.config
 	make olddefconfig || exit 1
     echo "" > "$HOME/.cache/updates.txt"
@@ -36,14 +39,16 @@ fi
 
 /usr/bin/time -f 'Compile time: %es' -o '/tmp/ktime.txt' make -j "$jobs" -l "$lavg" all || exit 1
 make -j "$jobs" -l "$lavg" modules_install || exit 1
-emerge @module-rebuild
+emerge --ask=n @module-rebuild
 
 cp "arch/$arch/boot/bzImage" "/boot/vmlinuz-$new_version"
-vgs | grep -q 'vg0' && vgchange -an vg0
-vgs | grep -q 'vg1' && vgchange -an vg1
-grub-mkconfig -o /boot/grub/grub.cfg
-vgs | grep -q 'vg0' && vgchange -ay vg0
-vgs | grep -q 'vg1' && vgchange -ay vg1
+if [[ -n $new_build ]] ; then
+    vgs | grep -q 'vg0' && vgchange -an vg0
+    #vgs | grep -q 'vg1' && vgchange -an vg1
+    grub-mkconfig -o /boot/grub/grub.cfg
+    vgs | grep -q 'vg0' && vgchange -ay vg0
+    #vgs | grep -q 'vg1' && vgchange -ay vg1
+fi
 
 echo -e "\nRemoving old kernel versions..."
 find /boot        -maxdepth 1 -name 'vmlinuz-*' -type f | sort -V | head -n "-$KEEP_VERS" | xargs rm -fv
