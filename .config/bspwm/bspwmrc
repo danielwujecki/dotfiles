@@ -8,7 +8,9 @@
 ######################################
 
 LAPTOP=
-if grep -q 'ArchX1' /etc/conf.d/hostname ; then
+if [[ -f /etc/hostname ]] && grep -q 'ArchX1' /etc/hostname ; then
+    LAPTOP=1
+elif [[ -f /etc/conf.d/hostname ]] && grep -q 'ArchX1' /etc/conf.d/hostname ; then
     LAPTOP=1
 fi
 
@@ -116,6 +118,6 @@ if [[ $LAPTOP ]] ; then
 fi
 pgrep -u "$LOGNAME" -x element-desktop > /dev/null || element-desktop --hidden &
 pgrep -u "$LOGNAME" -x telegram-desktop > /dev/null || telegram-desktop -startintray &
-pgrep -u "$LOGNAME" -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
+pgrep -u "$LOGNAME" -x xautolock > /dev/null || xautolock -detectsleep -time 5 -locker "betterlockscreen -l dimblur" &
 
 bspc desktop -f 1

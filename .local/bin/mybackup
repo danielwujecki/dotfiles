@@ -9,7 +9,13 @@ declare -A UUIDS=(["e3a245bb-56f8-4a6f-bb54-b349f36fba93"]="2381fa6d-228c-4246-b
 
 BASE_PATH_ROOT="/mnt/$BASE_PATH_ROOT"
 BASE_PATH_USER="/mnt/$BASE_PATH_USER"
-HOSTNAME="$(cat /etc/hostname | tr '[:upper:]' '[:lower:]')"
+if [[ -f /etc/hostname ]] ; then
+    HOSTNAME="$(cat /etc/hostname | tr '[:upper:]' '[:lower:]')"
+elif [[ -f /etc/conf.d/hostname ]] ; then
+    HOSTNAME="$(cat /etc/conf.d/hostname | sed -e '/hostname=/!d' -e 's!\(hostname=\|"\)!!g' | tr '[:upper:]' '[:lower:]')"
+else
+    exit 1
+fi
 
 calc_next_index() {
     if [[ ! $# -eq 2 ]] ; then
@@ -18,7 +24,7 @@ calc_next_index() {
     fi
     INDEX="$(echo "$1" | sed "s/.*$2-\([0-9]\{3\}\).*$/\1+1/;t;d" | bc | sort -n | tail -n1 | xargs printf '%03d')"
 
-    if echo "$1" | grep -q "$2-$INDEX" then
+    if echo "$1" | grep -q "$2-$INDEX" ; then
         echo "$2-$INDEX is an existing archive. Something went wrong. Aborting."
         exit 1
     fi
@@ -63,7 +69,7 @@ if [[ -z $LVM_UUID ]] ; then
     fi
 
     echo "Crpytsetup open"
-    cryptsetup open "/dev/disk/by-uuid/$CRYPT_UUID" backup-disk
+    cryptsetup --allow-discards luksOpen "/dev/disk/by-uuid/$CRYPT_UUID" backup-disk
     sleep 2
     get_volg
     if [[ -n $VOLG ]] ; then
@@ -73,7 +79,6 @@ if [[ -z $LVM_UUID ]] ; then
 
     # check if disk exists
     LVM_UUID="${UUIDS[$CRYPT_UUID]}"
-    echo "$LVM_UUID"
     if [[ ! -e /dev/disk/by-uuid/$LVM_UUID ]] ; then
         echo "Failed opening backup disk. Aborting."
         exit 1
