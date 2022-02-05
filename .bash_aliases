@@ -33,6 +33,10 @@ if [[ -x /bin/loginctl ]] ; then
     alias hibernate='loginctl hibernate'
     alias reboot='loginctl reboot'
     alias poweroff='loginctl poweroff'
+elif [[ -x /usr/bin/systemctl ]] ; then
+    alias suspend='systemctl suspend'
+    alias hn='systemctl hibernate'
+    alias hibernate='systemctl hibernate'
 fi
 if [[ -x /usr/bin/rclone && -d ~/Dropbox ]] ; then
     alias dboxup='rclone sync -i ~/Dropbox Dropbox:/'

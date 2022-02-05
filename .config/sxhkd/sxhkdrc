@@ -163,10 +163,10 @@ super + o
     betterlockscreen -l dimblur
 
 super + shift + o
-    loginctl suspend && betterlockscreen -l dimblur
+    { loginctl suspend || systemctl suspend } && betterlockscreen -l dimblur
 
 super + alt + o
-    loginctl hibernate
+    loginctl hibernate || systemctl suspend
 
 # screenshot
 super + Print

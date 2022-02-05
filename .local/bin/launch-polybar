@@ -7,7 +7,9 @@ while pgrep -u $UID -x polybar > /dev/null; do
 done
 
 BARNAME=mybar
-if grep -q 'ArchX1' /etc/conf.d/hostname ; then
+if [[ -f /etc/hostname ]] && grep -q 'ArchX1' /etc/hostname ; then
+    BARNAME=archx1
+elif [[ -f /etc/conf.d/hostname ]] && grep -q 'ArchX1' /etc/conf.d/hostname ; then
     BARNAME=archx1
 fi
 
