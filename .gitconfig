@@ -1,13 +1,13 @@
 [user]
 	name = danielgolf
 	email = daniel.golf@web.de
-[push]
-	default = simple
-[core]
-	editor = nvim
-[pull]
-	rebase = true
 [init]
 	defaultBranch = main
+[push]
+	default = simple
+[pull]
+	rebase = true
+[core]
+	editor = nvim
 [alias]
 	co = checkout

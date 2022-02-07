@@ -27,16 +27,16 @@ alias ...='cd ../../'
 # shortcuts
 [[ -x /usr/bin/ranger ]] && alias r='ranger'
 [[ -x /usr/bin/nvim && -x /usr/bin/fzf ]] && alias vf='nvim $(fzf)'
-if [[ -x /bin/loginctl ]] ; then
+if [[ -x /usr/bin/systemctl ]] ; then
+    alias suspend='systemctl suspend'
+    alias hn='systemctl hibernate'
+    alias hibernate='systemctl hibernate'
+elif [[ -x /bin/loginctl ]] ; then
     alias suspend='loginctl suspend'
     alias hn='loginctl hibernate'
     alias hibernate='loginctl hibernate'
     alias reboot='loginctl reboot'
     alias poweroff='loginctl poweroff'
-elif [[ -x /usr/bin/systemctl ]] ; then
-    alias suspend='systemctl suspend'
-    alias hn='systemctl hibernate'
-    alias hibernate='systemctl hibernate'
 fi
 if [[ -x /usr/bin/rclone && -d ~/Dropbox ]] ; then
     alias dboxup='rclone sync -i ~/Dropbox Dropbox:/'
@@ -46,14 +46,12 @@ if [[ -x /usr/bin/rclone && -d ~/Dropbox ]] ; then
 fi
 
 # programme
-alias df='df -Th'
-alias du='du -sh'
 alias rm='rm -I'
 alias mv='mv -i'
 [[ -x /usr/bin/fd ]]        && alias fd='fd -iIH'
+[[ -x /usr/bin/rg ]]        && alias rg='rg --hidden'
 [[ -x /usr/bin/xclip ]]     && alias xclip='xclip -sel c'
 [[ -x /usr/bin/pwgen ]]     && alias pwgen='pwgen -cns 14 1'
-[[ -x /usr/bin/latexmk ]]   && alias latex='latexmk'
 [[ -x /usr/bin/colordiff ]] && alias diff='colordiff'
 if [[ -x /usr/bin/nvim ]] ; then
     alias vi='nvim'

@@ -34,17 +34,23 @@ else
     echo -e "\n${RED}Miniconda not installed.${WHITE}\n"
 fi
 
+if [[ -x /usr/bin/cargo && -x $HOME/.cargo/bin/cargo-install-update ]] ; then
+    cargo install-update -a
+else
+    echo -e "\n${RED}Cargo not installed.${WHITE}\n"
+fi
+
 if [[ -x $HOME/.emacs.d/bin/doom ]] ; then
     doom -y upgrade || exit 1
 else
     echo -e "\n${RED}Doom emacs not installed.${WHITE}\n"
 fi
 
-#if [[ -x /usr/bin/flatpak ]] ; then
-#    flatpak update --user -y || exit 1
-#else
-#    echo -e "\n${RED}Flatpak not installed.${WHITE}\n"
-#fi
+if [[ -x /usr/bin/flatpak ]] ; then
+    flatpak update --user -y || exit 1
+else
+    echo -e "\n${RED}Flatpak not installed.${WHITE}\n"
+fi
 
 if [[ -d $HOME/.oh-my-zsh ]] ; then
     zsh -c "source $HOME/.zshrc && omz update" || exit 1

@@ -1,4 +1,2 @@
-app-admin/bitwarden-desktop-bin ~amd64
-
 # required by app-text/pandoc
 app-admin/haskell-updater ~amd64

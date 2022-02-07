@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -le 1 ]] ; then
+    echo "usage: use <package> <uses>"
+    exit 1
+fi
+
+pkg="$1"
+shift
+new_uses="$@"
+
+if ! echo "$pkg" | egrep -q '\w+/\w+' ; then
+    echo "$pkg is not a valid package of format <group>/<name>."
+    exit 1
+fi
+
+pgroup="${pkg%%/*}"
+use_path="/etc/portage/package.use/$pgroup"
+
+if [[ $EUID -ne 0 ]] ; then
+    echo "Please run as root"
+    exit 1
+fi
+
+if [[ -f $use_path ]] && grep -q "$pkg" "$use_path" ; then
+    sed -i "\|$pkg| s|$| $new_uses|" "$use_path"
+else
+    echo "$pkg ${new_uses}" >> "$use_path"
+fi
+$EDITOR "$use_path"
+
+dotpath="/home/daniel/Repositories/dotfiles/etc/portage/package.use"
+if [[ -d $dotpath ]] ; then
+    su -c "cp $use_path $dotpath" - daniel
+else
+    echo "Didn't found '$dotpath'."
+fi

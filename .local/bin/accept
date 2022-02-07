@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 1 ]] ; then
+    echo "usage: accept <package>"
+    exit 1
+fi
+
+pkg="$1"
+
+if ! echo "$pkg" | egrep -q '\w+/\w+' ; then
+    echo "$pkg is not a valid package of format <group>/<name>."
+    exit 1
+fi
+
+pgroup="${pkg%%/*}"
+accept_path="/etc/portage/package.accept_keywords/$pgroup"
+
+if [[ $EUID -ne 0 ]] ; then
+    echo "Please run as root"
+    exit 1
+fi
+
+if [[ -f $accept_path ]] && grep -q "$pkg.* ~amd64" "$accept_path" ; then
+    echo "~amd64 already set for $pkg!"
+else
+    echo "$pkg ~amd64" >> "$accept_path"
+fi
+$EDITOR "$accept_path"
+
+dotpath="/home/daniel/Repositories/dotfiles/etc/portage/package.accept_keywords"
+if [[ -d $dotpath ]] ; then
+    su -c "cp $accept_path $dotpath" - daniel
+else
+    echo "Didn't found '$dotpath'."
+fi

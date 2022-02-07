@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
-set -uo pipefail
+set -euo pipefail
 # run this as crontab, rather than a polybar module
 
 FILEPATH="$HOME/.cache/updates.txt"
 
-kernelpath="$(find /usr/src -maxdepth 1 -name 'linux-*' -type d | sort -V | tail -n1)"
-latestver="$(basename $kernelpath)"
-currver="$(readlink /usr/src/linux)"
+#kernelpath="$(find /usr/src -maxdepth 1 -name 'linux-*' -type d | sort -V | tail -n1)"
+#latestver="$(basename $kernelpath)"
+#currver="$(readlink /usr/src/linux)"
+
+# curl -sSL https://cdn.kernel.org/pub/linux/kernel/v5.x/ | awk '/linux-[0-9]\.[0-9]+\.[0-9]+.tar.xz/ { print gensub("href=\"linux-([0-9].[0-9]+.[0-9]+).tar.xz\".+", "\\1", "g", $2) }'
+latestver="$(curl -sSL https://packages.gentoo.org/packages/sys-kernel/gentoo-sources | awk '/title="[0-9]\.[0-9]+\.[0-9]+.+amd64"/ && $6 == "stable" { sub("title=\"", "", $4) ; print $4 }' | sort -V | tail -n1)"
+currver="$(uname -r | sed 's/-gentoo//')"
 
 if [[ $latestver = $currver ]] ; then
     echo "" > "$FILEPATH"
 else
-    echo "(new kernel)" > "$FILEPATH"
+    echo "(new kernel: $latestver)" > "$FILEPATH"
 fi
