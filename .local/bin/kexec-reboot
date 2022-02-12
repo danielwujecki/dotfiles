@@ -1,23 +1,38 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-KERNELPATH="/boot/vmlinuz-linux-custom"
-INITRDPATH="/boot/initramfs-linux-custom.img"
+usage() {
+    echo "usage: doas kexec-reboot [/path/to/kernel]"
+}
+
+if [[ $# -gt 1 ]] ; then
+    usage
+    exit 1
+elif [[ $# -eq 1 ]] ; then
+    KERNELPATH="$1"
+else
+    KERNELPATH="$(find /boot -maxdepth 1 -name 'vmlinuz-*' -type f | sort -V | tail -n1)"
+fi
 
 if [[ ! -f $KERNELPATH ]] ; then
     echo "Didn't found kernel to load under '$KERNELPATH'."
-    exit 1
-fi
-
-if [[ ! -f $INITRDPATH ]] ; then
-    echo "Didn't found initramfs to load under '$INITRDPATH'."
+    usage
     exit 1
 fi
 
 if [[ $EUID -ne 0 ]] ; then
-    echo "Please run as root"
+    echo "Please run as root!"
     exit 1
 fi
 
-kexec -l "$KERNELPATH" --initrd="$INITRDPATH" --reuse-cmdline
-systemctl kexec
+/usr/sbin/kexec -l "$KERNELPATH" --reuse-cmdline
+
+echo "Loaded kernel: '$KERNELPATH'"
+echo "Reboot in 3 seconds"
+for i in {3..1} ; do
+    echo -n "$i.. "
+    sleep 1
+done
+echo ""
+
+/sbin/reboot

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+KERNELPATH="/boot/vmlinuz-linux-custom"
+INITRDPATH="/boot/initramfs-linux-custom.img"
+
+if [[ ! -f $KERNELPATH ]] ; then
+    echo "Didn't found kernel to load under '$KERNELPATH'."
+    exit 1
+fi
+
+if [[ ! -f $INITRDPATH ]] ; then
+    echo "Didn't found initramfs to load under '$INITRDPATH'."
+    exit 1
+fi
+
+if [[ $EUID -ne 0 ]] ; then
+    echo "Please run as root"
+    exit 1
+fi
+
+kexec -l "$KERNELPATH" --initrd="$INITRDPATH" --reuse-cmdline
+systemctl kexec

@@ -15,39 +15,38 @@ if [[ $EUID -ne 0 ]] ; then
 fi
 
 eselect kernel set "$1" || exit 1
+echo "" > "$HOME/.cache/updates.txt"
 
 arch="$(uname -m)"
-curr_version="$(uname -r)"
 new_version="$(echo "$1" | sed s/linux-//g)"
-new_plain_version="$(echo "$new_version" | sed s/-gentoo//g)"
-
-new_build=
-[[ $new_version = $curr_version ]] || new_build="y"
-
 jobs="$(nproc)"
 lavg="$(nproc --ignore 1)"
+parallel=(-j "$jobs" -l "$lavg")
+measure_time=(/usr/bin/time -f 'Compile time: %es' -o '/tmp/ktime.txt')
 
 cd /usr/src/linux
-rm -rf "/lib/modules/$new_version"
+rm -rfv "/lib/modules/$new_version"
 make clean
 
-if [[ -n $new_build ]] ; then
-	cp -v /usr/src/linux-$curr_version/.config /usr/src/linux/.config
+if [[ ! -f /usr/src/linux/.config ]] ; then
+    echo "zcat /proc/config.gz > .config"
+    zcat /proc/config.gz > /usr/src/linux/.config
 	make olddefconfig || exit 1
-    echo "" > "$HOME/.cache/updates.txt"
 fi
 
-/usr/bin/time -f 'Compile time: %es' -o '/tmp/ktime.txt' make -j "$jobs" -l "$lavg" all || exit 1
-make -j "$jobs" -l "$lavg" modules_install || exit 1
+"${measure_time[@]}" make "${parallel[@]}" bzImage modules || exit 1
+make "${parallel[@]}" modules_install
 emerge --ask=n @module-rebuild
 
+new_build="y"
+[[ -f /boot/vmlinuz-$new_version ]] && new_build=
+
 cp "arch/$arch/boot/bzImage" "/boot/vmlinuz-$new_version"
+
 if [[ -n $new_build ]] ; then
     vgs | grep -q 'vg0' && vgchange -an vg0
-    #vgs | grep -q 'vg1' && vgchange -an vg1
     grub-mkconfig -o /boot/grub/grub.cfg
     vgs | grep -q 'vg0' && vgchange -ay vg0
-    #vgs | grep -q 'vg1' && vgchange -ay vg1
 fi
 
 echo -e "\nRemoving old kernel versions..."

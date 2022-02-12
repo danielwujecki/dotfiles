@@ -12,7 +12,7 @@ FILEPATH="$HOME/.cache/updates.txt"
 latestver="$(curl -sSL https://packages.gentoo.org/packages/sys-kernel/gentoo-sources | awk '/title="[0-9]\.[0-9]+\.[0-9]+.+amd64"/ && $6 == "stable" { sub("title=\"", "", $4) ; print $4 }' | sort -V | tail -n1)"
 currver="$(uname -r | sed 's/-gentoo//')"
 
-if [[ $latestver = $currver ]] ; then
+if [[ $(echo -e "$latestver\n$currver" | sort -V | tail -n1) = $currver ]] ; then
     echo "" > "$FILEPATH"
 else
     echo "(new kernel: $latestver)" > "$FILEPATH"
