@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+REPOPATH="$HOME/Repositories/dotfiles"
+
+usage() {
+    echo "usage: "$0" [/path/to/syncfile]"
+}
+
+if [[ $# -gt 1 ]] ; then
+    usage
+    exit 1
+elif [[ $# -eq 1 ]] ; then
+    SYNCFILE="$1"
+else
+    SYNCFILE="$REPOPATH/sync/sync_list_abacus.txt"
+    if [[ -f /etc/hostname ]] && grep -q 'ArchX1' /etc/hostname ; then
+        SYNCFILE="$REPOPATH/sync/sync_list_archx1.txt"
+    elif [[ -f /etc/conf.d/hostname ]] && grep -q 'ArchX1' /etc/conf.d/hostname ; then
+        SYNCFILE="$REPOPATH/sync/sync_list_archx1.txt"
+    fi
+fi
+
+if [[ ! -d $REPOPATH/.git ]] ; then
+    echo "Can't find dotfiles repo under '$REPOPATH'."
+    exit 1
+fi
+
+if [[ ! -f $SYNCFILE ]] ; then
+    echo "Can't find syncfile under '$SYNCFILE'."
+    exit 1
+fi
+
+echo "Using filelist: '$SYNCFILE'"
+
+cd "$HOME"
+while read -r rep fs ; do
+    [[ -n $rep ]] || continue
+    [[ -n $fs ]]  || fs="$rep"
+
+    dst="$REPOPATH/$rep"
+    [[ -d $dst ]] && dst="$(dirname $dst)"
+
+    cp -ruv "$fs" "$dst"
+done <<< "$(egrep -v '^\s*#' "$SYNCFILE")"

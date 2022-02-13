@@ -2,6 +2,7 @@
 .cache/
 .auctex-auto/
 pkg-list/
+sync/
 
 # private dotfiles
 .viminfo

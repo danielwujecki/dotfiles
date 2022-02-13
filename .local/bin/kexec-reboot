@@ -2,7 +2,7 @@
 set -euo pipefail
 
 usage() {
-    echo "usage: doas kexec-reboot [/path/to/kernel]"
+    echo "usage: doas "$0" [/path/to/kernel]"
 }
 
 if [[ $# -gt 1 ]] ; then
