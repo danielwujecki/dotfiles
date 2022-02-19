@@ -1,14 +1,30 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ "$#" -ne 1 ]] ; then
-    echo "Usage: tu <last-part-ip>"
+usage() { echo "Usage: tu [j|jump] <last-part-ip>"; }
+
+if [[ $# -eq 1 ]] ; then
+    jump=
+    hip="$1"
+elif [[ $# -eq 2 ]] ; then
+    if [[ $1 != "j" && $1 != "jump" ]] ; then
+        usage
+        exit 1
+    fi
+    jump="yes"
+    hip="$2"
+else
+    usage
     exit 1
 fi
 
-if [[ $(tmux ls | grep "tu$1") ]] ; then
-    tmux a -t "tu$1"
+if [[ $(tmux ls | grep "tu$hip") ]] ; then
+    tmux a -t "tu$hip"
     exit 0
 fi
 
-tmux new -s "tu$1" "ssh mulfadmin@130.149.133.$1"
+if [[ -n $jump ]] ; then
+    tmux new -s "tu$hip" "ssh -J mulfadmin@130.149.133.190 mulfadmin@192.168.52.$hip"
+else
+    tmux new -s "tu$hip" "ssh mulfadmin@130.149.133.$hip"
+fi

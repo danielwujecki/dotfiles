@@ -2,3 +2,4 @@ media-libs/opencv qt5
 
 # required by media-gfx/prusaslicer
 media-libs/qhull static-libs
+media-libs/freeimage -tiff

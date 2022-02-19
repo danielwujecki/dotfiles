@@ -1,4 +1,1 @@
 media-video/vlc qt5
-
-# required by net-im/telegram-desktop
-media-video/ffmpeg opus

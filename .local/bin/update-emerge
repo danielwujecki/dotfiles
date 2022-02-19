@@ -6,12 +6,13 @@ if [[ $EUID -ne 0 ]] ; then
     exit 1
 fi
 
-emaint sync -yr gentoo          || exit 1
-emaint sync -yr guru            || exit 1
-emaint sync -yr custom-ebuilds  || exit 1
-emerge -u1 portage              || exit 1
-emerge -avutDN @world           || exit 1
-emerge -avt @preserved-rebuild  || exit 1
-eclean-dist -d                  || exit 1
-emerge -ac --verbose=n          || exit 1
-eix-update                      || exit 1
+emaint sync -r gentoo
+emaint sync -r guru
+emaint sync -r custom-ebuilds
+emerge -u1 portage
+emerge -avuDN @world
+emerge -avt @preserved-rebuild
+eclean-dist -d
+emerge -ac --verbose=n
+dispatch-conf
+eix-update
