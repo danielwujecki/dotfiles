@@ -29,7 +29,7 @@
 # Authentication:
 
 #LoginGraceTime 2m
-PermitRootLogin no
+PermitRootLogin prohibit-password
 #StrictModes yes
 #MaxAuthTries 6
 #MaxSessions 10
@@ -123,6 +123,8 @@ AcceptEnv LANG LC_ALL LC_COLLATE LC_CTYPE LC_MESSAGES LC_MONETARY LC_NUMERIC LC_
 AcceptEnv COLORTERM
 
 AllowUsers daniel
+AllowUsers root@192.168.178.23
+
 Match address 192.168.178.0/24
     PasswordAuthentication yes
     AuthenticationMethods password publickey

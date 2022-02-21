@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+HOSTNAME="raspberryserver"
+REPOSITORY="root@abacus.fritz.box:/mnt/borg-bkup-root"
+
+calc_next_index() {
+    if [[ ! $# -eq 2 ]] ; then
+        echo "calc_next_index requires exactly two arguments. Aborting."
+        exit 1
+    fi
+    INDEX="$(echo "$1" | sed "s/.*$2-\([0-9]\{3\}\).*$/\1+1/;t;d" | bc | sort -n | tail -n1 | xargs printf '%03d')"
+
+    if echo "$1" | grep -q "$2-$INDEX" ; then
+        echo "$2-$INDEX is an existing archive. Something went wrong. Aborting."
+        exit 1
+    fi
+}
+
+if [[ $EUID -ne 0 ]] ; then
+    echo "Please run as root"
+    exit 1
+fi
+
+# do actual backup
+REPO_BKUPS="$(borg list $REPOSITORY)"
+calc_next_index "$REPO_BKUPS" "$HOSTNAME"
+
+cd /
+borg create --one-file-system --stats --progress --compression zstd "$REPOSITORY::$HOSTNAME-$INDEX" . var/lib/docker var/lib/postgresql
+
+borg list "$REPOSITORY" | tail -n10

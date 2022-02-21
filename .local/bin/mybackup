@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BORG_CMD='borg create -xspC zstd'
-BASE_PATH_ROOT='borg-bkup-root'
-BASE_PATH_USER='borg-bkup-user'
+BORG_CMD='borg create --one-file-system --stats --progress --compression zstd'
+
+BASE_PATH_ROOT='/mnt/borg-bkup-root'
+BASE_PATH_USER='/mnt/borg-bkup-user'
 declare -A UUIDS=(["e3a245bb-56f8-4a6f-bb54-b349f36fba93"]="2381fa6d-228c-4246-bbe2-2234193b0344" \
                   ["d2ab6a0d-333d-4726-b461-ca663042bafd"]="79d55b92-46c5-4dde-90a4-abbe19903c02")
 
-BASE_PATH_ROOT="/mnt/$BASE_PATH_ROOT"
-BASE_PATH_USER="/mnt/$BASE_PATH_USER"
 if [[ -f /etc/hostname ]] ; then
     HOSTNAME="$(cat /etc/hostname | tr '[:upper:]' '[:lower:]')"
 elif [[ -f /etc/conf.d/hostname ]] ; then
@@ -120,10 +119,12 @@ ROOT_REPO_BKUPS="$(borg list $BASE_PATH_ROOT)"
 USER_REPO_BKUPS="$(su -c "borg list $BASE_PATH_USER" - daniel)"
 
 calc_next_index "$ROOT_REPO_BKUPS" "$HOSTNAME-boot"
-cd /boot && $BORG_CMD "$BASE_PATH_ROOT::$HOSTNAME-boot-$INDEX" .
+cd /boot
+$BORG_CMD "$BASE_PATH_ROOT::$HOSTNAME-boot-$INDEX" .
 
 calc_next_index "$ROOT_REPO_BKUPS" "$HOSTNAME-root"
-cd /.btrfs/@ && $BORG_CMD "$BASE_PATH_ROOT::$HOSTNAME-root-$INDEX" .
+cd /.btrfs/@
+$BORG_CMD "$BASE_PATH_ROOT::$HOSTNAME-root-$INDEX" .
 
 calc_next_index "$USER_REPO_BKUPS" "$HOSTNAME-home-daniel"
 su -c "cd /.btrfs/@home && $BORG_CMD $BASE_PATH_USER::$HOSTNAME-home-daniel-$INDEX daniel" - daniel
