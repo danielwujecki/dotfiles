@@ -9,11 +9,14 @@
 
 # start programs
 sxhkd &
+# dropbox &
 picom -b &
+# lxsession &
 nm-applet &
+$HOME/.fehbg &
 blueman-applet &
+$HOME/.local/bin/polybar_normal > /dev/null 2>&1 &
 xautolock -detectsleep -time 10 -locker "systemctl suspend" &
-$HOME/.config/polybar/start_polybar_normal.sh > /dev/null 2>&1 &
 
 # TODO: multimonitor support
 bspc monitor -d 1 2 3 4 5 6 7 8 9 10

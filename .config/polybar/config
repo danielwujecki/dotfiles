@@ -7,27 +7,24 @@
 ; = = = = = = = = = = = = = = = = = = =
 
 [colors]
-background = #232b3b
-background-alt = #283c60
-background-alt2 = #182851
+background = #282828
+background-alt = #504945
+background-alt2 = #3c3836
 
-foreground = #cbccc6
-foreground-alt = #cecfc9
+foreground = #ebdbb2
+foreground-alt = #fbf1c7
 
-primary = #ffb52a
-secondary = #e60053
+alert = #cc241d
 
-alert = #bd2c40
-
-pow1 = #182851
-pow2 = #283c60
-pow3 = #05335e
-pow4 = #182851
-pow5 = #283c60
-pow6 = #05335e
-pow7 = #182851
-pow8 = #283c60
-pow9 = #05335e
+pow1 = #504945
+pow2 = #3c3836
+pow3 = #665c54
+pow4 = #504945
+pow5 = #3c3836
+pow6 = #665c54
+pow7 = #504945
+pow8 = #3c3836
+pow9 = #665c54
 
 [bar/mybar]
 monitor = eDP1
@@ -65,10 +62,10 @@ font-2 = "Font Awesome 5 Brands:syle=Regular:size=9;2"
 font-3 = "Font Awesome 5 Free Solid:syle=Solid:size=9;2"
 # font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
 
-modules-left = bspwm i3 xwindow
+modules-left = i3 xwindow
 modules-center = spotify
 modules-right = arrow8 cpu arrow7 temp arrow6 memory arrow5 audio arrow4 backlight arrow3 battery arrow2 date arrow1
-; eth filesystem
+; eth filesystem bspwm
 
 locale = de_DE.UTF-8
 
@@ -133,10 +130,10 @@ font-2 = "Font Awesome 5 Brands:syle=Regular:size=9;2"
 font-3 = "Font Awesome 5 Free Solid:syle=Solid:size=9;2"
 # font-4 = "Font Awesome 5 Free Regular:syle=Regular:size=9;2"
 
-modules-left = bspwm i3 xwindow
+modules-left = i3 xwindow
 modules-center = spotify
 modules-right = arrow8 cpu arrow7 temp arrow6 memory arrow5 audio arrow34 battery arrow2 date arrow1
-; eth filesystem backlight
+; eth filesystem backlight bspwm
 
 locale = de_DE.UTF-8
 
@@ -258,7 +255,7 @@ warn-temperature = 90
 label = %temperature-c%
 label-background = ${colors.pow7}
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = ${colors.alert}
 label-warn-background = ${colors.pow7}
 
 [module/memory]

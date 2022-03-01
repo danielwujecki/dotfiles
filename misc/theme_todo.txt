@@ -1,0 +1,5 @@
+* JetBrains Mono as font
+* vim gruvbox theme
+* gtk gruvbox theme 3ximus
+* papirus icon theme
+* configs from git

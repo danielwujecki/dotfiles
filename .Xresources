@@ -29,7 +29,7 @@ urxvt.scrollBar: false
 urxvt.internalBorder: 4
 urxvt.pointerBlank: true
 
-!! ### colors ###
+!! ### ayu-colors ###
 ! special
 urxvt.foreground: #cecfc9
 urxvt.background: #1f2430 
