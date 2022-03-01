@@ -37,6 +37,9 @@ plugins=(
 export ZSH="$HOME/.oh-my-zsh"
 source "$ZSH/oh-my-zsh.sh"
 
+ZSH_SYNTAX_HIGHLIGHTING="/usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh"
+[[ -f $ZSH_SYNTAX_HIGHLIGHTING ]] && source "$ZSH_SYNTAX_HIGHLIGHTING"
+
 # If you come from bash you might have to change your $PATH.
 if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"

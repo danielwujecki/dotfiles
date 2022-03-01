@@ -2,7 +2,7 @@
 set -euo pipefail
 
 TIME="$(date +%H%M)"
-DATE="$(date +%d-%m-%y)"
+DATE="$(date +%y-%m-%d)"
 ROOTSNAP_BASE="@-$DATE"
 HOMESNAP_BASE="@home-$DATE"
 ROOTSNAP="$ROOTSNAP_BASE-$TIME"
@@ -81,12 +81,12 @@ HOME_SUBVOLS="$(find /.snapshots/ -maxdepth 1 -name '@home-*' -type d)"
 
 if [[ -n $FORCE ]] || ! echo "$ROOT_SUBVOLS" | grep -q "$ROOTSNAP_BASE" ; then
     btrfs subvolume snapshot -r "/.btrfs/@" "/.snapshots/$ROOTSNAP"
-    echo "$ROOT_SUBVOLS" | head -n "-$((N_KEEP-1))" | xargs -r btrfs subvolume delete
+    echo "$ROOT_SUBVOLS" | sort -V | head -n "-$((N_KEEP-1))" | xargs -r btrfs subvolume delete
     S_CREATED="yes"
 fi
 if [[ -n $FORCE ]] || ! echo "$HOME_SUBVOLS" | grep -q "$HOMESNAP_BASE" ; then
     btrfs subvolume snapshot -r "/.btrfs/@home" "/.snapshots/$HOMESNAP"
-    echo "$HOME_SUBVOLS" | head -n "-$((N_KEEP-1))" | xargs -r btrfs subvolume delete
+    echo "$HOME_SUBVOLS" | sort -V | head -n "-$((N_KEEP-1))" | xargs -r btrfs subvolume delete
     S_CREATED="yes"
 fi
 

@@ -7,3 +7,7 @@ dev-libs/imath ~amd64
 # required by www-client/firefox ~amd64
 dev-libs/nss ~amd64
 dev-libs/icu ~amd64
+
+# required by app-editors/neovim
+dev-libs/libvterm ~amd64
+dev-libs/tree-sitter ~amd64

@@ -22,11 +22,28 @@ if [[ $EUID -ne 0 ]] ; then
     exit 1
 fi
 
+if [[ ! -f ~/.ssh/ssh_ed25519_root_at_raspberryserver ]] ; then 
+    echo "No ssh-key"
+    exit 1
+fi
+pgrep -u "$LOGNAME" -x ssh-agent || eval "$(ssh-agent)"
+ssh-add ~/.ssh/ssh_ed25519_root_at_raspberryserver
+
 # do actual backup
 REPO_BKUPS="$(borg list $REPOSITORY)"
 calc_next_index "$REPO_BKUPS" "$HOSTNAME"
 
 cd /
-borg create --one-file-system --stats --progress --compression zstd "$REPOSITORY::$HOSTNAME-$INDEX" . var/lib/docker var/lib/postgresql
+borg create                         \
+    --one-file-system               \
+    --stats                         \
+    --progress                      \
+    --compression zstd              \
+    "$REPOSITORY::$HOSTNAME-$INDEX" \
+    . boot var/lib/docker var/lib/postgresql
 
 borg list "$REPOSITORY" | tail -n10
+
+if pgrep ssh-agent > /dev/null ; then
+    pkill ssh-agent
+fi
