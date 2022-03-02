@@ -38,7 +38,7 @@
 ### specified in the 'servers' file in your config directory
 ### and are documented there. Anything specified in this section 
 ### is overridden by settings specified in the 'servers' file.
-# store-passwords = no
+store-passwords = yes
 # store-auth-creds = no
 
 ### Section for configuring external helper applications.
