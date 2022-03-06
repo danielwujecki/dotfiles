@@ -14,9 +14,10 @@ S_CREATED=
 N_KEEP="5"
 
 help() {
-    echo "usage: take-snapshot [--quiet] [--keep=<N>] [--force] [--help]"
+    echo "usage: take-snapshot [--keep=<N>] [--force] [--cron] [--quiet] [--help]"
     echo "--keep=<N> number of snapshots to keep; default is 7"
     echo "--force: new snapshot will be created, although there already is a snapshot created today"
+    echo "--cron: new snapshot will only be create on the hour"
 }
 
 while [[ $# -gt 0 ]] ; do
@@ -31,6 +32,10 @@ while [[ $# -gt 0 ]] ; do
             ;;
         --force)
             FORCE="yes"
+            shift
+            ;;
+        --cron)
+            [[ $(date '+%M') -eq 0 ]] || exit 0
             shift
             ;;
         --quiet)
