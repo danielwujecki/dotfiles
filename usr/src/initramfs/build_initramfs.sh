@@ -29,10 +29,10 @@ while [[ $# -gt 0 ]] ; do
 done
 
 if [[ -z $KERVER ]] ; then
-    KERVER="$(ls /boot | grep 'vmlinuz' | sort | tail -n1 | sed 's/vmlinuz-//')"
-elif [[ -z $(ls /boot | egrep "^vmlinuz-$KERVER\$") ]] ; then
+    KERVER="$(ls /usr/src | grep 'linux-' | sort | tail -n1 | sed 's/linux-//')"
+elif [[ -z $(ls /usr/src | egrep "^linux-$KERVER\$") ]] ; then
     echo "Invalid kernel version. Available Kernel versions:"
-    ls /boot | grep 'vmlinuz' | sed 's/vmlinuz-//g'
+    ls /usr/src | grep 'linux-' | sed 's/linux-//g'
     help
     exit 1
 fi
@@ -40,12 +40,10 @@ if [[ -z $OUTPUT ]] ; then
     OUTPUT="/boot/initramfs-$KERVER.img"
 fi
 
-GCCVER="$(equery l gcc | grep 'sys-devel/gcc' | sed 's/sys-devel\/gcc-//')"
-
-sed "s/gcc\/x86_64-pc-linux-gnu\/[0-9.]\+\//gcc\/x86_64-pc-linux-gnu\/$GCCVER\//g" initramfs.list > initramfs.list.tmp
-mv initramfs.list.tmp initramfs.list
-
-sed 's/use_lvmetad = 1/use_lvmetad = 0/' /etc/lvm/lvm.conf > lvm.conf
+gccver="$(eselect gcc show | sed 's/x86_64-pc-linux-gnu-//')"
+sed "s|gcc/x86_64-pc-linux-gnu/.\+/|gcc/x86_64-pc-linux-gnu/$gccver/|g" /usr/src/initramfs/initramfs.list > /usr/src/initramfs/initramfs.list.tmp
+mv /usr/src/initramfs/initramfs.list.tmp /usr/src/initramfs/initramfs.list
+sed 's/use_lvmetad = 1/use_lvmetad = 0/' /etc/lvm/lvm.conf > /usr/src/initramfs/lvm.conf
 
 if [[ -n $DRACUT ]] ; then
     dracut --hostonly --zstd "$OUTPUT" "$KERVER"

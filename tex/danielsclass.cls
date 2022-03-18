@@ -21,7 +21,7 @@
 %\KOMAoptions{chapterprefix}
 \ifdraft\KOMAoptions{draft}\fi
 %\KOMAoptions{bibliography=totocnumbered}
-\KOMAoptions{egregdoesnotlikesansseriftitles}
+%\KOMAoptions{egregdoesnotlikesansseriftitles}
 
 %%% PACKAGES %%%
 

@@ -8,7 +8,7 @@ fi
 
 emaint sync -r gentoo
 emaint sync -r guru
-emaint sync -r custom-ebuilds
+emaint sync -r daniels-overlay
 emerge -u1 portage
 emerge -avuDN @world
 emerge -avt @preserved-rebuild

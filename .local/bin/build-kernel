@@ -34,6 +34,11 @@ if [[ ! -f /usr/src/linux/.config ]] ; then
 	make olddefconfig || exit 1
 fi
 
+gccver="$(eselect gcc show | sed 's/x86_64-pc-linux-gnu-//')"
+sed "s|gcc/x86_64-pc-linux-gnu/.\+/|gcc/x86_64-pc-linux-gnu/$gccver/|g" /usr/src/initramfs/initramfs.list > /usr/src/initramfs/initramfs.list.tmp
+mv /usr/src/initramfs/initramfs.list.tmp /usr/src/initramfs/initramfs.list
+sed 's/use_lvmetad = 1/use_lvmetad = 0/' /etc/lvm/lvm.conf > /usr/src/initramfs/lvm.conf
+
 "${measure_time[@]}" make "${parallel[@]}" bzImage modules || exit 1
 make "${parallel[@]}" modules_install
 emerge --ask=n @module-rebuild
