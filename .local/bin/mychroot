@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 1 ]] ; then
+    echo "Usage: $0 <mountpoint>"
+    exit 1
+fi
+
+MNTPNT="$1"
+
+if ! mountpoint -q "$MNTPNT" ; then
+    echo "'$MNTPNT' is not a mountpoint."
+    exit 1
+fi
+
+SYSMNTS=('proc' 'sys' 'dev' 'run')
+for MPT in "${SYSMNTS[@]}" ; do
+    if mountpoint -q "$MNTPNT/$MPT" ; then
+        echo "'$MNTPNT/$MPT' is mounted. Umount and try again."
+        exit 1
+    fi
+done
+
+if [[ ! -f /etc/resolv.conf ]] ; then
+    echo '/etc/resolv.conf not found.'
+    exit 1
+fi
+
+if [[ $EUID -ne 0 ]] ; then
+    echo "Please run as root"
+    exit 1
+fi
+
+cp --dereference /etc/resolv.conf "$MNTPNT/etc/resolv.conf"
+mount --types proc /proc "$MNTPNT/proc"
+
+for MPT in "${SYSMNTS[@]:1}" ; do
+    mount --rbind "/$MPT" "$MNTPNT/$MPT"
+    mount --make-rslave   "$MNTPNT/$MPT"
+done
+
+chroot "$MNTPNT" /bin/bash
+
+for MPT in "${SYSMNTS[@]}" ; do
+    umount -l "$MNTPNT/$MPT"
+done

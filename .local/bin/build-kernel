@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+#
+# constants and general checks
+#
+
 KEEP_VERS=3
 
 if [[ $# -ne 1 ]] ; then
@@ -14,39 +18,81 @@ if [[ $EUID -ne 0 ]] ; then
     exit 1
 fi
 
+#
+# set kernel version and change directory to source code
+#
+
 eselect kernel set "$1" || exit 1
-echo "" > "$HOME/.cache/updates.txt"
+cd /usr/src/linux
+
+#
+# system and build variables
+#
 
 arch="$(uname -m)"
 new_version="$(echo "$1" | sed s/linux-//g)"
+
+new_build="y"
+[[ -f /boot/vmlinuz-$new_version ]] && new_build=
+
 jobs="$(nproc)"
 lavg="$(nproc --ignore 1)"
 parallel=(-j "$jobs" -l "$lavg")
+
 measure_time=(/usr/bin/time -f 'Compile time: %es' -o '/tmp/ktime.txt')
 
-cd /usr/src/linux
-rm -rfv "/lib/modules/$new_version"
-make clean
-
-if [[ ! -f /usr/src/linux/.config ]] ; then
-    echo "zcat /proc/config.gz > .config"
-    zcat /proc/config.gz > /usr/src/linux/.config
-	make olddefconfig || exit 1
-fi
+#
+# prepare initramfs files
+#
 
 gccver="$(eselect gcc show | sed 's/x86_64-pc-linux-gnu-//')"
 sed "s|gcc/x86_64-pc-linux-gnu/.\+/|gcc/x86_64-pc-linux-gnu/$gccver/|g" /usr/src/initramfs/initramfs.list > /usr/src/initramfs/initramfs.list.tmp
 mv /usr/src/initramfs/initramfs.list.tmp /usr/src/initramfs/initramfs.list
 sed 's/use_lvmetad = 1/use_lvmetad = 0/' /etc/lvm/lvm.conf > /usr/src/initramfs/lvm.conf
 
+#
+# prepare kernel config and set build directory
+#
+
+if [[ ! -f /usr/src/linux/.config ]] ; then
+    echo "zcat /proc/config.gz > /usr/src/linux/.config"
+    zcat /proc/config.gz > /usr/src/linux/.config
+    make olddefconfig
+fi
+
+if mountpoint -q /tmp ; then
+    mkdir -p /tmp/usr/src/linux
+    cp /usr/src/linux/.config /tmp/usr/src/linux/.config
+    make mrproper
+    export KBUILD_OUTPUT="/tmp/usr/src/linux"
+fi
+
+#
+# build kernel
+#
+
+make clean
 "${measure_time[@]}" make "${parallel[@]}" bzImage modules || exit 1
+
+#
+# install and clean up
+#
+
+rm -rfv "/lib/modules/$new_version"
 make "${parallel[@]}" modules_install
 emerge --ask=n @module-rebuild
 
-new_build="y"
-[[ -f /boot/vmlinuz-$new_version ]] && new_build=
+if [[ -n $KBUILD_OUTPUT ]] ; then
+    cp "$KBUILD_OUTPUT/arch/$arch/boot/bzImage" "/boot/vmlinuz-$new_version"
+    cp "$KBUILD_OUTPUT"/.config /usr/src/linux/.config
+    rm -r "$KBUILD_OUTPUT"
+else
+    cp "/usr/src/linux/arch/$arch/boot/bzImage" "/boot/vmlinuz-$new_version"
+fi
 
-cp "arch/$arch/boot/bzImage" "/boot/vmlinuz-$new_version"
+#
+# update grub
+#
 
 if [[ -n $new_build ]] ; then
     vgs | grep -q 'vg0' && vgchange -an vg0
@@ -54,8 +100,17 @@ if [[ -n $new_build ]] ; then
     vgs | grep -q 'vg0' && vgchange -ay vg0
 fi
 
+#
+# cleanup old kernels
+#
+
 echo -e "\nRemoving old kernel versions..."
 find /boot        -maxdepth 1 -name 'vmlinuz-*' -type f | sort -V | head -n "-$KEEP_VERS" | xargs rm -fv
 find /usr/src     -maxdepth 1 -name 'linux-*'   -type d | sort -V | head -n "-$KEEP_VERS" | xargs rm -rfv
 find /lib/modules -maxdepth 1 -name '*-gentoo'  -type d | sort -V | head -n "-$KEEP_VERS" | xargs rm -rfv
+
+#
+# output build statistics
+#
+
 echo '' && cat /tmp/ktime.txt
