@@ -12,7 +12,7 @@
 
 # make sxhkd reload its configuration files:
 super + r
-    notify-send "sxhkd reloaded"
+    notify-send "sxhkd reloaded" && \
     pkill -USR1 -x sxhkd
 
 super + shift + r
@@ -53,7 +53,7 @@ super + {1-9,0}
 super + shift + Tab
     bspc desktop -m next --follow && \
     bspc query -M | while read -r monitor; do \
-        bspc query -D -m "$monitor" --names | sort -g | xargs -rd'\n' bspc monitor "$monitor" -o; \
+        bspc query -D -m "$monitor" --names | sort -g | xargs -rd'\n' bspc monitor "$monitor" -o ; \
     done
 
 #############################
@@ -170,13 +170,13 @@ super + alt + o
 
 # screenshot
 super + Print
+    scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/' && \
     notify-send "Screenshot taken"
-    scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'
 
 # screenshot of current window
 super + shift + Print
+    scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/' && \
     notify-send "Screenshot of current window taken"
-    scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/Screenshots/'
 
 # shuffle wallpaper
 super + w

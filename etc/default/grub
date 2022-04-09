@@ -17,8 +17,11 @@ GRUB_DISTRIBUTOR="Gentoo"
 GRUB_TIMEOUT=5
 #GRUB_TIMEOUT_STYLE=menu
 
+# root device passed to kernel
+GRUB_DEVICE="UUID=dc2ce264-1941-443c-a3a6-1b748350ab91"
+
 # Append parameters to the linux kernel command line
-GRUB_CMDLINE_LINUX="rd.luks.uuid=6999a089-eacd-4651-9c9d-f3b027366ed0 rd.lvm.vg=vgsys rootfstype=btrfs rootflags=ro,noatime,compress=zstd:2,ssd,subvolid=256 resume=UUID=9aafef78-399c-49aa-9e3e-ee7e9c2f44ce rd.luks.allow-discards hid_apple.fnmode=2"
+GRUB_CMDLINE_LINUX="rootflags=ro,noatime,compress=zstd:2,ssd,subvolid=256 rootfstype=btrfs rd.lvm.vg=vgsys rd.luks.uuid=6999a089-eacd-4651-9c9d-f3b027366ed0 rd.luks.allow-discards resume=UUID=9aafef78-399c-49aa-9e3e-ee7e9c2f44ce hid_apple.fnmode=2"
 #
 # Examples:
 #
@@ -59,7 +62,7 @@ GRUB_GFXMODE=auto
 #GRUB_DISABLE_LINUX_UUID=true
 
 # Uncomment to disable generation of recovery mode menu entries
-#GRUB_DISABLE_RECOVERY=true
+GRUB_DISABLE_RECOVERY=true
 
 # Uncomment to disable generation of the submenu and put all choices on
 # the top-level menu.

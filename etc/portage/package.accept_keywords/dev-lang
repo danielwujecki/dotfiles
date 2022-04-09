@@ -1,2 +1,4 @@
+dev-lang/go ~amd64
+
 # required by app-text/pandoc
 dev-lang/ghc ~amd64

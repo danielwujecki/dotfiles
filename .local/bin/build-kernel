@@ -91,23 +91,19 @@ else
 fi
 
 #
-# update grub
+# cleanup old kernels and update grub
 #
 
 if [[ -n $new_build ]] ; then
+    echo -e "\nRemoving old kernel versions..."
+    find /boot        -maxdepth 1 -name 'vmlinuz-*' -type f | sort -V | head -n "-$KEEP_VERS" | xargs rm -fv
+    find /usr/src     -maxdepth 1 -name 'linux-*'   -type d | sort -V | head -n "-$KEEP_VERS" | xargs rm -rfv
+    find /lib/modules -maxdepth 1 -name '*-gentoo*'  -type d | sort -V | head -n "-$KEEP_VERS" | xargs rm -rfv
+
     vgs | grep -q 'vg0' && vgchange -an vg0
     grub-mkconfig -o /boot/grub/grub.cfg
     vgs | grep -q 'vg0' && vgchange -ay vg0
 fi
-
-#
-# cleanup old kernels
-#
-
-echo -e "\nRemoving old kernel versions..."
-find /boot        -maxdepth 1 -name 'vmlinuz-*' -type f | sort -V | head -n "-$KEEP_VERS" | xargs rm -fv
-find /usr/src     -maxdepth 1 -name 'linux-*'   -type d | sort -V | head -n "-$KEEP_VERS" | xargs rm -rfv
-find /lib/modules -maxdepth 1 -name '*-gentoo'  -type d | sort -V | head -n "-$KEEP_VERS" | xargs rm -rfv
 
 #
 # output build statistics
