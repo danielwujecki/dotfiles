@@ -14,9 +14,9 @@ elif [[ $# -eq 1 ]] ; then
     SYNCFILE="$1"
 else
     SYNCFILE="$REPOPATH/sync/sync_list_abacus.txt"
-    if [[ -f /etc/hostname ]] && grep -q 'ArchX1' /etc/hostname ; then
+    if [[ -f /etc/hostname ]] && grep -iq 'archx1' /etc/hostname ; then
         SYNCFILE="$REPOPATH/sync/sync_list_archx1.txt"
-    elif [[ -f /etc/conf.d/hostname ]] && grep -q 'ArchX1' /etc/conf.d/hostname ; then
+    elif [[ -f /etc/conf.d/hostname ]] && grep -iq 'archx1' /etc/conf.d/hostname ; then
         SYNCFILE="$REPOPATH/sync/sync_list_archx1.txt"
     fi
 fi
@@ -39,7 +39,8 @@ while read -r rep fs ; do
     [[ -n $fs ]]  || fs="$rep"
 
     dst="$REPOPATH/$rep"
-    [[ -d $dst ]] && dst="$(dirname $dst)"
 
-    cp -ruv "$fs" "$dst"
+    [[ $fs = $dst && -d $dst ]] && dst="$(dirname $dst)"
+
+    cp -rv "$fs" "$dst"
 done <<< "$(egrep -v '^\s*#' "$SYNCFILE")"

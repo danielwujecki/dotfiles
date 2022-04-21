@@ -1,0 +1,23 @@
+# /dev/mapper/vgsys-arch_root LABEL=arch_root subvol=@
+UUID=ea433866-8deb-4086-b562-df0449589430    /                      btrfs   rw,noatime,compress=lzo,ssd,space_cache,subvolid=256    0 0
+
+# /dev/mapper/vgsys-arch_root LABEL=arch_root subvol=@home
+UUID=ea433866-8deb-4086-b562-df0449589430    /home                  btrfs   rw,noatime,compress=lzo,ssd,space_cache,subvolid=257    0 0
+
+# /dev/mapper/vgsys-arch_root LABEL=arch_root subvol=@daniel-cache
+UUID=ea433866-8deb-4086-b562-df0449589430    /home/daniel/.cache    btrfs   rw,noatime,compress=lzo,ssd,space_cache,subvolid=384    0 0
+
+# /dev/mapper/vgsys-arch_root LABEL=arch_root subvol=@pkg
+UUID=ea433866-8deb-4086-b562-df0449589430    /var/cache/pacman/pkg  btrfs   rw,noatime,compress=lzo,ssd,space_cache,subvolid=258    0 0
+
+# /dev/mapper/vgsys-arch_root LABEL=arch_root subvol=@snapshots
+UUID=ea433866-8deb-4086-b562-df0449589430    /.snapshots            btrfs   rw,noatime,compress=lzo,ssd,space_cache,subvolid=259    0 0
+
+# /dev/mapper/vgsys-arch_root LABEL=arch_root subvol=/
+UUID=ea433866-8deb-4086-b562-df0449589430    /.btrfs                btrfs   rw,noatime,compress=lzo,ssd,space_cache,subvolid=5      0 0
+
+# /dev/nvme0n1p1 LABEL=SYSTEM
+UUID=5ECA-9E63                               /boot                  vfat    rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro    0 2
+
+# /dev/mapper/vgsys-arch_swap LABEL=arch_swap
+UUID=571adae6-9b13-4902-a989-3f5d0abf09b7    none                   swap    defaults,noatime    0 0
