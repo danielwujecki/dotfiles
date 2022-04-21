@@ -4,6 +4,11 @@ set -euo pipefail
 RED='\033[0;31m'
 WHITE='\033[0m'
 
+if [[ $LOGNAME != "daniel" ]] ; then
+    echo "Please run as user daniel"
+    exit 1
+fi
+
 if [[ ! -x /bin/zsh ]] ; then
     echo -e "\n${RED}zsh not installed.${WHITE}\n"
     exit 1

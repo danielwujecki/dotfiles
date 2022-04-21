@@ -1,4 +1,4 @@
 sys-apps/bat ~amd64
 sys-apps/sd ~amd64
 sys-apps/dust ~amd64
-<sys-apps/coreutils-9.1 ~amd64
+<sys-apps/coreutils-10 ~amd64

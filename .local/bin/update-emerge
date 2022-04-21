@@ -6,7 +6,7 @@ if [[ $EUID -ne 0 ]] ; then
     exit 1
 fi
 
-emaint sync -r gentoo
+emaint sync -r gentoo <<< "yes"
 emaint sync -r guru
 emaint sync -r daniels-overlay
 emerge -u1 portage

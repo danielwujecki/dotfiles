@@ -122,6 +122,7 @@
 \newcommand{\QQ}{\mathbb{R}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\CC}{\mathbb{C}}
+\newcommand{\KK}{\mathbb{C}}
 \renewcommand{\d}[1][x]{\,\mathrm{d}#1}
 \newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
 \newcommand{\Set}[2]{\left\lbrace#1\mid#2\right\rbrace}

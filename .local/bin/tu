@@ -24,7 +24,7 @@ if [[ $(tmux ls | grep "tu$hip") ]] ; then
 fi
 
 if [[ -n $jump ]] ; then
-    tmux new -s "tu$hip" "ssh -J mulfadmin@130.149.133.190 mulfadmin@192.168.52.$hip"
+    tmux new -s "tu$hip" "ssh -J mulfadmin@130.149.133.190 mulfadmin@192.168.$hip"
 else
     tmux new -s "tu$hip" "ssh mulfadmin@130.149.133.$hip"
 fi
