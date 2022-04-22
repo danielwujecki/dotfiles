@@ -1,0 +1,311 @@
+%
+% documentclass
+%
+\documentclass[a4paper,onecolumn]{scrartcl}
+\newif\ifdraft\draftfalse
+
+%\drafttrue
+\KOMAoptions{fontsize=11pt}
+%\KOMAoptions{twoside}
+%\KOMAoptions{DIV=15}
+%\KOMAoptions{BCOR=2mm}
+\KOMAoptions{parskip=half}
+\KOMAoptions{abstract=false}
+%\KOMAoptions{openright}
+%\KOMAoptions{chapterprefix}
+%\KOMAoptions{bibliography=totocnumbered}
+%\KOMAoptions{egregdoesnotlikesansseriftitles}
+\ifdraft\KOMAoptions{draft}\fi
+
+%
+% general packages
+%
+
+\usepackage[left=20mm,right=20mm,top=20mm,bottom=40mm]{geometry}
+\usepackage[english,main=ngerman]{babel}
+%\usepackage[ngerman,main=english]{babel}
+
+\usepackage[all,defaultlines=2]{nowidow}
+%\usepackage[onehalfspacing]{setspace}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\usepackage{hyphenat}
+%\hyphenation{Mathe-matik wieder-gewinnen}
+
+%\usepackage[draft=false,headsepline]{scrlayer-scrpage}
+\usepackage[draft=false]{scrlayer-scrpage}
+\addtokomafont{pagehead}{\small}
+\addtokomafont{pagefoot}{\small}
+\ihead{left}
+\chead{mid}
+\ohead{right}
+%\automark[section]{chapter}
+%\ihead{\headmark}
+%\ohead{\pagemark}
+%\ofoot[\pagemark]{}
+
+%
+% font packages
+%
+
+% xelatex fonts
+\usepackage{fontspec}
+\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures[\rmfamily]{Scale=1}
+\setmonofont{JetBrains Mono}
+%\setmainfont{Palatino Linotype}
+%\setmainfont{Calibri}
+
+% legacy fonts
+%\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage[sc,osf]{mathpazo}
+
+%
+% misc packages
+%
+
+% BibLateX
+%\usepackage{csquotes}
+%\usepackage[
+%    backend=biber,
+%    style=ieee,
+%    url=false,
+%    eprint=false,
+%    isbn=false,
+%    hyperref=true,
+%    bibencoding=inputenc
+%]{biblatex}
+%\addbibresource{quellen.bib}
+
+%\usepackage[modulo]{lineno}
+%\def\linenumberfont{\normalfont\tiny}
+%\usepackage{multicol}
+%\setlength{\columnsep}{12mm}
+
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{listings}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codeback}{rgb}{0.93,0.93,0.90}
+\lstset{
+  basicstyle=\footnotesize\ttfamily,
+  breaklines=true,
+  keepspaces=true,
+  numbers=left,
+  numbersep=8pt,
+  tabsize=4,
+  frame=single,
+  numberstyle=\scriptsize\color{gray},
+  backgroundcolor=\color{codeback},
+  stringstyle=\color{Purple},
+  commentstyle=\color{ForestGreen},
+  keywordstyle=\color{BrickRed},
+}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+
+\usepackage{tikz}
+%\usepackage{subfig}
+%\usepackage{caption}
+%\usepackage{overpic}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+
+\graphicspath{{imgs/}}
+\setcounter{topnumber}{1}
+
+%\usepackage{tabularx}
+%\usepackage{array}
+%\usepackage{booktabs}
+%\usepackage{diagbox}
+
+\ifdraft
+  \usepackage[colorinlistoftodos]{todonotes}
+\else
+  \usepackage[obeyDraft,colorinlistoftodos]{todonotes}
+\fi
+\newcommand{\missing}[1]{\todo[inline]{#1}}
+\newcommand{\rtodo}[1]{\todo[backgroundcolor=red]{#1}}
+\newcommand{\ytodo}[1]{\todo[backgroundcolor=yellow]{#1}}
+\newcommand{\gtodo}[1]{\todo[backgroundcolor=green]{#1}}
+
+%
+% math stuff
+%
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+
+\numberwithin{equation}{section}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{R}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\KK}{\mathbb{C}}
+\renewcommand{\d}[1][x]{\,\mathrm{d}#1}
+\newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
+\newcommand{\Set}[2]{\left\lbrace#1\mid#2\right\rbrace}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\sprod}[2]{\left\langle#1,#2\right\rangle}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator*{\argmin}{argmin}
+
+% See https://www.overleaf.com/learn/latex/theorems_and_proofs
+\theoremstyle{plain} % definition
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Satz}[section]
+\newtheorem{corollary}{Korollar}[theorem]
+\theoremstyle{remark}
+\newtheorem*{remark}{Hinweis}
+
+%
+% misc commands
+%
+
+% dots for a signatue in a formular
+\newcommand{\signaturespace}[1]{%
+  \begin{tikzpicture}
+    \draw[dotted] (0,0)--(5,0) (2,0) node[below]{#1};
+  \end{tikzpicture}
+}
+
+\newcommand{\emptyline}{\vspace{\baselineskip}}
+
+%
+% document settings
+%
+
+\newcommand{\mytitle}{Dokument}
+\newcommand{\mysubtitle}{Mit XeLaTeX erzeugt}
+\newcommand{\myname}{Daniel}
+\newcommand{\mydate}{\today}
+
+\hypersetup{
+  pdftitle={\mytitle{}},
+  pdfsubject={\mysubtitle{}},
+  pdfauthor={\myname{}},
+  pdfproducer={\myname{}},
+  pdfcreator={Accomplished with: XeLaTeX, biber, and hyperref-package.},
+  colorlinks=true,
+  urlcolor=blue!40!black,
+  linkcolor=red!40!black,
+  citecolor=green!40!black,
+}
+
+\title{\mytitle{}}
+\subtitle{\mysubtitle{}}
+\author{\myname{}}
+\date{\mydate{}}
+
+\ifdraft
+  \RequirePackage{scrtime}
+  \RequirePackage{eso-pic}
+  \AddToShipoutPicture{
+      \put(20,50){\textcolor[gray]{0.5}{DRAFT: \mytitle{} -- \myname{} (Compile date: \today/\thistime)}}
+  }
+\fi
+
+% =====================================================================================================
+
+\begin{document}
+
+\ifdraft\else\maketitle\fi
+
+%\newpage
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{0}
+\tableofcontents
+%\linenumbers
+
+% =====================================================================================================
+
+\section{Hausaufgabe 1}
+
+Formel: $ a_1 + a_2 = a_3 $
+
+Eine Matrix
+\begin{equation}
+  A = \begin{pmatrix}
+    a_{11}  & a_{12} & \ldots & a_{1n} \\
+    a_{21}  & a_{22} & \ldots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & \ldots & a_{mn}
+  \end{pmatrix}
+\end{equation}
+
+\subsection{Code Listings}
+
+Das ist ein \verb+\LaTeX+ Befehl: \LaTeX
+
+\begin{lstlisting}[caption={Useless Code},language=Python]
+def function():
+    # important stuff todo
+    string = "bla bl a"
+    return "bla"
+\end{lstlisting}
+
+\begin{verbatim}
+Ein anderes Code Beispiel \drölf
+\end{verbatim}
+
+\section{Hausaufgabe 2}
+
+Blabllbalbasfasf Hallo
+
+%\ifthenelse{\boolean{loesung}}{true}{false}
+
+\begin{algorithm}
+    \caption{Variance of the OLS Estimator}
+    %\DontPrintSemicolon
+    \KwIn{$n$ (number of data points); $\sigma^2_\epsilon$ (noise variance);
+        $\sigma^2_x$ (data variance); $w$ (true slope)}
+    \KwOut{variance of $\hat{w}$}
+    \emptyline
+
+    Generate $n$ gaussian data points $X = [x_1, \ldots , x_n]$, $x_i \sim \mathcal{N}(0, 1)$ \\
+    \For{$r=1,\dots,10^5$}{
+        generate $n$ gaussian noise terms $E = [\epsilon_1, \ldots, \epsilon_N]$,
+            $\epsilon_i \sim \mathcal{N}(0, \sigma_\epsilon^2)$ \\
+        compute $y=w\cdot X + E$ \\
+        compute OLS estimate $\hat{w}[r] = (X X^\top)^{-1} X y^\top$
+    }
+    \Return{$\var(\hat{w})$}
+\end{algorithm}
+
+\missing{Test}
+\gtodo{Test}
+\ytodo{Test}
+\rtodo{Test}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+\subsection{Beweise}
+
+\begin{theorem}[Satz des Pythagoras]
+  Für rechtwinklige Dreiecke gilt für die Seitenlängen $a, b, c\in\RR$, wobei $c$ der Länge der
+  Hypothenuse entspricht, dass
+  \begin{equation*}
+    a^{2} + b^{2} = c^{2}.
+  \end{equation*}
+\end{theorem}
+\begin{corollary}
+  Es gibt kein rechtwinkliges Dreieck, mit den Seitenlängen $a=3\,cm, b=4\,cm, c=6\,cm$.
+\end{corollary}
+\begin{proof}
+  Es gilt
+  \begin{equation*}
+    3^{2} + 4^{2} = 9 + 16 = 25 \neq 36 = 6^{2}.
+  \end{equation*}
+\end{proof}
+
+% =====================================================================================================
+
+%\include{example} % content on new page
+
+%\newpage
+%\printbibliography[title={Literaturverzeichnis}]
+
+\ifdraft\todototoc\listoftodos\fi
+
+\end{document}
