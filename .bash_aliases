@@ -20,7 +20,7 @@ alias ...='cd ../../'
 [[ -d ~/Dropbox ]]               && alias dbox='cd ~/Dropbox'
 [[ -d ~/Schreibtisch ]]          && alias des='cd ~/Schreibtisch'
 [[ -d ~/Repositories ]]          && alias repos='cd ~/Repositories'
-[[ -d ~/Dropbox/wise2122 ]]      && alias sem='cd ~/Dropbox/wise2122'
+[[ -d ~/Dropbox/sose22 ]]        && alias sem='cd ~/Dropbox/sose22'
 [[ -d ~/Dokumente/3dprinting ]]  && alias 3d='cd ~/Dokumente/3dprinting'
 [[ -d ~/Repositories/dotfiles ]] && alias dotf='cd ~/Repositories/dotfiles'
 

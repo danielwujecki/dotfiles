@@ -15,7 +15,7 @@
 
 \LoadClass[a4paper,onecolumn]{scrartcl}
 %\LoadClass[a4paper,onecolumn]{scrreprt}
-\KOMAoptions{fontsize=10pt}
+\KOMAoptions{fontsize=11pt}
 %\KOMAoptions{twoside}
 %\KOMAoptions{DIV=15}
 %\KOMAoptions{BCOR=2mm}
@@ -138,30 +138,33 @@
 %
 
 \RequirePackage{amsmath,amssymb,amsthm,mathtools}
-
-\numberwithin{equation}{section}
+\numberwithin{equation}{subsection}
 
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\QQ}{\mathbb{R}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\CC}{\mathbb{C}}
-\newcommand{\KK}{\mathbb{C}}
+\newcommand{\KK}{\mathbb{K}}
 \renewcommand{\d}[1][x]{\,\mathrm{d}#1}
 \newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
 \newcommand{\Set}[2]{\left\lbrace#1\mid#2\right\rbrace}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\sprod}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\pab}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\grad}[2]{\text{grad}_{#1} #2}
 \DeclareMathOperator{\var}{var}
 \DeclareMathOperator*{\argmin}{argmin}
 
 % See https://www.overleaf.com/learn/latex/theorems_and_proofs
-\theoremstyle{plain} % definition
-\newtheorem{definition}{Definition}[section]
-\newtheorem{theorem}{Satz}[section]
+\theoremstyle{plain}
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{theorem}{Satz}[subsection]
 \newtheorem{corollary}{Korollar}[theorem]
+
 \theoremstyle{remark}
 \newtheorem*{remark}{Hinweis}
+\newtheorem*{example}{Beispiel}
 
 %
 % misc commands
