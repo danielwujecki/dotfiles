@@ -103,7 +103,7 @@ bspc rule -a Emacs state=tiled
 # start background programs
 "$HOME"/.local/bin/fehbg &
 "$HOME"/.local/bin/launch-polybar &
-"$HOME"/.local/bin/checkupdates_custom &
+
 pgrep -u "$LOGNAME" -x sxhkd > /dev/null || sxhkd &
 pgrep -u "$LOGNAME" -x picom > /dev/null || picom &
 pgrep -u "$LOGNAME" -x dunst > /dev/null || dunst &
@@ -112,12 +112,13 @@ pgrep -u "$LOGNAME" -x birdtray > /dev/null || birdtray &
 pgrep -u "$LOGNAME" -x nm-applet > /dev/null || nm-applet &
 pgrep -u "$LOGNAME" -x emacs > /dev/null || emacs --daemon &
 pgrep -u "$LOGNAME" -x redshift-gtk > /dev/null || redshift-gtk &
-pgrep -u "$LOGNAME" -x gpg-agent > /dev/null || gpg-agent --daemon &
-if [[ $LAPTOP ]] ; then
-    pgrep -u "$LOGNAME" -x blueman-applet > /dev/null || blueman-applet &
-fi
 pgrep -u "$LOGNAME" -x element-desktop > /dev/null || element-desktop --hidden &
 pgrep -u "$LOGNAME" -x telegram-desktop > /dev/null || telegram-desktop -startintray &
 pgrep -u "$LOGNAME" -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
+
+if [[ $LAPTOP ]] ; then
+    "$HOME"/.local/bin/checkupdates_custom &
+    pgrep -u "$LOGNAME" -x blueman-applet > /dev/null || blueman-applet &
+fi
 
 bspc desktop -f 1
