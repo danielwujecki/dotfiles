@@ -1,0 +1,4 @@
+# required by media-sound/teamspeak-client
+dev-qt/qtgui accessibility
+dev-qt/qtwebengine widgets
+dev-qt/qtwebchannel qml

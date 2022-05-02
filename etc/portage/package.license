@@ -1,3 +1,4 @@
 www-client/google-chrome google-chrome
 app-editors/vscode Microsoft-vscode
 dev-util/nvidia-cuda-toolkit NVIDIA-CUDA
+media-sound/teamspeak-client teamspeak3
