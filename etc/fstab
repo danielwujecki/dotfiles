@@ -17,10 +17,10 @@
 /dev/vgsys/gentoo_root                      /.btrfs                 btrfs rw,noatime,compress=zstd:2,ssd,subvolid=5                             0 0
 
 # /tmp tmpfs
-tmpfs                                       /tmp                    tmpfs rw,nosuid,noatime,nodev,size=8G,mode=1777                             0 0
+tmpfs                                       /tmp                    tmpfs rw,nosuid,noatime,nodev,size=4G,mode=1777                             0 0
 
 # /dev/shm tmpfs
-tmpfs                                       /dev/shm                tmpfs rw,nosuid,noatime,nodev,size=8G,mode=1777                             0 0
+tmpfs                                       /dev/shm                tmpfs rw,nosuid,noatime,nodev,size=4G,mode=1777                             0 0
 
 # portage tmpfs
 tmpfs                                       /var/tmp/portage        tmpfs rw,nosuid,noatime,nodev,size=12G,uid=portage,gid=portage,mode=775     0 0

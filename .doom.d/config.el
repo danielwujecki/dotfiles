@@ -77,4 +77,7 @@
     (unless (+workspace-exists-p "org")
       (if (+workspace-exists-p "main")
           (+workspace-rename "main" "org")
-        (+workspace-new "org")))))
+        (+workspace-new "org")))
+    (unless (+workspace-exists-p "inca")
+      (+workspace-new "inca"))
+    ))
