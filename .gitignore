@@ -37,4 +37,4 @@ tex/*.pdf
 # misc files
 plug.vim.old
 todos*.txt
-make.conf.*
+make.conf.freddi

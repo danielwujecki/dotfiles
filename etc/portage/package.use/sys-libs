@@ -1,8 +1,8 @@
 # required by sys-apps/busybox
 sys-libs/libxcrypt static-libs
 
-#required by net-analyzer/wireshark
-#required by media-video/vlc
+# required by net-analyzer/wireshark
+# required by media-video/vlc
 sys-libs/zlib minizip
 
 # required by net-im/zoom
