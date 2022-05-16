@@ -29,7 +29,7 @@
 # Authentication:
 
 #LoginGraceTime 2m
-PermitRootLogin prohibit-password
+#PermitRootLogin prohibit-password
 #StrictModes yes
 #MaxAuthTries 6
 #MaxSessions 10
@@ -38,7 +38,7 @@ PermitRootLogin prohibit-password
 
 # The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
 # but this is overridden so installations will only check .ssh/authorized_keys
-AuthorizedKeysFile	.ssh/authorized_keys
+#AuthorizedKeysFile	.ssh/authorized_keys
 
 #AuthorizedPrincipalsFile none
 
@@ -85,12 +85,12 @@ UsePAM yes
 #AllowAgentForwarding yes
 #AllowTcpForwarding yes
 #GatewayPorts no
-X11Forwarding yes
+#X11Forwarding no
 #X11DisplayOffset 10
 #X11UseLocalhost yes
 #PermitTTY yes
-PrintMotd no # pam does that
-#PrintLastLog yes
+PrintMotd no
+PrintLastLog no
 #TCPKeepAlive yes
 #PermitUserEnvironment no
 #Compression delayed
@@ -122,9 +122,9 @@ AcceptEnv LANG LC_ALL LC_COLLATE LC_CTYPE LC_MESSAGES LC_MONETARY LC_NUMERIC LC_
 # Allow client to pass COLORTERM to match TERM. #658540
 AcceptEnv COLORTERM
 
-AllowUsers daniel
-AllowUsers root@192.168.178.23
+allowusers daniel
+allowusers root@192.168.178.23
 
-Match address 192.168.178.0/24
-    PasswordAuthentication yes
-    AuthenticationMethods password publickey
+match address 192.168.178.0/24
+    passwordauthentication yes
+    authenticationmethods password publickey

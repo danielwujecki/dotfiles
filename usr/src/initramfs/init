@@ -1,11 +1,12 @@
 #!/usr/bin/busybox ash
 
 gnu_logo() {
-    GNU="H4sIAAAAAAAAA21QSW7DMBC76xW8yQE0o7tySf8hwONugIE2hy43Pz7U4sgtMjBkiKQ5pB04s1gZ
-    CRgTBF6gDlDPqwoE26A3XkUBoyIWRcSjMUqQXSpsatCsWkCec9dYIV1Kd00kpZY8pXPWum4bGpqS
-    pmOw/kGG0tbXnM6SNt9YY9aUmUfu6yIr5USLOe7dLidCPAyWEdS7FjQGEd+LsL/mIGoipXL/Rz76
-    JpgmhmCc004hkivJSt7iMu3E63Jd3z4uT8/Ly+/3XY5mxWpcKmMv5DhDDl/9GSwc1Viv68/X8vl+
-    cB5a4JyOeGN8ff3FO8PnP16Txgcw7OzcDdgxgJVPAgAA"
+    GNU="H4sIAAAAAAAAA21QQW6DMBC8+xVzM5G867tzoeo3LGHapBJSCVJobzy+Y+MAbbNCtjwzOzuLAauT
+         lEsc9nICK1ADqOVTBYJlpxc+RYFEhc8Kj2eVKEE0IbNhhTrVDPLsqiZl0oSwaTwpTcFS2kUt45Zd
+         Q1PSdHSpNkQobW3JaVLQ1deXmCVl5BHrOM+VYqBF5x+7tSdCPBJShFNr1qDeidi6CPfX6ESTSF65
+         /iPr7SpoGoZgnNODgieXk+W82aV5EJf+Nlw/7YzhNnzd+/Fj3nqw+nE/TpZ9OORf7T2wZRIjumML
+         2pe3/v17Rvs6jeN0me7XQ8/WBJzDEV8ZW67feGX4/cVLbv8ERjob8wNgCl2LYgIAAA=="
+
     echo "$GNU" | sed 's/ //g' | base64 -d | gzip -d | cat
 }
 
@@ -36,8 +37,13 @@ if [ -n "$cryptdevice_uuid" ] ; then
     cryptdevice="$(findfs "UUID=$cryptdevice_uuid")"
     [ -b "$cryptdevice" ] || launch_shell --exec
     mkdir -p /run/cryptsetup
-    # TODO: --allow-discards from cmdline
-    cryptsetup luksOpen --allow-discards "$cryptdevice" "root_crypt" || launch_shell --exec
+
+    allowdiscards="$(cmdline 'rd.luks.allow-discards')"
+    if [ -n "allowdiscards" ] ; then
+        cryptsetup luksOpen --allow-discards "$cryptdevice" "root_crypt" || launch_shell --exec
+    else
+        cryptsetup luksOpen "$cryptdevice" "root_crypt" || launch_shell --exec
+    fi
 fi
 
 lvm_vg="$(cmdline 'rd.lvm.vg')"

@@ -38,3 +38,4 @@ tex/*.pdf
 plug.vim.old
 todos*.txt
 make.conf.freddi
+lsmod*.txt

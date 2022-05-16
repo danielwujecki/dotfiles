@@ -18,7 +18,7 @@ dir     /usr/lib    755 0 0
 #
 slink /bin       /usr/bin  755 0 0
 slink /sbin      /usr/bin  755 0 0
-slink /usr/sbin  /usr/sbin 755 0 0
+slink /usr/sbin  /usr/bin  755 0 0
 slink /lib       /usr/lib  755 0 0
 slink /lib64     /usr/lib  755 0 0
 slink /usr/lib64 /usr/lib  755 0 0
