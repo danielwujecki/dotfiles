@@ -16,13 +16,19 @@
 # ID 5 path /
 /dev/vgsys/gentoo_root                      /.btrfs                 btrfs rw,noatime,compress=zstd:2,ssd,space_cache=v2,subvolid=5              0 0
 
-# /tmp tmpfs
+# boot
+UUID="8FCE-7967"                            /boot                   vfat  rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 0
+
+# swap
+UUID="9aafef78-399c-49aa-9e3e-ee7e9c2f44ce" none                    swap  defaults,noatime                                                      0 0
+
+# tmpfs /tmp
 tmpfs                                       /tmp                    tmpfs rw,nosuid,noatime,nodev,size=4G,mode=1777                             0 0
 
-# /dev/shm tmpfs
+# tmpfs /dev/shm
 tmpfs                                       /dev/shm                tmpfs rw,nosuid,noatime,nodev,size=4G,mode=1777                             0 0
 
-# portage tmpfs
+# tmpfs /var/tmp/portage
 tmpfs                                       /var/tmp/portage        tmpfs rw,nosuid,noatime,nodev,size=12G,uid=portage,gid=portage,mode=775     0 0
 
 # optional operation system images for KVM/libvirt
@@ -31,8 +37,5 @@ tmpfs                                       /var/tmp/portage        tmpfs rw,nos
 # optional storage for (already compressed) video formats
 /dev/vg1/vorlesungsvideos                   /media/vorlesungsvideos ext4  defaults,noatime,nofail                                               0 0
 
-# swap
-UUID="9aafef78-399c-49aa-9e3e-ee7e9c2f44ce" none                    swap  defaults,noatime                                                      0 0
-
-# boot
-UUID="8FCE-7967"                            /boot                   vfat  rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 0
+# optional storage for windows/linux data exchange
+UUID="6BF8-F7B2"                            /media/danieldata       exfat rw,nosuid,nodev,relatime,uid=1000,gid=985,fmask=0022,dmask=0022,iocharset=utf8,nofail                0 0

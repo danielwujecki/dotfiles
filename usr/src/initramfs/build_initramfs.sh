@@ -21,7 +21,7 @@ while [[ $# -gt 0 ]] ; do
             DRACUT="yes"
             shift
             ;;
-        --help)
+        *)
             help
             exit 0
             ;;
@@ -48,7 +48,7 @@ sed 's/use_lvmetad = 1/use_lvmetad = 0/' /etc/lvm/lvm.conf > /usr/src/initramfs/
 if [[ -n $DRACUT ]] ; then
     dracut --hostonly --zstd "$OUTPUT" "$KERVER"
 else
-    /usr/src/linux/usr/gen_init_cpio /usr/src/initramfs/initramfs.list | zstd > "$OUTPUT"
+    /usr/src/linux-$KERVER/usr/gen_init_cpio /usr/src/initramfs/initramfs.list | zstd > "$OUTPUT"
 fi
 
 echo "Written to $OUTPUT."
