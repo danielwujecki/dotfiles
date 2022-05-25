@@ -19,7 +19,7 @@ super + shift + r
     bspc wm -r
 
 super + alt + e
-    pkill ssh-agent ; bspc quit
+    pkill gnome-keyring ; bspc quit
 
 #############################
 #  launch + quit programms  #

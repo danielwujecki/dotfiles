@@ -1,4 +1,4 @@
-media-libs/opencv gtk3
+media-libs/opencv gtk3 -opengl
 
 # required by media-gfx/prusaslicer
 media-libs/qhull static-libs
