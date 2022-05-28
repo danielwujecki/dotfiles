@@ -1,0 +1,57 @@
+# /etc/fstab: static file system information.
+#
+# noatime turns off atimes for increased performance (atimes normally aren't 
+# needed); notail increases performance of ReiserFS (at the expense of storage 
+# efficiency).  It's safe to drop the noatime options if you want and to 
+# switch between notail / tail freely.
+#
+# The root filesystem should have a pass number of either 0 or 1.
+# All other filesystems should have a pass number of 0 or greater than 1.
+#
+# See the manpage fstab(5) for more information.
+#
+
+# <fs>			<mountpoint>	<type>		<opts>		<dump/pass>
+
+# NOTE: If your BOOT partition is ReiserFS, add the notail option to opts.
+#
+# NOTE: Even though we list ext4 as the type here, it will work with ext2/ext3
+#       filesystems.  This just tells the kernel to use the ext4 driver.
+#
+# NOTE: You can use full paths to devices like /dev/sda3, but it is often
+#       more reliable to use filesystem labels or UUIDs. See your filesystem
+#       documentation for details on setting a label. To obtain the UUID, use
+#       the blkid(8) command.
+
+# ID 256 path @
+/dev/vgsys/gentoo_root                      /                       btrfs rw,noatime,compress=zstd:2,ssd,subvolid=256                           0 0
+
+# ID 257 path @home
+/dev/vgsys/gentoo_root                      /home                   btrfs rw,noatime,compress=zstd:2,ssd,subvolid=257                           0 0
+
+# ID 258 path @daniel-cache
+/dev/vgsys/gentoo_root                      /home/daniel/.cache     btrfs rw,noatime,compress=zstd:2,ssd,subvolid=258                           0 0
+
+# ID 259 path @cache
+/dev/vgsys/gentoo_root                      /var/cache              btrfs rw,noatime,compress=zstd:2,ssd,subvolid=259                           0 0
+
+# ID 260 path @snapshots
+/dev/vgsys/gentoo_root                      /.snapshots             btrfs rw,noatime,compress=zstd:2,ssd,subvolid=260                           0 0
+
+# ID 5 path /
+/dev/vgsys/gentoo_root                      /.btrfs                 btrfs rw,noatime,compress=zstd:2,ssd,subvolid=5                             0 0
+
+# /tmp tmpfs
+tmpfs                                       /tmp                    tmpfs rw,nosuid,noatime,nodev,size=4G,mode=1777                             0 0
+
+# /dev/shm tmpfs
+tmpfs                                       /dev/shm                tmpfs rw,nosuid,noatime,nodev,size=4G,mode=1777                             0 0
+
+# portage tmpfs
+tmpfs                                       /var/tmp/portage        tmpfs rw,nosuid,noatime,nodev,size=12G,uid=portage,gid=portage,mode=775     0 0
+
+# swap
+UUID="aee1df07-fabe-458c-9e2d-e872dcab0bf6" none                    swap  defaults,noatime                                                      0 0
+
+# boot
+UUID="5ECA-9E63"                            /boot                   vfat  rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 0

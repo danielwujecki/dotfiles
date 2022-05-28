@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.15.41-gentoo Kernel Configuration
+# Linux/x86 5.15.43-gentoo Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Gentoo 11.2.1_p20220115 p4) 11.2.1 20220115"
 CONFIG_CC_IS_GCC=y
@@ -2564,7 +2564,7 @@ CONFIG_I2C_I801=m
 #
 # ACPI drivers
 #
-# CONFIG_I2C_SCMI is not set
+CONFIG_I2C_SCMI=y
 
 #
 # I2C system bus drivers (mostly embedded / system-on-chip)
@@ -3907,7 +3907,7 @@ CONFIG_SND_VIRTIO=m
 CONFIG_HID=y
 CONFIG_HID_BATTERY_STRENGTH=y
 CONFIG_HIDRAW=y
-CONFIG_UHID=m
+# CONFIG_UHID is not set
 CONFIG_HID_GENERIC=y
 
 #
@@ -3959,7 +3959,7 @@ CONFIG_HID_APPLE=m
 # CONFIG_HID_KENSINGTON is not set
 # CONFIG_HID_LCPOWER is not set
 # CONFIG_HID_LED is not set
-# CONFIG_HID_LENOVO is not set
+CONFIG_HID_LENOVO=y
 # CONFIG_HID_LOGITECH is not set
 # CONFIG_HID_MAGICMOUSE is not set
 # CONFIG_HID_MALTRON is not set
