@@ -11,8 +11,8 @@ emaint sync -r guru
 emaint sync -r daniels-overlay
 emerge -u1 portage
 emerge -avuDN @world
-emerge -avt @preserved-rebuild
-eclean-dist -d
 emerge -ac --verbose=n
+emerge -avt @preserved-rebuild
 dispatch-conf
+eclean-dist -d
 eix-update

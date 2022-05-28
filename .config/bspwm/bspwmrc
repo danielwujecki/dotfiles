@@ -8,9 +8,9 @@
 ######################################
 
 LAPTOP=
-if [[ -f /etc/hostname ]] && grep -q 'ArchX1' /etc/hostname ; then
+if [[ -f /etc/hostname ]] && grep -iq 'Commodore' /etc/hostname ; then
     LAPTOP=1
-elif [[ -f /etc/conf.d/hostname ]] && grep -q 'ArchX1' /etc/conf.d/hostname ; then
+elif [[ -f /etc/conf.d/hostname ]] && grep -iq 'Commodore' /etc/conf.d/hostname ; then
     LAPTOP=1
 fi
 
