@@ -12,3 +12,6 @@ dev-libs/icu ~amd64
 dev-libs/libvterm ~amd64
 dev-libs/tree-sitter ~amd64
 dev-libs/libuv ~amd64
+
+# required by dev-libs/nss
+dev-libs/nspr ~amd64

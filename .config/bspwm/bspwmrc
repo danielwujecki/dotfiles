@@ -117,8 +117,9 @@ pgrep -u "$LOGNAME" -x telegram-desktop > /dev/null || telegram-desktop -startin
 pgrep -u "$LOGNAME" -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
 
 if [[ $LAPTOP ]] ; then
-    "$HOME"/.local/bin/checkupdates_custom &
     pgrep -u "$LOGNAME" -x blueman-applet > /dev/null || blueman-applet &
+    echo "16970" > /sys/class/backlight/intel_backlight/brightness
+    pactl set-sink-volume 0 80%
 fi
 
 bspc desktop -f 1
