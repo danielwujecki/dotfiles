@@ -57,7 +57,7 @@ file /usr/lib/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2                  
 file /usr/lib/libudev.so.1         /lib64/libudev.so.1                                   755 0 0
 file /usr/lib/libpthread.so.0      /lib64/libpthread.so.0                                755 0 0
 file /usr/lib/libm.so.6            /lib64/libm.so.6                                      755 0 0
-file /usr/lib/libgcc_s.so.1        /usr/lib/gcc/x86_64-pc-linux-gnu/11.2.1/libgcc_s.so.1 755 0 0
+file /usr/lib/libgcc_s.so.1        /usr/lib/gcc/x86_64-pc-linux-gnu/11.3.0/libgcc_s.so.1 755 0 0
 
 #
 # lvm added deps
