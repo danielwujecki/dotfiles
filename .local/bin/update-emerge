@@ -1,14 +1,42 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+NOSYNC=
+
+help() {
+    echo "usage: $0 [--nosync] [--help]"
+    echo "--nosync: do not sync with repositories before performing world update"
+}
+
+while [[ $# -gt 0 ]] ; do
+    case "$1" in
+        --nosync)
+            NOSYNC=1
+            shift
+            ;;
+        --help)
+            help
+            exit 0
+            ;;
+        *)
+            echo "invalid argument: '$1'"
+            help
+            exit 1
+            ;;
+    esac
+done
+
 if [[ $EUID -ne 0 ]] ; then
     echo "Please run as root"
     exit 1
 fi
 
-emaint sync -r gentoo <<< "yes"
-emaint sync -r guru
-emaint sync -r daniels-overlay
+if [[ -z $NOSYNC ]] ; then
+    emaint sync -r gentoo <<< "yes"
+    emaint sync -r guru
+    emaint sync -r daniels-overlay
+fi
+
 emerge -u1 portage
 emerge -avuDN @world
 emerge -ac --verbose=n

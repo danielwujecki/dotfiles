@@ -2,10 +2,8 @@
 set -euo pipefail
 
 #
-# constants and general checks
+# general checks
 #
-
-KEEP_VERS=3
 
 if [[ $# -ne 1 ]] ; then
     echo "Kernel version argument missing!"
@@ -19,15 +17,14 @@ if [[ $EUID -ne 0 ]] ; then
 fi
 
 #
-# set kernel version and change directory to source code
+# build variables
 #
 
-eselect kernel set "$1" || exit 1
-cd /usr/src/linux
+KEEP_VERS=3
 
-#
-# system and build variables
-#
+compiler=(CC=clang LLVM=1)
+parallel=(-j "$(nproc)" -l "$(nproc --ignore 1)")
+measure_time=(/usr/bin/time -f 'Compile time: %es' -o '/tmp/ktime.txt')
 
 arch="$(uname -m)"
 new_version="$(echo "$1" | sed s/linux-//g)"
@@ -35,11 +32,12 @@ new_version="$(echo "$1" | sed s/linux-//g)"
 new_build="y"
 [[ -f /boot/vmlinuz-$new_version ]] && new_build=
 
-jobs="$(nproc)"
-lavg="$(nproc --ignore 1)"
-parallel=(-j "$jobs" -l "$lavg")
+#
+# set kernel version and change directory to source code
+#
 
-measure_time=(/usr/bin/time -f 'Compile time: %es' -o '/tmp/ktime.txt')
+eselect kernel set "$1" || exit 1
+cd /usr/src/linux
 
 #
 # prepare initramfs files
@@ -57,7 +55,7 @@ sed 's/use_lvmetad = 1/use_lvmetad = 0/' /etc/lvm/lvm.conf > /usr/src/initramfs/
 if [[ ! -f /usr/src/linux/.config ]] ; then
     echo "zcat /proc/config.gz > /usr/src/linux/.config"
     zcat /proc/config.gz > /usr/src/linux/.config
-    make olddefconfig
+    make "${compiler[@]}" olddefconfig
 fi
 
 if mountpoint -q /tmp ; then
@@ -72,14 +70,14 @@ fi
 #
 
 make clean
-"${measure_time[@]}" make "${parallel[@]}" bzImage modules || exit 1
+"${measure_time[@]}" make "${compiler[@]}" "${parallel[@]}" bzImage modules || exit 1
 
 #
 # install and clean up
 #
 
 rm -rfv "/lib/modules/$new_version"
-make "${parallel[@]}" modules_install
+make "${compiler[@]}" "${parallel[@]}" modules_install
 emerge --ask=n @module-rebuild
 
 if [[ -n $KBUILD_OUTPUT ]] ; then

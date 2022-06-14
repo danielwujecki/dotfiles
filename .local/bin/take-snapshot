@@ -14,7 +14,7 @@ S_CREATED=
 N_KEEP="5"
 
 help() {
-    echo "usage: take-snapshot [--keep=<N>] [--force] [--cron] [--quiet] [--help]"
+    echo "usage: $0 [--keep=<N>] [--force] [--cron] [--quiet] [--help]"
     echo "--keep=<N> number of snapshots to keep; default is 7"
     echo "--force: new snapshot will be created, although there already is a snapshot created today"
     echo "--cron: new snapshot will only be create on the hour"
