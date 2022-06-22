@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.15.46-gentoo Kernel Configuration
+# Linux/x86 5.15.48-gentoo Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="clang version 14.0.4"
 CONFIG_GCC_VERSION=0

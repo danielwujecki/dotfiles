@@ -18,14 +18,6 @@
 ### To disable all password stores, use an empty list:
 # password-stores =
 ###
-### Set KWallet wallet used by Subversion. If empty or unset,
-### then the default network wallet will be used.
-# kwallet-wallet =
-###
-### Include PID (Process ID) in Subversion application name when
-### using KWallet. It defaults to 'no'.
-# kwallet-svn-application-name-with-pid = yes
-###
 ### Set ssl-client-cert-file-prompt to 'yes' to cause the client
 ### to prompt for a path to a client cert file when the server
 ### requests a client cert but no client cert file is found in the
@@ -38,7 +30,7 @@
 ### specified in the 'servers' file in your config directory
 ### and are documented there. Anything specified in this section 
 ### is overridden by settings specified in the 'servers' file.
-store-passwords = yes
+# store-passwords = no
 # store-auth-creds = no
 
 ### Section for configuring external helper applications.
@@ -51,6 +43,7 @@ store-passwords = yes
 ### Set diff-cmd to the absolute path of your 'diff' program.
 ###   This will override the compile-time default, which is to use
 ###   Subversion's internal diff implementation.
+# diff-cmd = diff_program (diff, gdiff, etc.)
 diff-cmd = colordiff
 ### Diff-extensions are arguments passed to an external diff
 ### program or to Subversion's internal diff implementation.
@@ -78,11 +71,12 @@ diff-cmd = colordiff
 ### is defined.  The command (or environment variable) may contain
 ### arguments, using standard shell quoting for arguments with
 ### spaces.  The command will be invoked as:
-###   <command> <hostname> svnserve -t
-### (If the URL includes a username, then the hostname will be
-### passed to the tunnel agent as <user>@<hostname>.)  If the
-### built-in ssh scheme were not predefined, it could be defined
-### as:
+###   <command> <hostinfo> svnserve -t
+### where <hostinfo> is the hostname part of the URL.  If the URL
+### specified a username and/or a port, those are included in the
+### <hostinfo> argument in the usual way: <user>@<hostname>:<port>.
+### If the built-in ssh scheme were not predefined, it could be
+### defined as:
 # ssh = $SVN_SSH ssh -q --
 ### If you wanted to define a new 'rsh' scheme, to be used with
 ### 'svn+rsh:' URLs, you could do so as follows:
