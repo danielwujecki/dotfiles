@@ -188,6 +188,10 @@ super + alt + u
 super + alt + d
     setxkbmap -layout de -model pc105 -variant nodeadkeys -option caps:escape
 
+# toggle thunderbird window with birdtray
+super + shift + m
+    birdtray -t
+
 # Pulse Audio controls
 XF86AudioRaiseVolume
     pulsemixer --change-volume +5

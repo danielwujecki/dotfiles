@@ -27,6 +27,10 @@ alias ...='cd ../../'
 # shortcuts
 [[ -x /usr/bin/ranger ]] && alias r='ranger'
 [[ -x /usr/bin/nvim && -x /usr/bin/fzf ]] && alias vf='nvim $(fzf)'
+if [[ -x /usr/bin/tmux ]] ; then
+    alias ta='tmux a'
+    alias tls='tmux ls'
+fi
 if [[ -x /usr/bin/systemctl ]] ; then
     alias suspend='systemctl suspend'
     alias hn='systemctl hibernate'
