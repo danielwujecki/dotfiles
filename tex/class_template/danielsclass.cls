@@ -153,6 +153,7 @@
 \newcommand{\sprod}[2]{\left\langle#1,#2\right\rangle}
 \newcommand{\pab}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\grad}[2]{\text{grad}_{#1} #2}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
 \DeclareMathOperator{\var}{var}
 \DeclareMathOperator*{\argmin}{argmin}
 

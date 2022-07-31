@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.15.47-gentoo Kernel Configuration
+# Linux/x86 5.15.51-gentoo Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="clang version 14.0.4"
 CONFIG_GCC_VERSION=0
@@ -5205,6 +5205,7 @@ CONFIG_CRYPTO_LIB_POLY1305_GENERIC=m
 CONFIG_CRYPTO_LIB_SHA256=y
 # end of Crypto library routines
 
+CONFIG_LIB_MEMNEQ=y
 CONFIG_CRC_CCITT=y
 CONFIG_CRC16=y
 CONFIG_CRC_T10DIF=y

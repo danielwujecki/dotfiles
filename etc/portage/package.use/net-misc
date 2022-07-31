@@ -1,1 +1,4 @@
 net-misc/spice-gtk usbredir
+
+# required by media-gfx/prusaslicer
+net-misc/curl adns

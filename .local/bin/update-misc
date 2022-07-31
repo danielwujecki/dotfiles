@@ -15,7 +15,7 @@ if [[ ! -x /bin/zsh ]] ; then
 fi
 
 if [[ -x /usr/bin/nvim ]] ; then
-    nvim -c "PlugUpgrade" -c "PlugUpdate" -c "quit" -c "quit" || exit 1
+    nvim -c "PlugUpgrade" -c "PlugUpdate" -c "quit" -c "quit"
 else
     echo -e "\n${RED}neovim not installed.${WHITE}\n"
 fi
@@ -34,7 +34,7 @@ if [[ -n ${PYENV_ROOT+x} && -d $PYENV_ROOT/.git ]] ; then
 fi
 
 if [[ -x $HOME/.miniconda3/bin/conda ]] ; then
-    zsh -c "eval $($HOME/.miniconda3/bin/conda shell.zsh hook); conda update -y --all" || exit 1
+    zsh -c "eval $($HOME/.miniconda3/bin/conda shell.zsh hook); conda update -y --all"
 else
     echo -e "\n${RED}Miniconda not installed.${WHITE}\n"
 fi
@@ -46,19 +46,23 @@ else
 fi
 
 if [[ -x $HOME/.emacs.d/bin/doom ]] ; then
-    doom -y upgrade || exit 1
+    pushd "$HOME/.emacs.d/"
+    git pull --rebase
+    doom clean
+    doom sync -u
+    popd > /dev/null
 else
     echo -e "\n${RED}Doom emacs not installed.${WHITE}\n"
 fi
 
 if [[ -x /usr/bin/flatpak ]] ; then
-    flatpak update --user -y || exit 1
+    flatpak update --user -y
 else
     echo -e "\n${RED}Flatpak not installed.${WHITE}\n"
 fi
 
 if [[ -d $HOME/.oh-my-zsh ]] ; then
-    zsh -c "source $HOME/.zshrc && omz update" || exit 1
+    zsh -c "source $HOME/.zshrc && omz update"
 else
     echo -e "\n${RED}Oh-my-zsh not installed.${WHITE}\n"
 fi

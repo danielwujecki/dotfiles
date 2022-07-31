@@ -20,7 +20,7 @@ QEMU_USER_TARGETS="${QEMU_TARGETS}"
 
 UNINSTALL_IGNORE="/bin /sbin /lib64 /usr/sbin /usr/lib64"
 
-EMERGE_DEFAULT_OPTS="--oneshot --verbose --ask --jobs=4 --load-average=7 --quiet-build=y"
+EMERGE_DEFAULT_OPTS="--oneshot --verbose --ask --jobs=1 --load-average=7 --quiet-build=y"
 LC_MESSAGES=C
 FEATURES="distcc userfetch"
 PORTDIR="/var/db/repos/gentoo"
