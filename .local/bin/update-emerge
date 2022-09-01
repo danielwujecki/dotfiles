@@ -39,8 +39,8 @@ fi
 
 emerge -u1 portage
 emerge -avuDN @world
-emerge -ac --verbose=n
 emerge -avt @preserved-rebuild
+emerge -ac --verbose=n
 dispatch-conf
 eclean-dist -d
 eix-update

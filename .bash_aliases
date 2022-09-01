@@ -17,10 +17,9 @@ fi
 # orte
 alias  ..='cd ../'
 alias ...='cd ../../'
-[[ -d ~/Dropbox ]]               && alias dbox='cd ~/Dropbox'
 [[ -d ~/Schreibtisch ]]          && alias des='cd ~/Schreibtisch'
 [[ -d ~/Repositories ]]          && alias repos='cd ~/Repositories'
-[[ -d ~/Dropbox/sose22 ]]        && alias sem='cd ~/Dropbox/sose22'
+[[ -d ~/Studium/sose22 ]]        && alias sem='cd ~/Studium/sose22'
 [[ -d ~/Dokumente/3dprinting ]]  && alias 3d='cd ~/Dokumente/3dprinting'
 [[ -d ~/Repositories/dotfiles ]] && alias dotf='cd ~/Repositories/dotfiles'
 
@@ -41,12 +40,6 @@ elif [[ -x /bin/loginctl ]] ; then
     alias hibernate='loginctl hibernate'
     alias reboot='loginctl reboot'
     alias poweroff='loginctl poweroff'
-fi
-if [[ -x /usr/bin/rclone && -d ~/Dropbox ]] ; then
-    alias dboxup='rclone sync -i ~/Dropbox Dropbox:/'
-    alias dboxdown='rclone sync -i Dropbox:/ ~/Dropbox'
-    alias dboxupf='rclone sync -P ~/Dropbox Dropbox:/'
-    alias dboxdownf='rclone sync -P Dropbox:/ ~/Dropbox'
 fi
 
 # programme
