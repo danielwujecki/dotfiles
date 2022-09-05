@@ -28,8 +28,8 @@ fi
 /usr/sbin/kexec -l "$KERNELPATH" --reuse-cmdline
 
 echo "Loaded kernel: '$KERNELPATH'"
-echo "Reboot in 3 seconds"
-for i in {3..1} ; do
+echo "Reboot in 2 seconds"
+for i in {2..1} ; do
     echo -n "$i.. "
     sleep 1
 done

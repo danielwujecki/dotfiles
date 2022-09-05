@@ -19,11 +19,10 @@ set -euo pipefail
 hostname_dest="daniel@abacus.fritz.box"
 rsync_flags=(-uahbHP --delete --backup-dir=/home/daniel/rsync_backup --rsh="ssh -p 22")
 
-rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Arduino      /home/daniel/
+rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Backups      /home/daniel/
 rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Bilder       /home/daniel/
 rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Dokumente    /home/daniel/
 rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Downloads    /home/daniel/
-rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Dropbox      /home/daniel/
 rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Musik        /home/daniel/
 rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Repositories /home/daniel/
 rsync "${rsync_flags[@]}" "$hostname_dest":/home/daniel/Schreibtisch /home/daniel/
