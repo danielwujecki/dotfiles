@@ -17,7 +17,6 @@ fi
 # orte
 alias  ..='cd ../'
 alias ...='cd ../../'
-[[ -d ~/Schreibtisch ]]          && alias des='cd ~/Schreibtisch'
 [[ -d ~/Repositories ]]          && alias repos='cd ~/Repositories'
 [[ -d ~/Studium/sose22 ]]        && alias sem='cd ~/Studium/sose22'
 [[ -d ~/Dokumente/3dprinting ]]  && alias 3d='cd ~/Dokumente/3dprinting'

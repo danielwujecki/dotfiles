@@ -1,25 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SYNCLIST="$HOME/.config/rclone/synclist.txt"
+declare -A SYNCLIST
+SYNCLIST['gdrive:cg_papers']="$HOME/Studium/masterarbeit/cg_papers"
+SYNCLIST['gdrive:klettern']="$HOME/Dokumente/klettern"
+SYNCLIST['gdrive:math_material']="$HOME/Studium/math_material"
+SYNCLIST['gdrive:sose22']="$HOME/Studium/sose22"
 
 YELLOW='\e[33m'
 WHITE='\e[0m'
 
 SYNC_UP=
 SYNC_DOWN=
-#RCLONE_FLAGS=(-i)
-RCLONE_FLAGS=(-P)
+RCLONE_FLAGS=(-i)
 
 usage() {
-    #echo "usage: gdrive up|down [--fast]"
-    echo "usage: gdrive up|down"
+    echo "usage: gdrive up|down [--fast]"
 }
-
-if [[ ! -f $SYNCLIST ]] ; then
-    echo "Synclist not found: $SYNCLIST"
-    exit 1
-fi
 
 while [[ $# -gt 0 ]] ; do
     case "$1" in
@@ -41,10 +38,10 @@ while [[ $# -gt 0 ]] ; do
             SYNC_DOWN=1
             shift
             ;;
-        #--fast)
-        #    RCLONE_FLAGS=(-P)
-        #    shift
-        #    ;;
+        --fast)
+            RCLONE_FLAGS=(-P)
+            shift
+            ;;
         *)
             echo "Invalid argument: '$1'"
             usage
@@ -53,25 +50,27 @@ while [[ $# -gt 0 ]] ; do
     esac
 done
 
-echo -e "${YELLOW}Using synclist: '$SYNCLIST'${WHITE}"
-
 cd "$HOME"
-while read -r SRC DST ; do
-    [[ -n $SRC ]] || continue
+
+for DST in "${!SYNCLIST[@]}" ; do
+    SRC="${SYNCLIST[$DST]}"
+
     if [[ ! -e $SRC ]] || grep -ivq '\S\+:' <<< "$DST" ; then
         echo "Synclist faulty entry."
         exit 1
     fi
 
     if [[ -n $SYNC_UP ]] ; then
-        echo -e "${YELLOW}Syncing '$SRC' to '$DST'.${WHITE}"
+        echo -e "${YELLOW}Syncing${WHITE} $SRC ${YELLOW}to${WHITE} $DST${YELLOW}.${WHITE}"
         rclone sync "${RCLONE_FLAGS[@]}" "$SRC" "$DST"
+
     elif [[ -n $SYNC_DOWN ]] ; then
-        echo -e "${YELLOW}Syncing '$DST' to '$SRC'.${WHITE}"
+        echo -e "${YELLOW}Syncing${WHITE} $DST ${YELLOW}to${WHITE} $SRC${YELLOW}.${WHITE}"
         rclone sync "${RCLONE_FLAGS[@]}" "$DST" "$SRC"
+
     else
-        echo "Neither specified 'up' or 'down'."
+        echo -e "${YELLOW}Neither specified 'up' or 'down'!${WHITE}"
         usage
         exit 1
     fi
-done <<< "$(egrep -v '^\s*#' "$SYNCLIST")"
+done
