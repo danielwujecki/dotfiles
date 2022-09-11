@@ -4,7 +4,7 @@ set -euo pipefail
 if [[ "$#" -ge 1 ]] ; then
     wp_path="$1"
 else
-    wp_dir="$HOME/Bilder/Wallpaper/selected"
+    wp_dir="$HOME/Bilder/wallpaper/selected"
     wp_path=""
 
     [[ -d $wp_dir ]] || exit 1

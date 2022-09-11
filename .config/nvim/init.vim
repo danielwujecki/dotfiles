@@ -90,9 +90,9 @@ nmap <C-l> :!latexmk %<Return>
 if !exists('g:vscode')
 
   call plug#begin('~/.vim/plugged')
-    Plug 'aonemd/kuroi.vim'
+    "Plug 'aonemd/kuroi.vim'
     Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+    "Plug 'vim-airline/vim-airline-themes'
 
     Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
     Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' }
@@ -110,19 +110,20 @@ if !exists('g:vscode')
   let NERDTreeShowHidden=1
 
   " airline settings
-  let g:airline_theme = "hybrid"
+  "let g:airline_theme = "hybrid"
   let g:airline_symbols_ascii=1
   let g:airline#extensions#tabline#enabled=1
 
-  if (has("nvim"))
-      if (has("termguicolors"))
-        set termguicolors
-      endif
+  "if (has("nvim"))
+  "    if (has("termguicolors"))
+  "      set termguicolors
+  "    endif
 
-    set background=dark
-    colorscheme kuroi
-  else
-      colorscheme peachpuff
-  endif
+  "  set background=dark
+  "  colorscheme kuroi
+  "else
+  "    colorscheme peachpuff
+  "endif
+  colorscheme peachpuff
 
 endif " !exists('g:vscode')
