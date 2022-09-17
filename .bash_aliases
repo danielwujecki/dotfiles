@@ -18,7 +18,7 @@ fi
 alias  ..='cd ../'
 alias ...='cd ../../'
 [[ -d ~/Repositories ]]          && alias repos='cd ~/Repositories'
-[[ -d ~/Studium/sose22 ]]        && alias sem='cd ~/Studium/sose22'
+[[ -d ~/Studium/sose22/ana2 ]]   && alias sem='cd ~/Studium/sose22/ana2'
 [[ -d ~/Dokumente/3dprinting ]]  && alias 3d='cd ~/Dokumente/3dprinting'
 [[ -d ~/Repositories/dotfiles ]] && alias dotf='cd ~/Repositories/dotfiles'
 

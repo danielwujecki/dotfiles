@@ -15,7 +15,7 @@ SYNC_DOWN=
 RCLONE_FLAGS=(-i)
 
 usage() {
-    echo "usage: gdrive up|down [--fast]"
+    echo "usage: gdrive up|down [-y|--fast]"
 }
 
 while [[ $# -gt 0 ]] ; do
@@ -38,7 +38,7 @@ while [[ $# -gt 0 ]] ; do
             SYNC_DOWN=1
             shift
             ;;
-        --fast)
+        -y|--fast)
             RCLONE_FLAGS=(-P)
             shift
             ;;

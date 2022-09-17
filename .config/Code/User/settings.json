@@ -11,12 +11,10 @@
     "python.jediEnabled": true,
     "python.linting.pylintArgs": [
         "--disable=C0111,C0301,C0103",
-        // "--extension-pkg-whitelist=cv2",
         "--generated-members=torch.*,cv2.*"
     ],
-    "[python]": {},
     "cSpell.language": "de,en,de-DE",
-    "latex-workshop.view.pdf.external.viewer.command": "xreader",
+    "latex-workshop.view.pdf.external.viewer.command": "zathura",
     "cSpell.enabledLanguageIds": [
         "asciidoc",
         "c",
@@ -51,14 +49,9 @@
         "yml"
     ],
     "editor.wordWrap": "on",
-    "editor.fontSize": 15,
+    "editor.fontSize": 14,
     "editor.lineNumbers": "relative",
     "python.terminal.executeInFileDir": true,
-    "cSpell.userWords": [
-        "aufbewart",
-        "imshow",
-        "PYTHONPATH"
-    ],
     "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
     "keyboard.dispatch": "keyCode",
     "go.formatTool": "goimports",
@@ -88,5 +81,8 @@
     "julia.enableTelemetry": false,
     "workbench.colorCustomizations": {
         "[Material Theme Darker High Contrast]": {}
-    }
+    },
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.latex.recipe.default": "lastUsed"
 }
