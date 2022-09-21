@@ -68,11 +68,13 @@
 %\setmainfont{Calibri}
 
 % legacy fonts
-%\RequirePackage[utf8]{inputenc} % not needed for XeLaTeX
+%\RequirePackage[utf8]{inputenc}
 %\RequirePackage[T1]{fontenc}
 %\RequirePackage[sc,osf]{mathpazo}
 
+%
 % misc packages
+%
 
 % BibLateX
 %\RequirePackage{csquotes}
@@ -118,9 +120,6 @@
 %\RequirePackage{overpic}
 \RequirePackage{graphicx}
 \RequirePackage[section]{placeins}
-
-\graphicspath{{imgs/}}
-\setcounter{topnumber}{1}
 
 %\RequirePackage{tabularx}
 %\RequirePackage{array}
@@ -183,6 +182,10 @@
 %
 % document settings
 %
+
+\graphicspath{{imgs/}}
+\setcounter{topnumber}{1}
+\setcounter{tocdepth}{2}
 
 \newcommand{\mytitle}{Dokument}
 \newcommand{\mysubtitle}{Mit XeLaTeX erzeugt}

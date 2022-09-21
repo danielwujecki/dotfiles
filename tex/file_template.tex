@@ -15,7 +15,7 @@
 %\KOMAoptions{chapterprefix}
 %\KOMAoptions{bibliography=totocnumbered}
 %\KOMAoptions{egregdoesnotlikesansseriftitles}
-\ifdraft\KOMAoptions{draft}\fi
+\ifdraft\KOMAoptions{draft=true}\fi
 
 %
 % general packages
@@ -111,9 +111,6 @@
 \usepackage{graphicx}
 \usepackage[section]{placeins}
 
-\graphicspath{{imgs/}}
-\setcounter{topnumber}{1}
-
 %\usepackage{tabularx}
 %\usepackage{array}
 %\usepackage{booktabs}
@@ -141,6 +138,7 @@
 \newcommand{\QQ}{\mathbb{R}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\CC}{\mathbb{C}}
+\newcommand{\KK}{\mathbb{K}}
 \renewcommand{\d}[1][x]{\,\mathrm{d}#1}
 \newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
 \newcommand{\Set}[2]{\left\lbrace#1\mid#2\right\rbrace}
@@ -178,6 +176,10 @@
 %
 % document settings
 %
+
+\graphicspath{{imgs/}}
+\setcounter{topnumber}{1}
+\setcounter{tocdepth}{2}
 
 \newcommand{\mytitle}{Dokument}
 \newcommand{\mysubtitle}{Mit XeLaTeX erzeugt}
