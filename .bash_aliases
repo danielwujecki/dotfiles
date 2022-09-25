@@ -18,8 +18,8 @@ fi
 alias  ..='cd ../'
 alias ...='cd ../../'
 [[ -d ~/Repositories ]]          && alias repos='cd ~/Repositories'
+[[ -d ~/Studium/masterarbeit ]]  && alias ma='cd ~/Studium/masterarbeit'
 [[ -d ~/Studium/sose22/ana2 ]]   && alias sem='cd ~/Studium/sose22/ana2'
-[[ -d ~/Dokumente/3dprinting ]]  && alias 3d='cd ~/Dokumente/3dprinting'
 [[ -d ~/Repositories/dotfiles ]] && alias dotf='cd ~/Repositories/dotfiles'
 
 # shortcuts
