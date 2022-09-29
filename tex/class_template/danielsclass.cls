@@ -183,7 +183,7 @@
 % document settings
 %
 
-\graphicspath{{imgs/}}
+\graphicspath{{img/}}
 \setcounter{topnumber}{1}
 \setcounter{tocdepth}{2}
 

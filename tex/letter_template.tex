@@ -1,0 +1,45 @@
+\documentclass[
+    a4paper,
+    11pt,
+    version=last,
+    parskip=half,
+    fromphone=false,
+    fromemail=true,
+    backaddress=off,
+]{scrlttr2}
+\LoadLetterOption{DIN5008A}
+
+\usepackage[english, main=ngerman]{babel}
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{hyphenat}
+%\usepackage{hyperref}
+%\usepackage{pdfpages}
+%\usepackage{csquotes}
+%\usepackage{graphicx}
+
+\begin{document}
+
+\setkomavar{fromname}{Daniel Wujecki}
+\setkomavar{fromaddress}{Wielandstraße 4\\14656 Brieselang}
+\setkomavar{signature}{Daniel Wujecki}
+\setkomavar{fromphone}{+49 1512 1693101}
+\setkomavar{fromemail}{daniel.wujecki@gmail.com}
+
+\setkomavar{subject}{BETREFF}
+
+\begin{letter}{
+    Herr Max Mustermann \\
+    Musterstra"se 30 \\
+    12345 Musterstadt
+}
+
+\opening{Sehr geehrte Damen und Herren,}
+
+bla bla bla
+
+\closing{Mit freundlichen Grüßen}
+
+\end{letter}
+
+\end{document}

@@ -83,6 +83,5 @@
         "[Material Theme Darker High Contrast]": {}
     },
     "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
-    "latex-workshop.latex.autoClean.run": "onBuilt",
     "latex-workshop.latex.recipe.default": "lastUsed"
 }
