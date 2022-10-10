@@ -1,0 +1,2 @@
+# required by app-editors/neovim
+dev-lua/luv ~amd64

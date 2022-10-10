@@ -5,3 +5,6 @@ media-libs/qhull static-libs
 
 # required by www-client/firefox
 media-libs/libvpx postproc
+
+# required by media-gfx/blender
+media-libs/freetype brotli
