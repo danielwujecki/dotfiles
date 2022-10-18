@@ -2,12 +2,18 @@
 
 # wichtigstes kommmando auf dem terminal - ls
 if [[ -x /usr/bin/exa ]] ; then
-    alias ll='exa -Hglam --git --color=auto --group-directories-first'
+    alias ll='exa -Hglm --git --color=auto --group-directories-first'
+    alias la='ll -a'
     alias lll='ll'
     alias llll='ll'
     alias tree='exa -Ta'
 else
     alias ll='ls -lAh --color=auto --group-directories-first'
+    alias lla='ll -a'
+fi
+if [[ -x /usr/bin/lsd ]] ; then
+    alias lo='lsd -lh --group-dirs first'
+    alias lp='lo -A'
 fi
 
 # damit jeder alias auch als root funktioniert

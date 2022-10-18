@@ -111,10 +111,7 @@ pgrep -u "$LOGNAME" -x dunst > /dev/null || dunst &
 pgrep -u "$LOGNAME" -x lxpolkit > /dev/null || lxpolkit &
 pgrep -u "$LOGNAME" -x birdtray > /dev/null || birdtray &
 pgrep -u "$LOGNAME" -x nm-applet > /dev/null || nm-applet &
-pgrep -u "$LOGNAME" -x emacs > /dev/null || emacs --daemon &
 pgrep -u "$LOGNAME" -x redshift-gtk > /dev/null || redshift-gtk &
-pgrep -u "$LOGNAME" -x element-desktop > /dev/null || element-desktop --hidden &
-pgrep -u "$LOGNAME" -x telegram-desktop > /dev/null || telegram-desktop -startintray &
 pgrep -u "$LOGNAME" -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
 
 if [[ $LAPTOP ]] ; then

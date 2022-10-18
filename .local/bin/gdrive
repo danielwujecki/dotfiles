@@ -5,7 +5,7 @@ declare -A SYNCLIST
 SYNCLIST['gdrive:cg_papers']="$HOME/Studium/masterarbeit/cg_papers"
 SYNCLIST['gdrive:klettern']="$HOME/Dokumente/klettern"
 SYNCLIST['gdrive:math_material']="$HOME/Studium/math_material"
-SYNCLIST['gdrive:sose22']="$HOME/Studium/sose22"
+#SYNCLIST['gdrive:sose22']="$HOME/Studium/sose22"
 
 YELLOW='\e[33m'
 WHITE='\e[0m'
