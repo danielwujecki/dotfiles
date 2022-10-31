@@ -25,12 +25,11 @@ alias  ..='cd ../'
 alias ...='cd ../../'
 [[ -d ~/Repositories ]]          && alias repos='cd ~/Repositories'
 [[ -d ~/Studium/masterarbeit ]]  && alias ma='cd ~/Studium/masterarbeit'
-[[ -d ~/Studium/sose22/ana2 ]]   && alias sem='cd ~/Studium/sose22/ana2'
+[[ -d ~/Studium/wise2223 ]]      && alias sem='cd ~/Studium/wise2223'
 [[ -d ~/Repositories/dotfiles ]] && alias dotf='cd ~/Repositories/dotfiles'
 
 # shortcuts
 [[ -x /usr/bin/ranger ]] && alias r='ranger'
-[[ -x /usr/bin/nvim && -x /usr/bin/fzf ]] && alias vf='nvim $(fzf)'
 if [[ -x /usr/bin/tmux ]] ; then
     alias ta='tmux a'
     alias tls='tmux ls'
@@ -48,11 +47,14 @@ elif [[ -x /bin/loginctl ]] ; then
 fi
 
 # programme
-alias rm='rm -I'
 alias mv='mv -i'
+alias rm='rm -I'
+alias rd='rmdir'
+alias md='mkdir -p'
+alias grep='grep --color=auto'
+alias egrep='grep -E --color=auto'
 [[ -x /usr/bin/fd ]]        && alias fd='fd -iIH'
 [[ -x /usr/bin/rg ]]        && alias rg='rg --hidden'
-[[ -x /usr/bin/xclip ]]     && alias xclip='xclip -sel c'
 [[ -x /usr/bin/pwgen ]]     && alias pwgen='pwgen -cns 14 1'
 [[ -x /usr/bin/colordiff ]] && alias diff='colordiff'
 if [[ -x /usr/bin/nvim ]] ; then

@@ -1,0 +1,2 @@
+# required by www-client/firefox
+sys-devel/lld ~amd64

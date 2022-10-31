@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ ! -x /usr/bin/xclip ]] ; then
+    echo "xclip not installed!"
+    exit 1
+fi
+
+xclip -selection clipboard -out
