@@ -76,7 +76,8 @@ bspc config automatic_scheme          longest_side
 
 bspc config border_width              3
 bspc config split_ratio               0.5
-bspc config window_gap                10
+bspc config window_gap                0
+#bspc config window_gap                10
 
 bspc config borderless_monocle        false
 bspc config gapless_monocle           true

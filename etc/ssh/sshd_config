@@ -123,7 +123,7 @@ AcceptEnv LANG LC_ALL LC_COLLATE LC_CTYPE LC_MESSAGES LC_MONETARY LC_NUMERIC LC_
 AcceptEnv COLORTERM
 
 allowusers daniel
-allowusers root@192.168.178.23
+allowusers root@192.168.178.36
 
 match address 192.168.178.0/24
     passwordauthentication yes

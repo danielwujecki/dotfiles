@@ -294,7 +294,7 @@ c.JupyterApp.answer_yes = True
 
 ## The IP address the notebook server will listen on.
 #  Default: 'localhost'
-c.NotebookApp.ip = '*'
+c.NotebookApp.ip = 'localhost'
 
 ## Supply extra arguments that will be passed to Jinja environment.
 #  Default: {}
