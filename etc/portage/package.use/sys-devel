@@ -1,2 +1,2 @@
-# required by virtual/fortran
-sys-devel/gcc fortran
+# +fortran required by virtual/fortran
+sys-devel/gcc fortran jit

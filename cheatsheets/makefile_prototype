@@ -1,0 +1,17 @@
+CXX = g++
+CPPFLAGS = -std=c++11 -Wall -Wextra -Werror -Wfloat-equal -pedantic
+OPTIMIZE = -O2 -march=native
+DEBUG = -O0 -ggdb3
+
+.PHONY: all clean
+
+all: target
+
+%.o: %.cpp %.h
+	$(CXX) -c $(CPPFLAGS) $(OPTIMIZE) -o $@ $<
+
+target: helloworld.o more.o
+	$(CXX) $(CPPFLAGS) $(OPTIMIZE) -o $@ $<
+
+clean:
+	rm -rf *.o target
