@@ -22,7 +22,8 @@ fi
 
 KEEP_VERS=3
 
-compiler=(CC=clang LLVM=1)
+#compiler=(CC=clang LLVM=1)
+compiler=(CC=gcc)
 parallel=(-j "$(nproc)" -l "$(nproc --ignore 1)")
 measure_time=(/usr/bin/time -f 'Compile time: %es' -o '/tmp/ktime.txt')
 

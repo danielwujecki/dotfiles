@@ -2,16 +2,22 @@
 set -euo pipefail
 
 NOSYNC=
+NOEST=
 
 help() {
-    echo "usage: $0 [--nosync] [--help]"
+    echo "usage: $0 [--nosync] [--noest] [--help]"
     echo "--nosync: do not sync with repositories before performing world update"
+    echo "--noest: do not estimate emerge time"
 }
 
 while [[ $# -gt 0 ]] ; do
     case "$1" in
         --nosync)
             NOSYNC=1
+            shift
+            ;;
+        --noest)
+            NOEST=1
             shift
             ;;
         --help)
@@ -26,6 +32,21 @@ while [[ $# -gt 0 ]] ; do
     esac
 done
 
+if [[ ! -x /usr/bin/emerge ]] ; then
+    echo "/usr/bin/emerge not found."
+    exit 1
+fi
+
+if [[ ! -x /usr/sbin/emaint ]] ; then
+    echo "/usr/sbin/emaint not found."
+    exit 1
+fi
+
+if [[ ! -x /usr/bin/genlop ]] ; then
+    echo "/usr/bin/genlop not found."
+    exit 1
+fi
+
 if [[ $EUID -ne 0 ]] ; then
     echo "Please run as root"
     exit 1
@@ -38,9 +59,15 @@ if [[ -z $NOSYNC ]] ; then
 fi
 
 emerge -u1 portage
+
+if [[ -z $NOEST ]] ; then
+    emerge -avuDNp @world 2> /dev/null | genlop -p 2> /dev/null | grep --color=never -i 'estimated update time' || true
+fi
 emerge -avuDN @world
+
 emerge -avt @preserved-rebuild
 emerge -ac --verbose=n
+
 dispatch-conf
 eclean-dist -d
 eix-update
