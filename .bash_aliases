@@ -8,8 +8,8 @@ if [[ -x /usr/bin/exa ]] ; then
     alias llll='ll'
     alias tree='exa -Ta'
 else
-    alias ll='ls -lAh --color=auto --group-directories-first'
-    alias lla='ll -a'
+    alias ll='ls -lh --color=auto --group-directories-first'
+    alias la='ll -A'
 fi
 if [[ -x /usr/bin/lsd ]] ; then
     alias lo='lsd -lh --group-dirs first'
@@ -85,10 +85,13 @@ if [[ -f /home/daniel/.pyenv/versions/mypython/bin/activate ]] ; then
 fi
 
 # misc
+[[ -f /etc/portage/make.conf ]] && alias make.conf='doas nvim /etc/portage/make.conf'
+
+if [[ -x $HOME/.miniconda3/bin/conda ]] ; then
+    alias conda_init='eval "$($HOME/.miniconda3/bin/conda shell.zsh hook)"'
+fi
+
 if [[ -x /usr/bin/curl ]] ; then
     alias wetter='curl "wttr.in/Berlin?lang=de"'
     alias myip='curl "ifconfig.me/all"'
-fi
-if [[ -x $HOME/.miniconda3/bin/conda ]] ; then
-    alias conda_init='eval "$($HOME/.miniconda3/bin/conda shell.zsh hook)"'
 fi

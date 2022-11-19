@@ -117,8 +117,10 @@ pgrep -u "$LOGNAME" -x xautolock > /dev/null || xautolock -detectsleep -time 10 
 
 if [[ $LAPTOP ]] ; then
     pgrep -u "$LOGNAME" -x blueman-applet > /dev/null || blueman-applet &
-    echo '16970' > /sys/class/backlight/intel_backlight/brightness
-    pactl set-sink-volume 0 80%
+    bluetoothctl power off &
+
+    echo '16970' > /sys/class/backlight/intel_backlight/brightness &
+    pactl set-sink-volume 0 80% &
 fi
 
 bspc desktop -f 1
