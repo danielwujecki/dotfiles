@@ -113,6 +113,7 @@ pgrep -u "$LOGNAME" -x lxpolkit > /dev/null || lxpolkit &
 pgrep -u "$LOGNAME" -x birdtray > /dev/null || birdtray &
 pgrep -u "$LOGNAME" -x nm-applet > /dev/null || nm-applet &
 pgrep -u "$LOGNAME" -x redshift-gtk > /dev/null || redshift-gtk &
+pgrep -u "$LOGNAME" -x telegram-desktop > /dev/null || telegram-desktop -startintray &
 pgrep -u "$LOGNAME" -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
 
 if [[ $LAPTOP ]] ; then

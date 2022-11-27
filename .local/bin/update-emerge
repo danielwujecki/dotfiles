@@ -61,7 +61,9 @@ fi
 emerge -u1 portage
 
 if [[ -z $NOEST ]] ; then
-    emerge -avuDNp @world 2> /dev/null | genlop -p 2> /dev/null | grep --color=never -i 'estimated update time' || true
+    emerge -avuDNp @world 2> /dev/null | genlop -p 2> /dev/null \
+        | grep --color=never -i 'estimated update time' \
+        || echo "Emerge time can't be estimated."
 fi
 emerge -avuDN @world
 

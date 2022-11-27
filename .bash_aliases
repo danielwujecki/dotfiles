@@ -55,7 +55,6 @@ alias grep='grep --color=auto'
 alias egrep='grep -E --color=auto'
 [[ -x /usr/bin/fd ]]        && alias fd='fd -iIH'
 [[ -x /usr/bin/rg ]]        && alias rg='rg --hidden'
-[[ -x /usr/bin/pwgen ]]     && alias pwgen='pwgen -cns 14 1'
 [[ -x /usr/bin/colordiff ]] && alias diff='colordiff'
 if [[ -x /usr/bin/nvim ]] ; then
     alias vi='nvim'
