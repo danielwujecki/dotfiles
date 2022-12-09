@@ -5,9 +5,8 @@ set -euo pipefail
 # general checks
 #
 
-if [[ $# -ne 1 ]] ; then
-    echo "Kernel version argument missing!"
-    eselect kernel list
+if [[ $# -gt 1 ]] ; then
+    echo "To many arguments!"
     exit 1
 fi
 
@@ -17,27 +16,36 @@ if [[ $EUID -ne 0 ]] ; then
 fi
 
 #
-# build variables
+# set variables
 #
 
 KEEP_VERS=3
+if [[ $# -eq 1 ]] ; then
+    version_long="$1"
+else
+    version_long="$(eselect kernel list | awk '/linux/ { print $2 }' | sort -V | tail -n1)"
+fi
+version_short="$(echo "$version_long" | sed s/linux-//g)"
 
+new_build="y"
+[[ -f /boot/vmlinuz-$version_short ]] && new_build=
+
+arch="$(uname -m)"
 #compiler=(CC=clang LLVM=1)
 compiler=(CC=gcc)
 parallel=(-j "$(nproc)" -l "$(nproc --ignore 1)")
 measure_time=(/usr/bin/time -f 'Compile time: %es' -o '/tmp/ktime.txt')
 
-arch="$(uname -m)"
-new_version="$(echo "$1" | sed s/linux-//g)"
-
-new_build="y"
-[[ -f /boot/vmlinuz-$new_version ]] && new_build=
-
 #
 # set kernel version and change directory to source code
 #
 
-eselect kernel set "$1" || exit 1
+if ! eselect kernel list | grep -q "$version_long" ; then
+    echo "Kernel version doesn't exists: $version_long"
+    eselect kernel list
+    exit 1
+fi
+eselect kernel set "$version_long"
 cd /usr/src/linux
 
 #
@@ -71,22 +79,22 @@ fi
 #
 
 make clean
-"${measure_time[@]}" make "${compiler[@]}" "${parallel[@]}" bzImage modules || exit 1
+"${measure_time[@]}" make "${compiler[@]}" "${parallel[@]}" bzImage modules
 
 #
 # install and clean up
 #
 
-rm -rfv "/lib/modules/$new_version"
+rm -rfv "/lib/modules/$version_short"
 make "${compiler[@]}" "${parallel[@]}" modules_install
 emerge --ask=n @module-rebuild
 
 if [[ -n $KBUILD_OUTPUT ]] ; then
-    cp "$KBUILD_OUTPUT/arch/$arch/boot/bzImage" "/boot/vmlinuz-$new_version"
+    cp "$KBUILD_OUTPUT/arch/$arch/boot/bzImage" "/boot/vmlinuz-$version_short"
     cp "$KBUILD_OUTPUT"/.config /usr/src/linux/.config
     rm -r "$KBUILD_OUTPUT"
 else
-    cp "/usr/src/linux/arch/$arch/boot/bzImage" "/boot/vmlinuz-$new_version"
+    cp "/usr/src/linux/arch/$arch/boot/bzImage" "/boot/vmlinuz-$version_short"
 fi
 
 #
@@ -97,7 +105,7 @@ if [[ -n $new_build ]] ; then
     echo -e "\nRemoving old kernel versions..."
     find /boot        -maxdepth 1 -name 'vmlinuz-*' -type f | sort -V | head -n "-$KEEP_VERS" | xargs rm -fv
     find /usr/src     -maxdepth 1 -name 'linux-*'   -type d | sort -V | head -n "-$KEEP_VERS" | xargs rm -rfv
-    find /lib/modules -maxdepth 1 -name '*-gentoo*'  -type d | sort -V | head -n "-$KEEP_VERS" | xargs rm -rfv
+    find /lib/modules -maxdepth 1 -name '*-gentoo*' -type d | sort -V | head -n "-$KEEP_VERS" | xargs rm -rfv
 
     vgs | grep -q 'vg0' && vgchange -an vg0
     grub-mkconfig -o /boot/grub/grub.cfg

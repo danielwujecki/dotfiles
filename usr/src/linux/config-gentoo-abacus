@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.15.79-gentoo Kernel Configuration
+# Linux/x86 5.15.82-gentoo Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Gentoo 11.3.0 p7) 11.3.0"
 CONFIG_CC_IS_GCC=y
@@ -1028,6 +1028,7 @@ CONFIG_INET_ESP=m
 # CONFIG_INET_ESP_OFFLOAD is not set
 # CONFIG_INET_ESPINTCP is not set
 # CONFIG_INET_IPCOMP is not set
+CONFIG_INET_TABLE_PERTURB_ORDER=16
 CONFIG_INET_TUNNEL=y
 # CONFIG_INET_DIAG is not set
 # CONFIG_TCP_CONG_ADVANCED is not set

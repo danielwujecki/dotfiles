@@ -2,26 +2,13 @@
 Version=1.0
 Name=Firefox Plain
 GenericName=Web Browser
-GenericName[de]=Webbrowser
-Comment=Browse the World Wide Web
-Comment[de]=Im Internet surfen
-Keywords=Internet;WWW;Browser;Web;Explorer
-Keywords[de]=Internet;WWW;Browser;Web;Explorer;Webseite;Site;surfen;online;browsen
-Exec=/usr/lib/firefox/firefox -P plain-fox %u
+Comment=Browse the Web
+Exec=firefox -P plain-fox %u
 Icon=firefox
 Terminal=false
-X-MultipleArgs=false
 Type=Application
-MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
+MimeType=application/pdf;application/vnd.mozilla.xul+xml;application/xhtml+xml;text/html;text/mml;text/xml;x-scheme-handler/http;x-scheme-handler/https;
 StartupNotify=true
-StartupWMClass=firefox
 Categories=Network;WebBrowser;
-Actions=new-window;new-private-window;
-
-[Desktop Action new-window]
-Name=New Window
-Name[de]=Neues Fenster
-Name[en_GB]=New Window
-Name[en_US]=New Window
-Name[en_ZA]=New Window
-Exec=/usr/lib/firefox/firefox --new-window %u
+Keywords=web;browser;internet;
+Actions=new-window;new-private-window;profile-manager-window;
