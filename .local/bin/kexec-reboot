@@ -26,13 +26,17 @@ if [[ $EUID -ne 0 ]] ; then
 fi
 
 /usr/sbin/kexec -l "$KERNELPATH" --reuse-cmdline
-
 echo "Loaded kernel: '$KERNELPATH'"
-echo "Reboot in 2 seconds"
-for i in {2..1} ; do
-    echo -n "$i.. "
-    sleep 1
-done
-echo ""
+
+#echo "Reboot in 2 seconds"
+#for i in {2..1} ; do
+#    echo -n "$i.. "
+#    sleep 1
+#done
+#echo ""
+
+echo "Wait a second until reboot..."
+sleep 1
+echo "reboot"
 
 /sbin/reboot

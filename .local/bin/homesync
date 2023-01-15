@@ -9,7 +9,6 @@ SYNCLIST=(
     "$HOME/Musik"
     "$HOME/Repositories"
     "$HOME/Studium"
-    "$HOME/Videos"
 )
 
 HOSTNAME_DEST="daniel@abacus.fritz.box"
