@@ -102,7 +102,7 @@ if !exists('g:vscode')
     "Plug 'jreybert/vimagit'
     "Plug 'airblade/vim-gitgutter'
 
-    Plug 'sheerun/vim-polyglot'
+    "Plug 'sheerun/vim-polyglot'
   call plug#end()
 
   map <C-n> :NERDTreeToggle<Return>
