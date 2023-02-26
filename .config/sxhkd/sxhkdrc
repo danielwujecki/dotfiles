@@ -165,8 +165,8 @@ super + o
 super + shift + o
     { loginctl suspend || systemctl suspend } && betterlockscreen -l dimblur
 
-super + alt + o
-    { loginctl hibernate || systemctl hibernate } && betterlockscreen -l dimblur
+#super + alt + o
+#    { loginctl hibernate || systemctl hibernate } && betterlockscreen -l dimblur
 
 # screenshot
 super + Print

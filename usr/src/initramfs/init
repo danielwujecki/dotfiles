@@ -1,13 +1,23 @@
 #!/usr/bin/busybox ash
+#
+# author: daniel w.
+
+VERSION="0.2"
 
 ascii_logo() {
-    LOGO="H4sIAAAAAAAAA5VRy47DIAy88xVWOWRVlZ1bb5W6ym9YQuljpUhNIzXtjY/fGJYYdpVDHSDYY88Y
-          MLQY2Oh+u1Vvdma3ykD6cZkISVhAVtq8gsuI4vIpOeLgQiOHJVHWhKY9Z2oQKKNGeWLkV7Bsjgs0
-          syt3zo5M0Fay5N/2sBAb7xFHNKTJPs03zeh7iPnDzheR0WNPsMWj0axBwVrQql26e3+9NRP19/75
-          6IbvqdQ4NME5Xi0mcv+sblGUbeM+V8qPX6fu/Jro2I7DMF7Gx7UuZxu8HFQYUEMUMB/vgyyFDdVQ
-          C9o5JzdtzA8nM11ezwIAAA=="
+    HOST="$(/usr/bin/busybox uname -n)"
+    KERNEL="$(/usr/bin/busybox uname -o) $(/usr/bin/busybox uname -r)"
+    BUILD_DATE="$(/usr/bin/busybox uname -v | /usr/bin/busybox sed 's|.*SMP ||')"
 
-    echo "$LOGO" | sed 's/ //g' | base64 -d | gzip -d | cat
+    LOGO="H4sICNEs8mMAA2xvZ28udHh0AJVRywrCMBC85ysWc6iIcW/eBEULgqKg4mkhKCoUfICvUz7ePEw3
+          kV6cJml2ZzM7bQTUQBK873Q4soENswoML0oL0RXUJLFsXJHSDPPuYXH0g5IeMe0K3RrYsKcojYAQ
+          WcE6PvNtmJqjhI3qrB2rvRKyldjy1x7WwkJr9MMDwyQd5p8QfB8OetDVSeamsQ8os39Z47C7Vsdz
+          8YDqWj3vu8vpAe9tuUqOWz9gpMTG46oZqZ9BYZRqbg7D6XK9yc27PrJQvTxL0mj3ZZaA3MmsXC3K
+          eV4NBq3tNkgwrZzYv6rzAYYwGW3K/MwYoauUuwYhPm7xpO7sAgAA"
+
+    echo "$LOGO" | sed 's| ||g' | base64 -d | gzip -d | \
+        sed "s|VER|$VERSION|" | sed "s|HOST|$HOST|" | \
+        sed "s|KERNEL|$KERNEL|" | sed "s|DATE|$BUILD_DATE|" | cat
 }
 
 launch_shell() {
