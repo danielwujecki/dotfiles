@@ -26,24 +26,24 @@ xran="$(xrandr -q)"
 
 if [[ $LAPTOP ]] ; then
 
-    dp11="$(echo "$xran" | grep -- 'DP1-1 connected')"
-    dp13="$(echo "$xran" | grep -- 'DP1-3 connected')"
-    if [[ -n $dp11 && -n $dp13 ]] ; then
-        xrandr --output eDP1 --off --output DP1 --off --output DP2 --off \
-            --output DP1-2 --off --output DP1-1 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
-            --output DP1-3 --off --output HDMI1 --off --output VIRTUAL1 --off
-        xrandr --output eDP1 --off --output DP1 --off --output DP2 --off \
-            --output DP1-2 --off --output DP1-1 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
-            --output DP1-3 --primary --mode 2560x1440 --pos 2560x0 --rotate normal --dpi 128 \
-            --output HDMI1 --off --output VIRTUAL1 --off
-        bspc monitor "DP1-1" -d 0 1
-        bspc monitor "DP1-3" -d 2 3 4 5 6 7 8 9
+    dp21="$(echo "$xran" | grep -- 'DP-2-1 connected')"
+    dp23="$(echo "$xran" | grep -- 'DP-2-3 connected')"
+    if [[ -n $dp21 && -n $dp23 ]] ; then
+        xrandr --output eDP-1 --off --output DP-1 --off --output DP-2 --off \
+            --output DP-2-2 --off --output DP-2-1 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
+            --output DP-2-3 --off --output HDMI-1 --off --output VIRTUAL-1 --off
+        xrandr --output eDP-1 --off --output DP-1 --off --output DP-2 --off \
+            --output DP-2-2 --off --output DP-2-1 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
+            --output DP-2-3 --primary --mode 2560x1440 --pos 2560x0 --rotate normal --dpi 128 \
+            --output HDMI-1 --off --output VIRTUAL-1 --off
+        bspc monitor "DP-2-1" -d 0 1
+        bspc monitor "DP-2-3" -d 2 3 4 5 6 7 8 9
     else
-        xrandr --output eDP1 --primary --mode 2560x1440 --pos 0x0 --rotate normal \
-            --output DP1 --off --output DP2 --off \
-            --output DP1-1 --off --output DP1-2 --off \
-            --output DP1-3 --off --output HDMI1 --off \
-            --output VIRTUAL1 --off
+        xrandr --output eDP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal \
+            --output DP-1 --off --output DP-2 --off \
+            --output DP-2-1 --off --output DP-2-2 --off \
+            --output DP-2-3 --off --output HDMI-1 --off \
+            --output VIRTUAL-1 --off
         bspc monitor -d 0 1 2 3 4 5 6 7 8 9
     fi
 
@@ -113,6 +113,7 @@ pgrep -u "$LOGNAME" -x lxpolkit > /dev/null || lxpolkit &
 pgrep -u "$LOGNAME" -x birdtray > /dev/null || birdtray &
 pgrep -u "$LOGNAME" -x nm-applet > /dev/null || nm-applet &
 pgrep -u "$LOGNAME" -x redshift-gtk > /dev/null || redshift-gtk &
+pgrep -u "$LOGNAME" -x element-desktop > /dev/null || element-desktop --hidden &
 pgrep -u "$LOGNAME" -x telegram-desktop > /dev/null || telegram-desktop -startintray &
 pgrep -u "$LOGNAME" -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
 

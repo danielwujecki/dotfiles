@@ -23,11 +23,11 @@ fi
 # orte
 alias  ..='cd ../'
 alias ...='cd ../../'
-[[ -d ~/Repositories ]]             && alias repos='cd ~/Repositories'
-[[ -d ~/Studium/masterarbeit ]]     && alias ma='cd ~/Studium/masterarbeit'
-[[ -d ~/Studium/masterarbeit/src ]] && alias mas='cd ~/Studium/masterarbeit/src'
-[[ -d ~/Studium/wise2223 ]]         && alias sem='cd ~/Studium/wise2223'
-[[ -d ~/Repositories/dotfiles ]]    && alias dotf='cd ~/Repositories/dotfiles'
+[[ -d ~/Repositories ]]                                  && alias repos='cd ~/Repositories'
+[[ -d ~/Studium/masterarbeit ]]                          && alias ma='cd ~/Studium/masterarbeit'
+[[ -d ~/Studium/masterarbeit/src ]]                      && alias mas='cd ~/Studium/masterarbeit/src'
+[[ -d ~/Repositories/dotfiles ]]                         && alias dotf='cd ~/Repositories/dotfiles'
+[[ -d ~/Dokumente/innocampus/svn-server/Dokumentation ]] && alias inca='cd ~/Dokumente/innocampus/svn-server/Dokumentation'
 
 # shortcuts
 [[ -x /usr/bin/ranger ]] && alias r='ranger'

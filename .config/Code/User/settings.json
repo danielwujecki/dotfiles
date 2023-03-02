@@ -28,4 +28,5 @@
     "go.formatTool": "goimports",
     "go.useLanguageServer": true,
     "rust-client.disableRustup": true,
+    "git.openRepositoryInParentFolders": "never",
 }

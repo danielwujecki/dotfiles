@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if ! xrandr -q | egrep -q '(DP2-1|DP2-3) connected' ; then
+if ! xrandr -q | egrep -q '(DP-2-1|DP-2-3) connected' ; then
     echo "Kann die Bildschirme nicht finden..."
     echo "Das Dock scheint nicht korrekt verbunden zu sein!"
     exit 1
