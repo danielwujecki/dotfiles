@@ -29,15 +29,27 @@ if [[ $LAPTOP ]] ; then
     dp21="$(echo "$xran" | grep -- 'DP-2-1 connected')"
     dp23="$(echo "$xran" | grep -- 'DP-2-3 connected')"
     if [[ -n $dp21 && -n $dp23 ]] ; then
-        xrandr --output eDP-1 --off --output DP-1 --off --output DP-2 --off \
-            --output DP-2-2 --off --output DP-2-1 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
-            --output DP-2-3 --off --output HDMI-1 --off --output VIRTUAL-1 --off
-        xrandr --output eDP-1 --off --output DP-1 --off --output DP-2 --off \
-            --output DP-2-2 --off --output DP-2-1 --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
-            --output DP-2-3 --primary --mode 2560x1440 --pos 2560x0 --rotate normal --dpi 128 \
-            --output HDMI-1 --off --output VIRTUAL-1 --off
-        bspc monitor "DP-2-1" -d 0 1
-        bspc monitor "DP-2-3" -d 2 3 4 5 6 7 8 9
+        xrandr --output eDP-1 --off \
+            --output DP-1 --off \
+            --output DP-2 --off \
+            --output DP-2-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
+            --output DP-2-2 --off \
+            --output DP-2-3 --off \
+            --output HDMI-1 --off \
+            --output VIRTUAL-1 --off
+        xrandr --output eDP-1 --off \
+            --output DP-1 --off \
+            --output DP-2 --off \
+            --output DP-2-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
+            --output DP-2-2 --off \
+            --output DP-2-3 --mode 2560x1440 --pos 2560x0 --rotate normal --dpi 128 \
+            --output HDMI-1 \
+            --off --output VIRTUAL-1 --off
+
+        bspc monitor "DP-2-3" -d 0 1
+        bspc monitor "DP-2-1" -d 2 3 4 5 6 7 8 9
+        bspc monitor eDP-1 -r
+        bspc wm -O 'DP-2-3' 'DP-2-1'
     else
         xrandr --output eDP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal \
             --output DP-1 --off --output DP-2 --off \
@@ -113,16 +125,15 @@ pgrep -u "$LOGNAME" -x lxpolkit > /dev/null || lxpolkit &
 pgrep -u "$LOGNAME" -x birdtray > /dev/null || birdtray &
 pgrep -u "$LOGNAME" -x nm-applet > /dev/null || nm-applet &
 pgrep -u "$LOGNAME" -x redshift-gtk > /dev/null || redshift-gtk &
-pgrep -u "$LOGNAME" -x element-desktop > /dev/null || element-desktop --hidden &
 pgrep -u "$LOGNAME" -x telegram-desktop > /dev/null || telegram-desktop -startintray &
 pgrep -u "$LOGNAME" -x xautolock > /dev/null || xautolock -detectsleep -time 10 -locker "betterlockscreen -l dimblur" &
 
 if [[ $LAPTOP ]] ; then
-    pgrep -u "$LOGNAME" -x blueman-applet > /dev/null || blueman-applet &
-    bluetoothctl power off &
-
     echo '16970' > /sys/class/backlight/intel_backlight/brightness &
     pactl set-sink-volume 0 80% &
+
+    pgrep -u "$LOGNAME" -x blueman-applet > /dev/null || blueman-applet &
+    bluetoothctl power off &
 fi
 
 bspc desktop -f 1

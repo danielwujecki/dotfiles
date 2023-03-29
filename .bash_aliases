@@ -25,7 +25,7 @@ alias  ..='cd ../'
 alias ...='cd ../../'
 [[ -d ~/Repositories ]]                                  && alias repos='cd ~/Repositories'
 [[ -d ~/Studium/masterarbeit ]]                          && alias ma='cd ~/Studium/masterarbeit'
-[[ -d ~/Studium/masterarbeit/src ]]                      && alias mas='cd ~/Studium/masterarbeit/src'
+[[ -f ~/Studium/masterarbeit/src/setpath.sh ]]           && alias mas='cd ~/Studium/masterarbeit/src && source setpath.sh'
 [[ -d ~/Repositories/dotfiles ]]                         && alias dotf='cd ~/Repositories/dotfiles'
 [[ -d ~/Dokumente/innocampus/svn-server/Dokumentation ]] && alias inca='cd ~/Dokumente/innocampus/svn-server/Dokumentation'
 

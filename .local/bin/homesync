@@ -11,8 +11,9 @@ SYNCLIST=(
     "$HOME/Studium"
 )
 
+HOSTNAME_SRC="daniel@commodore.fritz.box"
 HOSTNAME_DEST="daniel@abacus.fritz.box"
-RSYNC_FLAGS=(-uahbHP --delete --backup-dir=/home/daniel/rsync_backup --rsh="ssh -p 22")
+RSYNC_FLAGS=(-uahbHP --exclude=build/ --delete --backup-dir=/home/daniel/rsync_backup --rsh="ssh -p 22")
 # "-u": überspringe Dateien, die im Ziel neuer sind
 # "-a": archive mode
 # "-h": human readable
@@ -30,40 +31,14 @@ RSYNC_FLAGS=(-uahbHP --delete --backup-dir=/home/daniel/rsync_backup --rsh="ssh 
 YELLOW='\e[33m'
 WHITE='\e[0m'
 
-SYNC_UP=
-SYNC_DOWN=
-
 usage() {
-    echo "usage: homesync up|down"
+    echo "usage: homesync up|down|push|pull"
 }
 
-while [[ $# -gt 0 ]] ; do
-    case "$1" in
-        up)
-            if [[ -n $SYNC_DOWN ]] ; then
-                echo "Already specified 'down'."
-                usage
-                exit 1
-            fi
-            SYNC_UP=1
-            shift
-            ;;
-        down)
-            if [[ -n $SYNC_UP ]] ; then
-                echo "Already specified 'up'."
-                usage
-                exit 1
-            fi
-            SYNC_DOWN=1
-            shift
-            ;;
-        *)
-            echo "Invalid argument: '$1'"
-            usage
-            exit 1
-            ;;
-    esac
-done
+if [[ $# -ne 1 ]] ; then
+    usage
+    exit 1
+fi
 
 for DIREC in "${SYNCLIST[@]}" ; do
     if [[ ! -e $DIREC ]] || grep -ivq "^$HOME/\w\+$" <<< "$DIREC" ; then
@@ -71,17 +46,27 @@ for DIREC in "${SYNCLIST[@]}" ; do
         exit 1
     fi
 
-    if [[ -n $SYNC_UP ]] ; then
-        echo -e "${YELLOW}Syncing${WHITE} $DIREC ${YELLOW}to${WHITE} $HOSTNAME_DEST${YELLOW}.${WHITE}"
-        rsync "${RSYNC_FLAGS[@]}" "$DIREC" "$HOSTNAME_DEST:$HOME"
-
-    elif [[ -n $SYNC_DOWN ]] ; then
-        echo -e "${YELLOW}Syncing${WHITE} $HOSTNAME_DEST:$DIREC ${YELLOW}to${WHITE} localhost${YELLOW}.${WHITE}"
-        rsync "${RSYNC_FLAGS[@]}" "$HOSTNAME_DEST:$DIREC" "$HOME"
-
-    else
-        echo -e "${YELLOW}Neither specified 'up' or 'down'!${WHITE}"
-        usage
-        exit 1
-    fi
+    case "$1" in
+        up)
+            echo -e "${YELLOW}Syncing${WHITE} $DIREC ${YELLOW}to${WHITE} $HOSTNAME_DEST${YELLOW}.${WHITE}"
+            rsync "${RSYNC_FLAGS[@]}" "$DIREC" "$HOSTNAME_DEST:$HOME"
+            ;;
+        down)
+            echo -e "${YELLOW}Syncing${WHITE} $HOSTNAME_DEST:$DIREC ${YELLOW}to${WHITE} localhost${YELLOW}.${WHITE}"
+            rsync "${RSYNC_FLAGS[@]}" "$HOSTNAME_DEST:$DIREC" "$HOME"
+            ;;
+        push)
+            echo -e "${YELLOW}Syncing${WHITE} $DIREC ${YELLOW}to${WHITE} $HOSTNAME_SRC${YELLOW}.${WHITE}"
+            rsync "${RSYNC_FLAGS[@]}" "$DIREC" "$HOSTNAME_SRC:$HOME"
+            ;;
+        pull)
+            echo -e "${YELLOW}Syncing${WHITE} $HOSTNAME_SRC:$DIREC ${YELLOW}to${WHITE} localhost${YELLOW}.${WHITE}"
+            rsync "${RSYNC_FLAGS[@]}" "$HOSTNAME_SRC:$DIREC" "$HOME"
+            ;;
+        *)
+            echo "Invalid argument: '$1'"
+            usage
+            exit 1
+            ;;
+    esac
 done

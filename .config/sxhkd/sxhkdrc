@@ -170,12 +170,12 @@ super + shift + o
 
 # screenshot
 super + Print
-    scrot '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/screenshots/' && \
+    scrot '%Y-%m-%d-%s_screenshot.png' -e 'mv $n ~/Bilder/screenshots/' && \
     notify-send "Screenshot taken"
 
 # screenshot of current window
 super + shift + Print
-    scrot -u '%Y-%m-%d-%s_screenshot.jpg' -e 'mv $n ~/Bilder/screenshots/' && \
+    scrot -u '%Y-%m-%d-%s_screenshot.png' -e 'mv $n ~/Bilder/screenshots/' && \
     notify-send "Screenshot of current window taken"
 
 # shuffle wallpaper
