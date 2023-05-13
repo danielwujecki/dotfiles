@@ -3,3 +3,4 @@ app-containers/docker-cli ~amd64
 app-containers/docker-compose ~amd64
 app-containers/docker-proxy ~amd64
 app-containers/containerd ~amd64
+app-containers/runc ~amd64

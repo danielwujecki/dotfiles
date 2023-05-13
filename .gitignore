@@ -1,7 +1,6 @@
 # directories
 .cache/
 .auctex-auto/
-pkg-list/
 sync/
 
 # private dotfiles
@@ -35,6 +34,10 @@ sync/
 tex/*.pdf
 
 # misc files
+pkg-list/*.txt
+pkg-list/arch/
+pkg-list/gentoo/rcstatus.txt
+pkg-list/gentoo/world-abacus.bk
 plug.vim.old
 todos*.txt
 make.conf.freddi
