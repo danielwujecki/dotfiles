@@ -1,23 +1,23 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+EST=
 NOSYNC=
-NOEST=
 
 help() {
-    echo "usage: $0 [--nosync] [--noest] [--help]"
+    echo "usage: $0 [--est] [--nosync] [--help]"
+    echo "--est: estimate emerge time"
     echo "--nosync: do not sync with repositories before performing world update"
-    echo "--noest: do not estimate emerge time"
 }
 
 while [[ $# -gt 0 ]] ; do
     case "$1" in
-        --nosync)
-            NOSYNC=1
+        --est)
+            EST=1
             shift
             ;;
-        --noest)
-            NOEST=1
+        --nosync)
+            NOSYNC=1
             shift
             ;;
         --help)
@@ -60,7 +60,7 @@ fi
 
 emerge -u1 portage
 
-if [[ -z $NOEST ]] ; then
+if [[ -n $EST ]] ; then
     emerge -avuDNp @world 2> /dev/null | genlop -p 2> /dev/null \
         | grep --color=never -i 'estimated update time' \
         || echo "Emerge time can't be estimated."

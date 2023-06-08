@@ -11,8 +11,6 @@ app-containers/docker-cli
 app-containers/docker-compose
 app-editors/neovim
 app-editors/vscode
-app-emulation/qemu
-app-emulation/virt-manager
 app-eselect/eselect-repository
 app-laptop/thinkfan
 app-misc/colordiff

@@ -1,3 +1,7 @@
 // Geben Sie Ihre Tastenzuordnungen in dieser Datei ein, um die Standardwerte außer Kraft zu setzen.
 [
+    {
+        "key": "ctrl+shift+j",
+        "command": "workbench.action.togglePanel"
+    }
 ]
