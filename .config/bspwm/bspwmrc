@@ -43,8 +43,8 @@ if [[ $LAPTOP ]] ; then
             --output DP-2-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --dpi 128 \
             --output DP-2-2 --off \
             --output DP-2-3 --mode 2560x1440 --pos 2560x0 --rotate normal --dpi 128 \
-            --output HDMI-1 \
-            --off --output VIRTUAL-1 --off
+            --output HDMI-1 --off \
+            --output VIRTUAL-1 --off
 
         bspc monitor "DP-2-3" -d 0 1
         bspc monitor "DP-2-1" -d 2 3 4 5 6 7 8 9
@@ -52,9 +52,12 @@ if [[ $LAPTOP ]] ; then
         bspc wm -O 'DP-2-3' 'DP-2-1'
     else
         xrandr --output eDP-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal \
-            --output DP-1 --off --output DP-2 --off \
-            --output DP-2-1 --off --output DP-2-2 --off \
-            --output DP-2-3 --off --output HDMI-1 --off \
+            --output DP-1 --off \
+            --output DP-2 --off \
+            --output DP-2-1 --off \
+            --output DP-2-2 --off \
+            --output DP-2-3 --off \
+            --output HDMI-1 --off \
             --output VIRTUAL-1 --off
         bspc monitor -d 0 1 2 3 4 5 6 7 8 9
     fi

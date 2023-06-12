@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.1.29-gentoo Kernel Configuration
+# Linux/x86 6.1.33-gentoo Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Gentoo 12.2.1_p20230428-r1 p2) 12.2.1 20230428"
 CONFIG_CC_IS_GCC=y
@@ -4586,9 +4586,8 @@ CONFIG_WMI_BMOF=y
 # CONFIG_FUJITSU_LAPTOP is not set
 # CONFIG_FUJITSU_TABLET is not set
 # CONFIG_GPD_POCKET_FAN is not set
-# CONFIG_HP_ACCEL is not set
+# CONFIG_X86_PLATFORM_DRIVERS_HP is not set
 # CONFIG_WIRELESS_HOTKEY is not set
-# CONFIG_HP_WMI is not set
 # CONFIG_IBM_RTL is not set
 # CONFIG_IDEAPAD_LAPTOP is not set
 # CONFIG_SENSORS_HDAPS is not set

@@ -1,1 +1,2 @@
 sys-apps/busybox -pam static
+sys-apps/openrc sysv-utils

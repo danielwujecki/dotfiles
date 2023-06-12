@@ -18,7 +18,6 @@ app-misc/fdupes
 app-misc/figlet
 app-misc/jq
 app-misc/neofetch
-app-misc/pdfpc
 app-misc/pfetch
 app-misc/ranger
 app-misc/tmux
@@ -34,6 +33,7 @@ app-shells/zsh
 app-shells/zsh-completions
 app-shells/zsh-syntax-highlighting
 app-text/pandoc
+app-text/pdfpc
 app-text/pdftk
 app-text/texlive
 app-text/zathura
