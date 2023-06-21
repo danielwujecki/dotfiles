@@ -9,6 +9,11 @@ sync/
 .Xauthority
 *history*
 
+# package lists
+pkg-list/arch/
+pkg-list/gentoo/*.bk
+pkg-list/gentoo/*.txt
+
 # latex
 *.aux
 *.fdb_latexmk
@@ -34,10 +39,6 @@ sync/
 tex/*.pdf
 
 # misc files
-pkg-list/*.txt
-pkg-list/arch/
-pkg-list/gentoo/rcstatus.txt
-pkg-list/gentoo/world-abacus.bk
-plug.vim.old
 todos*.txt
+plug.vim.old
 make.conf.freddi

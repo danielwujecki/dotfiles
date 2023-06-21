@@ -1,6 +1,4 @@
 www-client/w3m imlib
 
-# required by dev-util/librnp
 # required by mail-client/thunderbird
-# required by @world
 dev-libs/sexp static-libs

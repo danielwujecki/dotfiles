@@ -1,0 +1,13 @@
+pacman/pikaur:
+    emacs
+    ripgrep
+    fd
+    shellcheck
+
+pip:
+    pipenv
+    pytest
+    isort
+    nose
+    pyflakes
+    python-language-server

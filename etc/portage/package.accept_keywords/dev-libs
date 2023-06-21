@@ -5,8 +5,5 @@ dev-libs/cereal ~amd64
 dev-libs/icu ~amd64
 dev-libs/nss ~amd64
 
-# required by dev-libs/nss
-dev-libs/nspr ~amd64
-
 # required by app-editors/neovim
 dev-libs/libvterm ~amd64

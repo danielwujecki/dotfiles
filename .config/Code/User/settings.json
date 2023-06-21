@@ -33,4 +33,6 @@
     "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
     "workbench.colorTheme": "GitHub Dark Dimmed",
     "files.autoSaveDelay": 300000,
+    "git.openRepositoryInParentFolders": "never",
+    "notebook.lineNumbers": "on",
 }

@@ -1,6 +1,3 @@
 <dev-util/nvidia-cuda-toolkit-11.7.0 ~amd64
 
 dev-util/cargo-ebuild ~amd64
-
-# dependency required by www-client/firefox
-dev-util/cbindgen ~amd64

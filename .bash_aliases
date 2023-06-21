@@ -58,7 +58,7 @@ alias egrep='grep -E --color=auto'
 [[ -x /usr/bin/rg ]]        && alias rg='rg --hidden'
 [[ -x /usr/bin/colordiff ]] && alias diff='colordiff'
 if [[ -x /usr/bin/emacs && -x /usr/bin/emacsclient ]] ; then
-    alias emacs='emacsclient -t -a ""'
+    alias emacs='emacsclient -na ""'
 fi
 
 # usb

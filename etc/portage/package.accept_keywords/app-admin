@@ -1,2 +1,1 @@
-# required by app-text/pandoc
-app-admin/haskell-updater ~amd64
+~app-admin/keepassxc-2.7.5 ~amd64
