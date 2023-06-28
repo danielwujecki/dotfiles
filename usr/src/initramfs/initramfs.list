@@ -47,8 +47,8 @@ file /usr/lib/libuuid.so.1         /lib64/libuuid.so.1                          
 file /usr/lib/libblkid.so.1        /lib64/libblkid.so.1                                  755 0 0
 file /usr/lib/libc.so.6            /lib64/libc.so.6                                      755 0 0
 file /usr/lib/libdevmapper.so.1.02 /lib64/libdevmapper.so.1.02                           755 0 0
-file /usr/lib/libssl.so.1.1        /usr/lib64/libssl.so.1.1                              755 0 0
-file /usr/lib/libcrypto.so.1.1     /usr/lib64/libcrypto.so.1.1                           755 0 0
+file /usr/lib/libssl.so.3          /usr/lib64/libssl.so.3                                755 0 0
+file /usr/lib/libcrypto.so.3       /usr/lib64/libcrypto.so.3                             755 0 0
 file /usr/lib/libargon2.so.1       /usr/lib64/libargon2.so.1                             755 0 0
 file /usr/lib/librt.so.1           /lib64/librt.so.1                                     755 0 0
 file /usr/lib/libjson-c.so.5       /usr/lib64/libjson-c.so.5                             755 0 0

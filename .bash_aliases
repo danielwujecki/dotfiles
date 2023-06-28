@@ -55,6 +55,7 @@ alias md='mkdir -p'
 alias grep='grep --color=auto'
 alias egrep='grep -E --color=auto'
 [[ -x /usr/bin/fd ]]        && alias fd='fd -iIH'
+[[ -x /usr/bin/fdfind ]]    && alias fd='fdfind -iIH'
 [[ -x /usr/bin/rg ]]        && alias rg='rg --hidden'
 [[ -x /usr/bin/colordiff ]] && alias diff='colordiff'
 if [[ -x /usr/bin/emacs && -x /usr/bin/emacsclient ]] ; then

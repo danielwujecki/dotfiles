@@ -136,7 +136,8 @@ if [[ $LAPTOP ]] ; then
     pactl set-sink-volume 0 80% &
 
     pgrep -u "$LOGNAME" -x blueman-applet > /dev/null || blueman-applet &
-    bluetoothctl power off &
+    # should be at the bottom!
+    sleep 5 && bluetoothctl power off &
 fi
 
 bspc desktop -f 1
