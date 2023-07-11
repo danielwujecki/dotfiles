@@ -1,2 +1,5 @@
 # required by app-misc/fdupes
 dev-libs/libpcre2 pcre32
+
+# required by mail-client/thunderbird
+dev-libs/sexpp static-libs

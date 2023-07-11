@@ -86,7 +86,6 @@ net-wireless/rtl-sdr
 sys-apps/baobab
 sys-apps/bat
 sys-apps/busybox
-sys-apps/dust
 sys-apps/exa
 sys-apps/fd
 sys-apps/flatpak
@@ -98,6 +97,7 @@ sys-apps/ripgrep
 sys-apps/smartmontools
 sys-apps/xdg-desktop-portal-gtk
 sys-auth/nss-mdns
+sys-block/dust
 sys-block/gparted
 sys-boot/grub
 sys-boot/os-prober

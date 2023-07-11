@@ -35,4 +35,6 @@
     "files.autoSaveDelay": 300000,
     "git.openRepositoryInParentFolders": "never",
     "notebook.lineNumbers": "on",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "output.smartScroll.enabled": false,
 }

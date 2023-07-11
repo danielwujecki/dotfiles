@@ -4,7 +4,8 @@ WHEN="$1"
 WHAT="$2"
 
 if [[ ! -f /usr/bin/nvidia-sleep.sh ]]; then
-  exit 0
+  /usr/bin/logger -t "$WHAT" -s '/usr/bin/nvidia-sleep.sh not found!'
+  exit 1
 fi
 
 if [[ "xpre" = "x$WHEN" ]]; then
@@ -17,6 +18,7 @@ if [[ "xpre" = "x$WHEN" ]]; then
   fi
 elif [[ "xpost" = "x$WHEN" ]]; then
   /usr/bin/logger -t "$WHAT" -s "nvidia-sleep.sh $WHEN"
+  /usr/bin/sleep 1
   /usr/bin/nvidia-sleep.sh "resume" &
 fi
 

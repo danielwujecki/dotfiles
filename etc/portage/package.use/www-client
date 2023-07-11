@@ -1,4 +1,1 @@
 www-client/w3m imlib
-
-# required by mail-client/thunderbird
-dev-libs/sexp static-libs
