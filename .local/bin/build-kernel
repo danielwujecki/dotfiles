@@ -19,7 +19,7 @@ fi
 # set variables
 #
 
-KEEP_VERS=3
+KEEP_VERS="${KEEP_VERS:-3}"
 if [[ $# -eq 1 ]] ; then
     version_long="$1"
 else
@@ -102,7 +102,7 @@ fi
 #
 
 if [[ -n $new_build ]] ; then
-    echo -e "\nRemoving old kernel versions..."
+    echo -e "\nRemoving $KEEP_VERS old kernel versions..."
     find /boot        -maxdepth 1 -name 'vmlinuz-*' -type f | sort -V | head -n "-$KEEP_VERS" | xargs rm -fv
     find /usr/src     -maxdepth 1 -name 'linux-*'   -type d | sort -V | head -n "-$KEEP_VERS" | xargs rm -rfv
     find /lib/modules -maxdepth 1 -name '*-gentoo*' -type d | sort -V | head -n "-$KEEP_VERS" | xargs rm -rfv
