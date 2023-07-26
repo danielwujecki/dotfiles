@@ -93,6 +93,7 @@ sys-apps/lsd
 sys-apps/pciutils
 sys-apps/ripgrep
 sys-apps/smartmontools
+sys-apps/usbutils
 sys-apps/xdg-desktop-portal-gtk
 sys-auth/nss-mdns
 sys-block/dust

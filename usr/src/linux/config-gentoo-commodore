@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.1.38-gentoo Kernel Configuration
+# Linux/x86 6.1.39-gentoo Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Gentoo 12.3.1_p20230526 p2) 12.3.1 20230526"
 CONFIG_CC_IS_GCC=y
@@ -2246,6 +2246,7 @@ CONFIG_IWLMVM=y
 
 # CONFIG_VMXNET3 is not set
 # CONFIG_FUJITSU_ES is not set
+# CONFIG_USB4_NET is not set
 # CONFIG_NETDEVSIM is not set
 CONFIG_NET_FAILOVER=m
 # CONFIG_ISDN is not set
@@ -4856,7 +4857,9 @@ CONFIG_IDLE_INJECT=y
 
 CONFIG_RAS=y
 # CONFIG_RAS_CEC is not set
-# CONFIG_USB4 is not set
+CONFIG_USB4=m
+# CONFIG_USB4_DEBUGFS_WRITE is not set
+# CONFIG_USB4_DMA_TEST is not set
 
 #
 # Android

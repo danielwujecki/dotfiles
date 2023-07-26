@@ -37,4 +37,8 @@
     "notebook.lineNumbers": "on",
     "diffEditor.ignoreTrimWhitespace": false,
     "output.smartScroll.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.hovers.enabled": false,
+    "gitlens.codeLens.enabled": false,
 }

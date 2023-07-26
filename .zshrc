@@ -8,11 +8,12 @@ fi
 # user zsh prompt for virtualenv
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-# Uncomment the following line to automatically update without prompting.
-DISABLE_UPDATE_PROMPT="true"
-
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
+
+# Use this setting if you want to disable marking untracked files under VCS as dirty.
+# This makes repository status checks for large repositories much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY=true
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -35,10 +36,16 @@ plugins=(
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export ZSH_CUSTOM="$HOME/Repositories/dotfiles/oh-my-zsh"
+export ZSH_CACHE_DIR="$HOME/.oh-my-zsh/cache"
+export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 source "$ZSH/oh-my-zsh.sh"
 
 ZSH_SYNTAX_HIGHLIGHTING="/usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh"
 [[ -f $ZSH_SYNTAX_HIGHLIGHTING ]] && source "$ZSH_SYNTAX_HIGHLIGHTING"
+
+# do not automatically update
+zstyle ':omz:update' mode disabled
 
 # If you come from bash you might have to change your $PATH.
 if [ -d "$HOME/.local/bin" ] ; then
