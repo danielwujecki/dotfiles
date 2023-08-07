@@ -78,7 +78,7 @@ fi
 if [[ -f /home/daniel/.pyenv/versions/mypython/bin/activate ]] ; then
     alias mypy='pyenv activate mypython'
     alias mypye='pyenv deactivate'
-    alias pyc='ipython'
+    alias pyc='[[ -n $VIRTUAL_ENV ]] || pyenv activate mypython ; ipython'
 fi
 
 # misc
