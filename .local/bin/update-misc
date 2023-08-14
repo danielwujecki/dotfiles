@@ -39,11 +39,11 @@ else
     echo -e "\n${RED}Miniconda not installed.${WHITE}\n"
 fi
 
-if [[ -x /usr/bin/cargo && -x $HOME/.cargo/bin/cargo-install-update ]] ; then
-    cargo install-update -a
-else
-    echo -e "\n${RED}Cargo not installed.${WHITE}\n"
-fi
+#if [[ -x /usr/bin/cargo && -x $HOME/.cargo/bin/cargo-install-update ]] ; then
+#    cargo install-update -a
+#else
+#    echo -e "\n${RED}Cargo not installed.${WHITE}\n"
+#fi
 
 if [[ -x $HOME/.emacs.d/bin/doom ]] ; then
     pushd "$HOME/.emacs.d/"

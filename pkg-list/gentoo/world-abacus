@@ -76,6 +76,7 @@ net-im/element-desktop-bin
 net-im/slack
 net-im/telegram-desktop-bin
 net-misc/networkmanager
+net-misc/ntp
 net-misc/rclone
 net-misc/yt-dlp
 net-nds/openldap
