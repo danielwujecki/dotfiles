@@ -105,6 +105,7 @@ bspc config pointer_modifier          'mod4'
 
 # bspwm rules
 bspc rule -a Emacs state=tiled
+bspc rule -a kitty state=pseudo_tiled
 
 #### example rules ####
 #bspc rule -a Gimp desktop='^8' state=floating follow=on

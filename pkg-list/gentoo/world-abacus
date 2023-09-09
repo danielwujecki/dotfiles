@@ -103,6 +103,7 @@ sys-block/gparted
 sys-boot/grub
 sys-boot/os-prober
 sys-devel/distcc
+sys-devel/gdb
 sys-fs/btrfs-progs
 sys-fs/cryptsetup
 sys-fs/dosfstools

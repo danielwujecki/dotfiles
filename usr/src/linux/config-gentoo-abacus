@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.1.45-gentoo Kernel Configuration
+# Linux/x86 6.1.52-gentoo Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Gentoo 11.3.1_p20230427 p9) 11.3.1 20230427"
 CONFIG_CC_IS_GCC=y

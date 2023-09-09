@@ -72,8 +72,12 @@ super + {h,j,k,l}
 super + shift + {h,j,k,l}
     bspc node -s {west,south,north,east}
 
-# swap the current node and the biggest node
+# swap biggest node to the other side
 super + b
+    bspc node @/ -F vertical
+
+# swap the current node and the biggest node
+super + shift + b
     bspc node -s biggest.local
 
 # send to the given desktop

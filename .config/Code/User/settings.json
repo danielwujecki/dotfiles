@@ -15,7 +15,6 @@
     "files.autoSave": "afterDelay",
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
-    "window.zoomLevel": 1,
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.smoothScrolling": true,
     "extensions.ignoreRecommendations": true,
@@ -41,4 +40,7 @@
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.hovers.enabled": false,
     "gitlens.codeLens.enabled": false,
+    "editor.minimap.autohide": true,
+    "explorer.autoReveal": false,
+    "window.zoomLevel": 1,
 }

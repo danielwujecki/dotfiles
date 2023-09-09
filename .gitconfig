@@ -11,3 +11,6 @@
 	editor = nvim
 [alias]
 	co = checkout
+	st = status
+	ci = commit -m
+	sub = submodule update --init --recursive
