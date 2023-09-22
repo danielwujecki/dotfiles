@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 # wichtigstes kommmando auf dem terminal - ls
-if [[ -x /usr/bin/exa ]] ; then
-    alias ll='exa -Hglm --git --color=auto --group-directories-first'
+if [[ -x /usr/bin/eza ]] ; then
+    alias ll='eza -Hglm --git --color=auto --group-directories-first'
     alias la='ll -a'
     alias lll='ll'
     alias llll='ll'
-    alias tree='exa -Ta'
+    alias tree='eza -Ta'
 else
     alias ll='ls -lh --color=auto --group-directories-first'
     alias la='ll -A'

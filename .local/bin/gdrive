@@ -3,7 +3,7 @@ set -euo pipefail
 
 declare -A SYNCLIST
 SYNCLIST['gdrive:cg_papers']="$HOME/Studium/masterarbeit/cg_papers"
-SYNCLIST['gdrive:klettern']="$HOME/Dokumente/klettern"
+#SYNCLIST['gdrive:klettern']="$HOME/Dokumente/klettern"
 SYNCLIST['gdrive:math_material']="$HOME/Studium/math_material"
 #SYNCLIST['gdrive:wise2223']="$HOME/Studium/wise2223"
 

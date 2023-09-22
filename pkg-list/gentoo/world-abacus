@@ -87,7 +87,7 @@ net-wireless/rtl-sdr
 sys-apps/baobab
 sys-apps/bat
 sys-apps/busybox
-sys-apps/exa
+sys-apps/eza
 sys-apps/fd
 sys-apps/flatpak
 sys-apps/gptfdisk

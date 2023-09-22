@@ -11,8 +11,6 @@ SYNCLIST=(
     "$HOME/Studium"
 )
 
-HOSTNAME_SRC="daniel@commodore.fritz.box"
-HOSTNAME_DEST="daniel@abacus.fritz.box"
 RSYNC_FLAGS=(-uahbHP --exclude=build/ --delete --backup-dir=/home/daniel/rsync_backup --rsh="ssh -p 22")
 # "-u": überspringe Dateien, die im Ziel neuer sind
 # "-a": archive mode
@@ -32,11 +30,22 @@ YELLOW='\e[33m'
 WHITE='\e[0m'
 
 usage() {
-    echo "usage: homesync up|down|push|pull"
+    echo "usage: homesync push|pull"
 }
 
 if [[ $# -ne 1 ]] ; then
     usage
+    exit 2
+fi
+
+HOSTNAME="$(/bin/hostname)"
+REMOTE_HOST=""
+if [[ $HOSTNAME == 'Commodore' ]] ; then
+    REMOTE_HOST="daniel@abacus.fritz.box"
+elif [[ $HOSTNAME == 'Abacus' ]] ; then
+    REMOTE_HOST="daniel@commodore.fritz.box"
+else
+    echo "Hostname is neither 'Commodore' nor 'Abacus'. Exiting."
     exit 1
 fi
 
@@ -47,26 +56,18 @@ for DIREC in "${SYNCLIST[@]}" ; do
     fi
 
     case "$1" in
-        up)
-            echo -e "${YELLOW}Syncing${WHITE} $DIREC ${YELLOW}to${WHITE} $HOSTNAME_DEST${YELLOW}.${WHITE}"
-            rsync "${RSYNC_FLAGS[@]}" "$DIREC" "$HOSTNAME_DEST:$HOME"
-            ;;
-        down)
-            echo -e "${YELLOW}Syncing${WHITE} $HOSTNAME_DEST:$DIREC ${YELLOW}to${WHITE} localhost${YELLOW}.${WHITE}"
-            rsync "${RSYNC_FLAGS[@]}" "$HOSTNAME_DEST:$DIREC" "$HOME"
-            ;;
         push)
-            echo -e "${YELLOW}Syncing${WHITE} $DIREC ${YELLOW}to${WHITE} $HOSTNAME_SRC${YELLOW}.${WHITE}"
-            rsync "${RSYNC_FLAGS[@]}" "$DIREC" "$HOSTNAME_SRC:$HOME"
+            echo -e "${YELLOW}Syncing${WHITE} $DIREC ${YELLOW}to${WHITE} $REMOTE_HOST${YELLOW}.${WHITE}"
+            rsync "${RSYNC_FLAGS[@]}" "$DIREC" "$REMOTE_HOST:$HOME"
             ;;
         pull)
-            echo -e "${YELLOW}Syncing${WHITE} $HOSTNAME_SRC:$DIREC ${YELLOW}to${WHITE} localhost${YELLOW}.${WHITE}"
-            rsync "${RSYNC_FLAGS[@]}" "$HOSTNAME_SRC:$DIREC" "$HOME"
+            echo -e "${YELLOW}Syncing${WHITE} $REMOTE_HOST:$DIREC ${YELLOW}to${WHITE} localhost${YELLOW}.${WHITE}"
+            rsync "${RSYNC_FLAGS[@]}" "$REMOTE_HOST:$DIREC" "$HOME"
             ;;
         *)
             echo "Invalid argument: '$1'"
             usage
-            exit 1
+            exit 2
             ;;
     esac
 done

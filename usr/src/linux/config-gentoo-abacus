@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.1.52-gentoo Kernel Configuration
+# Linux/x86 6.1.53-gentoo-r1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Gentoo 11.3.1_p20230427 p9) 11.3.1 20230427"
 CONFIG_CC_IS_GCC=y
@@ -2963,8 +2963,11 @@ CONFIG_MEDIA_CONTROLLER=y
 # Video4Linux options
 #
 CONFIG_VIDEO_V4L2_I2C=y
+CONFIG_VIDEO_V4L2_SUBDEV_API=y
 # CONFIG_VIDEO_ADV_DEBUG is not set
 # CONFIG_VIDEO_FIXED_MINOR_RANGES is not set
+CONFIG_V4L2_FWNODE=y
+CONFIG_V4L2_ASYNC=y
 # end of Video4Linux options
 
 #
@@ -3011,10 +3014,7 @@ CONFIG_MEDIA_HIDE_ANCILLARY_SUBDRV=y
 #
 # Media ancillary drivers
 #
-
-#
-# Camera sensor devices
-#
+CONFIG_VIDEO_CAMERA_SENSOR=y
 # CONFIG_VIDEO_AR0521 is not set
 # CONFIG_VIDEO_HI556 is not set
 # CONFIG_VIDEO_HI846 is not set
@@ -3076,7 +3076,6 @@ CONFIG_MEDIA_HIDE_ANCILLARY_SUBDRV=y
 # CONFIG_VIDEO_CCS is not set
 # CONFIG_VIDEO_ET8EK8 is not set
 # CONFIG_VIDEO_M5MOLS is not set
-# end of Camera sensor devices
 
 #
 # Lens drivers
