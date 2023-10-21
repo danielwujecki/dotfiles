@@ -13,7 +13,6 @@
     "workbench.settings.enableNaturalLanguageSearch": false,
 
     "files.autoSave": "afterDelay",
-    "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.smoothScrolling": true,
@@ -33,7 +32,6 @@
     "workbench.colorTheme": "GitHub Dark Dimmed",
     "files.autoSaveDelay": 300000,
     "git.openRepositoryInParentFolders": "never",
-    "notebook.lineNumbers": "on",
     "diffEditor.ignoreTrimWhitespace": false,
     "output.smartScroll.enabled": false,
     "gitlens.currentLine.enabled": false,
@@ -42,5 +40,8 @@
     "gitlens.codeLens.enabled": false,
     "editor.minimap.autohide": true,
     "explorer.autoReveal": false,
+    "jupyter.askForKernelRestart": false,
+    "editor.minimap.enabled": false,
+    "notebook.lineNumbers": "on",
     "window.zoomLevel": 1,
 }

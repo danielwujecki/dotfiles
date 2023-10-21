@@ -470,7 +470,7 @@ c.ServerApp.ip = 'localhost'
 
 ## DEPRECATED. Use IdentityProvider.token
 #  Default: '<DEPRECATED>'
-# c.ServerApp.token = '<DEPRECATED>'
+c.ServerApp.token = 'abacus'
 
 #  Default: {}
 # c.ServerApp.tornado_settings = {}

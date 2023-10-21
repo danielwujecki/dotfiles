@@ -512,7 +512,7 @@ c.NotebookApp.open_browser = False
 #          Setting to an empty string disables authentication altogether, which
 #  is NOT RECOMMENDED.
 #  Default: '<generated>'
-c.NotebookApp.token = ''
+c.NotebookApp.token = 'lemmein'
 
 ## Supply overrides for the tornado.web.Application that the Jupyter notebook
 #  uses.

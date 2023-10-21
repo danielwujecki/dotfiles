@@ -53,16 +53,14 @@ lxde-base/lxappearance
 lxde-base/lxsession
 mail-client/thunderbird
 media-gfx/feh
+media-gfx/geeqie
 media-gfx/gimp
 media-gfx/gnome-screenshot
-media-gfx/gpicview
 media-gfx/scrot
 media-libs/exiftool
 media-sound/pavucontrol
 media-sound/pulsemixer
 media-sound/spotify
-media-sound/spotify-tray
-media-sound/teamspeak-client
 media-video/vlc
 net-analyzer/nmap
 net-analyzer/tcpdump

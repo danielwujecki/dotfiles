@@ -3,3 +3,6 @@ dev-libs/libpcre2 pcre32
 
 # required by mail-client/thunderbird
 dev-libs/sexpp static-libs
+
+# required by media-sound/spotify
+dev-libs/libdbusmenu gtk3
