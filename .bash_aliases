@@ -2,7 +2,7 @@
 
 # wichtigstes kommmando auf dem terminal - ls
 if [[ -x /usr/bin/eza ]] ; then
-    alias ll='eza -Hglm --git --color=auto --group-directories-first'
+    alias ll='eza -Hglm --color=auto --group-directories-first'
     alias la='ll -a'
     alias lll='ll'
     alias llll='ll'
@@ -24,8 +24,7 @@ fi
 alias  ..='cd ../'
 alias ...='cd ../../'
 [[ -d ~/Repositories ]]                                  && alias repos='cd ~/Repositories'
-[[ -d ~/Studium/masterarbeit ]]                          && alias ma='cd ~/Studium/masterarbeit'
-[[ -f ~/Studium/masterarbeit/src/setpath.sh ]]           && alias mas='cd ~/Studium/masterarbeit/src && source setpath.sh'
+[[ -f ~/Studium/masterarbeit/setpath.sh ]]               && alias ma='cd ~/Studium/masterarbeit && source setpath.sh'
 [[ -d ~/Repositories/dotfiles ]]                         && alias dotf='cd ~/Repositories/dotfiles'
 [[ -d ~/Dokumente/innocampus/svn-server/Dokumentation ]] && alias inca='cd ~/Dokumente/innocampus/svn-server/Dokumentation'
 

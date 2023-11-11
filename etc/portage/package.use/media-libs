@@ -8,3 +8,6 @@ media-libs/libvpx postproc
 
 # required by media-gfx/blender
 media-libs/freetype brotli
+
+# required by net-im/telegram-desktop-bin
+media-libs/mesa wayland

@@ -1,0 +1,2 @@
+# required by net-im/telegram-desktop-bin
+x11-libs/gtk+ wayland

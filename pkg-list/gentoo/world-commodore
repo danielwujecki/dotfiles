@@ -52,14 +52,13 @@ lxde-base/lxappearance
 lxde-base/lxsession
 mail-client/thunderbird
 media-gfx/feh
+media-gfx/geeqie
 media-gfx/gnome-screenshot
-media-gfx/gpicview
 media-gfx/scrot
 media-libs/exiftool
 media-sound/pavucontrol
 media-sound/pulsemixer
 media-sound/spotify
-media-sound/spotify-tray
 media-video/vlc
 net-analyzer/nmap
 net-analyzer/tcpdump
@@ -85,7 +84,7 @@ net-wireless/rtl-sdr
 sys-apps/baobab
 sys-apps/bat
 sys-apps/busybox
-sys-apps/exa
+sys-apps/eza
 sys-apps/fd
 sys-apps/flatpak
 sys-apps/gptfdisk

@@ -3,17 +3,25 @@
     "editor.fontFamily": "'Fira Code', 'JetBrains Mono', 'monospace'",
     "editor.lineNumbers": "relative",
     "editor.renderWhitespace": "boundary",
-    "editor.minimap.renderCharacters": false,
     "editor.cursorBlinking": "phase",
     "editor.smoothScrolling": true,
     "editor.cursorSmoothCaretAnimation": "explicit",
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.enabled": true,
+    "editor.minimap.autohide": true,
+
+    "workbench.colorTheme": "GitHub Dark Dimmed",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.productIconTheme": "material-product-icons",
     "workbench.list.smoothScrolling": true,
     "workbench.settings.enableNaturalLanguageSearch": false,
 
+    "window.zoomLevel": 1,
     "files.autoSave": "afterDelay",
     "files.trimTrailingWhitespace": true,
+    "explorer.autoReveal": false,
+    "output.smartScroll.enabled": false,
+    "diffEditor.ignoreTrimWhitespace": false,
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.smoothScrolling": true,
     "extensions.ignoreRecommendations": true,
@@ -25,23 +33,63 @@
         "asvetliakov.vscode-neovim": 1
     },
 
-    "latex-workshop.view.pdf.viewer": "external",
-    "latex-workshop.view.pdf.external.viewer.command": "zathura",
-    "latex-workshop.latex.recipe.default": "lastUsed",
-    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
-    "workbench.colorTheme": "GitHub Dark Dimmed",
-    "files.autoSaveDelay": 300000,
+    "jupyter.askForKernelRestart": false,
+    "notebook.lineNumbers": "on",
+    "cmake.configureOnOpen": false,
+
     "git.openRepositoryInParentFolders": "never",
-    "diffEditor.ignoreTrimWhitespace": false,
-    "output.smartScroll.enabled": false,
     "gitlens.currentLine.enabled": false,
-    "gitlens.hovers.currentLine.over": "line",
     "gitlens.hovers.enabled": false,
     "gitlens.codeLens.enabled": false,
-    "editor.minimap.autohide": true,
-    "explorer.autoReveal": false,
-    "jupyter.askForKernelRestart": false,
-    "editor.minimap.enabled": false,
-    "notebook.lineNumbers": "on",
-    "window.zoomLevel": 1,
+
+    "latex-workshop.latex.recipe.default": "latexmkrc",
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.view.pdf.external.viewer.command": "zathura",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "latexmkrc",
+            "tools": [
+                "latexmk_rconly"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "tools": [
+                "pdflatex",
+            ]
+        },
+        {
+            "name": "pdflatex -> bibtex -> pdflatex * 2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "tectonic",
+            "tools": [
+                "tectonic"
+            ]
+        }
+    ],
+
+    "cSpell.enableFiletypes": [
+        "!jsonc",
+        "!python"
+    ],
+    "cSpell.userWords": [
+        "backpropagated",
+        "Backpropagating",
+        "interreflections"
+    ],
 }
