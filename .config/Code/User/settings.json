@@ -2,6 +2,8 @@
     "editor.fontSize": 13,
     "editor.fontFamily": "'Fira Code', 'JetBrains Mono', 'monospace'",
     "editor.lineNumbers": "relative",
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 120,
     "editor.renderWhitespace": "boundary",
     "editor.cursorBlinking": "phase",
     "editor.smoothScrolling": true,
@@ -44,7 +46,7 @@
 
     "latex-workshop.latex.recipe.default": "latexmkrc",
     "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
-    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.view.pdf.viewer": "external",
     "latex-workshop.view.pdf.external.viewer.command": "zathura",
     "latex-workshop.latex.recipes": [
@@ -84,12 +86,25 @@
     ],
 
     "cSpell.enableFiletypes": [
+        "!cpp",
         "!jsonc",
         "!python"
     ],
     "cSpell.userWords": [
+        "backpropagate",
         "backpropagated",
         "Backpropagating",
-        "interreflections"
+        "backpropagation",
+        "emittance",
+        "interreflections",
+        "invertibility",
+        "Mitsuba",
+        "pseudocode",
+        "Reparameterization",
+        "Reparameterizations",
+        "reparametrization",
+        "reparametrize",
+        "subfigures"
     ],
+    "cmake.showOptionsMovedNotification": false,
 }

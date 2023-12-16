@@ -21,7 +21,7 @@ app-misc/neofetch
 app-misc/pfetch
 app-misc/ranger
 app-misc/tmux
-app-office/libreoffice
+app-office/libreoffice-bin
 app-portage/cpuid2cpuflags
 app-portage/eix
 app-portage/genlop

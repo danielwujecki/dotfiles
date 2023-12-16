@@ -1,6 +1,7 @@
 [user]
-	name = danielgolf
-	email = daniel.golf@web.de
+	name = danielwujecki
+	email = daniel.wujecki@gmail.com
+	signingkey = DED15E1C7A39F136A19B939FEC8C721A0B048C2C
 [init]
 	defaultBranch = main
 [push]
@@ -10,7 +11,11 @@
 [core]
 	editor = nvim
 [alias]
-	co = checkout
-	st = status
-	ci = commit -m
+	co  = checkout
+	sw  = switch
+	st  = status
+	ci  = commit -m
 	sub = submodule update --init --recursive
+    br  = branch -vv
+[pager]
+	branch = false

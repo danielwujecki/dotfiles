@@ -1,4 +1,4 @@
 sys-kernel/kmon ~amd64
 
-# go along with lts kernel release 5.15
+# go along with lts kernel release 6.1.*
 =sys-kernel/gentoo-sources-6.1* ~amd64
