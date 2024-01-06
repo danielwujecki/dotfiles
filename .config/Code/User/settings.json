@@ -17,8 +17,6 @@
     "workbench.productIconTheme": "material-product-icons",
     "workbench.list.smoothScrolling": true,
     "workbench.settings.enableNaturalLanguageSearch": false,
-
-    "window.zoomLevel": 1,
     "files.autoSave": "afterDelay",
     "files.trimTrailingWhitespace": true,
     "explorer.autoReveal": false,
@@ -44,7 +42,7 @@
     "gitlens.hovers.enabled": false,
     "gitlens.codeLens.enabled": false,
 
-    "latex-workshop.latex.recipe.default": "latexmkrc",
+    "latex-workshop.latex.recipe.default": "lastUsed",
     "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
     "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.view.pdf.viewer": "external",
@@ -95,16 +93,19 @@
         "backpropagated",
         "Backpropagating",
         "backpropagation",
+        "downsampled",
         "emittance",
+        "heatmaps",
         "interreflections",
         "invertibility",
         "Mitsuba",
         "pseudocode",
-        "Reparameterization",
-        "Reparameterizations",
-        "reparametrization",
-        "reparametrize",
         "subfigures"
     ],
     "cmake.showOptionsMovedNotification": false,
+    "jupyter.widgetScriptSources": [
+        "jsdelivr.com",
+        "unpkg.com"
+    ],
+    "window.zoomLevel": 1,
 }

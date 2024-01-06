@@ -19,3 +19,7 @@
     br  = branch -vv
 [pager]
 	branch = false
+[diff]
+	tool = nvimdiff
+[difftool]
+	prompt = False

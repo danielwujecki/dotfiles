@@ -19,19 +19,19 @@
 %\KOMAoptions{twoside}
 %\KOMAoptions{DIV=15}
 %\KOMAoptions{BCOR=2mm}
-\KOMAoptions{parskip=half}
-\KOMAoptions{abstract=true}
+%\KOMAoptions{parskip=half}
+%\KOMAoptions{abstract=true}
 %\KOMAoptions{openright}
 %\KOMAoptions{chapterprefix}
-%\KOMAoptions{bibliography=totocnumbered}
-%\KOMAoptions{egregdoesnotlikesansseriftitles}
+\KOMAoptions{bibliography=totoc}
+%\KOMAoptions{listof=nochaptergap}
 \ifdraft\KOMAoptions{draft=true}\fi
 
 %
 % general packages
 %
 
-\RequirePackage[left=20mm,right=20mm,top=20mm,bottom=40mm]{geometry}
+%\RequirePackage[left=20mm,right=20mm,top=20mm,bottom=40mm]{geometry}
 \RequirePackage[english,main=ngerman]{babel}
 %\RequirePackage[ngerman,main=english]{babel}
 
@@ -39,6 +39,7 @@
 %\RequirePackage[onehalfspacing]{setspace}
 \RequirePackage{microtype}
 \RequirePackage{hyperref}
+%\RequirePackage{scrhack}
 
 \RequirePackage{hyphenat}
 %\hyphenation{Mathe-matik wieder-gewinnen}
@@ -60,6 +61,7 @@
 %
 
 % xelatex fonts
+%\RequirePackage{lmodern}
 \RequirePackage{fontspec}
 \defaultfontfeatures{Scale=MatchLowercase}
 \defaultfontfeatures[\rmfamily]{Scale=1}
@@ -79,13 +81,15 @@
 % BibLateX
 %\RequirePackage{csquotes}
 %\RequirePackage[
-%    backend=biber,
-%    style=ieee,
-%    url=false,
-%    eprint=false,
-%    isbn=false,
-%    hyperref=true,
-%    bibencoding=inputenc
+%  style=authoryear,
+%  % style=ieee,
+%  backend=biber,
+%  url=false,
+%  eprint=false,
+%  isbn=false,
+%  hyperref=true,
+%  bibencoding=inputenc,
+%  maxcitenames=2,
 %]{biblatex}
 %\addbibresource{quellen.bib}
 
@@ -96,8 +100,7 @@
 
 \RequirePackage[table,dvipsnames]{xcolor}
 \RequirePackage{listings}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codeback}{rgb}{0.93,0.93,0.90}
+\definecolor{codeback}{rgb}{0.97,0.97,0.97}
 \lstset{
   basicstyle=\footnotesize\ttfamily,
   breaklines=true,
@@ -106,37 +109,51 @@
   numbersep=8pt,
   tabsize=4,
   frame=single,
+  captionpos=b,
   numberstyle=\scriptsize\color{gray},
   backgroundcolor=\color{codeback},
   stringstyle=\color{Purple},
   commentstyle=\color{ForestGreen},
-  keywordstyle=\color{BrickRed},
+  keywordstyle=\color{BrickRed}\bfseries,
+  mathescape=true,
 }
 \RequirePackage[linesnumbered,ruled,vlined]{algorithm2e}
 
+%\RequirePackage{pgf}
 \RequirePackage{tikz}
-%\RequirePackage{subfig}
+%\usetikzlibrary{
+%  decorations.pathreplacing,
+%  decorations.pathmorphing,
+%  calligraphy,
+%  calc
+%}
+%\tikzstyle{arrow} = [very thick,->,>=stealth]
+%\newcommand{\mathdefault}[1][]{}
+
 %\RequirePackage{caption}
+%\RequirePackage{subcaption}
 %\RequirePackage{overpic}
 \RequirePackage{graphicx}
 \RequirePackage[section]{placeins}
+%\RequirePackage{pdfpages}
 
 %\RequirePackage{tabularx}
 %\RequirePackage{array}
 %\RequirePackage{booktabs}
 %\RequirePackage{diagbox}
 
+\setlength{\marginparwidth}{2cm} % fixing an issue
 \RequirePackage[obeyDraft,colorinlistoftodos]{todonotes}
-\newcommand{\missing}[1]{\todo[inline]{#1}}
-\newcommand{\rtodo}[1]{\todo[backgroundcolor=red]{#1}}
-\newcommand{\ytodo}[1]{\todo[backgroundcolor=yellow]{#1}}
-\newcommand{\gtodo}[1]{\todo[backgroundcolor=green]{#1}}
+\newcommand{\tcheck}[1][check smth.]{\todo[backgroundcolor=yellow]{#1}}
+\newcommand{\optional}[1]{\todo[backgroundcolor=green]{#1}}
+% \newcommand{\missing}[1]{\todo[inline]{#1}}
 
 %
 % math stuff
 %
 
 \RequirePackage{amsmath,amssymb,amsthm,mathtools}
+%\RequirePackage{nicefrac,textcomp,gensymb}
 \numberwithin{equation}{subsection}
 
 \newcommand{\NN}{\mathbb{N}}
@@ -151,10 +168,12 @@
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\sprod}[2]{\left\langle#1,#2\right\rangle}
 \newcommand{\pab}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pas}{\partial_{\pi}}
+\newcommand{\pasv}{\partial_{\vec{\pi}}}
 \newcommand{\grad}[2]{\text{grad}_{#1} #2}
 \renewcommand{\vec}[1]{\boldsymbol{#1}}
 \DeclareMathOperator{\var}{var}
-\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 % See https://www.overleaf.com/learn/latex/theorems_and_proofs
 \theoremstyle{plain}
@@ -173,7 +192,7 @@
 % dots for a signatue in a formular
 \newcommand{\signaturespace}[1]{%
   \begin{tikzpicture}
-    \draw[dotted] (0,0)--(5,0) (2,0) node[below]{#1};
+    \draw[dotted] (0,0) -- node[below]{#1} (5,0);
   \end{tikzpicture}
 }
 
@@ -184,8 +203,22 @@
 %
 
 \graphicspath{{img/}}
-\setcounter{topnumber}{1}
-\setcounter{tocdepth}{2}
+%\captionsetup{
+%  figurename=Fig.,
+%  tablename=Tab.,
+%  format=plain,
+%  labelsep=space,
+%  labelfont=bf
+%}
+\setcounter{tocdepth}{1}
+
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.10}
+\renewcommand{\floatpagefraction}{0.7}
 
 \newcommand{\mytitle}{Dokument}
 \newcommand{\mysubtitle}{Mit XeLaTeX erzeugt}
@@ -196,7 +229,11 @@
   \RequirePackage{scrtime}
   \RequirePackage{eso-pic}
   \AddToShipoutPicture{
-      \put(20,50){\textcolor[gray]{0.5}{DRAFT: \mytitle{} -- \myname{} (Compile date: \today/\thistime)}}
+      \put(20,50){
+          \textcolor[gray]{0.5}{
+              Draft: \mysubtitle{} -- \myname{} (Compile date: \thistime\nobreakspace\today)
+          }
+      }
   }
 \fi
 

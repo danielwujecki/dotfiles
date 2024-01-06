@@ -41,6 +41,7 @@ app-text/zotero-bin
 dev-python/pip
 dev-python/virtualenv
 dev-tex/biber
+dev-tex/tectonic
 dev-util/cargo-ebuild
 dev-util/nvidia-cuda-toolkit
 dev-util/pkgdev
