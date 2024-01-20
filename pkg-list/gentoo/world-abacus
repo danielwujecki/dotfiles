@@ -38,6 +38,8 @@ app-text/texlive
 app-text/zathura
 app-text/zathura-pdf-poppler
 app-text/zotero-bin
+dev-debug/gdb
+dev-debug/valgrind
 dev-python/pip
 dev-python/virtualenv
 dev-tex/biber
@@ -46,7 +48,6 @@ dev-util/cargo-ebuild
 dev-util/nvidia-cuda-toolkit
 dev-util/pkgdev
 dev-util/shellcheck-bin
-dev-util/valgrind
 gnome-base/gnome-keyring
 gnome-extra/nm-applet
 gui-libs/xdg-desktop-portal-lxqt
@@ -102,7 +103,6 @@ sys-block/gparted
 sys-boot/grub
 sys-boot/os-prober
 sys-devel/distcc
-sys-devel/gdb
 sys-fs/btrfs-progs
 sys-fs/cryptsetup
 sys-fs/dosfstools

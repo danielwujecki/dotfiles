@@ -20,6 +20,50 @@ c = get_config()  #noqa
 #  Default: 30
 # c.Application.log_level = 30
 
+## Configure additional log handlers.
+#  
+#  The default stderr logs handler is configured by the log_level, log_datefmt
+#  and log_format settings.
+#  
+#  This configuration can be used to configure additional handlers (e.g. to
+#  output the log to a file) or for finer control over the default handlers.
+#  
+#  If provided this should be a logging configuration dictionary, for more
+#  information see:
+#  https://docs.python.org/3/library/logging.config.html#logging-config-
+#  dictschema
+#  
+#  This dictionary is merged with the base logging configuration which defines
+#  the following:
+#  
+#  * A logging formatter intended for interactive use called
+#    ``console``.
+#  * A logging handler that writes to stderr called
+#    ``console`` which uses the formatter ``console``.
+#  * A logger with the name of this application set to ``DEBUG``
+#    level.
+#  
+#  This example adds a new handler that writes to a file:
+#  
+#  .. code-block:: python
+#  
+#     c.Application.logging_config = {
+#         "handlers": {
+#             "file": {
+#                 "class": "logging.FileHandler",
+#                 "level": "DEBUG",
+#                 "filename": "<path/to/file>",
+#             }
+#         },
+#         "loggers": {
+#             "<application-name>": {
+#                 "level": "DEBUG",
+#                 # NOTE: if you don't list the default "console"
+#                 # handler here then it will be disabled
+#                 "handlers": ["console", "file"],
+#             },
+#         },
+#     }
 #  Default: {}
 # c.Application.logging_config = {}
 
@@ -64,6 +108,7 @@ c.JupyterApp.answer_yes = True
 #  See also: Application.log_level
 # c.JupyterApp.log_level = 30
 
+## 
 #  See also: Application.logging_config
 # c.JupyterApp.logging_config = {}
 
@@ -109,6 +154,7 @@ c.JupyterApp.answer_yes = True
 #  See also: JupyterApp.generate_config
 # c.ExtensionApp.generate_config = False
 
+## Handlers appended to the server.
 #  Default: []
 # c.ExtensionApp.handlers = []
 
@@ -124,6 +170,7 @@ c.JupyterApp.answer_yes = True
 #  See also: Application.log_level
 # c.ExtensionApp.log_level = 30
 
+## 
 #  See also: Application.logging_config
 # c.ExtensionApp.logging_config = {}
 
@@ -135,6 +182,7 @@ c.JupyterApp.answer_yes = True
 #  Default: False
 # c.ExtensionApp.open_browser = False
 
+## Settings that will passed to the server.
 #  Default: {}
 # c.ExtensionApp.settings = {}
 
@@ -146,6 +194,10 @@ c.JupyterApp.answer_yes = True
 #  See also: Application.show_config_json
 # c.ExtensionApp.show_config_json = False
 
+## paths to search for serving static files.
+#  
+#          This allows adding javascript/css to be available from the notebook server machine,
+#          or overriding individual files in the IPython
 #  Default: []
 # c.ExtensionApp.static_paths = []
 
@@ -153,6 +205,9 @@ c.JupyterApp.answer_yes = True
 #  Default: ''
 # c.ExtensionApp.static_url_prefix = ''
 
+## Paths to search for serving jinja templates.
+#  
+#          Can be used to override templates from notebook.templates.
 #  Default: []
 # c.ExtensionApp.template_paths = []
 
@@ -209,6 +264,7 @@ c.JupyterApp.answer_yes = True
 #  Default: False
 # c.LabServerApp.copy_absolute_path = False
 
+## Extra paths to look for federated JupyterLab extensions
 #  Default: []
 # c.LabServerApp.extra_labextensions_path = []
 
@@ -216,12 +272,15 @@ c.JupyterApp.answer_yes = True
 #  See also: JupyterApp.generate_config
 # c.LabServerApp.generate_config = False
 
+## Handlers appended to the server.
 #  See also: ExtensionApp.handlers
 # c.LabServerApp.handlers = []
 
+## Options to pass to the jinja2 environment for this
 #  Default: {}
 # c.LabServerApp.jinja2_options = {}
 
+## The standard paths to look in for federated JupyterLab extensions
 #  Default: []
 # c.LabServerApp.labextensions_path = []
 
@@ -233,6 +292,8 @@ c.JupyterApp.answer_yes = True
 #  Default: 3600
 # c.LabServerApp.listings_refresh_seconds = 3600
 
+## The optional kwargs to use for the listings HTTP requests             as
+#  described on https://2.python-requests.org/en/v2.7.0/api/#requests.request
 #  Default: {}
 # c.LabServerApp.listings_request_options = {}
 
@@ -252,6 +313,7 @@ c.JupyterApp.answer_yes = True
 #  See also: Application.log_level
 # c.LabServerApp.log_level = 30
 
+## 
 #  See also: Application.logging_config
 # c.LabServerApp.logging_config = {}
 
@@ -268,6 +330,7 @@ c.JupyterApp.answer_yes = True
 #  Default: ''
 # c.LabServerApp.schemas_dir = ''
 
+## Settings that will passed to the server.
 #  See also: ExtensionApp.settings
 # c.LabServerApp.settings = {}
 
@@ -288,6 +351,7 @@ c.JupyterApp.answer_yes = True
 #  Default: ''
 # c.LabServerApp.static_dir = ''
 
+## paths to search for serving static files.
 #  See also: ExtensionApp.static_paths
 # c.LabServerApp.static_paths = []
 
@@ -295,6 +359,7 @@ c.JupyterApp.answer_yes = True
 #  See also: ExtensionApp.static_url_prefix
 # c.LabServerApp.static_url_prefix = ''
 
+## Paths to search for serving jinja templates.
 #  See also: ExtensionApp.template_paths
 # c.LabServerApp.template_paths = []
 
@@ -438,6 +503,7 @@ c.JupyterApp.answer_yes = True
 #  Default: False
 # c.LabApp.extensions_in_dev_mode = False
 
+## Extra paths to look for federated JupyterLab extensions
 #  Default: []
 # c.LabApp.extra_labextensions_path = []
 
@@ -445,12 +511,15 @@ c.JupyterApp.answer_yes = True
 #  See also: JupyterApp.generate_config
 # c.LabApp.generate_config = False
 
+## Handlers appended to the server.
 #  See also: ExtensionApp.handlers
 # c.LabApp.handlers = []
 
+## Options to pass to the jinja2 environment for this
 #  Default: {}
 # c.LabApp.jinja2_options = {}
 
+## The standard paths to look in for federated JupyterLab extensions
 #  Default: []
 # c.LabApp.labextensions_path = []
 
@@ -462,6 +531,8 @@ c.JupyterApp.answer_yes = True
 #  See also: LabServerApp.listings_refresh_seconds
 # c.LabApp.listings_refresh_seconds = 3600
 
+## The optional kwargs to use for the listings HTTP requests             as
+#  described on https://2.python-requests.org/en/v2.7.0/api/#requests.request
 #  See also: LabServerApp.listings_request_options
 # c.LabApp.listings_request_options = {}
 
@@ -481,6 +552,7 @@ c.JupyterApp.answer_yes = True
 #  See also: Application.log_level
 # c.LabApp.log_level = 30
 
+## 
 #  See also: Application.logging_config
 # c.LabApp.logging_config = {}
 
@@ -510,6 +582,7 @@ c.JupyterApp.answer_yes = True
 #  Default: ''
 # c.LabApp.schemas_dir = ''
 
+## Settings that will passed to the server.
 #  See also: ExtensionApp.settings
 # c.LabApp.settings = {}
 
@@ -538,6 +611,7 @@ c.JupyterApp.answer_yes = True
 #  Default: ''
 # c.LabApp.static_dir = ''
 
+## paths to search for serving static files.
 #  See also: ExtensionApp.static_paths
 # c.LabApp.static_paths = []
 
@@ -545,6 +619,7 @@ c.JupyterApp.answer_yes = True
 #  See also: ExtensionApp.static_url_prefix
 # c.LabApp.static_url_prefix = ''
 
+## Paths to search for serving jinja templates.
 #  See also: ExtensionApp.template_paths
 # c.LabApp.template_paths = []
 
@@ -703,6 +778,7 @@ c.ServerApp.allow_origin = '*'
 #  Default: 'jupyter_server.services.contents.largefilemanager.AsyncLargeFileManager'
 # c.ServerApp.contents_manager_class = 'jupyter_server.services.contents.largefilemanager.AsyncLargeFileManager'
 
+## DEPRECATED. Use IdentityProvider.cookie_options
 #  Default: {}
 # c.ServerApp.cookie_options = {}
 
@@ -759,12 +835,20 @@ c.ServerApp.allow_origin = '*'
 #  Default: None
 # c.ServerApp.external_connection_dir = None
 
+## handlers that should be loaded at higher priority than the default services
 #  Default: []
 # c.ServerApp.extra_services = []
 
+## Extra paths to search for serving static files.
+#  
+#          This allows adding javascript/css to be available from the Jupyter server machine,
+#          or overriding individual files in the IPython
 #  Default: []
 # c.ServerApp.extra_static_paths = []
 
+## Extra paths to search for serving jinja templates.
+#  
+#          Can be used to override templates from jupyter_server.templates.
 #  Default: []
 # c.ServerApp.extra_template_paths = []
 
@@ -780,6 +864,7 @@ c.ServerApp.allow_origin = '*'
 #  See also: JupyterApp.generate_config
 # c.ServerApp.generate_config = False
 
+## DEPRECATED. Use IdentityProvider.get_secure_cookie_kwargs
 #  Default: {}
 # c.ServerApp.get_secure_cookie_kwargs = {}
 
@@ -797,14 +882,19 @@ c.ServerApp.allow_origin = '*'
 
 ## The IP address the Jupyter server will listen on.
 #  Default: 'localhost'
-c.ServerApp.ip = 'localhost'
+# c.ServerApp.ip = 'localhost'
 
+## Supply extra arguments that will be passed to Jinja environment.
 #  Default: {}
 # c.ServerApp.jinja_environment_options = {}
 
+## Extra variables to supply to jinja templates when rendering.
 #  Default: {}
 # c.ServerApp.jinja_template_vars = {}
 
+## Dict of Python modules to load as Jupyter server extensions.Entry values can
+#  be used to enable and disable the loading ofthe extensions. The extensions
+#  will be loaded in alphabetical order.
 #  Default: {}
 # c.ServerApp.jpserver_extensions = {}
 
@@ -836,6 +926,10 @@ c.ServerApp.ip = 'localhost'
 #  Default: False
 # c.ServerApp.limit_rate = False
 
+## Hostnames to allow as local when allow_remote_access is False.
+#  
+#         Local IP addresses (such as 127.0.0.1 and ::1) are automatically accepted
+#         as local as well.
 #  Default: ['localhost']
 # c.ServerApp.local_hostnames = ['localhost']
 
@@ -851,6 +945,7 @@ c.ServerApp.ip = 'localhost'
 #  See also: Application.log_level
 # c.ServerApp.log_level = 30
 
+## 
 #  See also: Application.logging_config
 # c.ServerApp.logging_config = {}
 
@@ -963,12 +1058,19 @@ c.ServerApp.open_browser = False
 #  Default: '0600'
 # c.ServerApp.sock_mode = '0600'
 
+## Supply SSL options for the tornado HTTPServer.
+#              See the tornado docs for details.
 #  Default: {}
 # c.ServerApp.ssl_options = {}
 
+## Paths to set up static files as immutable.
+#  
+#  This allow setting up the cache control of static files as immutable. It
+#  should be used for static file named with a hash for instance.
 #  Default: []
 # c.ServerApp.static_immutable_cache = []
 
+## Supply overrides for terminado. Currently only supports "shell_command".
 #  Default: {}
 # c.ServerApp.terminado_settings = {}
 
@@ -986,6 +1088,7 @@ c.ServerApp.open_browser = False
 #  Default: '<DEPRECATED>'
 # c.ServerApp.token = '<DEPRECATED>'
 
+## Supply overrides for the tornado.web.Application that the Jupyter server uses.
 #  Default: {}
 # c.ServerApp.tornado_settings = {}
 

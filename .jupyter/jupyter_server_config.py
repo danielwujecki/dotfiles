@@ -20,6 +20,50 @@ c = get_config()  #noqa
 #  Default: 30
 # c.Application.log_level = 30
 
+## Configure additional log handlers.
+#  
+#  The default stderr logs handler is configured by the log_level, log_datefmt
+#  and log_format settings.
+#  
+#  This configuration can be used to configure additional handlers (e.g. to
+#  output the log to a file) or for finer control over the default handlers.
+#  
+#  If provided this should be a logging configuration dictionary, for more
+#  information see:
+#  https://docs.python.org/3/library/logging.config.html#logging-config-
+#  dictschema
+#  
+#  This dictionary is merged with the base logging configuration which defines
+#  the following:
+#  
+#  * A logging formatter intended for interactive use called
+#    ``console``.
+#  * A logging handler that writes to stderr called
+#    ``console`` which uses the formatter ``console``.
+#  * A logger with the name of this application set to ``DEBUG``
+#    level.
+#  
+#  This example adds a new handler that writes to a file:
+#  
+#  .. code-block:: python
+#  
+#     c.Application.logging_config = {
+#         "handlers": {
+#             "file": {
+#                 "class": "logging.FileHandler",
+#                 "level": "DEBUG",
+#                 "filename": "<path/to/file>",
+#             }
+#         },
+#         "loggers": {
+#             "<application-name>": {
+#                 "level": "DEBUG",
+#                 # NOTE: if you don't list the default "console"
+#                 # handler here then it will be disabled
+#                 "handlers": ["console", "file"],
+#             },
+#         },
+#     }
 #  Default: {}
 # c.Application.logging_config = {}
 
@@ -38,7 +82,7 @@ c = get_config()  #noqa
 
 ## Answer yes to any prompts.
 #  Default: False
-c.JupyterApp.answer_yes = True
+# c.JupyterApp.answer_yes = False
 
 ## Full path of a config file.
 #  Default: ''
@@ -64,6 +108,7 @@ c.JupyterApp.answer_yes = True
 #  See also: Application.log_level
 # c.JupyterApp.log_level = 30
 
+## 
 #  See also: Application.logging_config
 # c.JupyterApp.logging_config = {}
 
@@ -95,7 +140,7 @@ c.JupyterApp.answer_yes = True
 #  
 #          Takes precedence over allow_origin_pat.
 #  Default: ''
-c.ServerApp.allow_origin = '*'
+# c.ServerApp.allow_origin = ''
 
 ## Use a regular expression for the Access-Control-Allow-Origin header
 #  
@@ -189,6 +234,7 @@ c.ServerApp.allow_origin = '*'
 #  Default: 'jupyter_server.services.contents.largefilemanager.AsyncLargeFileManager'
 # c.ServerApp.contents_manager_class = 'jupyter_server.services.contents.largefilemanager.AsyncLargeFileManager'
 
+## DEPRECATED. Use IdentityProvider.cookie_options
 #  Default: {}
 # c.ServerApp.cookie_options = {}
 
@@ -245,12 +291,20 @@ c.ServerApp.allow_origin = '*'
 #  Default: None
 # c.ServerApp.external_connection_dir = None
 
+## handlers that should be loaded at higher priority than the default services
 #  Default: []
 # c.ServerApp.extra_services = []
 
+## Extra paths to search for serving static files.
+#  
+#          This allows adding javascript/css to be available from the Jupyter server machine,
+#          or overriding individual files in the IPython
 #  Default: []
 # c.ServerApp.extra_static_paths = []
 
+## Extra paths to search for serving jinja templates.
+#  
+#          Can be used to override templates from jupyter_server.templates.
 #  Default: []
 # c.ServerApp.extra_template_paths = []
 
@@ -266,6 +320,7 @@ c.ServerApp.allow_origin = '*'
 #  See also: JupyterApp.generate_config
 # c.ServerApp.generate_config = False
 
+## DEPRECATED. Use IdentityProvider.get_secure_cookie_kwargs
 #  Default: {}
 # c.ServerApp.get_secure_cookie_kwargs = {}
 
@@ -283,14 +338,19 @@ c.ServerApp.allow_origin = '*'
 
 ## The IP address the Jupyter server will listen on.
 #  Default: 'localhost'
-c.ServerApp.ip = 'localhost'
+# c.ServerApp.ip = 'localhost'
 
+## Supply extra arguments that will be passed to Jinja environment.
 #  Default: {}
 # c.ServerApp.jinja_environment_options = {}
 
+## Extra variables to supply to jinja templates when rendering.
 #  Default: {}
 # c.ServerApp.jinja_template_vars = {}
 
+## Dict of Python modules to load as Jupyter server extensions.Entry values can
+#  be used to enable and disable the loading ofthe extensions. The extensions
+#  will be loaded in alphabetical order.
 #  Default: {}
 # c.ServerApp.jpserver_extensions = {}
 
@@ -322,6 +382,10 @@ c.ServerApp.ip = 'localhost'
 #  Default: False
 # c.ServerApp.limit_rate = False
 
+## Hostnames to allow as local when allow_remote_access is False.
+#  
+#         Local IP addresses (such as 127.0.0.1 and ::1) are automatically accepted
+#         as local as well.
 #  Default: ['localhost']
 # c.ServerApp.local_hostnames = ['localhost']
 
@@ -337,6 +401,7 @@ c.ServerApp.ip = 'localhost'
 #  See also: Application.log_level
 # c.ServerApp.log_level = 30
 
+## 
 #  See also: Application.logging_config
 # c.ServerApp.logging_config = {}
 
@@ -449,12 +514,19 @@ c.ServerApp.ip = 'localhost'
 #  Default: '0600'
 # c.ServerApp.sock_mode = '0600'
 
+## Supply SSL options for the tornado HTTPServer.
+#              See the tornado docs for details.
 #  Default: {}
 # c.ServerApp.ssl_options = {}
 
+## Paths to set up static files as immutable.
+#  
+#  This allow setting up the cache control of static files as immutable. It
+#  should be used for static file named with a hash for instance.
 #  Default: []
 # c.ServerApp.static_immutable_cache = []
 
+## Supply overrides for terminado. Currently only supports "shell_command".
 #  Default: {}
 # c.ServerApp.terminado_settings = {}
 
@@ -470,8 +542,10 @@ c.ServerApp.ip = 'localhost'
 
 ## DEPRECATED. Use IdentityProvider.token
 #  Default: '<DEPRECATED>'
-c.ServerApp.token = 'abacus'
+# c.ServerApp.token = '<DEPRECATED>'
+c.IdentityProvider.token = 'abacus'
 
+## Supply overrides for the tornado.web.Application that the Jupyter server uses.
 #  Default: {}
 # c.ServerApp.tornado_settings = {}
 
@@ -580,6 +654,11 @@ c.ServerApp.token = 'abacus'
 ## Should we autorestart the kernel if it dies.
 #  Default: True
 # c.KernelManager.autorestart = True
+
+## True if the MultiKernelManager should cache ports for this KernelManager
+#  instance
+#  Default: False
+# c.KernelManager.cache_ports = False
 
 ## JSON file in which to store connection info [default: kernel-<pid>.json]
 #  See also: ConnectionFileMixin.connection_file
@@ -703,6 +782,8 @@ c.ServerApp.token = 'abacus'
 #  Default: ''
 # c.Session.keyfile = ''
 
+## Metadata dictionary, which serves as the default top-level metadata dict for
+#  each message.
 #  Default: {}
 # c.Session.metadata = {}
 
@@ -760,6 +841,8 @@ c.ServerApp.token = 'abacus'
 #  Default: True
 # c.MappingKernelManager.allow_tracebacks = True
 
+## White list of allowed kernel message types.
+#          When the list is empty, all message types are allowed.
 #  Default: []
 # c.MappingKernelManager.allowed_message_types = []
 
@@ -828,6 +911,11 @@ c.ServerApp.token = 'abacus'
 #------------------------------------------------------------------------------
 # KernelSpecManager(LoggingConfigurable) configuration
 #------------------------------------------------------------------------------
+## A manager for kernel specs.
+
+## List of allowed kernel names.
+#  
+#          By default, all installed kernels are allowed.
 #  Default: set()
 # c.KernelSpecManager.allowed_kernelspecs = set()
 
@@ -841,6 +929,7 @@ c.ServerApp.token = 'abacus'
 #  Default: 'jupyter_client.kernelspec.KernelSpec'
 # c.KernelSpecManager.kernel_spec_class = 'jupyter_client.kernelspec.KernelSpec'
 
+## Deprecated, use `KernelSpecManager.allowed_kernelspecs`
 #  Default: set()
 # c.KernelSpecManager.whitelist = set()
 
@@ -874,6 +963,7 @@ c.ServerApp.token = 'abacus'
 #  See also: MappingKernelManager.allow_tracebacks
 # c.AsyncMappingKernelManager.allow_tracebacks = True
 
+## White list of allowed kernel message types.
 #  See also: MappingKernelManager.allowed_message_types
 # c.AsyncMappingKernelManager.allowed_message_types = []
 
@@ -974,9 +1064,14 @@ c.ServerApp.token = 'abacus'
 #  Default: 'jupyter_server.files.handlers.FilesHandler'
 # c.ContentsManager.files_handler_class = 'jupyter_server.files.handlers.FilesHandler'
 
+## Extra parameters to pass to files_handler_class.
+#  
+#          For example, StaticFileHandlers generally expect a `path` argument
+#          specifying the root directory from which to serve files.
 #  Default: {}
 # c.ContentsManager.files_handler_params = {}
 
+## Glob patterns to hide in file and directory listings.
 #  Default: ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~']
 # c.ContentsManager.hide_globs = ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~']
 
@@ -1037,7 +1132,7 @@ c.ServerApp.token = 'abacus'
 # c.ContentsManager.untitled_notebook = 'Untitled'
 
 #------------------------------------------------------------------------------
-# FileManagerMixin(Configurable) configuration
+# FileManagerMixin(LoggingConfigurable, Configurable) configuration
 #------------------------------------------------------------------------------
 ## Mixin for ContentsAPI classes that interact with the filesystem.
 #  
@@ -1052,8 +1147,13 @@ c.ServerApp.token = 'abacus'
 #  
 #  log : logging.Logger
 
+## Hash algorithm to use for file content, support by hashlib
+#  Choices: any of ['sha512_256', 'sha512', 'sha3_512', 'sha256', 'blake2s', 'sha224', 'sha3_384', 'md5', 'sha3_256', 'ripemd160', 'shake_128', 'sha1', 'md5-sha1', 'blake2b', 'sha3_224', 'sha384', 'shake_256', 'sha512_224', 'sm3']
+#  Default: 'sha256'
+# c.FileManagerMixin.hash_algorithm = 'sha256'
+
 ## By default notebooks are saved on disk on a temporary file and then if succefully written, it replaces the old ones.
-#        This procedure, namely 'atomic_writing', causes some bugs on file system whitout operation order enforcement (like some networked fs).
+#        This procedure, namely 'atomic_writing', causes some bugs on file system without operation order enforcement (like some networked fs).
 #        If set to False, the new notebook is written directly on the old one which could fail (eg: full filesystem or quota )
 #  Default: True
 # c.FileManagerMixin.use_atomic_writing = True
@@ -1097,9 +1197,15 @@ c.ServerApp.token = 'abacus'
 #  See also: ContentsManager.files_handler_class
 # c.FileContentsManager.files_handler_class = 'jupyter_server.files.handlers.FilesHandler'
 
+## Extra parameters to pass to files_handler_class.
 #  See also: ContentsManager.files_handler_params
 # c.FileContentsManager.files_handler_params = {}
 
+## Hash algorithm to use for file content, support by hashlib
+#  See also: FileManagerMixin.hash_algorithm
+# c.FileContentsManager.hash_algorithm = 'sha256'
+
+## 
 #  See also: ContentsManager.hide_globs
 # c.FileContentsManager.hide_globs = ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~']
 
@@ -1165,9 +1271,11 @@ c.ServerApp.token = 'abacus'
 #  See also: ContentsManager.files_handler_class
 # c.AsyncContentsManager.files_handler_class = 'jupyter_server.files.handlers.FilesHandler'
 
+## Extra parameters to pass to files_handler_class.
 #  See also: ContentsManager.files_handler_params
 # c.AsyncContentsManager.files_handler_params = {}
 
+## 
 #  See also: ContentsManager.hide_globs
 # c.AsyncContentsManager.hide_globs = ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~']
 
@@ -1204,6 +1312,10 @@ c.ServerApp.token = 'abacus'
 #------------------------------------------------------------------------------
 ## Mixin for ContentsAPI classes that interact with the filesystem
 #  asynchronously.
+
+## Hash algorithm to use for file content, support by hashlib
+#  See also: FileManagerMixin.hash_algorithm
+# c.AsyncFileManagerMixin.hash_algorithm = 'sha256'
 
 ## By default notebooks are saved on disk on a temporary file and then if
 #  succefully written, it replaces the old ones.
@@ -1243,9 +1355,15 @@ c.ServerApp.token = 'abacus'
 #  See also: ContentsManager.files_handler_class
 # c.AsyncFileContentsManager.files_handler_class = 'jupyter_server.files.handlers.FilesHandler'
 
+## Extra parameters to pass to files_handler_class.
 #  See also: ContentsManager.files_handler_params
 # c.AsyncFileContentsManager.files_handler_params = {}
 
+## Hash algorithm to use for file content, support by hashlib
+#  See also: FileManagerMixin.hash_algorithm
+# c.AsyncFileContentsManager.hash_algorithm = 'sha256'
+
+## 
 #  See also: ContentsManager.hide_globs
 # c.AsyncFileContentsManager.hide_globs = ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~']
 
@@ -1292,7 +1410,7 @@ c.ServerApp.token = 'abacus'
 ## A class for computing and verifying notebook signatures.
 
 ## The hashing algorithm used to sign notebooks.
-#  Choices: any of ['blake2s', 'sha384', 'sha3_256', 'sha1', 'md5', 'sha3_224', 'sha3_384', 'sha224', 'sha512', 'sha3_512', 'sha256', 'blake2b']
+#  Choices: any of ['blake2b', 'sha3_224', 'sha384', 'sha3_512', 'md5', 'sha256', 'blake2s', 'sha224', 'sha3_256', 'sha1', 'sha3_384', 'sha512']
 #  Default: 'sha256'
 # c.NotebookNotary.algorithm = 'sha256'
 
@@ -1329,6 +1447,7 @@ c.ServerApp.token = 'abacus'
 #  See also: MappingKernelManager.allow_tracebacks
 # c.GatewayMappingKernelManager.allow_tracebacks = True
 
+## White list of allowed kernel message types.
 #  See also: MappingKernelManager.allowed_message_types
 # c.GatewayMappingKernelManager.allowed_message_types = []
 
@@ -1387,6 +1506,7 @@ c.ServerApp.token = 'abacus'
 #------------------------------------------------------------------------------
 ## A gateway kernel spec manager.
 
+## List of allowed kernel names.
 #  See also: KernelSpecManager.allowed_kernelspecs
 # c.GatewayKernelSpecManager.allowed_kernelspecs = set()
 
@@ -1398,6 +1518,7 @@ c.ServerApp.token = 'abacus'
 #  See also: KernelSpecManager.kernel_spec_class
 # c.GatewayKernelSpecManager.kernel_spec_class = 'jupyter_client.kernelspec.KernelSpec'
 
+## Deprecated, use `KernelSpecManager.allowed_kernelspecs`
 #  See also: KernelSpecManager.whitelist
 # c.GatewayKernelSpecManager.whitelist = set()
 
@@ -1445,12 +1566,8 @@ c.ServerApp.token = 'abacus'
 #------------------------------------------------------------------------------
 ## Web socket connection that proxies to a kernel/enterprise gateway.
 
-## Preferred kernel message protocol over websocket to use (default: None). If an
-#  empty string is passed, select the legacy protocol. If None, the selected
-#  protocol will depend on what the front-end supports (usually the most recent
-#  protocol supported by the back-end and the front-end).
-#  See also: BaseKernelWebsocketConnection.kernel_ws_protocol
-# c.GatewayWebSocketConnection.kernel_ws_protocol = None
+#  Default: ''
+# c.GatewayWebSocketConnection.kernel_ws_protocol = ''
 
 #  See also: BaseKernelWebsocketConnection.session
 # c.GatewayWebSocketConnection.session = None

@@ -1,12 +1,16 @@
 %
 % documentclass
 %
-\documentclass[11pt,aspectratio=169,xcolor={table,dvipsnames}]{beamer}
+\documentclass[
+    11pt,
+    aspectratio=169,
+    xcolor={table,dvipsnames}
+]{beamer}
 
-\usetheme[
-    progressbar=frametitle,
-    numbering=fraction
-]{metropolis}
+% \usetheme[
+%     progressbar=frametitle,
+%     numbering=fraction
+% ]{metropolis}
 
 %
 % general packages
@@ -25,6 +29,7 @@
 %
 
 % xelatex fonts
+%\usepackage{lmodern}
 \usepackage{fontspec}
 \defaultfontfeatures{Scale=MatchLowercase}
 \defaultfontfeatures[\rmfamily]{Scale=1}
@@ -44,19 +49,21 @@
 % BibLateX
 %\usepackage{csquotes}
 %\usepackage[
-%    backend=biber,
-%    style=ieee,
-%    url=false,
-%    eprint=false,
-%    isbn=false,
-%    hyperref=true,
-%    bibencoding=inputenc
+%  style=authoryear,
+%  % style=ieee,
+%  backend=biber,
+%  url=false,
+%  eprint=false,
+%  isbn=false,
+%  hyperref=true,
+%  bibencoding=inputenc,
+%  maxcitenames=2,
 %]{biblatex}
 %\addbibresource{quellen.bib}
 
+%\RequirePackage[table,dvipsnames]{xcolor}
 %\usepackage{listings}
-%\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-%\definecolor{codeback}{rgb}{0.93,0.93,0.90}
+%\definecolor{codeback}{rgb}{0.97,0.97,0.97}
 %\lstset{
 %  basicstyle=\footnotesize\ttfamily,
 %  breaklines=true,
@@ -65,35 +72,49 @@
 %  numbersep=8pt,
 %  tabsize=4,
 %  frame=single,
+%  captionpos=b,
 %  numberstyle=\scriptsize\color{gray},
 %  backgroundcolor=\color{codeback},
 %  stringstyle=\color{Purple},
 %  commentstyle=\color{ForestGreen},
-%  keywordstyle=\color{BrickRed},
+%  keywordstyle=\color{BrickRed}\bfseries,
+%  mathescape=true,
 %}
 %\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 
+%\usepackage{pgf}
 %\usepackage{tikz}
-%\usepackage{subfig}
+%\usetikzlibrary{
+%  decorations.pathreplacing,
+%  decorations.pathmorphing,
+%  calligraphy,
+%  calc
+%}
+%\tikzstyle{arrow} = [very thick,->,>=stealth]
+%\newcommand{\mathdefault}[1][]{}
+
 %\usepackage{caption}
+%\usepackage{subcaption}
 %\usepackage{overpic}
+%\RequirePackage{graphicx}
 
 %\usepackage{tabularx}
 %\usepackage{array}
 %\usepackage{booktabs}
 %\usepackage{diagbox}
 
-%\usepackage[obeyDraft,colorinlistoftodos]{todonotes}
-%\newcommand{\missing}[1]{\todo[inline]{#1}}
-%\newcommand{\rtodo}[1]{\todo[backgroundcolor=red]{#1}}
-%\newcommand{\ytodo}[1]{\todo[backgroundcolor=yellow]{#1}}
-%\newcommand{\gtodo}[1]{\todo[backgroundcolor=green]{#1}}
+%\setlength{\marginparwidth}{2cm} % fixing an issue
+%\RequirePackage[colorinlistoftodos]{todonotes}
+%\newcommand{\tcheck}[1][check smth.]{\todo[backgroundcolor=yellow]{#1}}
+%\newcommand{\optional}[1]{\todo[backgroundcolor=green]{#1}}
+% \newcommand{\missing}[1]{\todo[inline]{#1}}
 
 %
 % math stuff
 %
 
 \usepackage{amsmath,amssymb,amsthm,mathtools}
+%\usepackage{nicefrac,textcomp,gensymb}
 %\numberwithin{equation}{subsection}
 
 \newcommand{\NN}{\mathbb{N}}
@@ -108,10 +129,12 @@
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\sprod}[2]{\left\langle#1,#2\right\rangle}
 \newcommand{\pab}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pas}{\partial_{\pi}}
+\newcommand{\pasv}{\partial_{\vec{\pi}}}
 \newcommand{\grad}[2]{\text{grad}_{#1} #2}
 \renewcommand{\vec}[1]{\boldsymbol{#1}}
 \DeclareMathOperator{\var}{var}
-\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 % See https://www.overleaf.com/learn/latex/theorems_and_proofs
 %\theoremstyle{plain}
@@ -135,6 +158,13 @@
 
 \graphicspath{{img/}}
 \setcounter{topnumber}{1}
+%\captionsetup{
+%  figurename=Fig.,
+%  tablename=Tab.,
+%  format=plain,
+%  labelsep=space,
+%  labelfont=bf
+%}
 \setcounter{tocdepth}{2}
 
 \newcommand{\mytitle}{Dokument}
@@ -152,6 +182,13 @@
   urlcolor=blue!40!black,
   linkcolor=red!40!black,
   citecolor=green!40!black,
+}
+
+\AtBeginSection[]{
+    \begin{frame}
+        \frametitle{Inhaltsverzeichnis}
+        \tableofcontents[currentsection]
+    \end{frame}
 }
 
 \title{\mytitle{}}
@@ -185,9 +222,9 @@
     top
 \end{frame}
 
-%\begin{frame}
-%    \frametitle{\hphantom{1em}}
-%    \frametitle{}
+%\appendix
+%\begin{frame}[allowframebreaks]
+%    \frametitle{Literaturverzeichnis}
 %    \printbibliography
 %\end{frame}
 

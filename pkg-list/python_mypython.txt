@@ -1,18 +1,14 @@
-ipython
-jupyter
-jupyterlab
-nbconvert
-widgetsnbextension
-jupyter-contrib-nbextensions
+notebook
+ipympl
 
 numpy
 scipy
 pandas
 seaborn
 matplotlib
-
 PyYAML
 
 autopep8
 pylint
+
 pynvim

@@ -1,9 +1,6 @@
-ipython
-
-jupyter
-jupyterlab
-nbconvert
-widgetsnbextension
+notebook
+ipympl
+jupyter-collaboration
 jupyter-contrib-nbextensions
 rise
 
@@ -15,7 +12,6 @@ opencv-python
 networkx
 seaborn
 matplotlib
-
 PyYAML
 Pillow
 
