@@ -8,12 +8,15 @@ if [[ $# -ne 1 ]] ; then
     exit 1
 fi
 
-REMOTE_CMD="TERM='xterm' su - root -c 'tmux new -As ssh-wujecki'"
+if [[ $(tmux ls | grep "tu$1") ]] ; then
+    tmux a -t "tu$1"
+    exit 0
+fi
 
 if echo "$1" | grep -Eq '^[0-9]{1,3}\.[0-9]{1,3}$' ; then
-    ssh -tJ "mulfadmin@130.149.133.190" "mulfadmin@192.168.$1" "$REMOTE_CMD"
+    tmux new -s "tu$1" "ssh -J mulfadmin@130.149.133.190 mulfadmin@192.168.$1"
 elif echo "$1" | grep -Eq '^[0-9]{1,3}$' ; then
-    ssh -t "mulfadmin@130.149.133.$1" "$REMOTE_CMD"
+    tmux new -s "tu$1" "ssh mulfadmin@130.149.133.$1"
 else
     usage
     exit 1

@@ -39,13 +39,15 @@ app-text/texlive
 app-text/zathura
 app-text/zathura-pdf-poppler
 app-text/zotero-bin
+dev-debug/gdb
+dev-debug/valgrind
 dev-python/pip
 dev-python/virtualenv
 dev-tex/biber
+dev-tex/tectonic
 dev-util/cargo-ebuild
 dev-util/pkgdev
 dev-util/shellcheck-bin
-dev-util/valgrind
 gnome-base/gnome-keyring
 gnome-extra/nm-applet
 lxde-base/lxappearance
@@ -88,6 +90,7 @@ sys-apps/eza
 sys-apps/fd
 sys-apps/flatpak
 sys-apps/gptfdisk
+sys-apps/hw-probe
 sys-apps/kexec-tools
 sys-apps/lsd
 sys-apps/pciutils
@@ -101,7 +104,6 @@ sys-block/gparted
 sys-boot/grub
 sys-boot/os-prober
 sys-devel/distcc
-sys-devel/gdb
 sys-firmware/intel-microcode
 sys-fs/btrfs-progs
 sys-fs/cryptsetup
