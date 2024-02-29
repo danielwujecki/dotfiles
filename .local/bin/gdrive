@@ -2,9 +2,8 @@
 set -euo pipefail
 
 declare -A SYNCLIST
-#SYNCLIST['gdrive:cg_papers']="$HOME/Studium/masterarbeit/papers"
 #SYNCLIST['gdrive:klettern']="$HOME/Dokumente/klettern"
-SYNCLIST['gdrive:math_material']="$HOME/Studium/math_material"
+SYNCLIST['gdrive:Studium/math_material']="$HOME/Studium/math_material"
 
 YELLOW='\e[33m'
 WHITE='\e[0m'

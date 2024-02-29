@@ -57,14 +57,14 @@ file /usr/lib/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2                  
 file /usr/lib/libudev.so.1         /lib64/libudev.so.1                                   755 0 0
 file /usr/lib/libpthread.so.0      /lib64/libpthread.so.0                                755 0 0
 file /usr/lib/libm.so.6            /lib64/libm.so.6                                      755 0 0
-file /usr/lib/libcap.so.2          /lib64/libcap.so.2                                    755 0 0
+file /usr/lib/libcap.so.2          /usr/lib64/libcap.so.2                                755 0 0
 file /usr/lib/libgcc_s.so.1        /usr/lib/gcc/x86_64-pc-linux-gnu/11/libgcc_s.so.1     755 0 0
 
 #
 # lvm added deps
 #
 file /usr/lib/libaio.so.1                /lib64/libaio.so.1                755 0 0
-file /usr/lib/libreadline.so.8           /lib64/libreadline.so.8           755 0 0
+file /usr/lib/libreadline.so.8           /usr/lib64/libreadline.so.8       755 0 0
 file /usr/lib/libtinfow.so.6             /lib64/libtinfow.so.6             755 0 0
 file /usr/lib/libdevmapper-event.so.1.02 /lib64/libdevmapper-event.so.1.02 755 0 0
 
