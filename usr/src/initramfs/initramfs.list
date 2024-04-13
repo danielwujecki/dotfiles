@@ -43,8 +43,8 @@ file /usr/bin/lvm        /sbin/lvm         755 0 0
 #
 file /usr/lib/libcryptsetup.so.12  /usr/lib64/libcryptsetup.so.12                        755 0 0
 file /usr/lib/libpopt.so.0         /usr/lib64/libpopt.so.0                               755 0 0
-file /usr/lib/libuuid.so.1         /lib64/libuuid.so.1                                   755 0 0
-file /usr/lib/libblkid.so.1        /lib64/libblkid.so.1                                  755 0 0
+file /usr/lib/libuuid.so.1         /usr/lib64/libuuid.so.1                               755 0 0
+file /usr/lib/libblkid.so.1        /usr/lib64/libblkid.so.1                              755 0 0
 file /usr/lib/libc.so.6            /lib64/libc.so.6                                      755 0 0
 file /usr/lib/libdevmapper.so.1.02 /lib64/libdevmapper.so.1.02                           755 0 0
 file /usr/lib/libssl.so.3          /usr/lib64/libssl.so.3                                755 0 0
@@ -63,7 +63,7 @@ file /usr/lib/libgcc_s.so.1        /usr/lib/gcc/x86_64-pc-linux-gnu/11/libgcc_s.
 #
 # lvm added deps
 #
-file /usr/lib/libaio.so.1                /lib64/libaio.so.1                755 0 0
+file /usr/lib/libaio.so.1                /usr/lib64/libaio.so.1            755 0 0
 file /usr/lib/libreadline.so.8           /usr/lib64/libreadline.so.8       755 0 0
 file /usr/lib/libtinfow.so.6             /lib64/libtinfow.so.6             755 0 0
 file /usr/lib/libdevmapper-event.so.1.02 /lib64/libdevmapper-event.so.1.02 755 0 0

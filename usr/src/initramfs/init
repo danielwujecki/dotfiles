@@ -2,12 +2,14 @@
 #
 # author: daniel w.
 
-VERSION="0.2"
+VERSION="0.3"
 
 ascii_logo() {
     HOST="$(/usr/bin/busybox uname -n)"
     KERNEL="$(/usr/bin/busybox uname -o) $(/usr/bin/busybox uname -r)"
-    BUILD_DATE="$(/usr/bin/busybox uname -v | /usr/bin/busybox sed 's|.*SMP ||')"
+    BUILD_DATE="$(/usr/bin/busybox uname -v)"
+    BUILD_DATE="$(echo $BUILD_DATE | /usr/bin/busybox sed 's|.*SMP ||')"
+    BUILD_DATE="$(echo $BUILD_DATE | /usr/bin/busybox sed 's|PREEMPT_DYNAMIC ||')"
 
     LOGO="H4sICNEs8mMAA2xvZ28udHh0AJVRywrCMBC85ysWc6iIcW/eBEULgqKg4mkhKCoUfICvUz7ePEw3
           kV6cJml2ZzM7bQTUQBK873Q4soENswoML0oL0RXUJLFsXJHSDPPuYXH0g5IeMe0K3RrYsKcojYAQ

@@ -109,6 +109,7 @@ sys-fs/btrfs-progs
 sys-fs/cryptsetup
 sys-fs/dosfstools
 sys-fs/exfatprogs
+sys-fs/fuse:0
 sys-fs/lvm2
 sys-fs/multipath-tools
 sys-fs/ntfs3g

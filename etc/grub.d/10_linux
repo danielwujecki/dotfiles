@@ -43,9 +43,11 @@ case ${GRUB_DEVICE} in
   ;;
 esac
 
+: ${GRUB_CMDLINE_LINUX_RECOVERY:=single}
+
 # Default to disabling partition uuid support to maintian compatibility with
 # older kernels.
-GRUB_DISABLE_LINUX_PARTUUID=${GRUB_DISABLE_LINUX_PARTUUID-true}
+: ${GRUB_DISABLE_LINUX_PARTUUID=true}
 
 # btrfs may reside on multiple devices. We cannot pass them as value of root= parameter
 # and mounting btrfs requires user space scanning, so force UUID in this case.
@@ -65,12 +67,12 @@ fi
 
 case x"$GRUB_FS" in
     xbtrfs)
-	#rootsubvol="`make_system_path_relative_to_its_root /`"
-	#rootsubvol="${rootsubvol#/}"
-	#if [ "x${rootsubvol}" != x ]; then
-	#    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
-	#fi
-    ;;
+	rootsubvol="`make_system_path_relative_to_its_root /`"
+	rootsubvol="${rootsubvol#/}"
+	if [ "x${rootsubvol}" != x ]; then
+	    # GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
+        :
+	fi;;
     xzfs)
 	rpool=`${grub_probe} --device ${GRUB_DEVICE} --target=fs_label 2>/dev/null || true`
 	bootfs="`make_system_path_relative_to_its_root / | sed -e "s,@$,,"`"
@@ -142,10 +144,10 @@ linux_entry ()
     printf '%s\n' "${prepare_boot_cache}" | sed "s/^/$submenu_indentation/"
   fi
   message="$(gettext_printf "Loading Linux %s ..." ${version})"
-#  sed "s/^/$submenu_indentation/" << EOF
-#	echo	'$(echo "$message" | grub_quote)'
-#	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
-#EOF
+  # sed "s/^/$submenu_indentation/" << EOF
+  # 	echo	'$(echo "$message" | grub_quote)'
+  # 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
+  # EOF
   sed "s/^/$submenu_indentation/" << EOF
 	echo	'$(echo "$message" | grub_quote)'
 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ${args}
@@ -199,9 +201,19 @@ title_correction_code=
 # yet, so it's empty. In a submenu it will be equal to '\t' (one tab).
 submenu_indentation=""
 
+# Perform a reverse version sort on the entire list.
+# Temporarily replace the '.old' suffix by ' 1' and append ' 2' for all
+# other files to order the '.old' files after their non-old counterpart
+# in reverse-sorted order.
+
+reverse_sorted_list=$(echo $list | tr ' ' '\n' | sed -e 's/\.old$/ 1/; / 1$/! s/$/ 2/' | version_sort -r | sed -e 's/ 1$/.old/; s/ 2$//')
+
+if [ "x$GRUB_TOP_LEVEL" != x ]; then
+  reverse_sorted_list=$(grub_move_to_front "$GRUB_TOP_LEVEL" ${reverse_sorted_list})
+fi
+
 is_top_level=true
-while [ "x$list" != "x" ] ; do
-  linux=`version_find_latest $list`
+for linux in ${reverse_sorted_list}; do
   gettext_printf "Found linux image: %s\n" "$linux" >&2
   basename=`basename $linux`
   dirname=`dirname $linux`
@@ -219,8 +231,10 @@ while [ "x$list" != "x" ] ; do
   done
 
   initrd_real=
-  for i in "initrd.img-${version}" "initrd-${version}.img" "initrd-${version}.gz" \
-	   "initrd-${version}" "initramfs-${version}.img" \
+  for i in "initrd.img-${version}" "initrd-${version}.img" \
+	   "initrd-${alt_version}.img.old" "initrd-${version}.gz" \
+	   "initrd-${alt_version}.gz.old" "initrd-${version}" \
+	   "initramfs-${version}.img" "initramfs-${alt_version}.img.old" \
 	   "initrd.img-${alt_version}" "initrd-${alt_version}.img" \
 	   "initrd-${alt_version}" "initramfs-${alt_version}.img" \
 	   "initramfs-genkernel-${version}" \
@@ -295,10 +309,8 @@ while [ "x$list" != "x" ] ; do
               "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
   if [ "x${GRUB_DISABLE_RECOVERY}" != "xtrue" ]; then
     linux_entry "${OS}" "${version}" recovery \
-                "single ${GRUB_CMDLINE_LINUX}"
+                "${GRUB_CMDLINE_LINUX_RECOVERY} ${GRUB_CMDLINE_LINUX}"
   fi
-
-  list=`echo $list | tr ' ' '\n' | fgrep -vx "$linux" | tr '\n' ' '`
 done
 
 # If at least one kernel was found, then we need to
