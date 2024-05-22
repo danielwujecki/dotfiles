@@ -113,7 +113,6 @@ sys-fs/ntfs3g
 sys-fs/squashfs-tools
 sys-fs/udisks
 sys-kernel/gentoo-sources
-sys-kernel/kmon
 sys-kernel/linux-firmware
 sys-libs/libcxx
 sys-power/acpid
