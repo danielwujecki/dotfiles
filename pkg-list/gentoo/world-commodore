@@ -16,7 +16,6 @@ app-laptop/thinkfan
 app-misc/colordiff
 app-misc/fdupes
 app-misc/figlet
-app-misc/jq
 app-misc/neofetch
 app-misc/pfetch
 app-misc/ranger
@@ -66,7 +65,6 @@ net-analyzer/nmap
 net-analyzer/tcpdump
 net-analyzer/wireshark
 net-dns/avahi
-net-dns/ldns-utils
 net-fs/nfs-utils
 net-fs/sshfs
 net-im/discord
@@ -116,7 +114,6 @@ sys-fs/ntfs3g
 sys-fs/squashfs-tools
 sys-fs/udisks
 sys-kernel/gentoo-sources
-sys-kernel/kmon
 sys-kernel/linux-firmware
 sys-libs/libcxx
 sys-power/acpid

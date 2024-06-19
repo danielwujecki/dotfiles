@@ -1,0 +1,2 @@
+# required by sys-kernel/gentoo-kernel-bin
+sys-kernel/installkernel dracut

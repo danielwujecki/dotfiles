@@ -123,7 +123,6 @@ bspc rule -a Emacs state=tiled
 "$HOME"/.local/bin/launch-polybar &
 
 pgrep -u "$LOGNAME" -x sxhkd > /dev/null || sxhkd &
-pgrep -u "$LOGNAME" -x picom > /dev/null || picom &
 pgrep -u "$LOGNAME" -x dunst > /dev/null || dunst &
 pgrep -u "$LOGNAME" -x lxpolkit > /dev/null || lxpolkit &
 pgrep -u "$LOGNAME" -x birdtray > /dev/null || birdtray &
@@ -139,6 +138,8 @@ if [[ $LAPTOP ]] ; then
     pgrep -u "$LOGNAME" -x blueman-applet > /dev/null || blueman-applet &
     # should be at the bottom!
     sleep 5 && bluetoothctl power off &
+else
+    pgrep -u "$LOGNAME" -x picom > /dev/null || picom &
 fi
 
 bspc desktop -f 1

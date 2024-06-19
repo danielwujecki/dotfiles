@@ -68,7 +68,6 @@ net-analyzer/nmap
 net-analyzer/tcpdump
 net-analyzer/wireshark
 net-dns/avahi
-net-dns/ldns-utils
 net-fs/nfs-utils
 net-fs/sshfs
 net-im/discord
