@@ -37,7 +37,6 @@ app-text/pdftk
 app-text/texlive
 app-text/zathura
 app-text/zathura-pdf-poppler
-app-text/zotero-bin
 dev-debug/gdb
 dev-debug/valgrind
 dev-python/pip
@@ -68,7 +67,6 @@ net-dns/avahi
 net-fs/nfs-utils
 net-fs/sshfs
 net-im/discord
-net-im/element-desktop-bin
 net-im/slack
 net-im/telegram-desktop-bin
 net-misc/networkmanager

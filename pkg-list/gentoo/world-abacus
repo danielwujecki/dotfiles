@@ -37,7 +37,6 @@ app-text/pdftk
 app-text/texlive
 app-text/zathura
 app-text/zathura-pdf-poppler
-app-text/zotero-bin
 dev-debug/gdb
 dev-debug/valgrind
 dev-python/pip
@@ -52,7 +51,6 @@ gnome-base/gnome-keyring
 gnome-extra/nm-applet
 gui-libs/xdg-desktop-portal-lxqt
 lxde-base/lxappearance
-lxde-base/lxsession
 mail-client/thunderbird
 media-gfx/feh
 media-gfx/geeqie
@@ -61,7 +59,6 @@ media-gfx/gnome-screenshot
 media-gfx/scrot
 media-libs/exiftool
 media-sound/pavucontrol
-media-sound/pulsemixer
 media-sound/spotify
 media-video/vlc
 net-analyzer/nmap
