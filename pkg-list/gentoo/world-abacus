@@ -21,6 +21,7 @@ app-misc/neofetch
 app-misc/pfetch
 app-misc/ranger
 app-misc/tmux
+app-mobilephone/scrcpy
 app-office/libreoffice-bin
 app-portage/cpuid2cpuflags
 app-portage/eix
@@ -68,7 +69,6 @@ net-dns/avahi
 net-fs/nfs-utils
 net-fs/sshfs
 net-im/discord
-net-im/element-desktop-bin
 net-im/slack
 net-im/telegram-desktop-bin
 net-misc/networkmanager

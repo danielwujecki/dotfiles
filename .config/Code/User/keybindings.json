@@ -1,9 +1,25 @@
 // Geben Sie Ihre Tastenzuordnungen in dieser Datei ein, um die Standardwerte außer Kraft zu setzen.
 [
+    // ctrl + shift + j: control panel
+    // ctrl + shift + k: maximize panel
+    {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel"
+    },
     {
         "key": "ctrl+shift+j",
         "command": "workbench.action.togglePanel"
     },
+    {
+        "key": "ctrl+shift+k",
+        "command": "-editor.action.deleteLines",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+k",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
+    // ctrl + shift + c: cmake compile file
     {
         "key": "ctrl+shift+c",
         "command": "-workbench.action.terminal.openNativeConsole",
@@ -12,5 +28,5 @@
     {
         "key": "ctrl+shift+c",
         "command": "cmake.compileFile"
-    }
+    },
 ]

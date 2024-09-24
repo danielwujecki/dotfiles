@@ -1,25 +1,31 @@
 [user]
-	name = danielwujecki
-	email = daniel.wujecki@gmail.com
-	signingkey = DED15E1C7A39F136A19B939FEC8C721A0B048C2C
+    name = danielwujecki
+    email = daniel.wujecki@gmail.com
+    signingkey = DED15E1C7A39F136A19B939FEC8C721A0B048C2C
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [push]
-	default = simple
+    default = simple
 [pull]
-	rebase = true
+    rebase = true
 [core]
-	editor = nvim
+    editor = nvim
 [alias]
-	co  = checkout
-	sw  = switch
-	st  = status
-	ci  = commit -m
-	sub = submodule update --init --recursive
-    br  = branch -vv
+    co  = checkout
+    sw  = switch
+    st  = status
+    ci  = commit -m
+    sub = submodule update --init --recursive
+    br  = branch -avv
 [pager]
-	branch = false
+    branch = false
+#[difftool]
+#	prompt = False
 [diff]
-	tool = nvimdiff
-[difftool]
-	prompt = False
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+  tool = code
+[mergetool "code"]
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED

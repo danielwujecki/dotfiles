@@ -49,7 +49,6 @@ dev-util/shellcheck-bin
 gnome-base/gnome-keyring
 gnome-extra/nm-applet
 lxde-base/lxappearance
-lxde-base/lxsession
 mail-client/thunderbird
 media-gfx/feh
 media-gfx/geeqie
@@ -57,7 +56,6 @@ media-gfx/gnome-screenshot
 media-gfx/scrot
 media-libs/exiftool
 media-sound/pavucontrol
-media-sound/pulsemixer
 media-sound/spotify
 media-video/vlc
 net-analyzer/nmap

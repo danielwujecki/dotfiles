@@ -29,7 +29,7 @@ tmpfs                                       /tmp                    tmpfs rw,nos
 tmpfs                                       /dev/shm                tmpfs rw,nosuid,noatime,nodev,size=4G,mode=1777                             0 0
 
 # tmpfs /var/tmp/portage
-tmpfs                                       /var/tmp/portage        tmpfs rw,nosuid,noatime,nodev,size=12G,uid=portage,gid=portage,mode=775     0 0
+tmpfs                                       /var/tmp/portage        tmpfs rw,nosuid,noatime,nodev,size=14G,uid=portage,gid=portage,mode=775     0 0
 
 # optional operation system images for KVM/libvirt
 /dev/vg1/os_images                          /media/os_images        ext4  defaults,noatime,nofail                                               0 0

@@ -41,6 +41,7 @@
     "gitlens.currentLine.enabled": false,
     "gitlens.hovers.enabled": false,
     "gitlens.codeLens.enabled": false,
+    "gitlens.graph.minimap.enabled": false,
 
     "latex-workshop.latex.recipe.default": "lastUsed",
     "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
@@ -63,7 +64,7 @@
         {
             "name": "pdflatex",
             "tools": [
-                "pdflatex",
+                "pdflatex"
             ]
         },
         {
@@ -82,7 +83,7 @@
             ]
         }
     ],
-
+    "cSpell.language": "en,de-DE",
     "cSpell.enableFiletypes": [
         "!cpp",
         "!jsonc",
@@ -107,5 +108,5 @@
         "jsdelivr.com",
         "unpkg.com"
     ],
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 1
 }
