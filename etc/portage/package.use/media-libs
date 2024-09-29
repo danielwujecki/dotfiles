@@ -2,9 +2,6 @@ media-libs/alsa-lib python_single_target_python3_11
 
 media-libs/opencv gtk3 -opengl
 
-# required by media-gfx/prusaslicer
-media-libs/qhull static-libs
-
 # required by www-client/firefox
 media-libs/libvpx postproc
 

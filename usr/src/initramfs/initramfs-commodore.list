@@ -1,0 +1,79 @@
+#
+# directory structure
+#
+dir     /dev        755 0 0
+dir     /etc        755 0 0
+dir     /etc/lvm    755 0 0
+dir     /mnt        755 0 0
+dir     /proc       755 0 0
+dir     /run        755 0 0
+dir     /sys        755 0 0
+dir     /tmp        755 0 0
+dir     /usr        755 0 0
+dir     /usr/bin    755 0 0
+dir     /usr/lib    755 0 0
+
+#
+# symlinks
+#
+slink /bin       /usr/bin  755 0 0
+slink /sbin      /usr/bin  755 0 0
+slink /usr/sbin  /usr/bin  755 0 0
+slink /lib       /usr/lib  755 0 0
+slink /lib64     /usr/lib  755 0 0
+slink /usr/lib64 /usr/lib  755 0 0
+
+#
+# nodes
+#
+nod /dev/console 600 0 0 c 5 1
+nod /dev/null    666 0 0 c 1 3
+nod /dev/random  666 0 0 c 1 8
+nod /dev/urandom 666 0 0 c 1 9
+
+#
+# binaries
+#
+file /usr/bin/busybox    /bin/busybox      755 0 0
+file /usr/bin/cryptsetup /sbin/cryptsetup  755 0 0
+file /usr/bin/lvm        /sbin/lvm         755 0 0
+
+#
+# cryptsetup deps
+#
+file /usr/lib/libcryptsetup.so.12  /usr/lib64/libcryptsetup.so.12                        755 0 0
+file /usr/lib/libpopt.so.0         /usr/lib64/libpopt.so.0                               755 0 0
+file /usr/lib/libuuid.so.1         /usr/lib64/libuuid.so.1                               755 0 0
+file /usr/lib/libblkid.so.1        /usr/lib64/libblkid.so.1                              755 0 0
+file /usr/lib/libc.so.6            /lib64/libc.so.6                                      755 0 0
+file /usr/lib/libdevmapper.so.1.02 /lib64/libdevmapper.so.1.02                           755 0 0
+file /usr/lib/libssl.so.3          /usr/lib64/libssl.so.3                                755 0 0
+file /usr/lib/libcrypto.so.3       /usr/lib64/libcrypto.so.3                             755 0 0
+file /usr/lib/libargon2.so.1       /usr/lib64/libargon2.so.1                             755 0 0
+file /usr/lib/librt.so.1           /lib64/librt.so.1                                     755 0 0
+file /usr/lib/libjson-c.so.5       /usr/lib64/libjson-c.so.5                             755 0 0
+file /usr/lib/libdl.so.2           /lib64/libdl.so.2                                     755 0 0
+file /usr/lib/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2                           755 0 0
+file /usr/lib/libudev.so.1         /usr/lib64/libudev.so.1                               755 0 0
+file /usr/lib/libpthread.so.0      /lib64/libpthread.so.0                                755 0 0
+file /usr/lib/libm.so.6            /lib64/libm.so.6                                      755 0 0
+file /usr/lib/libcap.so.2          /usr/lib64/libcap.so.2                                755 0 0
+file /usr/lib/libgcc_s.so.1        /usr/lib/gcc/x86_64-pc-linux-gnu/13/libgcc_s.so.1     755 0 0
+
+#
+# lvm added deps
+#
+file /usr/lib/libaio.so.1                /usr/lib64/libaio.so.1            755 0 0
+file /usr/lib/libreadline.so.8           /usr/lib64/libreadline.so.8       755 0 0
+file /usr/lib/libtinfow.so.6             /lib64/libtinfow.so.6             755 0 0
+file /usr/lib/libdevmapper-event.so.1.02 /lib64/libdevmapper-event.so.1.02 755 0 0
+
+#
+# config files
+#
+file /etc/lvm/lvm.conf /usr/src/initramfs/lvm.conf 644 0 0
+
+#
+# init script
+#
+file /init /usr/src/initramfs/init 755 0 0

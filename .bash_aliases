@@ -2,7 +2,7 @@
 
 # wichtigstes kommmando auf dem terminal - ls
 if [[ -x /usr/bin/eza ]] ; then
-    alias ll='eza -Hglm --color=auto --group-directories-first'
+    alias ll='eza -lgm --color=auto --group-directories-first'
     alias la='ll -a'
     alias lll='ll'
     alias llll='ll'
@@ -47,8 +47,8 @@ elif [[ -x /bin/loginctl ]] ; then
 fi
 
 # programme
-alias mv='mv -i'
-alias rm='rm -I'
+alias mv='mv -vi'
+alias rm='rm -vI'
 alias rd='rmdir'
 alias md='mkdir -p'
 alias grep='grep --color=auto'

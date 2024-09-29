@@ -129,9 +129,9 @@ $BORG_CMD "$BASE_PATH_ROOT::$HOSTNAME-root-$INDEX" .
 calc_next_index "$USER_REPO_BKUPS" "$HOSTNAME-home-daniel"
 su -c "cd /.btrfs/@home && $BORG_CMD $BASE_PATH_USER::$HOSTNAME-home-daniel-$INDEX daniel" - daniel
 
-borg list "$BASE_PATH_ROOT" | tail -n10
+borg list --last 10 "$BASE_PATH_ROOT"
 echo "-----------------------------------------------"
-su -c "borg list $BASE_PATH_USER" - daniel | tail -n10
+su -c "borg list --last 10 $BASE_PATH_USER" - daniel
 
 # eject backup disk if required
 while true; do

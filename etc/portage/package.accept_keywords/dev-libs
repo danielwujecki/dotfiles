@@ -1,9 +1,2 @@
-# required by media-gfx/prusaslicer
-dev-libs/cereal ~amd64
-
 # required by www-client/firefox ~amd64
-dev-libs/icu ~amd64
 dev-libs/nss ~amd64
-
-# required by app-editors/neovim
-dev-libs/libvterm ~amd64

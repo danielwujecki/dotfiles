@@ -1,6 +1,2 @@
-# required by www-client/firefox
-dev-util/cbindgen ~amd64
-
-=dev-util/nvidia-cuda-toolkit-11.8* ~amd64
-
 dev-util/cargo-ebuild ~amd64
+=dev-util/nvidia-cuda-toolkit-12.6* ~amd64

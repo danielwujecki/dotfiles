@@ -34,8 +34,11 @@ tmpfs                                       /var/tmp/portage        tmpfs rw,nos
 # optional operation system images for KVM/libvirt
 /dev/vg1/os_images                          /media/os_images        ext4  defaults,noatime,nofail                                               0 0
 
-# optional storage for (already compressed) video formats
+# optional storage for (already compressed) lecture videos
 /dev/vg1/vorlesungsvideos                   /media/vorlesungsvideos ext4  defaults,noatime,nofail                                               0 0
+
+# optional storage for (already compressed) climbing videos
+/dev/vg1/klettervideos                      /media/klettervideos    ext4  defaults,noatime,nofail                                               0 0
 
 # optional storage for windows/linux data exchange
 UUID="6BF8-F7B2"                            /media/danieldata       exfat rw,nosuid,nodev,relatime,uid=1000,gid=985,fmask=0022,dmask=0022,iocharset=utf8,nofail                0 0
