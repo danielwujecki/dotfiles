@@ -44,7 +44,6 @@ dev-python/pip
 dev-python/virtualenv
 dev-tex/biber
 dev-tex/tectonic
-dev-util/cargo-ebuild
 dev-util/nvidia-cuda-toolkit
 dev-util/pkgdev
 dev-util/shellcheck-bin
@@ -59,6 +58,7 @@ media-gfx/gimp
 media-gfx/gnome-screenshot
 media-gfx/scrot
 media-libs/exiftool
+media-sound/asunder
 media-sound/pavucontrol
 media-sound/spotify
 media-video/vlc
@@ -76,6 +76,7 @@ net-misc/ntp
 net-misc/rclone
 net-misc/yt-dlp
 net-nds/openldap
+net-print/cups-meta
 net-print/cups-pdf
 net-print/hplip
 net-vpn/networkmanager-openconnect
