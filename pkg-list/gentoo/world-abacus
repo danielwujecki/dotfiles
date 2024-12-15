@@ -7,6 +7,7 @@ app-arch/pixz
 app-arch/zip
 app-backup/borgbackup
 app-containers/docker
+app-containers/docker-buildx
 app-containers/docker-cli
 app-containers/docker-compose
 app-editors/neovim
@@ -50,6 +51,7 @@ dev-util/shellcheck-bin
 gnome-base/gnome-keyring
 gnome-extra/nm-applet
 gui-libs/xdg-desktop-portal-lxqt
+llvm-runtimes/libcxx
 lxde-base/lxappearance
 mail-client/thunderbird
 media-gfx/feh
@@ -111,7 +113,6 @@ sys-fs/squashfs-tools
 sys-fs/udisks
 sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
-sys-libs/libcxx
 sys-power/acpid
 sys-process/btop
 sys-process/cronie

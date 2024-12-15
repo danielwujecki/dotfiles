@@ -36,6 +36,7 @@ app-text/pandoc
 app-text/pdfpc
 app-text/pdftk
 app-text/texlive
+app-text/xournalpp
 app-text/zathura
 app-text/zathura-pdf-poppler
 dev-debug/gdb
@@ -62,6 +63,7 @@ net-analyzer/nmap
 net-analyzer/tcpdump
 net-analyzer/wireshark
 net-dns/avahi
+net-dns/bind-tools
 net-fs/nfs-utils
 net-fs/sshfs
 net-im/discord
