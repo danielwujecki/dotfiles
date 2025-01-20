@@ -39,8 +39,8 @@ for MPT in "${SYSMNTS[@]:1}" ; do
     mount --make-rslave   "$MNTPNT/$MPT"
 done
 
-chroot "$MNTPNT" /bin/bash
+echo -e "To enter chroot use: 'chroot $MNTPNT /bin/bash'"
 
-for MPT in "${SYSMNTS[@]}" ; do
-    umount -l "$MNTPNT/$MPT"
-done
+#for MPT in "${SYSMNTS[@]}" ; do
+#    umount -l "$MNTPNT/$MPT"
+#done

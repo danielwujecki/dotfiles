@@ -33,9 +33,14 @@
         "asvetliakov.vscode-neovim": 1
     },
 
-    "jupyter.askForKernelRestart": false,
-    "notebook.lineNumbers": "on",
     "cmake.configureOnOpen": false,
+    "cmake.showOptionsMovedNotification": false,
+    "notebook.lineNumbers": "on",
+    "jupyter.askForKernelRestart": false,
+    "jupyter.widgetScriptSources": [
+        "jsdelivr.com",
+        "unpkg.com"
+    ],
 
     "git.openRepositoryInParentFolders": "never",
     "gitlens.currentLine.enabled": false,
@@ -102,11 +107,6 @@
         "Mitsuba",
         "pseudocode",
         "subfigures"
-    ],
-    "cmake.showOptionsMovedNotification": false,
-    "jupyter.widgetScriptSources": [
-        "jsdelivr.com",
-        "unpkg.com"
     ],
     "window.zoomLevel": 1
 }

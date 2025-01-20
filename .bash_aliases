@@ -26,7 +26,7 @@ alias ...='cd ../../'
 [[ -d ~/Repositories ]]                                  && alias repos='cd ~/Repositories'
 [[ -f ~/Studium/masterarbeit/setpath.sh ]]               && alias ma='cd ~/Studium/masterarbeit && source setpath.sh'
 [[ -d ~/Repositories/dotfiles ]]                         && alias dotf='cd ~/Repositories/dotfiles'
-[[ -d ~/Dokumente/innocampus/svn-server/Dokumentation ]] && alias inca='cd ~/Dokumente/innocampus/svn-server/Dokumentation'
+[[ -d ~/Dokumente/innocampus/svn-server/Dokumentation ]] && alias inca='cd ~/Dokumente/innocampus/svn-server'
 
 # shortcuts
 [[ -x /usr/bin/ranger ]] && alias r='ranger'
