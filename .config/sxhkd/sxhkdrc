@@ -188,9 +188,9 @@ super + w
 
 # keyboard mapping
 super + alt + u
-    setxkbmap -layout us -model pc105 -option caps:escape
+    setxkbmap -layout us -model pc105 -option 'caps:escape,compose:ralt'
 super + alt + d
-    setxkbmap -layout de -model pc105 -variant nodeadkeys -option caps:escape
+    setxkbmap -layout de -model pc105 -variant nodeadkeys -option 'caps:escape,compose:ralt'
 
 # toggle thunderbird window with birdtray
 super + shift + m

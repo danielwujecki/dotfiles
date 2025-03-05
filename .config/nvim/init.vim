@@ -16,8 +16,9 @@ set backspace=indent,eol,start      " allow backspacing over everything in inser
 
 set number relativenumber           " relativ line numbers
 set splitbelow splitright           " splits at the bottom and right
-"set cursorline                      " highlight line number
+set cursorline                      " highlight line number
 set wrap                            " break lines that are longer than...
+set linebreak                       " break by word rather than character
 set scrolloff=4                     " try to keep lines before and after the cursor
 set ruler		                    " show the cursor position all the time
 set showmatch                       " show matching brackets when cursor is over them
@@ -55,6 +56,9 @@ if has("autocmd")
   " Vim jumps to the last position when reopening a file
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+" use wrapping in diff mode
+autocmd FilterWritePre * if &diff | setlocal wrap< | endif
 
 " ##############################
 " ######   Key Settings   ######
