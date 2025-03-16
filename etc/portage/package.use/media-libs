@@ -1,5 +1,3 @@
-media-libs/alsa-lib python_single_target_python3_11
-
 media-libs/opencv gtk3 -opengl
 
 # required by www-client/firefox
