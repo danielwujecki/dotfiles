@@ -112,3 +112,11 @@
           "--header-insertion=never"
           "--header-insertion-decorators=0"))
   (set-lsp-priority! 'clangd 2))
+
+(with-eval-after-load 'ox-latex
+  (add-to-list 'org-latex-classes '("scrartcl" "\\documentclass{scrartcl}"
+                                    ("\\section{%s}" . "\\section*{%s}")
+                                    ("\\subsection{%s}" . "\\subsection*{%s}")
+                                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                                    ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                                    ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))

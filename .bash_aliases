@@ -91,3 +91,5 @@ if [[ -x /usr/bin/curl ]] ; then
     alias wetter='curl "wttr.in/Berlin?lang=de"'
     alias myip='curl "ifconfig.me/all"'
 fi
+
+alias thunderbird_backup="tar -cvf "thunderbird-backup-$(date +'%y-%m-%d').tgz" -I pigz -C "$HOME" .thunderbird"

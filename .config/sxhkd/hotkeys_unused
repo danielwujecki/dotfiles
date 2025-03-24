@@ -1,14 +1,6 @@
-# send the newest marked node to the newest preselected node
-super + y
-	bspc node newest.marked.local -n newest.!automatic.local
-
 # focus the next/previous window in the current desktop
 super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
-
-# focus the next/previous desktop in the current monitor
-super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
 
 # cancel the preselection for the focused desktop
 super + ctrl + shift + space
@@ -17,9 +9,14 @@ super + ctrl + shift + space
 # focus the last node/desktop
 super + grave
 	bspc node -f last
+    #bspc desktop -f last
 
 # focus the older or newer node in the focus history
 super + {o,i}
 	bspc wm -h off; \
 	bspc node {older,newer} -f; \
 	bspc wm -h on
+
+# Touchpad controls
+XF86TouchpadToggle
+    $HOME/.config/i3/toggletouchpad.sh

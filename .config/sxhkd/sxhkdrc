@@ -37,6 +37,10 @@ super + shift + Return
 super + d
     rofi -show drun
 
+# window overview
+super + Tab
+    rofi -show window
+
 # close and kill
 super + shift + {q,d}
     bspc node -{c,k}
@@ -49,7 +53,7 @@ super + shift + {q,d}
 super + {1-9,0}
     bspc desktop -f '{1-9,0}'
 
-# select unfocused monitor
+# move desktop to unfocused monitor
 super + shift + Tab
     bspc desktop -m next --follow && \
     bspc query -M | while read -r monitor; do \
@@ -59,6 +63,10 @@ super + shift + Tab
 #############################
 #  Window Focus & Position  #
 #############################
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
 
 # focus the node for the given path jump
 super + alt + {p,b,comma,period}
@@ -71,6 +79,10 @@ super + {h,j,k,l}
 # switch the node in the given direction
 super + shift + {h,j,k,l}
     bspc node -s {west,south,north,east}
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
 
 # swap biggest node to the other side
 super + b
@@ -87,12 +99,6 @@ super + shift + {1-9,0}
 # send to the given desktop and stay focused
 super + alt + {1-9,0}
     bspc node -d '{1-9,0}' --follow
-
-# window overview
-super + Tab
-    rofi -show window
-    # focus the last desktop
-    #bspc desktop -f last
 
 # move a floating window
 super + {Left,Down,Up,Right}
@@ -189,8 +195,8 @@ super + w
 # keyboard mapping
 super + alt + u
     setxkbmap -layout us -model pc105 -option 'caps:escape,compose:ralt'
-super + alt + d
-    setxkbmap -layout de -model pc105 -variant nodeadkeys -option 'caps:escape,compose:ralt'
+#super + alt + d
+#    setxkbmap -layout de -model pc105 -variant nodeadkeys -option 'caps:escape,compose:ralt'
 
 # toggle thunderbird window with birdtray
 super + shift + m
@@ -209,7 +215,3 @@ XF86MonBrightnessUp
     xbacklight -inc 5
 XF86MonBrightnessDown
     xbacklight -dec 5
-
-# Touchpad controls
-#XF86TouchpadToggle
-#    $HOME/.config/i3/toggletouchpad.sh

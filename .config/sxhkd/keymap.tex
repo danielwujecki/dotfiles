@@ -4,7 +4,7 @@
     notitlepage,
     %parskip=half,
 ]{scrartcl}
-\usepackage[main=english, ngerman]{babel}
+\usepackage[ngerman, main=english]{babel}
 \usepackage{microtype}
 \usepackage{hyperref}
 \usepackage{fontspec}
@@ -26,17 +26,18 @@
 
 \section{Restart and Quit bspwm}
 \begin{tabular}{p{4cm}l}
-    mod + r             & restart sxhkd                         \\
-    mod + shift + r     & restart bspwm                         \\
+    mod + r             & restart sxhkd \\
+    mod + shift + r     & restart bspwm \\
     mod + alt + e       & exit bspwm
 \end{tabular}
 
 \section{Launch and Quit Programs}
 \begin{tabular}{p{4cm}l}
-    mod + return            & open terminal                         \\
-    mod + shift + return    & open emacs                            \\
-    mod + d                 & program launcher                      \\
-    mod + shift + q         & terminate program                     \\
+    mod + return            & open terminal       \\
+    mod + shift + return    & open emacs          \\
+    mod + d                 & program launcher    \\
+    mod + tab               & window overview     \\
+    mod + shift + q         & terminate program   \\
     mod + shift + d         & kill program
 \end{tabular}
 
@@ -48,30 +49,31 @@
 
 \section{Window Focus \& Position}
 \begin{tabular}{p{4cm}l}
-    mod + alt + p          & move focus to parent node \\
-    mod + alt + b          & move focus to brother node \\
-    mod + alt + ,          & move focus to first child \\
-    mod + alt + .          & move focus to second child \\
-    mod + h,j,k,l          & move focus into direction        \\
-    mod + shift + h,j,k,l  & move window into direction        \\
-    mod + b                & swap current node with biggest node on desktop \\
-    mod + shift + 1--9,0   & move window to desktop         \\
-    mod + alt + 1--9,0     & move window to desktop and stay focused       \\
-    mod + tab              & window overview     \\
-    mod + arrow keys       & move floating window              \\
-    mod + mouse1           & move in arbitrary direction
+    mod + bracket{left,right} & move focus to next/previous node               \\
+    mod + alt + p             & move focus to parent node                      \\
+    mod + alt + b             & move focus to brother node                     \\
+    mod + alt + ,             & move focus to first child                      \\
+    mod + alt + .             & move focus to second child                     \\
+    mod + h,j,k,l             & move focus into direction                      \\
+    mod + shift + h,j,k,l     & move window into direction                     \\
+    mod + y                   & move window to selected node                   \\
+    mod + b                   & swap current node with biggest node on desktop \\
+    mod + shift + 1--9,0      & move window to desktop                         \\
+    mod + alt + 1--9,0        & move window to desktop and stay focused        \\
+    mod + arrow keys          & move floating window                           \\
+    mod + mouse1              & move in arbitrary direction
 \end{tabular}
 
 \section{Window Layout}
 \begin{tabular}{p{4cm}l}
-    mod + m             & switch to monocle layout              \\
-    mod + t             & switch to tiled layout                \\
-    mod + shift + t     & switch to pseudo tiled layout         \\
-    mod + s             & switch to floating layout             \\
-    mod + f             & switch to fullscreen layout           \\
-    mod + alt + h,j,k,l   & expand a window by moving one of its side outward        \\
-    mod + alt + shift + h,j,k,l & contract a window by moving one of its side inward \\
-    mod + mouse2,mouse3   & resize in arbitrary direction
+    mod + m                         & switch to monocle layout                           \\
+    mod + t                         & switch to tiled layout                             \\
+    mod + shift + t                 & switch to pseudo tiled layout                      \\
+    mod + s                         & switch to floating layout                          \\
+    mod + f                         & switch to fullscreen layout                        \\
+    mod + alt + h,j,k,l             & expand a window by moving one of its side outward  \\
+    mod + alt + shift + h,j,k,l     & contract a window by moving one of its side inward \\
+    mod + mouse3                    & resize in arbitrary direction
 \end{tabular}
 
 \section{Window Flags}
@@ -99,8 +101,8 @@
     mod + print         & take screenshot                           \\
     mod + shift + print & take screenshot of current window         \\
     mod + w             & shuffle wallpaper                         \\
-    mod + alt + d       & de keyboard layout                        \\
     mod + alt + u       & us keyboard layout                        \\
+    %mod + alt + d       & de keyboard layout                        \\
     mod + shift + m     & toggle thunderbird window with birdtray
 \end{tabular}
 
