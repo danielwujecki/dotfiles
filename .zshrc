@@ -41,6 +41,8 @@ export ZSH_CACHE_DIR="$HOME/.oh-my-zsh/cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 source "$ZSH/oh-my-zsh.sh"
 
+unsetopt auto_pushd
+
 ZSH_SYNTAX_HIGHLIGHTING="/usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh"
 [[ -f $ZSH_SYNTAX_HIGHLIGHTING ]] && source "$ZSH_SYNTAX_HIGHLIGHTING"
 

@@ -36,6 +36,7 @@ app-shells/zsh-completions
 app-shells/zsh-syntax-highlighting
 app-text/pdftk
 app-text/texlive
+app-text/xournalpp
 app-text/zathura
 app-text/zathura-pdf-poppler
 dev-debug/gdb
