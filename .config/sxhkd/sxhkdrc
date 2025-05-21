@@ -66,23 +66,23 @@ super + shift + Tab
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
+    bspc desktop -f {prev,next}.local
 
 # focus the node for the given path jump
 super + alt + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+    bspc node -f @{parent,brother,first,second}
 
 # focus the node in the given direction
-super + {h,j,k,l}
+super + shift + {h,j,k,l}
     bspc node -f {west,south,north,east}
 
 # switch the node in the given direction
-super + shift + {h,j,k,l}
+super + alt + {h,j,k,l}
     bspc node -s {west,south,north,east}
 
 # send the newest marked node to the newest preselected node
 super + y
-	bspc node newest.marked.local -n newest.!automatic.local
+    bspc node newest.marked.local -n newest.!automatic.local
 
 # swap biggest node to the other side
 super + b
@@ -113,15 +113,15 @@ super + m
     bspc desktop -l next
 
 # set the window state
-super + {t,shift + t,s,f}
+super + {t,shift + t,f,shift + f}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
+super + shift + {Left,Down,Up,Right}
     bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
+super + alt + {Left,Down,Up,Right}
     bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 #############################
@@ -137,11 +137,11 @@ super + shift + i
     bspc node any.local.window.hidden -g hidden
 
 # don't further tile a node
-super + shift + p
+super + p
     bspc node -g private
 
 # keep a node on active desktop
-super + shift + s
+super + s
     bspc node -g sticky
 
 #############################
@@ -169,13 +169,13 @@ super + {_,shift} + g
     bspc config window_gap {10,0}
 
 # lock screen
-super + o
+super + l
     betterlockscreen -l dimblur
 
-super + shift + o
+super + shift + s
     { loginctl suspend || systemctl suspend } && betterlockscreen -l dimblur
 
-super + alt + o
+super + alt + s
     { loginctl hibernate || systemctl hibernate } && betterlockscreen -l dimblur
 
 # screenshot
@@ -193,8 +193,8 @@ super + w
     "$HOME"/.local/bin/fehbg
 
 # keyboard mapping
-super + alt + u
-    setxkbmap -layout us -model pc105 -option 'caps:escape,compose:ralt'
+#super + alt + u
+#    setxkbmap -layout us -model pc105 -option 'caps:escape,compose:ralt'
 #super + alt + d
 #    setxkbmap -layout de -model pc105 -variant nodeadkeys -option 'caps:escape,compose:ralt'
 

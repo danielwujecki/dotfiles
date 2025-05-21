@@ -1,0 +1,119 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+declare -A SYNCLIST # Associative array for sync destinations and sources
+REMOTE_NAME='byc:'
+PASSWORD_FILE="$HOME/Dokumente/meinepw.kdbx" # Variable for the password file
+SYNCLIST["${REMOTE_NAME}journal_itdlz.org"]="$HOME/Dokumente/org/journal_itdlz.org"
+SYNCLIST["${REMOTE_NAME}scratch_itdlz.org"]="$HOME/Dokumente/org/scratch_itdlz.org"
+
+# Color definitions for output
+YELLOW='\e[33m'
+WHITE='\e[0m'
+NC='\e[0m' # No Color
+RED='\e[0;31m'
+
+# Rclone Flags.  -v is not safe as default. Better to add in command.
+RCLONE_FLAGS=(-v)
+
+# Task Flags
+SYNC_UP=
+SYNC_DOWN=
+
+usage() {
+    #echo "Usage: $0 {ls | pw | up | down} [-v]"
+    echo "Usage: $0 {ls | pw | up | down}"
+    echo "  ls    : List the contents of the remote directory 'byc:'"
+    echo "  pw    : Copies the password file up (meinepw.kdbx)"
+    echo "  up    : Synchronizes local files to the remote destinations"
+    echo "  down  : Synchronizes remote files to the local sources"
+    #echo "  -v    : Increases the verbosity of rclone operations"
+    exit 1
+}
+
+# Parameter processing with getopts.  Only one option (-v)
+#VERBOSE=0
+#while getopts "v" opt; do
+#  case "$opt" in
+#    v)
+#      VERBOSE=1
+#      ;;
+#    \?)
+#      usage
+#      exit 1
+#      ;;
+#  esac
+#done
+#shift $((OPTIND - 1)) # Remove processed options
+
+# Check if a command was provided
+if [[ $# -ne 1 ]]; then
+    usage
+    exit 1
+fi
+
+COMMAND="$1" # Store the command in a variable
+
+# Command dispatch
+case "$COMMAND" in
+    ls)
+        rclone lsl byc:
+        exit 0
+        ;;
+    pw)
+        echo -e "${YELLOW}Copying${WHITE} ${PASSWORD_FILE} ${YELLOW}to${WHITE} byc:meinepw.kdbx${NC}"
+        rclone copy ${RCLONE_FLAGS[@]} "$PASSWORD_FILE" "$REMOTE_NAME"
+        exit 0
+        ;;
+    up)
+        SYNC_UP=1
+        ;;
+    down)
+        SYNC_DOWN=1
+        ;;
+    *)
+        echo -e "${RED}Invalid command: '$COMMAND'${NC}" >&2
+        usage
+        exit 1
+        ;;
+esac
+
+cd "$HOME"
+
+# Loop for the synchronization
+for DST in "${!SYNCLIST[@]}"; do
+    SRC="${SYNCLIST[$DST]}"
+
+    # Check if a colon is present in the destination.
+    if ! [[ "$DST" =~ ":" ]]; then
+        echo -e "${RED}Faulty entry in SYNCLIST: Colon missing in '${DST}'!${NC}" >&2
+        exit 1
+    fi
+
+    if [[ ! -f "$SRC" ]]; then
+        echo -e "${RED}Faulty entry in SYNCLIST: File '$SRC' does not exist!${NC}" >&2
+        exit 1
+    fi
+
+    if [[ -n "$SYNC_UP" ]]; then
+
+        echo -e "${YELLOW}Copy${WHITE} '$SRC' ${YELLOW}to${WHITE} '$DST'${NC}"
+        rclone copy "${RCLONE_FLAGS[@]}" "$SRC" "$REMOTE_NAME"
+
+    elif [[ -n "$SYNC_DOWN" ]]; then
+
+        echo -e "${YELLOW}Create backup:${NC} '$SRC.bak'"
+        cp -v "$SRC" "$SRC.bak"
+        echo -e "${YELLOW}Copy${WHITE} '$DST' ${YELLOW}to${WHITE} '$(dirname "$SRC")'${NC}"
+        rclone copy "${RCLONE_FLAGS[@]}" "$DST" "$(dirname "$SRC")"
+
+    else
+
+        echo -e "${RED}Neither specified 'ls', pw', 'up' or 'down'!${NC}"
+        usage
+        exit 1
+
+    fi
+done
+
+exit 0

@@ -30,20 +30,31 @@ alias ...='cd ../../'
 
 # shortcuts
 [[ -x /usr/bin/ranger ]] && alias r='ranger'
+
 if [[ -x /usr/bin/tmux ]] ; then
     alias ta='tmux a'
     alias tls='tmux ls'
 fi
-if [[ -x /usr/bin/systemctl ]] ; then
-    alias suspend='systemctl suspend'
-    alias hn='systemctl hibernate'
-    alias hibernate='systemctl hibernate'
-elif [[ -x /bin/loginctl ]] ; then
-    alias suspend='loginctl suspend'
-    alias hn='loginctl hibernate'
-    alias hibernate='loginctl hibernate'
-    alias reboot='loginctl reboot'
-    alias poweroff='loginctl poweroff'
+
+if [[ -x /usr/bin/loginctl || -x /usr/bin/systemctl ]] ; then
+    if [[ -x /usr/bin/betterlockscreen ]] ; then
+        alias suspend='{ loginctl suspend || systemctl suspend } && betterlockscreen -l dimblur'
+        alias hibernate='{ loginctl hibernate || systemctl hibernate } && betterlockscreen -l dimblur'
+        alias reboot='loginctl reboot'
+        alias poweroff='loginctl poweroff'
+    fi
+fi
+
+alias datestamp="date +'%y-%m-%d'"
+alias timestamp="date +'%y-%m-%d-%H-%M'"
+
+alias thunderbird_backup="tar -cvf "thunderbird-backup-$(date +'%y-%m-%d').tgz" -I pigz -C "$HOME" .thunderbird"
+
+[[ -f /etc/portage/make.conf ]] && alias make.conf='doas nvim /etc/portage/make.conf'
+
+if [[ -x /usr/bin/curl ]] ; then
+    alias wetter='curl "wttr.in/Berlin?lang=de"'
+    alias myip='curl "ifconfig.me/all"'
 fi
 
 # programme
@@ -81,16 +92,6 @@ if [[ -f /home/daniel/.pyenv/versions/mypython/bin/activate ]] ; then
     alias pyc='[[ -n $VIRTUAL_ENV ]] || pyenv activate mypython ; ipython'
 fi
 
-# misc
-[[ -f /etc/portage/make.conf ]] && alias make.conf='doas nvim /etc/portage/make.conf'
-
 if [[ -x $HOME/.miniconda3/bin/conda ]] ; then
     alias conda_init='eval "$($HOME/.miniconda3/bin/conda shell.zsh hook)"'
 fi
-
-if [[ -x /usr/bin/curl ]] ; then
-    alias wetter='curl "wttr.in/Berlin?lang=de"'
-    alias myip='curl "ifconfig.me/all"'
-fi
-
-alias thunderbird_backup="tar -cvf "thunderbird-backup-$(date +'%y-%m-%d').tgz" -I pigz -C "$HOME" .thunderbird"
