@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if synclient -l | grep "TouchpadOff .*=.*0" ; then
-    synclient TouchpadOff=1 ;
+DEVICE_NAME='SYNA8005:00 06CB:CD8C Touchpad'
+
+if ! xinput list | grep -q "$DEVICE_NAME" ; then
+    echo "Touchpad '$DEVICE_NAME' not found." >&2
+    exit 1
+fi
+
+if xinput list-props "$DEVICE_NAME" | grep -q 'Device Enabled.*:.*0' ; then
+    xinput enable "$DEVICE_NAME"
 else
-    synclient TouchpadOff=0 ;
+    xinput disable "$DEVICE_NAME"
 fi

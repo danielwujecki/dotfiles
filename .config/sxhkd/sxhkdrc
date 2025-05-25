@@ -68,6 +68,10 @@ super + shift + Tab
 super + bracket{left,right}
     bspc desktop -f {prev,next}.local
 
+# focus the next/previous window in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
+
 # focus the node for the given path jump
 super + alt + {p,b,comma,period}
     bspc node -f @{parent,brother,first,second}
@@ -156,9 +160,9 @@ super + ctrl + {h,j,k,l}
 super + ctrl + {1-9}
     bspc node -o 0.{1-9}
 
-# cancel the preselection for the focused node
+# cancel the preselection for the focused desktop
 super + ctrl + space
-    bspc node -p cancel
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #############################
 #       Special Keys        #
@@ -204,11 +208,13 @@ super + shift + m
 
 # Pulse Audio controls
 XF86AudioRaiseVolume
-    pulsemixer --change-volume +5
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
 XF86AudioLowerVolume
-    pulsemixer --change-volume -5
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
 XF86AudioMute
-    pulsemixer --toggle-mute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+XF86AudioMicMute
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Sreen brightness controls
 XF86MonBrightnessUp
