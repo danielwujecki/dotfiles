@@ -4,7 +4,7 @@
 include "/home/daniel/.gtkrc-2.0.mine"
 gtk-theme-name="Orchis-Dark-Compact"
 gtk-icon-theme-name="Tela-dark"
-gtk-font-name="SF Pro 12"
+gtk-font-name="SF Pro Rounded 12"
 gtk-cursor-theme-name="McMojave-cursors"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH

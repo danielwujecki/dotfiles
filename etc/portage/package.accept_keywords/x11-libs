@@ -1,2 +1,6 @@
 # required by x11-misc/pcmanfm
 x11-libs/libfm ~amd64
+x11-libs/pango ~amd64
+
+# required by =gui-libs/gtk-4.18* ~amd64
+=x11-libs/pango-1.56* ~amd64
