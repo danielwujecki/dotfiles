@@ -4,8 +4,8 @@ set -euo pipefail
 declare -A SYNCLIST # Associative array for sync destinations and sources
 REMOTE_NAME='byc:'
 PASSWORD_FILE="$HOME/Dokumente/meinepw.kdbx" # Variable for the password file
-SYNCLIST["${REMOTE_NAME}journal_itdlz.org"]="$HOME/Dokumente/org/journal_itdlz.org"
-SYNCLIST["${REMOTE_NAME}scratch_itdlz.org"]="$HOME/Dokumente/org/scratch_itdlz.org"
+SYNCLIST["${REMOTE_NAME}itdlz_journal.org"]="$HOME/Dokumente/org/itdlz_journal.org"
+SYNCLIST["${REMOTE_NAME}itdlz_scratch.org"]="$HOME/Dokumente/org/itdlz_scratch.org"
 
 # Color definitions for output
 YELLOW='\e[33m'

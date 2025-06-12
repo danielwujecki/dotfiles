@@ -198,7 +198,7 @@ super + w
 
 # keyboard mapping
 #super + alt + u
-#    setxkbmap -layout us -model pc105 -option 'caps:escape,compose:ralt'
+#    setxkbmap -layout us -model pc105 -variant intl -option 'caps:escape,compose:ralt'
 #super + alt + d
 #    setxkbmap -layout de -model pc105 -variant nodeadkeys -option 'caps:escape,compose:ralt'
 

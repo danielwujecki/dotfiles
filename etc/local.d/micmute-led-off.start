@@ -1,0 +1,11 @@
+#!/bin/bash
+
+MICMUTE_LED_PATH="/sys/devices/platform/thinkpad_acpi/leds/platform::micmute/brightness"
+
+if [ -f "$MICMUTE_LED_PATH" ] ; then
+    echo "0" > "$MICMUTE_LED_PATH"
+else
+    exit 1
+fi
+
+# vim:ts=4
