@@ -1,0 +1,4 @@
+include "%L" # /usr/share/X11/locale/en_US.UTF-8/Compose
+
+<dead_acute> <dead_acute>		    : "'"	acute    # ACUTE ACCENT
+<dead_diaeresis> <dead_diaeresis>	: "\""	quotedbl # QUOTATION MARK 

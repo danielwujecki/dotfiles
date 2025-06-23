@@ -11,10 +11,6 @@ else
     alias ll='ls -lh --color=auto --group-directories-first'
     alias la='ll -A'
 fi
-if [[ -x /usr/bin/lsd ]] ; then
-    alias lo='lsd -lh --group-dirs first'
-    alias lp='lo -A'
-fi
 
 # damit jeder alias auch als root funktioniert
 [[ -x /usr/bin/doas ]] && alias doas='doas '
@@ -68,6 +64,7 @@ alias egrep='grep -E --color=auto'
 [[ -x /usr/bin/fd ]]        && alias fd='fd -iIH'
 [[ -x /usr/bin/fdfind ]]    && alias fd='fdfind -iIH'
 [[ -x /usr/bin/rg ]]        && alias rg='rg --hidden'
+[[ -x /usr/bin/rg ]]        && alias rgi='rg --hidden -i'
 [[ -x /usr/bin/colordiff ]] && alias diff='colordiff'
 if [[ -x /usr/bin/emacs && -x /usr/bin/emacsclient ]] ; then
     alias emacs='emacsclient -na ""'
