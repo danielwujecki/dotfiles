@@ -72,6 +72,8 @@ if mountpoint -q /tmp ; then
     cp /usr/src/linux/.config /tmp/usr/src/linux/.config
     make mrproper
     export KBUILD_OUTPUT="/tmp/usr/src/linux"
+else
+    export KBUILD_OUTPUT=""
 fi
 
 #

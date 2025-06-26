@@ -21,7 +21,7 @@ GRUB_TIMEOUT=5
 GRUB_DEVICE="UUID=dc2ce264-1941-443c-a3a6-1b748350ab91"
 
 # Append parameters to the linux kernel command line
-GRUB_CMDLINE_LINUX="rootflags=ro,noatime,compress=zstd:2,ssd,subvolid=256 rootfstype=btrfs rd.lvm.vg=vgsys rd.luks.uuid=6999a089-eacd-4651-9c9d-f3b027366ed0 rd.luks.allow-discards resume=UUID=9aafef78-399c-49aa-9e3e-ee7e9c2f44ce hid_apple.fnmode=2"
+GRUB_CMDLINE_LINUX="rootflags=ro,noatime,compress=zstd:2,ssd,space_cache=v2,subvolid=256 rootfstype=btrfs rd.lvm.vg=vgsys rd.luks.uuid=6999a089-eacd-4651-9c9d-f3b027366ed0 rd.luks.allow-discards resume=UUID=9aafef78-399c-49aa-9e3e-ee7e9c2f44ce hid_apple.fnmode=2"
 #
 # Examples:
 #

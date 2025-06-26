@@ -21,7 +21,7 @@ GRUB_TIMEOUT=5
 GRUB_DEVICE="UUID=fb710a62-d3a9-4c65-8636-5d3fc37c728c"
 
 # Append parameters to the linux kernel command line
-GRUB_CMDLINE_LINUX="rootflags=ro,noatime,compress=zstd:2,ssd,subvolid=256 rootfstype=btrfs rd.lvm.vg=vgsys rd.luks.uuid=e9ad3daf-fe3c-42a2-8803-b46743956899 rd.luks.allow-discards resume=UUID=aee1df07-fabe-458c-9e2d-e872dcab0bf6 hid_apple.fnmode=2 thinkpad_acpi.fan_control=1"
+GRUB_CMDLINE_LINUX="rootflags=ro,noatime,compress=zstd:2,ssd,space_cache=v2,subvolid=256 rootfstype=btrfs rd.lvm.vg=vgsys rd.luks.uuid=e9ad3daf-fe3c-42a2-8803-b46743956899 rd.luks.allow-discards resume=UUID=aee1df07-fabe-458c-9e2d-e872dcab0bf6 hid_apple.fnmode=2 thinkpad_acpi.fan_control=1"
 #
 # Examples:
 #

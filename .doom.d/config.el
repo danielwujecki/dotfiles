@@ -86,22 +86,22 @@
 
 (after! org (setq org-startup-folded t))
 
-(add-hook! 'persp-mode-hook
-  (when persp-mode
-    (unless (+workspace-exists-p "org")
-      (if (+workspace-exists-p "main")
-        (+workspace-rename "main" "org")
-        (+workspace-new "org")
-      )
-    )
-    ;;(unless (+workspace-exists-p "inca")
-    ;;  (+workspace-new "inca")
-    ;;)
-    ;;(unless (+workspace-exists-p "#1")
-    ;;  (+workspace-delete "#1")
-    ;;)
-  )
-)
+;;(add-hook! 'persp-mode-hook
+;;  (when persp-mode
+;;    (unless (+workspace-exists-p "org")
+;;      (if (+workspace-exists-p "main")
+;;        (+workspace-rename "main" "org")
+;;        (+workspace-new "org")
+;;      )
+;;    )
+;;    ;;(unless (+workspace-exists-p "inca")
+;;    ;;  (+workspace-new "inca")
+;;    ;;)
+;;    ;;(unless (+workspace-exists-p "#1")
+;;    ;;  (+workspace-delete "#1")
+;;    ;;)
+;;  )
+;;)
 
 (after! lsp-clangd
   (setq lsp-clients-clangd-args
