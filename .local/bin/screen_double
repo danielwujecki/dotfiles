@@ -14,4 +14,4 @@ bspc desktop "0" -m "DP-2"
 bspc desktop "1" -m "DP-2"
 bspc desktop "Desktop" -r
 bspc wm -O 'DP-2' 'HDMI-0'
-fehbg
+fehbg > /dev/null &

@@ -28,5 +28,5 @@
     {
         "key": "ctrl+shift+c",
         "command": "cmake.compileFile"
-    },
+    }
 ]

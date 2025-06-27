@@ -1,6 +1,10 @@
 {
+    // ---------------------------------------------------------------------------------------------
+    // Basic Settings
+    // ---------------------------------------------------------------------------------------------
+
     "editor.fontSize": 13,
-    "editor.fontFamily": "'Fira Code', 'JetBrains Mono', 'monospace'",
+    "editor.fontFamily": "'JetBrains Mono', 'monospace'",
     "editor.lineNumbers": "relative",
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 120,
@@ -12,35 +16,45 @@
     "editor.minimap.enabled": true,
     "editor.minimap.autohide": true,
 
+    "files.autoSave": "afterDelay",
+    "files.trimTrailingWhitespace": true,
+
     "workbench.colorTheme": "GitHub Dark Dimmed",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.productIconTheme": "material-product-icons",
     "workbench.list.smoothScrolling": true,
     "workbench.settings.enableNaturalLanguageSearch": false,
-    "files.autoSave": "afterDelay",
-    "files.trimTrailingWhitespace": true,
+
     "explorer.autoReveal": false,
     "output.smartScroll.enabled": false,
     "diffEditor.ignoreTrimWhitespace": false,
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.smoothScrolling": true,
+
+    "window.newWindowProfile": "Standard",
+
+    "settingsSync.ignoredExtensions": [
+        "asvetliakov.vscode-neovim",
+        "vscodevim.vim"
+    ],
+
+    // ---------------------------------------------------------------------------------------------
+    // Extension Settings
+    // ---------------------------------------------------------------------------------------------
+
     "extensions.ignoreRecommendations": true,
 
-    "keyboard.dispatch": "keyCode",
-    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-    "vscode-neovim.neovimInitVimPaths.linux": "/home/daniel/.config/nvim/init.vim",
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
 
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.linux": "/home/daniel/.config/nvim/init.vim",
+
     "cmake.configureOnOpen": false,
-    "cmake.showOptionsMovedNotification": false,
+
     "notebook.lineNumbers": "on",
     "jupyter.askForKernelRestart": false,
-    "jupyter.widgetScriptSources": [
-        "jsdelivr.com",
-        "unpkg.com"
-    ],
 
     "git.openRepositoryInParentFolders": "never",
     "gitlens.currentLine.enabled": false,
@@ -88,12 +102,8 @@
             ]
         }
     ],
+
     "cSpell.language": "en,de-DE",
-    "cSpell.enableFiletypes": [
-        "!cpp",
-        "!jsonc",
-        "!python"
-    ],
     "cSpell.userWords": [
         "backpropagate",
         "backpropagated",
@@ -107,6 +117,5 @@
         "Mitsuba",
         "pseudocode",
         "subfigures"
-    ],
-    "window.zoomLevel": 1
+    ]
 }
