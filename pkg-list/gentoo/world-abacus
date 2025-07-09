@@ -40,7 +40,6 @@ app-text/xournalpp
 app-text/zathura
 app-text/zathura-pdf-poppler
 dev-debug/gdb
-dev-debug/valgrind
 dev-python/pip
 dev-python/virtualenv
 dev-tex/biber
@@ -55,9 +54,9 @@ llvm-runtimes/libcxx
 lxde-base/lxappearance
 mail-client/thunderbird
 media-gfx/feh
-media-gfx/geeqie
 media-gfx/gimp
 media-gfx/gnome-screenshot
+media-gfx/gpicview
 media-gfx/scrot
 media-libs/exiftool
 media-sound/asunder
@@ -68,6 +67,7 @@ net-analyzer/nmap
 net-analyzer/tcpdump
 net-analyzer/wireshark
 net-dns/avahi
+net-dns/bind-tools
 net-fs/nfs-utils
 net-fs/sshfs
 net-im/discord

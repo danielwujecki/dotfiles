@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+xset s off
+xset dpms 0 0 0
+xset -dpms
+pkill xautolock

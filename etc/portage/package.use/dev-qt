@@ -1,6 +1,5 @@
+=dev-qt/qtmultimedia-6.9.1 -qml
+
 # required by media-sound/teamspeak-client
 dev-qt/qtgui accessibility
 dev-qt/qtwebengine widgets
-
-# required by dev-qt/qtwebengine
-dev-qt/qtwebchannel qml

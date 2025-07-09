@@ -10,8 +10,8 @@ xrandr --output DVI-D-0 --off \
        --output DP-4 --off \
        --output DP-5 --off
 
-bspc desktop "0" -m "DP-2"
-bspc desktop "1" -m "DP-2"
+bspc desktop "0" -m "HDMI-0"
+bspc desktop "1" -m "HDMI-0"
 bspc desktop "Desktop" -r
-bspc wm -O 'DP-2' 'HDMI-0'
+bspc wm -O 'HDMI-0' 'DP-2'
 fehbg > /dev/null &

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+MNTPATH="/home/itdlz-wujd/Documents"
+REPOPATH="$MNTPATH/wsl"
+
+usage() {
+    echo "usage: "$0" [/path/to/syncfile]"
+}
+
+if [[ $# -gt 1 ]] ; then
+    usage
+    exit 1
+elif [[ $# -eq 1 ]] ; then
+    SYNCFILE="$1"
+else
+    SYNCFILE="$REPOPATH/sync_list.txt"
+fi
+
+if [[ ! -d $REPOPATH/.git ]] ; then
+    echo "Can't find dotfiles repo under '$REPOPATH'."
+    exit 1
+fi
+
+if [[ ! -f $SYNCFILE ]] ; then
+    echo "Can't find syncfile under '$SYNCFILE'."
+    exit 1
+fi
+
+echo "Using filelist: '$SYNCFILE'"
+
+cd "$HOME"
+while read -r REP FS ; do
+    [[ -n "$REP" ]] || continue
+    [[ -n "$FS" ]]  || FS="$REP"
+
+    DST="$REPOPATH/${REP#/}"
+    [[ "$FS" = "$REP" && -d "$DST" ]] && DST="$(dirname $DST)"
+
+    cp -rv "$FS" "$DST"
+done <<< "$(grep -Ev '^\s*#' "$SYNCFILE")"

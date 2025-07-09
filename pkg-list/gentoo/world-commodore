@@ -40,7 +40,6 @@ app-text/xournalpp
 app-text/zathura
 app-text/zathura-pdf-poppler
 dev-debug/gdb
-dev-debug/valgrind
 dev-python/pip
 dev-python/virtualenv
 dev-tex/biber
@@ -53,7 +52,6 @@ llvm-runtimes/libcxx
 lxde-base/lxappearance
 mail-client/thunderbird-bin
 media-gfx/feh
-media-gfx/geeqie
 media-gfx/gnome-screenshot
 media-gfx/scrot
 media-libs/exiftool

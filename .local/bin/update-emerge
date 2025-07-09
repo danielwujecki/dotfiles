@@ -65,11 +65,10 @@ if [[ -n $EST ]] ; then
         | grep --color=never -i 'estimated update time' \
         || echo "Emerge time can't be estimated."
 fi
-emerge -avuDN @world
+emerge --getbinpkg -avuDN @world
 
 emerge -avt @preserved-rebuild
 emerge -ac --verbose=n
 
 dispatch-conf
 eclean-dist -d
-eix-update
