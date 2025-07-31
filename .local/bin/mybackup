@@ -6,7 +6,7 @@ BORG_CMD='borg create --one-file-system --stats --progress --compression zstd'
 BASE_PATH_ROOT='/mnt/borg-bkup-root'
 BASE_PATH_USER='/mnt/borg-bkup-user'
 declare -A UUIDS=(["e3a245bb-56f8-4a6f-bb54-b349f36fba93"]="2381fa6d-228c-4246-bbe2-2234193b0344" \
-                  ["d2ab6a0d-333d-4726-b461-ca663042bafd"]="79d55b92-46c5-4dde-90a4-abbe19903c02")
+                  ["4a3364f7-1a65-4026-b747-15a419b82581"]="40915f5e-1f6c-459d-9d1a-0590b16bec29")
 
 if [[ -f /etc/hostname ]] ; then
     HOSTNAME="$(cat /etc/hostname | tr '[:upper:]' '[:lower:]')"

@@ -8,6 +8,7 @@ SYNCLIST["${REMOTE_NAME}journal.org"]="$HOME/Dokumente/org/journal.org"
 SYNCLIST["${REMOTE_NAME}itdlz.org"]="$HOME/Dokumente/org/itdlz.org"
 SYNCLIST["${REMOTE_NAME}essen.org"]="$HOME/Dokumente/org/essen.org"
 SYNCLIST["${REMOTE_NAME}technik.org"]="$HOME/Dokumente/org/technik.org"
+SYNCLIST["${REMOTE_NAME}scratch.org"]="$HOME/Dokumente/org/scratch.org"
 
 # Color definitions for output
 YELLOW='\e[33m'

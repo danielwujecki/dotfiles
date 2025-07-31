@@ -1,2 +1,1 @@
-# go along with lts kernel release 6.6.*
-=sys-kernel/gentoo-sources-6.6* ~amd64
+=sys-kernel/gentoo-sources-6.12.40 ~amd64

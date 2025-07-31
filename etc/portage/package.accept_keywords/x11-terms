@@ -1,1 +1,3 @@
 =x11-terms/kitty-0.42* ~amd64
+=x11-terms/kitty-terminfo-0.42* ~amd64
+=x11-terms/kitty-shell-integration-0.42* ~amd64
