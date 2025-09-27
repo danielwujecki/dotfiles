@@ -1,5 +1,4 @@
 notebook
-ipympl
 
 numpy
 scipy

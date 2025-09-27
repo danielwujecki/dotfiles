@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Dieses Skript bereinigt eine CSV-Datei gemäß den folgenden Regeln:
+# - Ersetzt Zeilenumbrüche innerhalb von Anführungszeichen durch ein Semikolon
+# - Entfernt alle Anführungszeichen
+# - Entfernt Windows-Zeilenenden (^M)
+# - Entfernt Kopfzeilen, die ",Produkt,Menge," enthalten
+# - Entfernt Zeilen, bei denen die dritte Spalte leer ist
+# - Behält nur die zweite und dritte Spalte
+
+# Überprüfen, ob genau ein Argument (der Dateiname) übergeben wurde
+if [ "$#" -ne 1 ]; then
+    echo "Fehler: Bitte geben Sie den Namen der CSV-Datei als Argument an."
+    echo "Verwendung: $0 <dateiname.csv>"
+    exit 1
+fi
+
+# Den Eingabedateinamen in einer Variable speichern
+input_file="$1"
+
+# Überprüfen, ob die Eingabedatei existiert
+if [ ! -f "$input_file" ]; then
+    echo "Fehler: Die Datei '$input_file' wurde nicht gefunden."
+    exit 1
+fi
+
+# Warnung ausgeben, wenn der Dateiname nicht auf .csv endet
+if [[ "$input_file" != *.csv ]]; then
+    echo "Warnung: Die Eingabedatei '$input_file' hat keine .csv-Endung."
+fi
+
+# Den Namen für die Ausgabedatei erstellen (z.B. aus data.csv wird data_cleaned.csv)
+output_file="${input_file%.csv}_cleaned.csv"
+
+echo "Verarbeite '$input_file'..."
+
+# Die Bereinigung durchführen und das Ergebnis in die Ausgabedatei schreiben
+# Schritt 1: `awk 'BEGIN{RS="\""; ORS=""} NR%2==0{gsub("\n",";")} {print}'`
+#            - Setzt das Anführungszeichen als Datensatz-Trennzeichen (RS="\"").
+#            - Für jeden geradzahligen Block (also Text innerhalb von Anführungszeichen),
+#              werden Zeilenumbrüche (\n) durch Semikolons (;) ersetzt.
+#            - Dies entfernt gleichzeitig alle Anführungszeichen aus der Ausgabe.
+# Schritt 2: `sed 's/\r$//'` entfernt das Windows-Zeilenende (^M).
+# Schritt 3: `grep -v ",Produkt,Menge,"` filtert alle Zeilen heraus, die den Kopfzeilentext enthalten.
+# Schritt 4: `awk -F',' '$3 != "" {print $2 "," $3}'` führt zwei Aktionen aus:
+#            a. `$3 != ""`: Verwirft alle Zeilen, bei denen die dritte Spalte (getrennt durch Komma) leer ist.
+#            b. `{print $2 "," $3}`: Druckt nur die zweite und dritte Spalte der verbleibenden Zeilen, getrennt durch ein Komma.
+# Schritt 5: `> "$output_file"` leitet die saubere Ausgabe in die neue Datei um.
+awk 'BEGIN{RS="\""; ORS=""} NR%2==0{gsub("\n",";")} {print}' "$input_file" | \
+sed 's/\r$//' | \
+grep -v ",Produkt,Menge," | \
+awk -F',' '$3 != "" {print $2 "," $3}' > "$output_file"
+
+echo "Bereinigung abgeschlossen. Die sauberen Daten wurden in '$output_file' gespeichert."
+

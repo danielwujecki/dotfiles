@@ -4,7 +4,7 @@
     // ---------------------------------------------------------------------------------------------
 
     "editor.fontSize": 13,
-    "editor.fontFamily": "'JetBrains Mono', 'monospace'",
+    "editor.fontFamily": "'Iosevka Medium', 'monospace'",
     "editor.lineNumbers": "relative",
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 120,
@@ -14,7 +14,7 @@
     "editor.cursorSmoothCaretAnimation": "explicit",
     "editor.minimap.renderCharacters": false,
     "editor.minimap.enabled": true,
-    "editor.minimap.autohide": true,
+    "editor.minimap.autohide": "mouseover",
 
     "files.autoSave": "afterDelay",
     "files.trimTrailingWhitespace": true,
@@ -55,6 +55,7 @@
 
     "notebook.lineNumbers": "on",
     "jupyter.askForKernelRestart": false,
+    "python.analysis.typeCheckingMode": "standard",
 
     "git.openRepositoryInParentFolders": "never",
     "gitlens.currentLine.enabled": false,
