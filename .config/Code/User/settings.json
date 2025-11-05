@@ -118,5 +118,9 @@
         "Mitsuba",
         "pseudocode",
         "subfigures"
+    ],
+
+    "security.allowedUNCHosts": [
+        "wsl.localhost"
     ]
 }

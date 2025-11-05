@@ -16,8 +16,8 @@ fi
 
 # gnome-keyring for ssh, gpg, etc. key management
 if ! pgrep -u "$LOGNAME" -x gnome-keyring > /dev/null ; then
-    export "$(gnome-keyring-daemon --start)"
-    [[ -z "$SSH_AUTH_SOCK" ]] || export SSH_AUTH_SOCK
+    GNOME_KEYRING_VARS="$(gnome-keyring-daemon --start)"
+    [[ -z "$GNOME_KEYRING_VARS" ]] || export "$GNOME_KEYRING_VARS"
 fi
 
 # launch bspwm

@@ -75,7 +75,6 @@ net-im/telegram-desktop-bin
 net-misc/networkmanager
 net-misc/ntp
 net-misc/rclone
-net-misc/yt-dlp
 net-nds/openldap
 net-print/cups-meta
 net-print/cups-pdf

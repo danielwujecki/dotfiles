@@ -118,7 +118,7 @@ sys-process/htop
 sys-process/lsof
 sys-process/time
 www-apps/hugo
-www-client/firefox:rapid
+www-client/firefox-bin:rapid
 www-client/google-chrome
 x11-apps/setxkbmap
 x11-apps/xinput
