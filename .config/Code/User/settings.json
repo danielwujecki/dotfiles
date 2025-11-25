@@ -25,6 +25,7 @@
     "workbench.list.smoothScrolling": true,
     "workbench.settings.enableNaturalLanguageSearch": false,
 
+    "keyboard.dispatch": "keyCode",
     "explorer.autoReveal": false,
     "output.smartScroll.enabled": false,
     "diffEditor.ignoreTrimWhitespace": false,

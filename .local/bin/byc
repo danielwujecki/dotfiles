@@ -2,19 +2,20 @@
 set -euo pipefail
 
 declare -A SYNCLIST # Associative array for sync destinations and sources
+BACKUP_DIR="$HOME/Backups"
 REMOTE_NAME='byc:'
 PASSWORD_FILE="$HOME/Dokumente/meinepw.kdbx" # Variable for the password file
-SYNCLIST["${REMOTE_NAME}journal.org"]="$HOME/Dokumente/org/journal.org"
-SYNCLIST["${REMOTE_NAME}itdlz.org"]="$HOME/Dokumente/org/itdlz.org"
+SYNCLIST["${REMOTE_NAME}journal.org"]="$HOME/Dokumente/org/journal/journal.org"
+SYNCLIST["${REMOTE_NAME}itdlz.org"]="$HOME/Dokumente/org/arbeit/itdlz.org"
+SYNCLIST["${REMOTE_NAME}technik.org"]="$HOME/Dokumente/org/technik/technik.org"
 SYNCLIST["${REMOTE_NAME}essen.org"]="$HOME/Dokumente/org/essen.org"
-SYNCLIST["${REMOTE_NAME}technik.org"]="$HOME/Dokumente/org/technik.org"
 SYNCLIST["${REMOTE_NAME}scratch.org"]="$HOME/Dokumente/org/scratch.org"
 
 # Color definitions for output
 YELLOW='\e[33m'
 WHITE='\e[0m'
-NC='\e[0m' # No Color
 RED='\e[0;31m'
+NOCOL='\e[0m'
 
 # Rclone Flags.  -v is not safe as default. Better to add in command.
 RCLONE_FLAGS=(-v)
@@ -50,8 +51,14 @@ usage() {
 #shift $((OPTIND - 1)) # Remove processed options
 
 # Check if a command was provided
-if [[ $# -ne 1 ]]; then
+if [[ $# -ne 1 ]] ; then
     usage
+    exit 1
+fi
+
+# check if backup dir is pressent
+if [[ ! -d "$BACKUP_DIR" ]] ; then
+    echo "Backup directory '$BACKUP_DIR' not found."
     exit 1
 fi
 
@@ -64,7 +71,7 @@ case "$COMMAND" in
         exit 0
         ;;
     pw)
-        echo -e "${YELLOW}Copying${WHITE} ${PASSWORD_FILE} ${YELLOW}to${WHITE} byc:meinepw.kdbx${NC}"
+        echo -e "${YELLOW}Copying${WHITE} ${PASSWORD_FILE} ${YELLOW}to${WHITE} byc:meinepw.kdbx${NOCOL}"
         rclone copy ${RCLONE_FLAGS[@]} "$PASSWORD_FILE" "$REMOTE_NAME"
         exit 0
         ;;
@@ -75,7 +82,7 @@ case "$COMMAND" in
         SYNC_DOWN=1
         ;;
     *)
-        echo -e "${RED}Invalid command: '$COMMAND'${NC}" >&2
+        echo -e "${RED}Invalid command: '$COMMAND'${NOCOL}" >&2
         usage
         exit 1
         ;;
@@ -89,30 +96,33 @@ for DST in "${!SYNCLIST[@]}"; do
 
     # Check if a colon is present in the destination.
     if ! [[ "$DST" =~ ":" ]]; then
-        echo -e "${RED}Faulty entry in SYNCLIST: Colon missing in '${DST}'!${NC}" >&2
+        echo -e "${RED}Faulty entry in SYNCLIST: Colon missing in '${DST}'!${NOCOL}" >&2
         exit 1
     fi
 
     if [[ ! -f "$SRC" ]]; then
-        echo -e "${RED}Faulty entry in SYNCLIST: File '$SRC' does not exist!${NC}" >&2
+        echo -e "${RED}Faulty entry in SYNCLIST: File '$SRC' does not exist!${NOCOL}" >&2
         exit 1
     fi
 
     if [[ -n "$SYNC_UP" ]]; then
 
-        echo -e "${YELLOW}Copy${WHITE} '$SRC' ${YELLOW}to${WHITE} '$DST'${NC}"
+        echo -e "${YELLOW}Copy${WHITE} '$SRC' ${YELLOW}to${WHITE} '$DST'${NOCOL}"
         rclone copy "${RCLONE_FLAGS[@]}" "$SRC" "$REMOTE_NAME"
 
     elif [[ -n "$SYNC_DOWN" ]]; then
 
-        echo -e "${YELLOW}Create backup:${NC} '$SRC.bak'"
-        cp -v "$SRC" "$SRC.bak"
-        echo -e "${YELLOW}Copy${WHITE} '$DST' ${YELLOW}to${WHITE} '$(dirname "$SRC")'${NC}"
+        # backup
+        echo -e "${YELLOW}Create backup:${NOCOL} '$BACKUP_DIR/$(basename -- $SRC).bak'"
+        cp -v "$SRC" "$BACKUP_DIR/$(basename -- $SRC).bak"
+
+        # rsync operation
+        echo -e "${YELLOW}Copy${WHITE} '$DST' ${YELLOW}to${WHITE} '$(dirname "$SRC")'${NOCOL}"
         rclone copy "${RCLONE_FLAGS[@]}" "$DST" "$(dirname "$SRC")"
 
     else
 
-        echo -e "${RED}Neither specified 'ls', pw', 'up' or 'down'!${NC}"
+        echo -e "${RED}Neither specified 'ls', pw', 'up' or 'down'!${NOCOL}"
         usage
         exit 1
 
