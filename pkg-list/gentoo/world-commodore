@@ -65,9 +65,9 @@ net-dns/avahi
 net-dns/bind-tools
 net-fs/nfs-utils
 net-fs/sshfs
-net-im/discord
 net-im/slack
 net-im/telegram-desktop-bin
+net-libs/nodejs
 net-misc/networkmanager
 net-misc/ntp
 net-misc/rclone

@@ -1,2 +1,4 @@
+net-libs/nodejs npm
+
 # required by app-emulation/libvirt
 net-libs/gnutls pkcs11 tools

@@ -8,3 +8,6 @@ media-libs/freetype brotli
 
 # required by net-im/telegram-desktop-bin
 media-libs/mesa wayland
+
+# required by media-gfx/prusaslicer
+media-libs/qhull static-libs
