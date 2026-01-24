@@ -20,5 +20,9 @@ if ! pgrep -u "$LOGNAME" -x gnome-keyring > /dev/null ; then
     [[ -z "$GNOME_KEYRING_VARS" ]] || export "$GNOME_KEYRING_VARS"
 fi
 
+if ! pgrep -u "$LOGNAME" -x pipewire> /dev/null ; then
+    gentoo-pipewire-launcher &
+fi
+
 # launch bspwm
 exec bspwm > "$HOME/.cache/bspwm.log" 2>&1

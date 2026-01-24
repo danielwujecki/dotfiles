@@ -1,3 +1,6 @@
+# REMOVE - slot conflict?
+#>=media-libs/gegl-0.4.64-r1 introspection
+
 # required by net-im/telegram-desktop-bin
 x11-libs/gtk+ wayland
 

@@ -3,7 +3,7 @@ set -euo pipefail
 
 declare -A SYNCLIST # Associative array for sync destinations and sources
 BACKUP_DIR="$HOME/Backups"
-REMOTE_NAME='byc:'
+REMOTE_NAME='byc_crypt:'
 PASSWORD_FILE="$HOME/Dokumente/meinepw.kdbx" # Variable for the password file
 SYNCLIST["${REMOTE_NAME}journal.org"]="$HOME/Dokumente/org/journal/journal.org"
 SYNCLIST["${REMOTE_NAME}itdlz.org"]="$HOME/Dokumente/org/arbeit/itdlz.org"

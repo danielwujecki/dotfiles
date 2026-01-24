@@ -64,8 +64,10 @@ if [[ -n $EST ]] ; then
     emerge -avuDNp @world 2> /dev/null | genlop -p 2> /dev/null \
         | grep --color=never -i 'estimated update time' \
         || echo "Emerge time can't be estimated."
+    exit 0
 fi
-emerge --getbinpkg --binpkg-respect-use=y -avuDN @world
+
+emerge -avugDN @world
 
 emerge -avt @preserved-rebuild
 emerge -ac --verbose=n
