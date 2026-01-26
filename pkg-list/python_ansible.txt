@@ -1,0 +1,6 @@
+ipython
+autopep8
+pylint
+passlib
+ansible
+ansible-lint

@@ -1,0 +1,14 @@
+---
+- name: Raspberry Pi Setup
+  hosts: docker_test
+  gather_facts: false
+  become: true
+  vars_files:
+    - group_vars/all.yml
+
+  roles:
+    - role: common      # Basics zuerst (User, Pakete)
+  #   - role: system      # Mounts WICHTIG! Vor Docker
+  #   - role: hardware    # Lüfter
+  #   - role: docker      # Installiert Docker (in die gemounteten Pfade)
+  #   - role: webserver   # Nginx Ordner & Logrotate

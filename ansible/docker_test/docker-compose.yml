@@ -1,0 +1,6 @@
+services:
+  ansible-test:
+    build: .
+    container_name: ansible-test
+    ports:
+      - "2222:22"

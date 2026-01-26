@@ -1,0 +1,60 @@
+---
+- name: Basis-Pakete installieren
+  block:
+    - name: Apt Cache Update
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Pakete installieren
+      ansible.builtin.apt:
+        # TODO aus Liste entnehmen
+        name:
+          - neovim
+          - tree
+          - git
+          - btrfs-progs
+          - curl
+          - wget
+          - htop
+          - ripgrep
+          - eza
+          - apache2-utils
+          - borgbackup
+          - python3-certbot-nginx
+        state: present
+
+- name: "User anlegen: {{ user_name }}"
+  ansible.builtin.user:
+    name: "{{ user_name }}"
+    password: "{{ user_password }}"
+    shell: /bin/bash
+    # If true, add the user to the groups specified in groups, but don't remove from other groups
+    append: true
+    groups: sudo
+
+- name: Bash_aliases verteilen
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/../.bash_aliases"
+    dest: "{{ item.home }}/.bash_aliases"
+    owner: "{{ item.user }}"
+    group: "{{ item.user }}"
+    mode: '0644'
+  loop:
+    - { user: "{{ user_name }}", home: "/home/{{ user_name }}" }
+    - { user: 'root', home: '/root' }
+
+- name: Backup Skript installieren
+  block:
+    - name: Ordner '/root/.local/bin/' anlegen
+      ansible.builtin.file:
+        path: /root/.local/bin/
+        state: directory
+        mode: '0755'
+    - name: Backup Skript kopieren
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/../.local/bin/sraspi-backup"
+        dest: "/root/.local/bin/sraspi-backup"
+        owner: "root"
+        group: "root"
+        mode: '0744'

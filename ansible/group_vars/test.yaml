@@ -1,0 +1,7 @@
+---
+user_name: daniel
+user_password: "$6$rounds=656000$shilaislovely$.gzqHy/BlnhfGsBB9BtP8zgNld6Os40JqCzEDGDcUZsRyvNWDC3.1SsUe54kkW2RgmzwdOpjDLlic2FOrP.GK0"
+# timezone: Europe/Berlin
+
+# Aus deiner fstab entnommen:
+# disk_partuuid: "1856617c-03"

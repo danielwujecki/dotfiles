@@ -1,4 +1,5 @@
 # directories
+.vscode/
 .cache/
 .auctex-auto/
 sync/

@@ -1,0 +1,14 @@
+FROM debian:13.3
+
+# Installation und Bereinigung in einem Schritt (spart Platz)
+RUN apt-get update && \
+    apt-get install -y python3 openssh-server && \
+    mkdir -p /run/sshd && \
+    rm -rf /var/lib/apt/lists/*
+
+# Konfiguration
+RUN echo "PermitRootLogin yes" > /etc/ssh/sshd_config.d/root_login.conf && \
+    echo "root:password123" | chpasswd
+
+# Standard-Befehl beim Start
+CMD ["/usr/sbin/sshd", "-D", "-e"]
