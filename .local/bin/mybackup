@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+##################
+# Variables
+##################
+
 BORG_CMD='borg create --one-file-system --stats --progress --compression zstd'
 
 BASE_PATH_ROOT='/mnt/borg-bkup-root'
@@ -15,6 +19,10 @@ elif [[ -f /etc/conf.d/hostname ]] ; then
 else
     exit 1
 fi
+
+##################
+# Helpers
+##################
 
 calc_next_index() {
     if [[ ! $# -eq 2 ]] ; then
@@ -33,10 +41,18 @@ get_volg() {
     VOLG="$(pvs | egrep '\s*/dev/mapper/backup-disk\s+.*' | sed 's/^\s*\/dev\/mapper\/backup-disk\s\+\(\w\+\)\s\+.*/\1/')"
 }
 
+##################
+# Priviliges
+##################
+
 if [[ $EUID -ne 0 ]] ; then
     echo "Please run as root"
     exit 1
 fi
+
+##################
+# Mount
+##################
 
 # check if backup disk is connected
 DISK_FOUND=""; LVM_UUID=""; VOLG=""
@@ -104,6 +120,10 @@ if ! echo "$BKUPMNT" | egrep -q '^/mnt\s+.*$' ; then
     fi
 fi
 
+##################
+# Borg backup
+##################
+
 # check if borg repositories exists
 if [[ ! -f $BASE_PATH_ROOT/config ]] ; then
     echo "Didn't found borg repository at $BASE_PATH_ROOT."
@@ -132,6 +152,10 @@ su -c "cd /.btrfs/@home && $BORG_CMD $BASE_PATH_USER::$HOSTNAME-home-daniel-$IND
 borg list --last 10 "$BASE_PATH_ROOT"
 echo "-----------------------------------------------"
 su -c "borg list --last 10 $BASE_PATH_USER" - daniel
+
+##################
+# Umount
+##################
 
 # eject backup disk if required
 while true; do
