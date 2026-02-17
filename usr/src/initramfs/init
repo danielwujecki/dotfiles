@@ -2,7 +2,7 @@
 #
 # author: daniel w.
 
-VERSION="0.3"
+VERSION="0.4"
 
 ascii_logo() {
     HOST="$(/usr/bin/busybox uname -n)"
@@ -51,7 +51,7 @@ if [ -n "$cryptdevice_uuid" ] ; then
     mkdir -p /run/cryptsetup
 
     allowdiscards="$(cmdline 'rd.luks.allow-discards')"
-    if [ -n "allowdiscards" ] ; then
+    if [ -n "$allowdiscards" ] ; then
         cryptsetup luksOpen --allow-discards "$cryptdevice" "root_crypt" || launch_shell --exec
     else
         cryptsetup luksOpen "$cryptdevice" "root_crypt" || launch_shell --exec
@@ -83,10 +83,10 @@ mount -t "$fstype" -o "$rflags" "$rootdevice" /mnt || launch_shell --exec
 rdbreak="$(cmdline 'rd.break')"
 [ -z "$rdbreak" ] || launch_shell
 
-umount /proc
-umount /sys
-umount /dev
-umount /run
+mount --move /proc /mnt/proc
+mount --move /sys /mnt/sys
+mount --move /dev /mnt/dev
+mount --move /run /mnt/run
 
 exec switch_root /mnt /sbin/init
 

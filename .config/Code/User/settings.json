@@ -1,9 +1,4 @@
 {
-    // ---------------------------------------------------------------------------------------------
-    // Basic Settings
-    // ---------------------------------------------------------------------------------------------
-
-    "editor.fontSize": 13,
     "editor.fontFamily": "'Iosevka Medium', 'monospace'",
     "editor.lineNumbers": "relative",
     "editor.wordWrap": "bounded",
@@ -107,6 +102,7 @@
 
     "cSpell.language": "en,de-DE",
     "cSpell.userWords": [
+        "ansible",
         "backpropagate",
         "backpropagated",
         "Backpropagating",
@@ -123,5 +119,7 @@
 
     "security.allowedUNCHosts": [
         "wsl.localhost"
-    ]
+    ],
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "ansible.lightspeed.enabled": false
 }
