@@ -28,7 +28,7 @@ if [[ $LAPTOP ]] ; then
 
     dp21="$(echo "$xran" | grep -- 'DP-2-1 connected')"
     dp22="$(echo "$xran" | grep -- 'DP-2-2 connected')"
-    if [[ -n $dp21 && -n $dp22 ]] ; then
+    if false && [[ -n $dp21 && -n $dp22 ]] ; then
         xrandr --output eDP-1 --off \
             --output DP-1 --off \
             --output DP-2 --off \
