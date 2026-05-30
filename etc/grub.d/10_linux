@@ -74,7 +74,7 @@ case x"$GRUB_FS" in
         :
 	fi;;
     xzfs)
-	rpool=`${grub_probe} --device ${GRUB_DEVICE} --target=fs_label 2>/dev/null || true`
+	rpool=`${grub_probe} --device ${GRUB_DEVICE} --target=fs_label 2>/dev/null || zdb -l ${GRUB_DEVICE} | awk -F \' '/ name/ { print $2 }'`
 	bootfs="`make_system_path_relative_to_its_root / | sed -e "s,@$,,"`"
 	LINUX_ROOT_DEVICE="ZFS=${rpool}${bootfs%/}"
 	;;
@@ -144,10 +144,6 @@ linux_entry ()
     printf '%s\n' "${prepare_boot_cache}" | sed "s/^/$submenu_indentation/"
   fi
   message="$(gettext_printf "Loading Linux %s ..." ${version})"
-  # sed "s/^/$submenu_indentation/" << EOF
-  # 	echo	'$(echo "$message" | grub_quote)'
-  # 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ro ${args}
-  # EOF
   sed "s/^/$submenu_indentation/" << EOF
 	echo	'$(echo "$message" | grub_quote)'
 	linux	${rel_dirname}/${basename} root=${linux_root_device_thisversion} ${args}
@@ -170,19 +166,18 @@ EOF
 }
 
 machine=`uname -m`
-globs="$GRUB_LINUX_KERNEL_GLOBS"
-[ -z "$globs" ] && case "x$machine" in
+case "x$machine" in
     xi?86 | xx86_64)
-	globs="/boot/vmlinuz-* /vmlinuz-* /boot/kernel-*"
-	;;
-    *)
-	globs="/boot/vmlinuz-* /boot/vmlinux-* /vmlinuz-* /vmlinux-* /boot/kernel-*"
-	;;
+	list=
+	for i in /boot/vmlinuz-* /vmlinuz-* /boot/kernel-* ; do
+	    if grub_file_is_not_garbage "$i" ; then list="$list $i" ; fi
+	done ;;
+    *) 
+	list=
+	for i in /boot/vmlinuz-* /boot/vmlinux-* /vmlinuz-* /vmlinux-* /boot/kernel-* ; do
+                  if grub_file_is_not_garbage "$i" ; then list="$list $i" ; fi
+	done ;;
 esac
-list=
-for i in ${globs} ; do
-    if grub_file_is_not_garbage "$i" ; then list="$list $i" ; fi
-done
 
 case "$machine" in
     i?86) GENKERNEL_ARCH="x86" ;;

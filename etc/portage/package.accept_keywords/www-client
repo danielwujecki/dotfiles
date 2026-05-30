@@ -1,1 +1,2 @@
-=www-client/firefox-146* ~amd64
+www-client/firefox ~amd64
+www-client/firefox-l10n ~amd64
