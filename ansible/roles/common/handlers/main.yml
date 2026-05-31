@@ -1,0 +1,4 @@
+---
+- name: Locales neu generieren
+  ansible.builtin.command: locale-gen
+  changed_when: true

@@ -1,0 +1,7 @@
+---
+- name: Restart Fan Service
+  ansible.builtin.systemd:
+    name: rpi_fan_control
+    state: restarted
+    enabled: true
+    daemon_reload: true

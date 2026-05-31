@@ -1,0 +1,29 @@
+---
+- name: User 'fancontrol' anlegen
+  ansible.builtin.user:
+    name: fancontrol
+    home: /opt/rpi-fan-control
+    shell: /bin/bash
+    append: true
+    groups: gpio
+    system: true
+    create_home: true
+
+# TODO
+# - name: Python Script & Config kopieren
+#   ansible.builtin.copy:
+#     src: "{{ item }}"
+#     dest: "/opt/rpi-fan-control/{{ item }}"
+#     owner: fancontrol
+#     group: fancontrol
+#     mode: '0755'
+#   loop:
+#     - rpi_fan_control.py
+#     - [cite_start].bashrc  # Du hast deine .bashrc auch dorthin kopiert
+
+- name: Systemd Service installieren
+  ansible.builtin.copy:
+    src: rpi_fan_control.service
+    dest: /etc/systemd/system/rpi_fan_control.service
+  notify: Restart Fan Service
+

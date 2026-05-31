@@ -1,4 +1,4 @@
-FROM debian:13.3
+FROM debian:13
 
 # Installation und Bereinigung in einem Schritt (spart Platz)
 RUN apt-get update && \

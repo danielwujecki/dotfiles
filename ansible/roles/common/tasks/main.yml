@@ -1,0 +1,125 @@
+---
+- name: Zeitzone einstellen
+  community.general.timezone:
+    name: "{{ common_system_timezone }}"
+  tags:
+    - common
+    - timezone
+
+- name: Gewünschte Locale in /etc/locale.gen aktivieren
+  ansible.builtin.lineinfile:
+    path: /etc/locale.gen
+    regexp: "^#?\\s*{{ common_system_locale }}"
+    line: "{{ common_system_locale }} UTF-8"
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Locales neu generieren
+  tags:
+    - common
+    - locale
+
+- name: Standard-Locale (LANG) im System setzen
+  ansible.builtin.lineinfile:
+    path: /etc/default/locale
+    regexp: '^LANG='
+    line: 'LANG={{ common_system_locale }}'
+    create: true
+    owner: root
+    group: root
+    mode: '0644'
+  tags:
+    - common
+    - locale
+
+- name: WLAN-Ländercode (Wi-Fi Country) über raspi-config setzen
+  ansible.builtin.command: "raspi-config nonint do_wifi_country {{ common_wifi_country }}"
+  changed_when: false
+  tags:
+    - common
+    - wifi_country
+
+- name: WLAN per rfkill entsperren (Entfernt die Login-Warnung)
+  ansible.builtin.command: rfkill unblock wlan
+  changed_when: false
+  tags:
+    - common
+    - wifi_country
+
+- name: Inhalt der /boot/firmware/cmdline.txt in den Speicher laden
+  ansible.builtin.slurp:
+    src: /boot/firmware/cmdline.txt
+  register: common_cmdline_content
+  tags:
+    - common
+    - cmdline
+
+- name: Sicherstellen, dass die cmdline.txt die richtige PARTUUID enthält
+  ansible.builtin.assert:
+    that:
+      # slurp gibt die Daten base64-kodiert zurück, daher müssen wir sie dekodieren
+      - "'root=PARTUUID=' ~ disk_partuuid ~ '-02' in (cmdline_content['content'] | b64decode)"
+    fail_msg: "KRITISCH: Die cmdline.txt enthält nicht die korrekte PARTUUID ({{ common_disk_partuuid }}-02). Das System wird nach einem Neustart nicht booten!"
+    success_msg: "Die cmdline.txt enthält die korrekte PARTUUID."
+  tags:
+    - common
+    - cmdline
+
+- name: Mount-Points erstellen
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  loop:
+    - /btrfs_data
+    - /var/lib/docker
+    - /var/lib/postgresql
+  tags:
+    - common
+    - mounts
+
+- name: Die /etc/fstab aus Template generieren
+  ansible.builtin.template:
+    src: fstab.j2
+    dest: /etc/fstab
+    owner: root
+    group: root
+    mode: '0644'
+  register: common_fstab_result
+  tags:
+    - common
+    - mounts
+
+- name: Alle Dateisysteme neu mounten (falls sich fstab geändert hat)
+  ansible.builtin.command: mount -a
+  when: common_fstab_result.changed
+  changed_when: true
+  tags:
+    - common
+    - mounts
+
+- name: "User anlegen: {{ user_name }}"
+  ansible.builtin.user:
+    name: "{{ user_name }}"
+    password: "{{ user_password }}"
+    shell: /bin/bash
+    # If true, add the user to the groups specified in groups, but don't remove from other groups
+    append: true
+    groups: sudo
+  tags:
+    - never
+
+- name: Dotfiles aus dem Root-Repo verteilen
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/../{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ target_user }}"
+    group: "{{ target_user }}"
+    mode: "{{ item.mode }}"
+  loop:
+    - { src: '.bash_aliases', dest: "/home/{{ target_user }}/.bash_aliases", mode: '0644' }
+    - { src: '.local/bin/sraspi-backup', dest: "/usr/local/bin/sraspi-backup", mode: '0755' }
+  tags:
+    - never

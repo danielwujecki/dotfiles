@@ -1,0 +1,48 @@
+---
+- name: Apt-Cache aktualisieren
+  ansible.builtin.apt:
+    update_cache: true
+  tags:
+    - apt
+    - apt_install
+    - apt_upgrade
+
+- name: System-Pakete upgraden
+  ansible.builtin.apt:
+    upgrade: true
+  register: apt_upgrade_result
+  tags:
+    - apt
+    - apt_upgrade
+
+- name: Benötigte Pakete installieren
+  ansible.builtin.apt:
+    name: "{{ apt_base_packages }}"
+    state: present
+  tags:
+    - apt
+    - apt_install
+
+- name: Nicht mehr benötigte Abhängigkeiten entfernen (autoremove)
+  ansible.builtin.apt:
+    autoremove: true
+  tags:
+    - apt
+    - apt_upgrade
+
+- name: Apt-Cache leeren (clean)
+  ansible.builtin.apt:
+    clean: true
+  tags:
+    - apt
+    - apt_upgrade
+
+- name: Prüfen, ob ein System-Neustart erforderlich ist
+  ansible.builtin.stat:
+    path: /var/run/reboot-required
+  register: apt_reboot_required_file
+  changed_when: apt_reboot_required_file.stat.exists
+  notify: Server neu starten
+  tags:
+    - apt
+    - apt_upgrade

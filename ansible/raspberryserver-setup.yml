@@ -1,13 +1,21 @@
 ---
 - name: Raspberry Pi Setup
-  hosts: docker_test
+  hosts: raspberryserver
   gather_facts: false
   become: true
-  vars_files:
-    - group_vars/all.yml
+  module_defaults:
+    ansible.builtin.apt:
+      cache_valid_time: 3600
+    ansible.builtin.lineinfile:
+      backup: true
+    ansible.builtin.template:
+      backup: true
+    ansible.builtin.copy:
+      backup: true
 
   roles:
-    - role: common      # Basics zuerst (User, Pakete)
+    - role: apt
+    - role: common
   #   - role: system      # Mounts WICHTIG! Vor Docker
   #   - role: hardware    # Lüfter
   #   - role: docker      # Installiert Docker (in die gemounteten Pfade)

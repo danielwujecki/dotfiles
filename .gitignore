@@ -5,6 +5,7 @@
 sync/
 
 # private dotfiles
+.vault_pass
 .viminfo
 .wget-hsts
 .Xauthority

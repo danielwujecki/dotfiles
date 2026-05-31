@@ -1,0 +1,6 @@
+---
+common_system_timezone: "Europe/Berlin"
+common_system_locale: "de_DE.UTF-8"
+common_wifi_country: "DE"
+
+common_disk_partuuid: "c98333b3"

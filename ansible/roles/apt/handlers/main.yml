@@ -1,0 +1,5 @@
+---
+- name: Server neu starten
+  ansible.builtin.reboot:
+    msg: "Ansible führt einen Neustart aufgrund von System-Updates durch."
+    reboot_timeout: 300 # Wartet bis zu 5 Minuten, dass das System wieder erreichbar ist

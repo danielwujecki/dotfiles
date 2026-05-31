@@ -1,0 +1,19 @@
+---
+# Liste der Standardpakete, die auf dem Server installiert werden sollen
+apt_base_packages:
+  - btrfs-progs
+  - borgbackup
+
+  - apache2-utils
+  - certbot
+  - bc
+
+  - git
+  - neovim
+  - curl
+  - wget
+  - htop
+  - ripgrep
+  - tree
+  - eza
+  - ranger
