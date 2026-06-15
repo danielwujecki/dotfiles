@@ -1,0 +1,54 @@
+---
+- name: Sicherstellen, dass alle benötigten Gruppen existieren
+  ansible.builtin.group:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ common_user_additional_groups }}"
+  tags:
+    - user_groups
+
+- name: Hauptnutzer anlegen
+  ansible.builtin.user:
+    name: "{{ common_user_main }}"
+    uid: 1000
+    shell: /bin/bash
+    home: "/home/{{ common_user_main }}"
+    create_home: true
+    password: "{{ common_user_main_password }}"
+    groups: "{{ common_user_additional_groups | join(',') }}"
+    append: true
+  tags:
+    - user_main
+
+- name: Benutzer 'fancontrol' anlegen
+  ansible.builtin.user:
+    name: fancontrol
+    uid: 1001
+    shell: /bin/bash
+    home: /opt/rpi-fan-control
+    create_home: true
+    groups: gpio
+    append: true
+  tags:
+    - user_system
+
+- name: Temporären Benutzer 'ansibleadmin' vollständig entfernen
+  ansible.builtin.user:
+    name: ansibleadmin
+    state: absent
+    remove: true
+  tags:
+    - user_cleanup
+
+# - name: Dotfiles aus dem Root-Repo verteilen
+#   ansible.builtin.copy:
+#     src: "{{ playbook_dir }}/../{{ item.src }}"
+#     dest: "{{ item.dest }}"
+#     owner: "{{ target_user }}"
+#     group: "{{ target_user }}"
+#     mode: "{{ item.mode }}"
+#   loop:
+#     - { src: '.bash_aliases', dest: "/home/{{ target_user }}/.bash_aliases", mode: '0644' }
+#     - { src: '.local/bin/sraspi-backup', dest: "/usr/local/bin/sraspi-backup", mode: '0755' }
+#   tags:
+#     - never

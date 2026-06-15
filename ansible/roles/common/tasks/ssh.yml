@@ -1,0 +1,19 @@
+---
+- name: SSH-Key hinterlegen
+  ansible.posix.authorized_key:
+    user: "{{ common_user_main }}"
+    state: present
+    key: "{{ common_ssh_key }}"
+  tags:
+    - ssh_key
+
+- name: Eigene SSH-Konfiguration (sshd_custom.conf) anlegen
+  ansible.builtin.template:
+    src: sshd_custom.conf.j2
+    dest: /etc/ssh/sshd_config.d/sshd_custom.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: SSH-Dienst neu laden
+  tags:
+    - ssh_config

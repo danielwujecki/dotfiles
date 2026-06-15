@@ -14,26 +14,12 @@
   tags:
     - storage
 
-- name: "User anlegen: {{ user_name }}"
-  ansible.builtin.user:
-    name: "{{ user_name }}"
-    password: "{{ user_password }}"
-    shell: /bin/bash
-    # If true, add the user to the groups specified in groups, but don't remove from other groups
-    append: true
-    groups: sudo
+- name: User anlegen
+  ansible.builtin.import_tasks: user.yml
   tags:
-    - never
+    - user
 
-- name: Dotfiles aus dem Root-Repo verteilen
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/../{{ item.src }}"
-    dest: "{{ item.dest }}"
-    owner: "{{ target_user }}"
-    group: "{{ target_user }}"
-    mode: "{{ item.mode }}"
-  loop:
-    - { src: '.bash_aliases', dest: "/home/{{ target_user }}/.bash_aliases", mode: '0644' }
-    - { src: '.local/bin/sraspi-backup', dest: "/usr/local/bin/sraspi-backup", mode: '0755' }
+- name: SSH-Sicherheit und Keys konfigurieren
+  ansible.builtin.import_tasks: ssh.yml
   tags:
-    - never
+    - ssh
