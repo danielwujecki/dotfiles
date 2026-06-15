@@ -3,10 +3,14 @@ common_dotfiles_path: "~/Repositories/dotfiles"
 
 common_network_country: "DE"
 
-common_ssh_key: >
+common_ssh_authorized_keys: >
   ssh-ed25519
   AAAAC3NzaC1lZDI1NTE5AAAAINENtXtotbI1gy4c8kYGBpzwDxCiN2cQmtRAETtZhZfj
   daniel.wujecki@gmail.com
+common_ssh_user_pub: >
+  ssh-ed25519
+  AAAAC3NzaC1lZDI1NTE5AAAAIFzww/SNQ+E7nX0i9+Cv6MoTWTgSn62aZpqzzLVXeDg8
+  raspberryserver.shilunski.de
 common_ssh_root_pub: >
   ssh-ed25519
   AAAAC3NzaC1lZDI1NTE5AAAAIPPkM8/TG54Q7DwFzl/fGEe51DS9zvbs4DyvCzcMPoml

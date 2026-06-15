@@ -10,13 +10,49 @@
   tags:
     - ssh_config
 
-- name: SSH-Key für main user hinterlegen
+- name: ~/.ssh Verzeichnis sicherstellen
+  ansible.builtin.file:
+    path: "/home/{{ common_user_main }}/.ssh"
+    state: directory
+    owner: "{{ common_user_main }}"
+    group: "{{ common_user_main }}"
+    mode: '0700'
+  tags:
+    - ssh_user
+    - ssh_user_auth_key
+
+- name: SSH-Authorized-Keys für main user hinterlegen
   ansible.posix.authorized_key:
     user: "{{ common_user_main }}"
     state: present
-    key: "{{ common_ssh_key }}"
+    key: "{{ common_ssh_authorized_keys }}"
   tags:
-    - ssh_key
+    - ssh_user
+    - ssh_user_auth_key
+
+- name: Privaten SSH-Key für main user hinterlegen
+  ansible.builtin.copy:
+    src: ssh_ed25519_raspberryserver
+    dest: "/home/{{ common_user_main }}/.ssh/ssh_ed25519_raspberryserver"
+    owner: "{{ common_user_main }}"
+    group: "{{ common_user_main }}"
+    mode: '0600'
+    backup: false
+  tags:
+    - ssh_user
+    - ssh_user_key
+
+- name: Öffentlichen SSH-Key für main user hinterlegen
+  ansible.builtin.copy:
+    content: "{{ common_ssh_user_pub }}\n"
+    dest: "/home/{{ common_user_main }}/.ssh/ssh_ed25519_raspberryserver.pub"
+    owner: "{{ common_user_main }}"
+    group: "{{ common_user_main }}"
+    mode: '0644'
+    backup: false
+  tags:
+    - ssh_user
+    - ssh_user_key
 
 - name: /root/.ssh Verzeichnis sicherstellen
   ansible.builtin.file:
