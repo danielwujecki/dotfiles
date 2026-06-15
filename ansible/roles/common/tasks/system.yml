@@ -45,3 +45,15 @@
     mode: '0644'
   tags:
     - locale
+
+- name: Sudo-Passwort-Timeout auf 1 Minute reduzieren
+  ansible.builtin.copy:
+    dest: /etc/sudoers.d/010_custom_timeout
+    content: "Defaults timestamp_timeout=1\n"
+    owner: root
+    group: root
+    mode: '0440'
+    validate: /usr/sbin/visudo -cf %s
+  tags:
+    - sudo
+    - security
