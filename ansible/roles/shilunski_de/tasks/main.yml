@@ -1,0 +1,10 @@
+---
+- name: Zertifikate einrichten
+  ansible.builtin.import_tasks: cert.yml
+  tags:
+    - shilunski_cert
+
+- name: Shilunski-Projekt einrichten
+  ansible.builtin.import_tasks: shilunski.yml
+  tags:
+    - shilunski_project

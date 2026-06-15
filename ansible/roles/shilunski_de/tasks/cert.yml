@@ -1,0 +1,26 @@
+---
+- name: Dynv6 Hook-Skript deployen
+  ansible.builtin.copy:
+    src: dynv6-hook.sh
+    dest: /etc/letsencrypt/dynv6-hook.sh
+    owner: root
+    group: root
+    mode: '0700'
+  tags:
+    - certbot_hook
+
+- name: Wildcard-Zertifikat anfordern, wenn es noch nicht existiert
+  ansible.builtin.command: >
+    certbot certonly --non-interactive --agree-tos
+    -m '{{ shilunski_de_email }}'
+    -d '{{ shilunski_de_domain }}'
+    -d '*.{{ shilunski_de_domain }}'
+    --manual --preferred-challenges dns
+    --manual-auth-hook '/etc/letsencrypt/dynv6-hook.sh auth'
+    --manual-cleanup-hook '/etc/letsencrypt/dynv6-hook.sh cleanup'
+  #  --deploy-hook 'docker exec shilunski-nginx nginx -s reload'
+  args:
+    # Ansible überspringt diesen Task, wenn das Verzeichnis bereits existiert!
+    creates: "/etc/letsencrypt/live/{{ shilunski_de_domain }}/fullchain.pem"
+  tags:
+    - certbot_certonly

@@ -20,3 +20,5 @@
       tags: common
     - role: docker
       tags: docker
+    - role: shilunski_de
+      tags: shilunski_de
