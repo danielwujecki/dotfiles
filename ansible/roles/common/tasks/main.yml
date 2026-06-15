@@ -1,4 +1,9 @@
 ---
+- name: Secrets laden
+  ansible.builtin.include_vars: secrets.yml
+  tags:
+    - always
+
 - name: Allgemeine Systemeinstellungen anwenden
   ansible.builtin.import_tasks: system.yml
   tags:
@@ -18,6 +23,11 @@
   ansible.builtin.import_tasks: user.yml
   tags:
     - user
+
+- name: Persönliche Konfigurationen und Dotfiles verteilen
+  ansible.builtin.import_tasks: dotfiles.yml
+  tags:
+    - dotfiles
 
 - name: SSH-Sicherheit und Keys konfigurieren
   ansible.builtin.import_tasks: ssh.yml

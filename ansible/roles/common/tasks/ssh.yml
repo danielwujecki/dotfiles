@@ -1,12 +1,4 @@
 ---
-- name: SSH-Key hinterlegen
-  ansible.posix.authorized_key:
-    user: "{{ common_user_main }}"
-    state: present
-    key: "{{ common_ssh_key }}"
-  tags:
-    - ssh_key
-
 - name: Eigene SSH-Konfiguration (sshd_custom.conf) anlegen
   ansible.builtin.template:
     src: sshd_custom.conf.j2
@@ -17,3 +9,57 @@
   notify: SSH-Dienst neu laden
   tags:
     - ssh_config
+
+- name: SSH-Key für main user hinterlegen
+  ansible.posix.authorized_key:
+    user: "{{ common_user_main }}"
+    state: present
+    key: "{{ common_ssh_key }}"
+  tags:
+    - ssh_key
+
+- name: /root/.ssh Verzeichnis sicherstellen
+  ansible.builtin.file:
+    path: /root/.ssh
+    state: directory
+    owner: root
+    group: root
+    mode: '0700'
+  tags:
+    - ssh_root_config
+    - ssh_root_key
+
+- name: SSH-Key Config für root anlegen
+  ansible.builtin.copy:
+    content: |
+      AddressFamily inet
+      StrictHostKeyChecking accept-new
+      IdentityFile ~/.ssh/ssh_ed25519_root_at_raspberryserver
+    dest: /root/.ssh/config
+    owner: root
+    group: root
+    mode: '0644'
+  tags:
+    - ssh_root_config
+
+- name: Privaten SSH-Key für root anlegen
+  ansible.builtin.copy:
+    src: ssh_ed25519_root_at_raspberryserver
+    dest: /root/.ssh/ssh_ed25519_root_at_raspberryserver
+    owner: root
+    group: root
+    mode: '0600'
+    backup: false
+  tags:
+    - ssh_root_key
+
+- name: Öffentlichen SSH-Key für root anlegen
+  ansible.builtin.copy:
+    content: "{{ common_ssh_root_pub }}\n"
+    dest: /root/.ssh/ssh_ed25519_root_at_raspberryserver.pub
+    owner: root
+    group: root
+    mode: '0644'
+    backup: false
+  tags:
+    - ssh_root_key
