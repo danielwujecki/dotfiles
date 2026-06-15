@@ -1,6 +1,6 @@
 proc                    /proc               proc    defaults                                      0 0
-PARTUUID={{ disk_partuuid }}-01    /boot/firmware      vfat    defaults                                      0 2
-PARTUUID={{ disk_partuuid }}-02    /                   ext4    defaults,noatime                              0 1
-PARTUUID={{ disk_partuuid }}-03    /btrfs_data         btrfs   defaults,noatime,compress=zstd:2,subvolid=5   0 0
-PARTUUID={{ disk_partuuid }}-03    /var/lib/docker     btrfs   defaults,noatime,compress=zstd:2,subvolid=257 0 0
-PARTUUID={{ disk_partuuid }}-03    /var/lib/postgresql btrfs   defaults,noatime,compress=zstd:2,subvolid=258 0 0
+PARTUUID={{ common_storage_partuuid }}-01    /boot/firmware      vfat    defaults                                      0 2
+PARTUUID={{ common_storage_partuuid }}-02    /                   ext4    defaults,noatime                              0 1
+PARTUUID={{ common_storage_partuuid }}-03    /btrfs_data         btrfs   defaults,noatime,compress=zstd:2,subvolid=5   0 0
+PARTUUID={{ common_storage_partuuid }}-03    /var/lib/docker     btrfs   defaults,noatime,compress=zstd:2,subvolid=257 0 0
+PARTUUID={{ common_storage_partuuid }}-03    /var/lib/postgresql btrfs   defaults,noatime,compress=zstd:2,subvolid=258 0 0

@@ -1,0 +1,8 @@
+---
+- name: WLAN-Ländercode (Wi-Fi Country) über raspi-config setzen
+  ansible.builtin.command: "raspi-config nonint do_wifi_country {{ common_network_country }}"
+  changed_when: false
+
+- name: WLAN per rfkill entsperren (Entfernt die Login-Warnung)
+  ansible.builtin.command: rfkill unblock wlan
+  changed_when: false

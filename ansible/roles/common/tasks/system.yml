@@ -1,0 +1,47 @@
+---
+- name: System-Hostname über das native Modul setzen
+  ansible.builtin.hostname:
+    name: "{{ common_system_hostname }}"
+  tags:
+    - hostname
+
+- name: Für lokale Auflösung /etc/hosts aus Template generieren
+  ansible.builtin.template:
+    src: hosts.j2
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: '0644'
+  tags:
+    - hostname
+
+- name: Zeitzone einstellen
+  community.general.timezone:
+    name: "{{ common_system_timezone }}"
+  tags:
+    - timezone
+
+- name: Gewünschte Locale in /etc/locale.gen aktivieren
+  ansible.builtin.lineinfile:
+    path: /etc/locale.gen
+    regexp: "^#?\\s*{{ common_system_locale }}"
+    line: "{{ common_system_locale }} UTF-8"
+    owner: root
+    group: root
+    mode: '0644'
+  # changed_when: true
+  notify: Locales neu generieren
+  tags:
+    - locale
+
+- name: Standard-Locale (LANG) im System setzen
+  ansible.builtin.lineinfile:
+    path: /etc/default/locale
+    regexp: '^LANG='
+    line: 'LANG={{ common_system_locale }}'
+    create: true
+    owner: root
+    group: root
+    mode: '0644'
+  tags:
+    - locale

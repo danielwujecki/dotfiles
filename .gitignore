@@ -44,3 +44,4 @@ tex/*.pdf
 todos*.txt
 plug.vim.old
 make.conf.freddi
+notes.org

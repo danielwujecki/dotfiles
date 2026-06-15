@@ -1,0 +1,52 @@
+---
+- name: Inhalt der /boot/firmware/cmdline.txt in den Speicher laden
+  ansible.builtin.slurp:
+    src: /boot/firmware/cmdline.txt
+  register: common_cmdline_content
+  tags:
+    - cmdline
+
+- name: Sicherstellen, dass die cmdline.txt die richtige PARTUUID enthält
+  ansible.builtin.assert:
+    that:
+      # slurp gibt die Daten base64-kodiert zurück, daher müssen wir sie dekodieren
+      - "'root=PARTUUID=' ~ common_storage_partuuid ~ '-02' in (common_cmdline_content['content'] | b64decode)"
+    fail_msg: >
+      Die cmdline.txt enthält nicht die korrekte PARTUUID ({{ common_storage_partuuid }}-02).
+      Das System wird nach einem Neustart nicht booten!
+    success_msg: "Die cmdline.txt enthält die korrekte PARTUUID."
+  tags:
+    - cmdline
+
+- name: Mount-Points erstellen
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  loop:
+    - /btrfs_data
+    - /var/lib/docker
+    - /var/lib/postgresql
+  tags:
+    - mounts
+
+- name: Die /etc/fstab aus Template generieren
+  ansible.builtin.template:
+    src: fstab.j2
+    dest: /etc/fstab
+    owner: root
+    group: root
+    mode: '0644'
+  register: common_fstab_result
+  tags:
+    - mounts
+
+- name: Alle Dateisysteme neu mounten (falls sich fstab geändert hat)
+  ansible.builtin.command: mount -a
+  when: common_fstab_result.changed
+  changed_when: true
+  tags:
+    - mounts
+    - skip_ansible_lint

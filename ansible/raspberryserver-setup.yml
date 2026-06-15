@@ -15,7 +15,9 @@
 
   roles:
     - role: apt
+      tags: apt
     - role: common
+      tags: common
   #   - role: system      # Mounts WICHTIG! Vor Docker
   #   - role: hardware    # Lüfter
   #   - role: docker      # Installiert Docker (in die gemounteten Pfade)

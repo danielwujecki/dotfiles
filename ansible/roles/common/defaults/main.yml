@@ -1,6 +1,8 @@
 ---
+common_system_hostname: "raspberryserver"
 common_system_timezone: "Europe/Berlin"
 common_system_locale: "de_DE.UTF-8"
-common_wifi_country: "DE"
 
-common_disk_partuuid: "c98333b3"
+common_network_country: "DE"
+
+common_storage_partuuid: "c98333b3"
