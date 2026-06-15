@@ -1,7 +1,7 @@
 ---
 - name: Raspberry Pi Setup
   hosts: raspberryserver
-  gather_facts: false
+  gather_facts: true
   become: true
   module_defaults:
     ansible.builtin.apt:
@@ -18,7 +18,5 @@
       tags: apt
     - role: common
       tags: common
-  #   - role: system      # Mounts WICHTIG! Vor Docker
-  #   - role: hardware    # Lüfter
-  #   - role: docker      # Installiert Docker (in die gemounteten Pfade)
-  #   - role: webserver   # Nginx Ordner & Logrotate
+    - role: docker
+      tags: docker

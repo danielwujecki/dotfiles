@@ -4,14 +4,18 @@ apt_base_packages:
   - btrfs-progs
   - borgbackup
 
+  - ca-certificates
+  - curl
+  - gnupg
+  - wget
+  - python3-debian
+
   - apache2-utils
   - certbot
   - bc
 
   - git
   - neovim
-  - curl
-  - wget
   - htop
   - ripgrep
   - tree

@@ -1,2 +1,3 @@
 ---
-docker_target_user: daniel
+docker_target_users:
+  - daniel

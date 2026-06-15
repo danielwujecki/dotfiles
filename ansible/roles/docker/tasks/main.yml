@@ -3,9 +3,11 @@
   ansible.builtin.file:
     path: /etc/docker
     state: directory
+    owner: root
+    group: root
     mode: '0755'
   tags:
-    - docker
+    - docker_config
 
 - name: Docker Daemon Config schreiben (Btrfs Driver)
   ansible.builtin.copy:
@@ -14,46 +16,44 @@
       {
         "storage-driver": "btrfs"
       }
+    owner: root
+    group: root
     mode: '0644'
-  notify: Restart Docker
   tags:
-    - docker
-
-# - name: Notwendige Pakete für apt über HTTPS installieren
-#   ansible.builtin.apt:
-#     name:
-#       - ca-certificates
-#       - curl
-#       - gnupg
-#     state: present
-#     update_cache: true
-#     cache_valid_time: 3600
-#   tags:
-#     - docker
+    - docker_config
 
 - name: Verzeichnis für Keyrings erstellen
   ansible.builtin.file:
     path: /etc/apt/keyrings
     state: directory
+    owner: root
+    group: root
     mode: '0755'
+  tags:
+    - docker_keyring
 
 - name: Docker GPG Key herunterladen
   ansible.builtin.get_url:
     url: https://download.docker.com/linux/debian/gpg
     dest: /etc/apt/keyrings/docker.asc
+    owner: root
+    group: root
     mode: '0644'
     force: true
+  tags:
+    - docker_keyring
 
 - name: Docker Repository hinzufügen
-  ansible.builtin.copy:
-    dest: /etc/apt/sources.list.d/docker.sources
-    content: |
-      Types: deb
-      URIs: https://download.docker.com/linux/debian
-      Suites: {{ ansible_distribution_release }}
-      Components: stable
-      Signed-By: /etc/apt/keyrings/docker.asc
+  ansible.builtin.deb822_repository:
+    name: docker
+    types: deb
+    uris: https://download.docker.com/linux/debian
+    suites: "{{ ansible_distribution_release }}"
+    components: stable
+    signed_by: /etc/apt/keyrings/docker.asc
     mode: '0644'
+  tags:
+    - docker_install
 
 - name: Docker Pakete installieren
   ansible.builtin.apt:
@@ -65,9 +65,22 @@
       - docker-compose-plugin
     state: present
     update_cache: true
+  tags:
+    - docker_install
 
 - name: User zur Docker Gruppe hinzufügen
   ansible.builtin.user:
-    name: "{{ target_user }}"
+    name: "{{ item }}"
     groups: docker
     append: true
+  loop: "{{ docker_target_users }}"
+  tags:
+    - docker_group
+
+- name: Sicherstellen, dass Docker läuft und beim Booten startet
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: true
+  tags:
+    - docker_service
