@@ -21,3 +21,4 @@ apt_base_packages:
   - tree
   - eza
   - ranger
+  - tmux

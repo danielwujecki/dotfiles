@@ -21,17 +21,16 @@
   tags:
     - bash
 
-- name: Konfigurationsblock an die /root/.bashrc anhängen
-  ansible.builtin.blockinfile:
-    path: /root/.bashrc
-    block: "{{ lookup('file', 'bashrc_custom.sh') }}"
-    marker: "# {mark} ANSIBLE MANAGED BLOCK: Custom bash settings"
-    create: true
-    owner: root
-    group: root
+- name: Tmux config verteilen
+  ansible.builtin.copy:
+    src: "{{ common_dotfiles_path }}/.tmux.conf"
+    dest: "{{ item.home }}/.tmux.conf"
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
     mode: '0644'
+  loop: "{{ common_user_list }}"
   tags:
-    - bash
+    - scripts
 
 - name: Ranger-Konfiguration verteilen
   ansible.builtin.copy:
@@ -43,6 +42,18 @@
   loop: "{{ common_user_list }}"
   tags:
     - ranger
+
+- name: Konfigurationsblock an die /root/.bashrc anhängen
+  ansible.builtin.blockinfile:
+    path: /root/.bashrc
+    block: "{{ lookup('file', 'bashrc_custom.sh') }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: Custom bash settings"
+    create: true
+    owner: root
+    group: root
+    mode: '0644'
+  tags:
+    - bash
 
 - name: .local/bin Verzeichnis für root anlegen
   ansible.builtin.file:
