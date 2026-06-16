@@ -1,36 +1,30 @@
 ---
+- name: .config Verzeichnis anlegen
+  ansible.builtin.file:
+    path: "{{ item.home }}/.config"
+    state: directory
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: '0755'
+  loop: "{{ common_user_list }}"
+  tags:
+    - ranger
+
 - name: .bash_aliases für root und den Hauptbenutzer verteilen
   ansible.builtin.copy:
     src: "{{ common_dotfiles_path }}/.bash_aliases"
-    dest: "{{ item.dest }}"
+    dest: "{{ item.home }}/.bash_aliases"
     owner: "{{ item.owner }}"
     group: "{{ item.group }}"
     mode: '0644'
-  loop:
-    - { dest: '/root/.bash_aliases', owner: 'root', group: 'root' }
-    - { dest: '/home/{{ common_user_main }}/.bash_aliases', owner: '{{ common_user_main }}', group: '{{ common_user_main }}' }
+  loop: "{{ common_user_list }}"
   tags:
     - bash
 
 - name: Konfigurationsblock an die /root/.bashrc anhängen
   ansible.builtin.blockinfile:
     path: /root/.bashrc
-    block: |
-      if [ -f ~/.bash_aliases ]; then
-          . ~/.bash_aliases
-      fi
-
-      # If you come from bash you might have to change your $PATH.
-      if [ -d "$HOME/.local/bin" ] ; then
-          PATH="$HOME/.local/bin:$PATH"
-      fi
-
-      # Preferred editor
-      if [[ -x /usr/bin/nvim ]] ; then
-          export EDITOR='nvim'
-      else
-          export EDITOR='vi'
-      fi
+    block: "{{ lookup('file', 'bashrc_custom.sh') }}"
     marker: "# {mark} ANSIBLE MANAGED BLOCK: Custom bash settings"
     create: true
     owner: root
@@ -39,33 +33,18 @@
   tags:
     - bash
 
-- name: .config Verzeichnis für Ranger sicherstellen
-  ansible.builtin.file:
-    path: "{{ item.path }}"
-    state: directory
-    owner: "{{ item.owner }}"
-    group: "{{ item.group }}"
-    mode: '0755'
-  loop:
-    - { path: '/root/.config', owner: 'root', group: 'root' }
-    - { path: '/home/{{ common_user_main }}/.config', owner: '{{ common_user_main }}', group: '{{ common_user_main }}' }
-  tags:
-    - ranger
-
 - name: Ranger-Konfiguration verteilen
   ansible.builtin.copy:
-    src: "{{ common_dotfiles_path }}/.config/ranger/"
-    dest: "{{ item.dest }}"
+    src: "{{ common_dotfiles_path }}/.config/ranger"
+    dest: "{{ item.home }}/.config/"
     owner: "{{ item.owner }}"
     group: "{{ item.group }}"
     mode: '0755'
-  loop:
-    - { dest: '/root/.config/ranger/', owner: 'root', group: 'root' }
-    - { dest: '/home/{{ common_user_main }}/.config/ranger/', owner: '{{ common_user_main }}', group: '{{ common_user_main }}' }
+  loop: "{{ common_user_list }}"
   tags:
     - ranger
 
-- name: .local/bin Verzeichnis für root sicherstellen
+- name: .local/bin Verzeichnis für root anlegen
   ansible.builtin.file:
     path: /root/.local/bin
     state: directory
