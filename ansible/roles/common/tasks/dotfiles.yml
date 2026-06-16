@@ -30,7 +30,7 @@
     mode: '0644'
   loop: "{{ common_user_list }}"
   tags:
-    - scripts
+    - tmux
 
 - name: Ranger-Konfiguration verteilen
   ansible.builtin.copy:
@@ -42,6 +42,16 @@
   loop: "{{ common_user_list }}"
   tags:
     - ranger
+
+- name: .gitconfig einrichten
+  ansible.builtin.copy:
+    src: "{{ common_dotfiles_path }}/.gitconfig"
+    dest: "/home/{{ common_user_main }}/.gitconfig"
+    owner: "{{ common_user_main }}"
+    group: "{{ common_user_main }}"
+    mode: '0644'
+  tags:
+    - gitconfig
 
 - name: Konfigurationsblock an die /root/.bashrc anhängen
   ansible.builtin.blockinfile:
