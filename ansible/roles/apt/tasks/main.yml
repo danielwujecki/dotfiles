@@ -3,13 +3,16 @@
   ansible.builtin.apt:
     update_cache: true
   tags:
+    - update
     - apt_upgrade
 
 - name: System-Pakete upgraden
   ansible.builtin.apt:
     upgrade: true
   register: apt_upgrade_result
+  notify: Server neu starten
   tags:
+    - update
     - apt_upgrade
 
 - name: Benötigte Pakete installieren
@@ -23,12 +26,14 @@
   ansible.builtin.apt:
     autoremove: true
   tags:
+    - update
     - apt_upgrade
 
 - name: Apt-Cache leeren (clean)
   ansible.builtin.apt:
     clean: true
   tags:
+    - update
     - apt_upgrade
 
 - name: Prüfen, ob ein System-Neustart erforderlich ist
@@ -38,4 +43,6 @@
   changed_when: apt_reboot_required_file.stat.exists
   notify: Server neu starten
   tags:
+    - never
+    - update
     - apt_upgrade

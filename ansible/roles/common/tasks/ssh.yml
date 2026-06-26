@@ -12,10 +12,10 @@
 
 - name: ~/.ssh Verzeichnis sicherstellen
   ansible.builtin.file:
-    path: "/home/{{ common_user_main }}/.ssh"
+    path: "/home/{{ user_main }}/.ssh"
     state: directory
-    owner: "{{ common_user_main }}"
-    group: "{{ common_user_main }}"
+    owner: "{{ user_main }}"
+    group: "{{ user_main }}"
     mode: '0700'
   tags:
     - ssh_user
@@ -23,7 +23,7 @@
 
 - name: SSH-Authorized-Keys für main user hinterlegen
   ansible.posix.authorized_key:
-    user: "{{ common_user_main }}"
+    user: "{{ user_main }}"
     state: present
     key: "{{ common_ssh_authorized_keys }}"
   tags:
@@ -33,9 +33,9 @@
 - name: Privaten SSH-Key für main user hinterlegen
   ansible.builtin.copy:
     src: ssh_ed25519_raspberryserver
-    dest: "/home/{{ common_user_main }}/.ssh/ssh_ed25519_raspberryserver"
-    owner: "{{ common_user_main }}"
-    group: "{{ common_user_main }}"
+    dest: "/home/{{ user_main }}/.ssh/ssh_ed25519_raspberryserver"
+    owner: "{{ user_main }}"
+    group: "{{ user_main }}"
     mode: '0600'
     backup: false
   tags:
@@ -45,9 +45,9 @@
 - name: Öffentlichen SSH-Key für main user hinterlegen
   ansible.builtin.copy:
     content: "{{ common_ssh_user_pub }}\n"
-    dest: "/home/{{ common_user_main }}/.ssh/ssh_ed25519_raspberryserver.pub"
-    owner: "{{ common_user_main }}"
-    group: "{{ common_user_main }}"
+    dest: "/home/{{ user_main }}/.ssh/ssh_ed25519_raspberryserver.pub"
+    owner: "{{ user_main }}"
+    group: "{{ user_main }}"
     mode: '0644'
     backup: false
   tags:

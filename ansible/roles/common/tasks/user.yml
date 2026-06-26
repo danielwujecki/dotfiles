@@ -9,10 +9,10 @@
 
 - name: Hauptnutzer anlegen
   ansible.builtin.user:
-    name: "{{ common_user_main }}"
+    name: "{{ user_main }}"
     uid: 1000
     shell: /bin/bash
-    home: "/home/{{ common_user_main }}"
+    home: "/home/{{ user_main }}"
     create_home: true
     password: "{{ common_user_main_password }}"
     groups: "{{ common_user_additional_groups | join(',') }}"

@@ -22,10 +22,9 @@ common_system_hostname: "raspberryserver"
 common_system_timezone: "Europe/Berlin"
 common_system_locale: "de_DE.UTF-8"
 
-common_user_main: "daniel"
 common_user_list:
   - { home: '/root', owner: 'root', group: 'root' }
-  - { home: '/home/{{ common_user_main }}', owner: '{{ common_user_main }}', group: '{{ common_user_main }}' }
+  - { home: '/home/{{ user_main }}', owner: '{{ user_main }}', group: '{{ user_main }}' }
 common_user_additional_groups:
   - adm
   - dialout

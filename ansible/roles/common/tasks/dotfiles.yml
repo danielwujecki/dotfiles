@@ -46,9 +46,9 @@
 - name: .gitconfig einrichten
   ansible.builtin.copy:
     src: "{{ common_dotfiles_path }}/.gitconfig"
-    dest: "/home/{{ common_user_main }}/.gitconfig"
-    owner: "{{ common_user_main }}"
-    group: "{{ common_user_main }}"
+    dest: "/home/{{ user_main }}/.gitconfig"
+    owner: "{{ user_main }}"
+    group: "{{ user_main }}"
     mode: '0644'
   tags:
     - gitconfig

@@ -1,3 +1,10 @@
 ---
+shilunski_de_path: "/home/{{ user_main }}/shilunski"
+
 shilunski_de_email: "daniel.wujecki@gmail.com"
 shilunski_de_domain: "shilunski.de"
+
+shilunski_de_nginx: "1.31"
+shilunski_de_postgres: "17.10"
+shilunski_de_keycloak: "26.6"
+shilunski_de_mealie: "v3.20.0"
