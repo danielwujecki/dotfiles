@@ -13,6 +13,7 @@ apt_base_packages:
   - apache2-utils
   - certbot
   - bc
+  - python3-rpi.gpio
 
   - git
   - neovim
