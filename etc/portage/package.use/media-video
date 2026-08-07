@@ -1,5 +1,3 @@
-media-video/vlc qt5
-
 # required by ???
 media-video/ffmpeg opus vpx theora
 media-video/pipewire extra

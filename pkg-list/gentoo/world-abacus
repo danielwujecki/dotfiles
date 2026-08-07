@@ -47,6 +47,7 @@ dev-tex/tectonic
 dev-util/nvidia-cuda-toolkit
 dev-util/pkgdev
 dev-util/shellcheck-bin
+dev-vcs/git-filter-repo
 gnome-base/gnome-keyring
 gnome-extra/nm-applet
 gui-libs/xdg-desktop-portal-lxqt
@@ -68,7 +69,7 @@ net-analyzer/nmap
 net-analyzer/tcpdump
 net-analyzer/wireshark
 net-dns/avahi
-net-dns/bind-tools
+net-dns/bind
 net-fs/nfs-utils
 net-fs/sshfs
 net-im/telegram-desktop-bin
