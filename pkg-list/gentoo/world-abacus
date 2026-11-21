@@ -45,6 +45,7 @@ dev-python/virtualenv
 dev-tex/biber
 dev-tex/tectonic
 dev-util/claude-code
+dev-util/google-antigravity
 dev-util/nvidia-cuda-toolkit
 dev-util/pkgdev
 dev-util/shellcheck-bin
@@ -73,9 +74,8 @@ net-dns/avahi
 net-dns/bind
 net-fs/nfs-utils
 net-fs/sshfs
-net-im/telegram-desktop-bin
 net-misc/networkmanager
-net-misc/ntp
+net-misc/ntpsec
 net-misc/rclone
 net-nds/openldap
 net-print/cups-meta

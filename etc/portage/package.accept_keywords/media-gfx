@@ -1,3 +1,6 @@
 media-gfx/blender ~amd64
 media-gfx/gpicview ~amd64
+
 media-gfx/prusaslicer ~amd64
+# dependency required by media-gfx/prusaslicer
+media-gfx/libbgcode ~amd64
